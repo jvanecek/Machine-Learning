@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#git clone https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev.git cuis
+
+RELEASE=201901172323
+VERSION=linux64x64
+FAMILY=squeak 
+
+wget -O cogspur.tgz "https://github.com/OpenSmalltalk/opensmalltalk-vm/releases/download/${RELEASE}/${FAMILY}.cog.spur_${VERSION}_${RELEASE}.tar.gz"
+tar -zxvf cogspur.tgz
+mv ./sqcogspur64linuxht ./cogspur
+rm cogspur.tgz
