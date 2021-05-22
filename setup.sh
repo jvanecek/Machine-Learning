@@ -1,6 +1,8 @@
 #!/bin/bash
 
-#git clone https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev.git cuis
+git clone https://github.com/Cuis-Smalltalk/Cuis-Smalltalk-Dev.git cuis
+git clone https://github.com/Cuis-Smalltalk/Numerics.git cuis/Packages/Numerics
+git clone https://github.com/Cuis-Smalltalk/Morphic.git cuis/Packages/Morphic
 
 RELEASE=201901172323
 VERSION=linux64x64
