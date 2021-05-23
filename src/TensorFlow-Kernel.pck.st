@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4567] on 22 May 2021 at 10:08:03 am'!
+'From Cuis 5.0 [latest update: #4607] on 23 May 2021 at 2:27:45 pm'!
 'Description Please enter a description for this package'!
-!provides: 'TensorFlow-Kernel' 1 428!
+!provides: 'TensorFlow-Kernel' 1 429!
 !requires: 'FFI' 1 18 nil!
 !requires: 'Statistics' 1 14 nil!
 SystemOrganization addCategory: #'TensorFlow-Kernel'!
@@ -708,9 +708,9 @@ stringDecode: src
 	answer := (destination structAt: 1 length: dstSize) asString.
 	^ answer! !
 
-!TensorFlowCAPI methodsFor: 'strings' stamp: 'gera 1/5/2017 03:11:10'!
+!TensorFlowCAPI methodsFor: 'strings' stamp: 'JV 5/23/2021 14:21:37'!
 stringDecode: srcString len: srcLen destination: dstPointer len: dstLenPointer status: status
-	<cdecl: ulonglong 'TF_StringDecode' (char* ulonglong char* ulonglong* TFStatus)>
+	<cdecl: ulonglong 'TF_StringDecode' (char* ulonglong char* ulonglong* TFStatus*)>
 	^ self externalCallFailed
 ! !
 
@@ -2411,7 +2411,7 @@ allInt32s
 allInt64s
 	^ self allElements! !
 
-!TFTensor methodsFor: 'converting' stamp: 'gera 1/6/2017 14:56:06'!
+!TFTensor methodsFor: 'converting' stamp: 'JV 5/23/2021 14:13:53'!
 allStrings
 	| total answer bytes data |
 	total := self size.
@@ -2420,7 +2420,7 @@ allStrings
 	data := self data getHandle + (8 * total).
 	1 to: total do: [:i |
 		| offset str |
-		offset := bytes unsignedLongLongAt: i - 1 * 8 + 1.
+		offset := bytes unsignedLongLongAt: (i - 1) * 8 + 1.
 		str := self library stringDecode: data + offset.
 		answer nextPut: str].
 	
@@ -3749,10 +3749,10 @@ testTensorAllElements
 		assertTensor: #(((1 100) (2 100) (3 100)) ((4 100) (5 100) (6 100)) ((7 100) (8 100) (9 100))) asFloatTensor
 		elementsEquals: #(1.0 100.0 2.0 100.0 3.0 100.0 4.0 100.0 5.0 100.0 6.0 100.0 7.0 100.0 8.0 100.0 9.0 100.0).! !
 
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'JV 5/9/2021 23:15:56'!
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'JV 5/23/2021 14:22:13'!
 testTensorAllStrings
 	| result strings expected |
-	self failWith: 'breaking the image'.
+	
 	expected := #('0.420000').
 	result := self runFloatAsStringGraph.
 	strings := result allStrings.
@@ -4224,11 +4224,11 @@ testStringAsTensor
 	self assert: tensor dataBytes first equals: template size.
 	self assert: tensor dataBytes allButFirst asString equals: template.! !
 
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/9/2021 23:15:21'!
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/23/2021 14:22:19'!
 testStringDecode
 	| size string encoded decoded status |
 	" This test assumes the internal representation of a TensorFlow string. May fail if they change it "
-	self failWith: 'breaking the image'.
+	
 	string := 'a ver como queda este string encodeado?'.
 	
 	status := TFStatus create.
@@ -4301,20 +4301,20 @@ testTensorFromString
 	self assert: tensor dataBytes first equals: template size.
 	self assert: tensor dataBytes allButFirst asString equals: template.! !
 
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/9/2021 23:16:38'!
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/23/2021 14:22:07'!
 testTensorFromStringArray
 	| tensor template |
-	self failWith: 'breaking the image'.
+
 	template := #('hola manola' 'te traje una lola' 'pamela' 'que pandulce!!').
 	
 	tensor := TFTensor fromStringArray: template.
 	
 	self assert: tensor allStrings equals: template.! !
 
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/9/2021 23:17:05'!
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/23/2021 14:22:01'!
 testTensorFromStrings
 	| tensor template flatten |
-	self failWith: 'breaking the image'.
+
 	template := #(('hola manola' 'te traje una lola') ('pamela' 'que pandulce!!') ('habia una vez' 'truz')).
 	flatten := TFTensor elementsOf: template.
 	tensor := TFTensor fromStrings: template.
@@ -4324,10 +4324,10 @@ testTensorFromStrings
 
 	! !
 
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/9/2021 23:17:44'!
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/23/2021 14:21:49'!
 testTensorFromStringsShape
 	| template |
-	self failWith: 'breaking the image'.
+	
 	template := #('hola manola' 'te traje una lola' 'pamela' 'que pandulce!!' 'habia una vez' 'truz').
 	
 	self assertTensorFromStrings: template shape: #(6).
@@ -4578,13 +4578,13 @@ testAttrSetFloat
 	self assert: (op floatAt: 'max') closeTo: max.
 ! !
 
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/9/2021 23:12:59'!
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/23/2021 10:03:05'!
 testAttrSetShape
-	self failWith: 'breaking the image'. 
+	
 	self testAttrSetShape: #().
 	self testAttrSetShape: #(16r1234567890ABCDEF).
 	self testAttrSetShape: #(1 2 3 4).
-	self testAttrSetShape: (1 to: 200) asArray.! !
+	self testAttrSetShape: (1 to: 16) asArray.! !
 
 !TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
 testAttrSetShape: anIntegerArray
@@ -4962,10 +4962,10 @@ testGraphCreationConst
 	self assert: operation outputsCount equals: 1.
 ! !
 
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/9/2021 23:13:42'!
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/23/2021 14:22:27'!
 testInt64AsStringGraph
 	| result tensor |
-	self failWith: 'Breaking the image'.
+
 	tensor := TFTensor fromInt64: 101010101.
 	result := self testAsStringGraphRunOn: tensor.
 	
@@ -4973,10 +4973,10 @@ testInt64AsStringGraph
 
 	result delete.! !
 
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/9/2021 23:14:45'!
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/23/2021 14:22:31'!
 testInt64rrayAsStringGraph
 	| result tensor strings template |
-	self failWith: 'breaking the image'.
+	
 	template := #(101010101 -123321 1 2 3 4).
 	tensor := TFTensor fromInt64s: template.
 	result := self testAsStringGraphRunOn: tensor.
