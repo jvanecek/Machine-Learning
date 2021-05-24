@@ -4,11 +4,8 @@
 # system image
 *.image
 
-# Pharo Smalltalk Debug log file
-PharoDebug.log
-
-# Squeak Smalltalk Debug log file
-SqueakDebug.log
+# Pharo and Squeal Smalltalk Debug log file
+*.log
 
 # Monticello package cache
 /package-cache
@@ -20,3 +17,6 @@ Graph-checkpoint.ipynb
 
 /cogspur
 /cuis
+/dataset
+
+/scripts/*.tar.gz
