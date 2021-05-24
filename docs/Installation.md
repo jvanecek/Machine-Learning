@@ -10,8 +10,7 @@
 
 packages := 
   OrderedCollection new
-    add: '../src/TensorFlow-Kernel.pck.st'; 
-    add: '../src/TensorFlow-Examples.pck.st'; 
+    add: '../src/TensorFlowCore.pck.st'; 
     yourself. 
 
 packages do: [:package |

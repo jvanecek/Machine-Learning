@@ -1,249 +1,240 @@
-'From Cuis 5.0 [latest update: #4607] on 23 May 2021 at 2:27:45 pm'!
-'Description Please enter a description for this package'!
-!provides: 'TensorFlow-Kernel' 1 429!
-!requires: 'FFI' 1 18 nil!
+'From Cuis 5.0 [latest update: #4607] on 24 May 2021 at 9:13:04 am'!
+'Description '!
+!provides: 'TensorFlowCore' 1 3!
+!requires: 'FFI' 1 33 nil!
 !requires: 'Statistics' 1 14 nil!
-SystemOrganization addCategory: #'TensorFlow-Kernel'!
+SystemOrganization addCategory: #TensorFlowCore!
+SystemOrganization addCategory: #'TensorFlowCore-Tests'!
 
 
-!classDefinition: #TensorFlowCAPI category: #'TensorFlow-Kernel'!
+!classDefinition: #TensorFlowCAPI category: #TensorFlowCore!
 ExternalLibrary subclass: #TensorFlowCAPI
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TensorFlowCAPI class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TensorFlowCAPI class' category: #TensorFlowCore!
 TensorFlowCAPI class
 	instanceVariableNames: 'current'!
 
-!classDefinition: #TFStructure category: #'TensorFlow-Kernel'!
+!classDefinition: #TFStructure category: #TensorFlowCore!
 ExternalStructure subclass: #TFStructure
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFStructure class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFStructure class' category: #TensorFlowCore!
 TFStructure class
 	instanceVariableNames: ''!
 
-!classDefinition: #ExternalWordArray category: #'TensorFlow-Kernel'!
+!classDefinition: #ExternalWordArray category: #TensorFlowCore!
 TFStructure subclass: #ExternalWordArray
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'ExternalWordArray class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'ExternalWordArray class' category: #TensorFlowCore!
 ExternalWordArray class
 	instanceVariableNames: ''!
 
-!classDefinition: #Int64Array category: #'TensorFlow-Kernel'!
+!classDefinition: #Int64Array category: #TensorFlowCore!
 ExternalWordArray subclass: #Int64Array
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'Int64Array class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'Int64Array class' category: #TensorFlowCore!
 Int64Array class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFOperationPtrArray category: #'TensorFlow-Kernel'!
+!classDefinition: #TFOperationPtrArray category: #TensorFlowCore!
 ExternalWordArray subclass: #TFOperationPtrArray
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFOperationPtrArray class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFOperationPtrArray class' category: #TensorFlowCore!
 TFOperationPtrArray class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFOutputArray category: #'TensorFlow-Kernel'!
+!classDefinition: #TFOutputArray category: #TensorFlowCore!
 ExternalWordArray subclass: #TFOutputArray
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFOutputArray class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFOutputArray class' category: #TensorFlowCore!
 TFOutputArray class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFTensorPtrArray category: #'TensorFlow-Kernel'!
+!classDefinition: #TFTensorPtrArray category: #TensorFlowCore!
 ExternalWordArray subclass: #TFTensorPtrArray
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFTensorPtrArray class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFTensorPtrArray class' category: #TensorFlowCore!
 TFTensorPtrArray class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFAttrMetadata category: #'TensorFlow-Kernel'!
+!classDefinition: #TFAttrMetadata category: #TensorFlowCore!
 TFStructure subclass: #TFAttrMetadata
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFAttrMetadata class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFAttrMetadata class' category: #TensorFlowCore!
 TFAttrMetadata class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFBuffer category: #'TensorFlow-Kernel'!
+!classDefinition: #TFBuffer category: #TensorFlowCore!
 TFStructure subclass: #TFBuffer
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFBuffer class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFBuffer class' category: #TensorFlowCore!
 TFBuffer class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFGraph category: #'TensorFlow-Kernel'!
+!classDefinition: #TFGraph category: #TensorFlowCore!
 TFStructure subclass: #TFGraph
 	instanceVariableNames: 'context'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFGraph class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFGraph class' category: #TensorFlowCore!
 TFGraph class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFImportGraphDefOptions category: #'TensorFlow-Kernel'!
+!classDefinition: #TFImportGraphDefOptions category: #TensorFlowCore!
 TFStructure subclass: #TFImportGraphDefOptions
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFImportGraphDefOptions class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFImportGraphDefOptions class' category: #TensorFlowCore!
 TFImportGraphDefOptions class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFOperation category: #'TensorFlow-Kernel'!
+!classDefinition: #TFOperation category: #TensorFlowCore!
 TFStructure subclass: #TFOperation
 	instanceVariableNames: 'graph output'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFOperation class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFOperation class' category: #TensorFlowCore!
 TFOperation class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFOperationDescription category: #'TensorFlow-Kernel'!
+!classDefinition: #TFOperationDescription category: #TensorFlowCore!
 TFStructure subclass: #TFOperationDescription
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFOperationDescription class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFOperationDescription class' category: #TensorFlowCore!
 TFOperationDescription class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFOutput category: #'TensorFlow-Kernel'!
+!classDefinition: #TFOutput category: #TensorFlowCore!
 TFStructure subclass: #TFOutput
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFOutput class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFOutput class' category: #TensorFlowCore!
 TFOutput class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFInput category: #'TensorFlow-Kernel'!
+!classDefinition: #TFInput category: #TensorFlowCore!
 TFOutput subclass: #TFInput
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFInput class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFInput class' category: #TensorFlowCore!
 TFInput class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFSession category: #'TensorFlow-Kernel'!
+!classDefinition: #TFSession category: #TensorFlowCore!
 TFStructure subclass: #TFSession
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFSession class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFSession class' category: #TensorFlowCore!
 TFSession class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFSessionOptions category: #'TensorFlow-Kernel'!
+!classDefinition: #TFSessionOptions category: #TensorFlowCore!
 TFStructure subclass: #TFSessionOptions
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFSessionOptions class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFSessionOptions class' category: #TensorFlowCore!
 TFSessionOptions class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFStatus category: #'TensorFlow-Kernel'!
+!classDefinition: #TFStatus category: #TensorFlowCore!
 TFStructure subclass: #TFStatus
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFStatus class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFStatus class' category: #TensorFlowCore!
 TFStatus class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFTensor category: #'TensorFlow-Kernel'!
+!classDefinition: #TFTensor category: #TensorFlowCore!
 TFStructure subclass: #TFTensor
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TFTensor class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFTensor class' category: #TensorFlowCore!
 TFTensor class
 	instanceVariableNames: ''!
 
-!classDefinition: #ExternalWordArrayTest category: #'TensorFlow-Kernel'!
+!classDefinition: #ExternalWordArrayTest category: #'TensorFlowCore-Tests'!
 TestCase subclass: #ExternalWordArrayTest
 	instanceVariableNames: 'library'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'ExternalWordArrayTest class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore-Tests'!
+!classDefinition: 'ExternalWordArrayTest class' category: #'TensorFlowCore-Tests'!
 ExternalWordArrayTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #TensorFlowTestCase category: #'TensorFlow-Kernel'!
+!classDefinition: #TensorFlowTestCase category: #'TensorFlowCore-Tests'!
 TestCase subclass: #TensorFlowTestCase
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TensorFlowTestCase class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore-Tests'!
+!classDefinition: 'TensorFlowTestCase class' category: #'TensorFlowCore-Tests'!
 TensorFlowTestCase class
 	instanceVariableNames: ''!
 
-!classDefinition: #TensorFlowCAPISlowTests category: #'TensorFlow-Kernel'!
+!classDefinition: #TensorFlowCAPISlowTests category: #'TensorFlowCore-Tests'!
 TensorFlowTestCase subclass: #TensorFlowCAPISlowTests
 	instanceVariableNames: 'library'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TensorFlowCAPISlowTests class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore-Tests'!
+!classDefinition: 'TensorFlowCAPISlowTests class' category: #'TensorFlowCore-Tests'!
 TensorFlowCAPISlowTests class
 	instanceVariableNames: ''!
 
-!classDefinition: #TensorFlowCAPITest category: #'TensorFlow-Kernel'!
+!classDefinition: #TensorFlowCAPITest category: #'TensorFlowCore-Tests'!
 TensorFlowTestCase subclass: #TensorFlowCAPITest
 	instanceVariableNames: 'library'
 	classVariableNames: ''
 	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TensorFlowCAPITest class' category: #'TensorFlow-Kernel'!
+	category: 'TensorFlowCore-Tests'!
+!classDefinition: 'TensorFlowCAPITest class' category: #'TensorFlowCore-Tests'!
 TensorFlowCAPITest class
-	instanceVariableNames: ''!
-
-!classDefinition: #TensorFlowOperationsTest category: #'TensorFlow-Kernel'!
-TensorFlowTestCase subclass: #TensorFlowOperationsTest
-	instanceVariableNames: 'library'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlow-Kernel'!
-!classDefinition: 'TensorFlowOperationsTest class' category: #'TensorFlow-Kernel'!
-TensorFlowOperationsTest class
 	instanceVariableNames: ''!
 
 
@@ -1130,22 +1121,6 @@ operationsSelect: conditionBlock thenDo: actionBlock
 	
 	^ answer asArray! !
 
-!TFGraph methodsFor: 'operations' stamp: 'gera 1/5/2017 05:21:30'!
-add: nameString described: aBlock
-	^self newOperation: 'Add' named: nameString described: aBlock! !
-
-!TFGraph methodsFor: 'operations' stamp: 'gera 1/5/2017 23:55:21'!
-asString: nameString described: aBlock
-	^self newOperation: 'AsString' named: nameString described: aBlock! !
-
-!TFGraph methodsFor: 'operations' stamp: 'gera 12/30/2016 12:16:54'!
-concat: nameString described: aBlock
-	^self newOperation: 'Concat' named: nameString described: aBlock! !
-
-!TFGraph methodsFor: 'operations' stamp: 'gera 12/28/2016 02:11:44'!
-mul: nameString described: aBlock
-	^self newOperation: 'Mul' named: nameString described: aBlock! !
-
 !TFGraph methodsFor: 'operations' stamp: 'gera 1/29/2017 02:35:44'!
 newOperation: typeString named: aString
 	^ self newOperation: typeString named: aString described: [:unused | ]! !
@@ -1164,90 +1139,9 @@ newOperationDescription: typeString named: aString
 	^ self library newOperationDescriptionOn: self type: typeString named: aString
 ! !
 
-!TFGraph methodsFor: 'root operations' stamp: 'gera 1/31/2017 15:07:44'!
-const: aTFTensor
-	| name |
-	name := self nameFor: 'constant'.
-	^ self const: name value: aTFTensor! !
-
-!TFGraph methodsFor: 'root operations' stamp: 'gera 12/28/2016 02:07:25'!
-const: nameString value: aTFTensor
-	^ self
-		newOperation: 'Const'
-		named: nameString
-		described: [:description |
-			description at: 'dtype' putType: aTFTensor type.
-			description at: 'value' putTensor: aTFTensor]! !
-
-!TFGraph methodsFor: 'root operations' stamp: 'gera 2/2/2017 19:45:59'!
-inputType: typeInteger
-	^ self
-		newOperation: 'Placeholder'
-		named: (self nameFor: 'input')
-		described: [:description |
-			description at: 'dtype' putType: typeInteger]! !
-
 !TFGraph methodsFor: 'root operations' stamp: 'gera 2/10/2017 11:28:09'!
 nameFor: namePrefix
 	^ context, namePrefix,'_',self operationsCount printString.! !
-
-!TFGraph methodsFor: 'root operations' stamp: 'gera 1/6/2017 17:21:53'!
-placeholder: nameString type: typeInteger
-	^ self
-		newOperation: 'Placeholder'
-		named: nameString
-		described: [:description |
-			description at: 'dtype' putType: typeInteger]! !
-
-!TFGraph methodsFor: 'root operations' stamp: 'gera 6/30/2019 00:45:27'!
-truncatedNormalRandomShaped: shapeArray
-	| shape |
-	shape := self const: shapeArray asInt32Tensor.
-	^ shape unaryOp: 'TruncatedNormal' described: [:description |
-		description at: 'dtype' putType: TFTensor typeFloat]! !
-
-!TFGraph methodsFor: 'root operations' stamp: 'gera 1/31/2017 17:44:21'!
-truncatedNormalRandomShaped: shapeArray stddev: aNumber
-	| random |
-	random := self truncatedNormalRandomShaped: shapeArray.
-	^ random @* (self const: aNumber asTensor)! !
-
-!TFGraph methodsFor: 'root operations' stamp: 'gera 1/29/2017 03:23:14'!
-variable: nameString forTensor: aTFTensor
-	^ self variable: nameString type: aTFTensor type shape: aTFTensor shape! !
-
-!TFGraph methodsFor: 'root operations' stamp: 'gera 2/1/2017 01:02:23'!
-variable: nameString initialValue: aTFTensor
-	| const var |
-	var := self variable: nameString forTensor: aTFTensor.
-	const := self const: nameString, '_initialValue' value: aTFTensor.
-	var assign: const.
-	^ var! !
-
-!TFGraph methodsFor: 'root operations' stamp: 'gera 2/1/2017 01:22:52'!
-variable: nameString initialValueFrom: aTFOperation
-	| output var shape |
-	output := aTFOperation output: 0.
-	shape := self shapeOf: output.
-	var := self variable: nameString type: output type shape: shape..
-	var assign: aTFOperation.
-	^ var! !
-
-!TFGraph methodsFor: 'root operations' stamp: 'gera 1/29/2017 03:04:54'!
-variable: nameString type: typeInteger shape: anArray
-	^ self
-		newOperation: 'Variable'
-		named: nameString
-		described: [:description |
-			description
-				at: 'dtype' putType: typeInteger;
-				at: 'shape' putShape: anArray]! !
-
-!TFGraph methodsFor: 'root operations' stamp: 'gera 2/17/2017 00:47:45'!
-zerosShaped: shapeArray
-	| shape |
-	shape := self const: shapeArray asInt32Tensor.
-	^ shape binaryOp: 'Fill' with: 0.0 asTensor! !
 
 !TFGraph methodsFor: 'initialize-release' stamp: 'gera 1/19/2017 09:45:55'!
 delete
@@ -1259,39 +1153,6 @@ delete
 !TFGraph methodsFor: 'initialize-release' stamp: 'gera 1/13/2017 10:32:27'!
 finalize
 	self delete! !
-
-!TFGraph methodsFor: 'initialize-release' stamp: 'gera 6/30/2019 00:45:28'!
-fromBlock: aBlockClosure
-	| types |
-	types := Array new: aBlockClosure argumentCount.
-	types atAllPut: TFTensor typeFloat.
-	^ self fromBlock: aBlockClosure inputTypes: types! !
-
-!TFGraph methodsFor: 'initialize-release' stamp: 'gera 2/2/2017 19:46:21'!
-fromBlock: aBlockClosure inputTypes: anArray
-	| inputs index |
-	index := 0.
-	inputs := (1 to: aBlockClosure argumentCount) collect: [:each |
-		index := index + 1.
-		self inputType: (anArray at: index)].
-	^ aBlockClosure valueWithArguments: inputs.
-! !
-
-!TFGraph methodsFor: 'initialize-release' stamp: 'gera 2/10/2017 15:26:14'!
-fromBlock: aBlockClosure inputTypes: anArray named: nameString
-	| previousContext answer |
-	previousContext := context.
-	context := context, nameString, '/'.
-	answer := self fromBlock: aBlockClosure inputTypes: anArray.
-	context := previousContext.
-	^ answer! !
-
-!TFGraph methodsFor: 'initialize-release' stamp: 'gera 6/30/2019 00:45:27'!
-fromBlock: aBlockClosure named: nameString
-	| types |
-	types := Array new: aBlockClosure argumentCount.
-	types atAllPut: TFTensor typeFloat.
-	^ self fromBlock: aBlockClosure inputTypes: types named: nameString! !
 
 !TFGraph methodsFor: 'initialize-release' stamp: 'gera 7/3/2019 03:33:19'!
 import: aTFBuffer
@@ -1351,8 +1212,8 @@ runOutputs: anArrayOfTFOutputs
 	self initializeOn: session.
 	^ session runOutputs: anArrayOfTFOutputs! !
 
-!TFGraph methodsFor: 'outputs' stamp: 'gera 7/3/2019 03:33:19'!
-outputDimenssionsCount: aTFOutput
+!TFGraph methodsFor: 'outputs' stamp: 'JV 5/23/2021 16:52:03'!
+outputDimensionsCount: aTFOutput
 	| status answer |
 	status := TFStatus create.
 	answer := self library forGraph: self outputDims: aTFOutput status: status.
@@ -1384,20 +1245,6 @@ shapeOf: aTFOutputOrInput
 	
 	answer := (1 to: size) collect: [:i | value at: i].
 	^ answer! !
-
-!TFGraph methodsFor: 'outputs' stamp: 'gera 7/3/2019 03:33:19'!
-shapeOf: aTFOutputOrInput set: shape
-	| status value |
-	value := Int64Array externalFromArray: shape.
-	status := TFStatus create.
-	
-	self library
-		graph: self
-		setShapeOf: aTFOutputOrInput
-		to: value
-		size: shape size
-		status: status.
-	status check.! !
 
 !TFGraph methodsFor: 'debugging' stamp: 'gera 2/9/2017 09:39:58'!
 writeDefTo: strm
@@ -1438,10 +1285,6 @@ delete
 create
 	^ TensorFlowCAPI current newImportGraphDefOptions! !
 
-!TFOperation methodsFor: 'accessing' stamp: 'gera 12/22/2016 03:57:35'!
-InputsCount
-	^ self library operationNumInputs: self! !
-
 !TFOperation methodsFor: 'accessing' stamp: 'gera 12/22/2016 03:57:05'!
 device
 	^ self library operationDevice: self! !
@@ -1458,6 +1301,10 @@ graph: aTFGraph
 input: indexInteger
 	^ TFInput onOperation: self index: indexInteger! !
 
+!TFOperation methodsFor: 'accessing' stamp: 'JV 5/23/2021 16:57:52'!
+inputsCount
+	^ self library operationNumInputs: self! !
+
 !TFOperation methodsFor: 'accessing' stamp: 'gera 7/3/2019 03:26:12'!
 output: indexInteger
 	^ TFOutput onOperation: self index: indexInteger! !
@@ -1473,230 +1320,6 @@ type
 !TFOperation methodsFor: 'accessing' stamp: 'JB 2/9/2017 20:22:33'!
 useOutput: anInteger
 	output := anInteger! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 1/20/2017 18:22:38'!
-* aTFOperation
-	^ self binaryOp: 'MatMul' with: aTFOperation! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 1/21/2017 02:26:09'!
-*\ aTFOperation
-	^ self
-		binaryOp: 'MatMul'
-		with: aTFOperation
-		described: [:description |
-			description at: 'transpose_b' putBoolean: true]
-! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 1/19/2017 11:19:11'!
-+ aTFOperation
-	^ self binaryOp: 'Add' with: aTFOperation! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 1/29/2017 19:47:10'!
-- aTFOperation
-	^ self binaryOp: 'Sub' with: aTFOperation! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 1/29/2017 15:21:14'!
--= aTFOperation
-	^ self binaryOp: 'AssignSub' with: aTFOperation! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'JB 2/15/2017 23:27:00'!
-> aTFOperation
-	^ self binaryOp: 'Greater' with: aTFOperation! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 1/20/2017 18:20:07'!
-@* aTFOperation
-	^ self binaryOp: 'Mul' with: aTFOperation! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 2/19/2017 15:19:17'!
-@/ aTFOperation
-	^ self binaryOp: 'Div' with: aTFOperation
-	! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 1/21/2017 02:26:18'!
-\* aTFOperation
-	^ self
-		binaryOp: 'MatMul'
-		with: aTFOperation
-		described: [:description |
-			description at: 'transpose_a' putBoolean: true]
-! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'JB 2/17/2017 20:01:18'!
-\*\ aTFOperation
-	^ self
-		binaryOp: 'MatMul'
-		with: aTFOperation
-		described: [:description |
-			description at: 'transpose_a' putBoolean: true.
-			description at: 'transpose_b' putBoolean: true]
-! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 1/19/2017 12:52:43'!
-\\ aTFOperation
-	^ self binaryOp: 'Mod' with: aTFOperation! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 2/1/2017 01:02:16'!
-assign: aTFOperation
-	^ self
-		binaryOp: 'Assign'
-		with: aTFOperation
-		named: self name, '_initializer'! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 1/21/2017 02:22:49'!
-binaryOp: aString with: aTFOperation
-	^ self binaryOp: aString with: aTFOperation described: [:nothing]
-! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 1/29/2017 15:14:52'!
-binaryOp: aString with: aTFOperation described: oneArgBlock
-	| name |
-	name := self nameFor: aString.
-	^ self binaryOp: aString with: aTFOperation named: name described: oneArgBlock! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 1/29/2017 04:54:08'!
-binaryOp: aString with: aTFOperation named: name
-	^ self binaryOp: aString with: aTFOperation named: name described: [:nothing]
-! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 2/19/2017 11:26:18'!
-binaryOp: aString with: aTFOperation named: name described: oneArgBlock
-	^ self op: aString withAll: {aTFOperation} named: name described: oneArgBlock! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 2/19/2017 15:40:22'!
-castTo: typeInteger
-	^ self unaryOp: 'Cast' described: [:description |
-		description at: 'DstT' putType: typeInteger]! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'JB 2/11/2017 13:23:34'!
-findMaxOn: aTFOperation
-	^ self binaryOp: 'ArgMax' with: aTFOperation! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 1/21/2017 03:37:51'!
-findMinOn: aTFOperation
-	^ self binaryOp: 'ArgMin' with: aTFOperation! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 2/17/2017 00:45:25'!
-meanOn:  shapeTensorOrOperation
-	^ self binaryOp: 'Mean' with: shapeTensorOrOperation! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 2/19/2017 15:14:55'!
-sizeOn: dimensionInteger
-	^ self shape sliceFrom: {dimensionInteger} asInt32Tensor size: #(1) asInt32Tensor.! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 2/2/2017 02:09:13'!
-sparseSoftmaxCrossEntropyWithLogits: aTFOperation
-	^ self
-		binaryOp: 'SparseSoftmaxCrossEntropyWithLogits'
-		with: aTFOperation
-		named: (self nameFor: 'SparseSoftmaxCrossEntropyWithLogits')! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'gera 1/21/2017 03:30:55'!
-sumOn: aTFOperation
-	^ self binaryOp: 'Sum' with: aTFOperation! !
-
-!TFOperation methodsFor: 'ops binary' stamp: 'JB 2/17/2017 11:38:27'!
-timesRectifiedGradOf: aTFOperation
-	^ self binaryOp: 'ReluGrad' with: aTFOperation! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/19/2017 12:55:41'!
-abs
-	^ self unaryOp: 'Abs'! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/29/2017 11:59:40'!
-alias: nameString
-	^ self unaryOp: 'Identity' named: nameString! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/19/2017 12:58:32'!
-arcCos
-	^ self unaryOp: 'Acos'
-	! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/19/2017 13:03:06'!
-arcSin
-	^ self unaryOp: 'Asin'
-	! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/19/2017 13:04:36'!
-arcTan
-	^ self unaryOp: 'Atan'
-	! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/19/2017 13:08:18'!
-cos
-	^ self unaryOp: 'Cos'
-	! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'JB 1/23/2017 10:39:24'!
-exp
-	^ self unaryOp: 'Exp'
-	! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/23/2017 09:52:07'!
-identity
-	^ self unaryOp: 'Identity'
-	! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/21/2017 05:15:34'!
-inverse
-	^ self unaryOp: 'MatrixInverse'! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/19/2017 11:14:17'!
-negated
-	^ self unaryOp: 'Neg'! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/31/2017 01:33:48'!
-rectified
-	^ self unaryOp: 'Relu'! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 2/18/2017 19:14:52'!
-shape
-	^ self unaryOp: 'Shape'
-	! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'Javier Burroni 1/24/2017 21:36:48'!
-sigmoid
-	^ self unaryOp: 'Sigmoid'! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/19/2017 13:08:09'!
-sin
-	^ self unaryOp: 'Sin'
-	! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'JB 2/7/2017 11:32:45'!
-softmax
-	^ self unaryOp: 'Softmax'
-! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'JB 1/25/2017 11:50:16'!
-squared
-	^ self @* self
-	! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/19/2017 13:08:05'!
-tan
-	^ self unaryOp: 'Tan'
-	! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/29/2017 15:14:27'!
-unaryOp: aString
-	| name |
-	name := self nameFor: aString.
-	^ self unaryOp: aString named: name! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/31/2017 16:53:48'!
-unaryOp: aString described: oneArgBlock
-	| name |
-	name := self nameFor: aString.
-	^ self unaryOp: aString named: name described: oneArgBlock! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 1/31/2017 16:58:06'!
-unaryOp: aString named: name
-	^ self unaryOp: aString named: name described: [:description | ].
-	! !
-
-!TFOperation methodsFor: 'ops unary' stamp: 'gera 2/19/2017 11:26:59'!
-unaryOp: aString named: name described: oneArgBlock
-	^ self op: aString withAll: {} named: name described: oneArgBlock! !
 
 !TFOperation methodsFor: 'converting' stamp: 'gera 2/16/2017 22:57:20'!
 asOperationOn: aTFGraph
@@ -1822,45 +1445,6 @@ typeAt: nameString
 	status check.
 	^ value unsignedLongLongAt: 1
 ! !
-
-!TFOperation methodsFor: 'ops other' stamp: 'gera 2/19/2017 11:37:15'!
-descent: delta rate: learningRate
-	^ self op: 'ApplyGradientDescent' withAll: {learningRate. delta}! !
-
-!TFOperation methodsFor: 'ops other' stamp: 'gera 1/30/2017 23:39:24'!
-nameFor: namePrefix
-	^ graph nameFor: namePrefix! !
-
-!TFOperation methodsFor: 'ops other' stamp: 'gera 2/19/2017 11:32:50'!
-op: aString withAll: aTFOperationArray
-	^ self op: aString withAll: aTFOperationArray described: [:nothing]
-! !
-
-!TFOperation methodsFor: 'ops other' stamp: 'gera 2/19/2017 11:32:46'!
-op: aString withAll: aTFOperationArray described: oneArgBlock
-	| name |
-	name := self nameFor: aString.
-	^ self op: aString withAll: aTFOperationArray named: name described: oneArgBlock! !
-
-!TFOperation methodsFor: 'ops other' stamp: 'gera 2/19/2017 11:33:17'!
-op: aString withAll: aTFOperationArray named: name
-	^ self op: aString withAll: aTFOperationArray named: name described: [:nothing]
-! !
-
-!TFOperation methodsFor: 'ops other' stamp: 'gera 2/25/2017 11:47:40'!
-op: aString withAll: aTFOperationArray named: name described: oneArgBlock
-	^ graph newOperation: aString named: name described: [:description |
-		description addInput: self output.
-		aTFOperationArray do: [:each |
-			| input |
-			input := (each asOperationOn: graph) output.
-			description addInput: input].
-		oneArgBlock value: description].
-	! !
-
-!TFOperation methodsFor: 'ops other' stamp: 'gera 2/19/2017 11:39:00'!
-sliceFrom: begin size: size
-	^ self op: 'Slice' withAll: {begin. size}! !
 
 !TFOperation methodsFor: 'initialization' stamp: 'gera 2/12/2017 20:10:23'!
 output
@@ -3131,254 +2715,43 @@ performTest
 	
 	super performTest.! !
 
-!TensorFlowCAPISlowTests methodsFor: 'testing tensor' stamp: 'gera 1/29/2017 02:22:17'!
-mulGraphTwoInputsInt64ConstTensorDeleted
-	^ TensorFlowCAPITest new mulGraphTwoInputsInt64ConstTensorDeleted! !
+!TensorFlowCAPISlowTests methodsFor: 'testing graph' stamp: 'JV 5/23/2021 20:03:07'!
+testGraphFinalizationReleasesExternalMemory
 
-!TensorFlowCAPISlowTests methodsFor: 'testing tensor' stamp: 'gera 7/3/2019 03:35:50'!
-testRunGraphMulTwoInputsConstTensorDeleted
-	| graph inputs inputValues mul output session results |
-	graph := self mulGraphTwoInputsInt64ConstTensorDeleted.
-	
-	inputs := Array
-		with: ((graph operationNamed: 'in1') input: 0)
-		with: ((graph operationNamed: 'in2') input: 0).
-		
-	inputValues := Array
-		with: (TFTensor fromInt64: 16r23)
-		with: (TFTensor fromInt64: 16r24).
-
-	Smalltalk garbageCollect.
-	(TFTensor fromInt64: 16r1234123412341234) useFinalization.
-	Smalltalk garbageCollect.
-	
-	mul := graph operationNamed: 'mul2'.
-	output := mul output: 0.
-	session := TFSession on: graph.
-	results := session
-		runOperations: (Array with: mul)
-		inputs: inputs
-		values: inputValues
-		outputs: (Array with: output).
-	
-	self deny: results isNull.
-	self deny: results first isNull.
-	self deny: results first data isNull.
 	self
-		assert: (results first data getHandle signedLongLongAt: 1)
-		equals: ((16r2121212121212121 * 16r23 * 16r24) bitAnd: 16rFFFFFFFFFFFFFFFF).
+		assertCreating: 10
+		of: [ TFGraph create useFinalization ]
+		releasesExternalMemoryRepeatingUpTo: 20! !
 
-	graph delete.
-	results first delete.
-! !
+!TensorFlowCAPISlowTests methodsFor: 'testing options' stamp: 'JV 5/23/2021 20:03:36'!
+testSessionOptionFinalizationReleasesExternalMemory
 
-!TensorFlowCAPISlowTests methodsFor: 'testing tensor' stamp: 'gera 1/29/2017 02:21:07'!
-testRunGraphMulTwoInputsConstTensorDeletedManyTimes
-	20 timesRepeat: [self testRunGraphMulTwoInputsConstTensorDeleted]! !
+	self assertCreating: 10 of: [ TFSessionOptions create ] releasesExternalMemoryRepeatingUpTo: 20! !
 
-!TensorFlowCAPISlowTests methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
+!TensorFlowCAPISlowTests methodsFor: 'testing session' stamp: 'JV 5/23/2021 20:03:18'!
+testSessionFinalizationReleasesExternalMemory
+
+	| graph |
+
+	graph := TFGraph create.
+	self assertCreating: 20 of: [ TFSession on: graph ] releasesExternalMemoryRepeatingUpTo: 20! !
+
+!TensorFlowCAPISlowTests methodsFor: 'testing status' stamp: 'JV 5/23/2021 20:03:47'!
+testStatusFinalizationReleasesExternalMemory
+
+	self assertCreating: 11 of: [ TFStatus create ] releasesExternalMemoryRepeatingUpTo: 1! !
+
+!TensorFlowCAPISlowTests methodsFor: 'testing tensor' stamp: 'JV 5/23/2021 20:02:58'!
 testTensorFinalizationReleasesExternalMemory
-	" WeakArray restartFinalizationProcess "
-	| handles template tries total |
-	total := 0.
-	tries := 20.
-	handles := Set new.
-
+	| template | 
+	
 	template := {String new: 10. String new: 100. String new: 1000}.
 	
-	20 timesRepeat: [
-		total := total + tries.
-		handles addAll: ((1 to: tries) collect: [:i |
-			Smalltalk garbageCollect.
-			(TFTensor fromStringArray: template) getHandle]).
-		handles size < total ifTrue: [
-			^ self]
-	].
-
-	self assert: (handles size) < total.
+	self
+		assertCreating: 20
+		of: [ TFTensor fromStringArray: template ]
+		releasesExternalMemoryRepeatingUpTo: 20
 ! !
-
-!TensorFlowCAPISlowTests methodsFor: 'testing graph' stamp: 'gera 7/3/2019 00:34:29'!
-testGraphFinalizationReleasesExternalMemory
-	" WeakArray restartFinalizationProcess "
-	| tries total handles |
-	total := 0.
-	tries := 10.
-	handles := Set new.
-
-	20 timesRepeat: [
-		total := total + tries.
-		handles addAll: ((1 to: tries) collect: [:i |
-			Smalltalk garbageCollect.
-			TFGraph create useFinalization getHandle]).
-		handles size < total ifTrue: [
-			^ self]
-	].
-	
-	self assert: (handles size) < total.
-! !
-
-!TensorFlowCAPISlowTests methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
-testSessionFinalizationReleasesExternalMemory 
-	" WeakArray restartFinalizationProcess "
-	| tries total handles graph |
-	total := 0.
-	tries := 20.
-	graph := TFGraph create.
-	handles := Set new.
-	
-	20 timesRepeat: [
-		total := total + tries.
-		handles addAll: ((1 to: tries) collect: [:i |
-			Smalltalk garbageCollect.
-			(TFSession on: graph) getHandle]).
-		handles size < total ifTrue: [
-			^ self]].
-	
-	self assert: (handles size) < total.
-! !
-
-!TensorFlowCAPISlowTests methodsFor: 'testing options' stamp: 'gera 7/3/2019 03:35:40'!
-testSessionOptionFinalizationReleasesExternalMemory 
-	" WeakArray restartFinalizationProcess "
-	| tries total handles |
-	total := 0.
-	tries := 10.
-	handles := Set new.
-	
-	20 timesRepeat: [
-		total := total + tries.
-		handles addAll: ((1 to: tries) collect: [:i |
-			Smalltalk garbageCollect.
-			(TFSessionOptions create) getHandle]).
-		handles size < total ifTrue: [
-			^ self]].
-	
-	self assert: (handles size) < total.
-! !
-
-!TensorFlowCAPISlowTests methodsFor: 'testing status' stamp: 'gera 7/3/2019 03:33:19'!
-testStatusFinalizationReleasesExternalMemory
-	" WeakArray restartFinalizationProcess "
-	| handles |
-	handles := (1 to: 11) collect: [:i |
-		Smalltalk garbageCollect.
-		TFStatus create getHandle].
-
-	self assert: (handles asSet size) < 11.! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-addGraphTwoInputsInt64
-	| graph in1 in2  |
-	graph := TFGraph create.
-	
-	in1 := graph placeholder: 'in1' type: TFTensor typeInt64.
-	in2 := graph placeholder: 'in2' type: TFTensor typeInt64.
-	graph add: 'add' described: [:description |
-		description addInput: (in1 output: 0).
-		description addInput: (in2 output: 0)].
-	^ graph! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-asStringGraphType: type
-	| graph in |
-	graph := TFGraph create.
-	in := graph placeholder: 'in' type: type.
-	graph asString: 'out' described: [:description |
-		description addInput: (in output: 0)].
-	^ graph! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-concatGraphInputList
-	| graph in1 in2 concat dimension dimensionValue inputs |
-	graph := TFGraph create.
-	dimensionValue := TFTensor fromInt32: 0.
-	dimension := graph const: 'const' value: dimensionValue.
-	
-	in1 := graph placeholder: 'in1' type: TFTensor typeInt64.
-	in2 := graph placeholder: 'in2' type: TFTensor typeInt64.
-	inputs := Array with: (in1 output: 0) with: (in2 output: 0).
-	concat := graph concat: 'concat' described: [:description |
-		description addInput: (dimension output: 0).
-		description addInputs: inputs.
-		description at: 'N' putInt: 2.
-		description at: 'T' putType: TFTensor typeInt64.
-	].
-	concat.
-	^ graph! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-concatGraphInputListNoSizeNoType
-	| graph in1 in2 concat dimension dimensionValue inputs |
-	graph := TFGraph create.
-	dimensionValue := TFTensor fromInt32: 0.
-	dimension := graph const: 'const' value: dimensionValue.
-	
-	in1 := graph placeholder: 'in1' type: TFTensor typeInt64.
-	in2 := graph placeholder: 'in2' type: TFTensor typeInt64.
-	inputs := Array with: (in1 output: 0) with: (in2 output: 0).
-	concat := graph concat: 'concat' described: [:description |
-		description addInput: (dimension output: 0).
-		description addInputs: inputs.
-	].
-	concat.
-	^ graph! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-concatGraphInputListWrongSize
-	| graph in1 in2 concat dimension dimensionValue inputs |
-	graph := TFGraph create.
-	dimensionValue := TFTensor fromInt32: 0.
-	dimension := graph const: 'const' value: dimensionValue.
-	
-	in1 := graph placeholder: 'in1' type: TFTensor typeInt64.
-	in2 := graph placeholder: 'in2' type: TFTensor typeInt64.
-	inputs := Array with: (in1 output: 0) with: (in2 output: 0).
-	concat := graph concat: 'concat' described: [:description |
-		description addInput: (dimension output: 0).
-		description addInputs: inputs.
-		description at: 'N' putInt: 0.
-	].
-	concat.
-	^ graph! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-concatGraphInputListWrongType
-	| graph in1 in2 concat dimension dimensionValue inputs |
-	graph := TFGraph create.
-	dimensionValue := TFTensor fromInt32: 0.
-	dimension := graph const: 'const' value: dimensionValue.
-	
-	in1 := graph placeholder: 'in1' type: TFTensor typeInt64.
-	in2 := graph placeholder: 'in2' type: TFTensor typeInt64.
-	inputs := Array with: (in1 output: 0) with: (in2 output: 0).
-	concat := graph concat: 'concat' described: [:description |
-		description addInput: (dimension output: 0).
-		description addInputs: inputs.
-		description at: 'T' putType: TFTensor typeInt32.
-	].
-	concat.
-	^ graph! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 1/18/2017 00:50:25'!
-constant2x2FloatGraphDef
-	" This GraphDef corresponds to simple Graph, defined as
-	
-		a = tf.constant([[-1.1, -2.1],[-1.2,-2.2]], name='a')
-		
-	 saved as ProtoBuf "
-	^ #[
-		 16r0A 16r42 16r0A 16r01 16r61 16r12 16r05 16r43 16r6F 16r6E 16r73 16r74 16r2A 16r29 16r0A 16r05
-		 16r76 16r61 16r6C 16r75 16r65 16r12 16r20 16r42 16r1E 16r08 16r01 16r12 16r08 16r12 16r02 16r08
-		 16r02 16r12 16r02 16r08 16r02 16r22 16r10 16rCD 16rCC 16r8C 16rBF 16r66 16r66 16r06 16rC0 16r9A
-		 16r99 16r99 16rBF 16rCD 16rCC 16r0C 16rC0 16r2A 16r0B 16r0A 16r05 16r64 16r74 16r79 16r70 16r65
-		 16r12 16r02 16r30 16r01 16r0A 16r0C 16r0A 16r04 16r69 16r6E 16r69 16r74 16r12 16r04 16r4E 16r6F
-		 16r4F 16r70 16r22 16r02 16r08 16r11
-	] asString! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-constant2x2FloatGraphFromDef
-	^ TFGraph fromString: self constant2x2FloatGraphDef! !
 
 !TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 12/26/2016 10:58:56'!
 constantFloatGraphDef
@@ -3446,24 +2819,6 @@ constantInt64GraphFromDef
 	^ TFGraph fromString: self constantInt64GraphDef! !
 
 !TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-decodeCSVGraphDefaults: anArrayOfTFTensors
-	| graph records defaults |
-	
-	graph := TFGraph create.
-	records := (graph placeholder: 'records' type: TFTensor typeString) output: 0.
-	defaults := Array new: anArrayOfTFTensors size.
-	
-	anArrayOfTFTensors withIndexDo: [:each :index |
-		| one |
-		one := (graph const: 'default',index printString value: each) output: 0.
-		defaults at: index put: one].
-	graph newOperation: 'DecodeCSV' named: 'output' described: [:description |
-		description addInput: records.
-		description addInputs: defaults].
-	
-	^ graph! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
 emptyGraph
 	^ TFGraph fromString: self emptyGraphDef.
 	! !
@@ -3472,47 +2827,6 @@ emptyGraph
 emptyGraphDef
 	" This GraphDef corresponds to an Empty Graph (no operations), saved as ProtoBuf "
 	^ #[16r0A 16r0C 16r0A 16r04 16r69 16r6E 16r69 16r74 16r12 16r04 16r4E 16r6F 16r4F 16r70 16r22 16r02 16r08 16r0F] asString! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 1/6/2017 10:48:25'!
-floatAsStringGraph
-	| graph const |
-	graph := self constantFloatGraphFromDef.
-	const := graph operationNamed: 'a'.
-	graph asString: 'output' described: [:description |
-		description addInput: (const output: 0)].
-	^ graph! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-mulGraphOneInputInt64
-	| graph constant const in |
-	graph := TFGraph create.
-	constant := TFTensor fromInt64: 16r0606060606060606.
-	
-	in := graph placeholder: 'in' type: constant type.
-	const := graph const: 'const' value: constant.
-	graph mul: 'mul' described: [:description |
-		description addInput: (in output: 0).
-		description addInput: (const output: 0)].
-	
-	^ graph! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-mulGraphTwoInputsInt64
-	| graph constant const in1 in2 mul1 |
-	graph := TFGraph create.
-	constant := TFTensor fromInt64: 16r0101010101010101.
-	
-	in1 := graph placeholder: 'in1' type: constant type.
-	in2 := graph placeholder: 'in2' type: constant type.
-	const := graph const: 'const' value: constant.
-	mul1 := graph mul: 'mul1' described: [:description |
-		description addInput: (const output: 0).
-		description addInput: (in1 output: 0)].
-	graph mul: 'mul2' described: [:description |
-		description addInput: (mul1 output: 0).
-		description addInput: (in2 output: 0)].
-	
-	^ graph! !
 
 !TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
 mulGraphTwoInputsInt64ConstTensorDeleted
@@ -3577,17 +2891,6 @@ assertTensor: aTFTensor streamEquals: tensorArray
 	tensorArray do: [:each |
 		self assert: each equals: strm next].
 ! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 7/3/2019 03:35:50'!
-get2x2FloatFromGraphDef
-	| graph session const result |
-	graph := self constant2x2FloatGraphFromDef.
-	
-	const := (graph operationNamed: 'a') output: 0.
-	session := TFSession on: graph.
-	result := session runOutput: const.
-	
-	^ result! !
 
 !TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 01:44:48'!
 testArrayFromStream
@@ -3710,15 +3013,6 @@ testElementsOfTensorDoIteratesAll
 		testElementsOf: #(((1 100) (2 100) (3 100)) ((4 100) (5 100) (6 100)) ((7 100) (8 100) (9 100)))
 		sum: 9*10/2+(100*9).! !
 
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/18/2017 15:19:54'!
-testGet2x2FloatFromGraphDef
-	| templates consts |
-	templates := #(-1.1 -2.1 -1.2 -2.2).
-	consts := self get2x2FloatFromGraphDef allFloats.
-	
-	templates with: consts do: [:temp :const |
-		self assert: temp closeTo: const]! !
-
 !TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/13/2017 19:50:59'!
 testRanks
 	self assertRankOf: -13123213 is: 0.
@@ -3748,43 +3042,6 @@ testTensorAllElements
 	self
 		assertTensor: #(((1 100) (2 100) (3 100)) ((4 100) (5 100) (6 100)) ((7 100) (8 100) (9 100))) asFloatTensor
 		elementsEquals: #(1.0 100.0 2.0 100.0 3.0 100.0 4.0 100.0 5.0 100.0 6.0 100.0 7.0 100.0 8.0 100.0 9.0 100.0).! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'JV 5/23/2021 14:22:13'!
-testTensorAllStrings
-	| result strings expected |
-	
-	expected := #('0.420000').
-	result := self runFloatAsStringGraph.
-	strings := result allStrings.
-	
-	self assert: strings equals: expected.
-	
-	result delete.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 7/3/2019 03:35:50'!
-testTensorArrayNumbersAt
-	| graph inputValues inputs mul numbers output results session |
-	graph := self mulGraphTwoInputsInt64.
-	
-	inputs := Array
-		with: ((graph operationNamed: 'in1') input: 0)
-		with: ((graph operationNamed: 'in2') input: 0).
-	inputValues := Array
-		with: (TFTensor fromInt64: 6)
-		with: (TFTensor fromInt64: 11).
-	mul := graph operationNamed: 'mul2'.
-	output := mul output: 0.
-	session := TFSession on: graph.
-	results := session
-		runOperations: (Array with: mul)
-		inputs: inputs
-		values: inputValues
-		outputs: (Array with: output).
-		
-	numbers := results numbersAt: 1.
-	self assert: numbers equals: 16r4242424242424242
-	! !
 
 !TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:25'!
 testTensorAsNumbers
@@ -3845,17 +3102,6 @@ testTensorAsNumbersRank0
 	self assert: 1 equals: 1 asInt32Tensor asNumbers.
 	self assert: 1.0 equals: 1.0 asTensor asNumbers.
 ! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 7/3/2019 03:35:50'!
-testTensorAsOperation
-	| graph a b result |
-	graph := TFGraph create.
-	a := graph const: 3.14 asTensor.
-	b := a + 1.234 asTensor.
-	
-	result := (TFSession on: graph) runOutput: b output.
-	
-	self assert: 3.14+1.234 closeTo: result asNumbers.! !
 
 !TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 01:28:38'!
 testTensorAsStream
@@ -3985,22 +3231,6 @@ testTensorFromFloats2x2
 	#(-1.1 -2.1 -1.2 -2.2) with: values do: [:reference :value |
 		self assert: reference closeTo: value]
 ! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
-testTensorFromFloats2x2SameElementsOrder
-	| tensor template values constTensor consts |
-	template := #(
-		(-1.1 -2.1)
-		(-1.2 -2.2)).
-		
-	tensor := TFTensor fromFloats: template.
-	values := tensor allFloats.
-	
-	constTensor := self get2x2FloatFromGraphDef.
-	consts := constTensor allFloats.
-	
-	consts with: values do: [:const :value |
-		self assert: const closeTo: value].! !
 
 !TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
 testTensorFromFloatsOutOfRange
@@ -4337,383 +3567,6 @@ testTensorFromStringsShape
 ! !
 
 !TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-runFloatAsStringGraph
-	| session graph output result |
-	
-	graph := self floatAsStringGraph.
-	session := TFSession on: graph.
-	output := graph operationNamed: 'output'.
-	result := session
-		runOperation: output
-		output: (output output: 0).
-	
-	graph delete.
-	^ result
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-testAddControlInput
-	| graph in op result |
-	graph := TFGraph create.
-	in := graph const: 'const' value: (TFTensor fromInt64: 12345678).
-	op := graph newOperation: 'Mul' named: 'out' described: [:description |
-		description
-			addInput: (in output: 0);
-			addInput: (in output: 0);
-			addControlInput: (in output: 0)].
-	
-	result := (TFSession on: graph) runOutput: (op output: 0).
-	
-	self assert: 12345678*12345678 equals: result allInt64s first.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testAllInitializers
-	| graph pisTensor initializers |
-	graph := TFGraph create.
-	pisTensor := TFTensor fromFloats: #(3.14 3.1415 3.141516).
-	graph variable: 'var1' initialValue: pisTensor.
-	graph variable: 'var2' initialValue: pisTensor.
-	graph variable: 'var3' initialValue: pisTensor.
-
-	initializers := graph allInitializers.
-	
-	self assert: initializers size = 3.
-	self assert: 'var1_initializer' equals: initializers first name.
-	self assert: 'var2_initializer' equals: initializers second name.
-	self assert: 'var3_initializer' equals: initializers third name.
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testAllVariables
-	| graph pisTensor var1 vars var2 var3 |
-	graph := TFGraph create.
-	pisTensor := TFTensor fromFloats: #(3.14 3.1415 3.141516).
-	var1 := graph variable: 'var1' initialValue: pisTensor.
-	var2 := graph variable: 'var2' initialValue: pisTensor.
-	var3 := graph variable: 'var3' initialValue: pisTensor.
-
-	vars := graph allVariables.
-	
-	self assert: vars size = 3.
-	self assert: vars first = var1.
-	self assert: vars second = var2.
-	self assert: vars third = var3.
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-testAsStringGraphRunOn: tensor
-	| graph session in out result |
-	graph := self asStringGraphType: tensor type.
-	session := TFSession on: graph.
-	
-	in := graph operationNamed: 'in'.
-	out := graph operationNamed: 'out'.
-	
-	result := session
-		runOperation: out
-		input: (in input: 0)
-		value: tensor
-		output: (out output: 0).
-
-	graph delete.
-
-	^ result! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testAttrGetBoolFalse
-	| graph in op |
-	graph := TFGraph create.
-	in := graph placeholder: 'in' type: TFTensor typeDouble.
-	op := graph asString: 'out' described: [:description |
-		description addInput: (in output: 0)].
-	
-	self assert: (op boolAt: 'scientific') equals: false.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/11/2021 19:47:57'!
-testAttrGetBoolTrue
-	| graph in op input_min input_max |
-	graph := TFGraph create.
-	in := graph placeholder: 'in' type: TFTensor typeDouble.
-	input_min := graph placeholder: 'input_min' type: TFTensor typeDouble.
-	input_max := graph placeholder: 'input_max' type: TFTensor typeDouble.
-	op := graph
-		newOperation: 'QuantizeAndDequantizeV2'
-		named: 'out'
-		described: [ :description | 
-			description addInput: (in output: 0).
-			description addInput: (input_min output: 0).
-			description addInput: (input_max output: 0) ].
-	self assert: (op boolAt: 'signed_input') equals: true! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testAttrGetFloat
-	| graph in op |
-	graph := TFGraph create.
-	in := graph placeholder: 'in' type: TFTensor typeFloat.
-	op := graph
-		newOperation: 'FakeQuantWithMinMaxArgs'
-		named: 'out'
-		described: [:description |
-			description addInput: (in output: 0)].
-	
-	self assert: (op floatAt: 'min') equals: -6.0.
-	self assert: (op floatAt: 'max') equals: 6.0.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/13/2017 10:08:33'!
-testAttrGetInt
-	| op graph |
-	graph := self concatGraphInputList.
-	op := graph operationNamed: 'concat'.
-	
-	self assert: (op intAt: 'N') equals: 2.
-	
-	graph delete! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testAttrGetShape
-	| graph op |
-	graph := TFGraph create.
-	op := graph placeholder: 'in' type: TFTensor typeDouble.
-	
-	self assert: (op shapeAt: 'shape') equals: #().
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testAttrGetString
-	| graph in op |
-	graph := TFGraph create.
-	in := graph placeholder: 'in' type: TFTensor typeDouble.
-	op := graph newOperation: 'AsString' named: 'out' described: [:description |
-		description addInput: (in output: 0)].
-	
-	self assert: (op stringAt: 'fill') equals: ''.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testAttrGetStrings
-	| graph template in op strings |
-	graph := TFGraph create.
-	template := #('hola' 'como' 'estas?').
-	in := graph const: 'in' value: (TFTensor fromFloats: 1).
-	op := graph newOperation: 'DebugIdentity' named: 'out' described: [:description |
-			description at: 'debug_urls' putStrings: template.
-			description addInput: (in output: 0)].
-	
-	strings := op stringsAt: 'debug_urls'.
-	
-	self assert: template equals: strings.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 6/30/2019 00:45:27'!
-testAttrGetTensor
-	| op graph tensor |
-	graph := self constantInt64Graph.
-	op := graph operationNamed: 'a'.
-
-	tensor := op tensorAt: 'value'.
-	
-	self assert: tensor type equals: TFTensor typeInt64.
-	self assert: tensor shape equals: #().
-	self assert: tensor allInt64s equals: #(16r4242424242424242).
-	
-	graph delete! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 6/30/2019 00:45:26'!
-testAttrGetType
-	| op graph |
-	graph := self concatGraphInputList.
-	op := graph operationNamed: 'concat'.
-	
-	self assert: (op typeAt: 'T') equals: TFTensor typeInt64.
-	
-	graph delete! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/11/2021 19:49:30'!
-testAttrSetBoolFalse
-	| graph in op input_min input_max |
-	graph := TFGraph create.
-	in := graph placeholder: 'in' type: TFTensor typeDouble.
-	input_min := graph placeholder: 'input_min' type: TFTensor typeDouble.
-	input_max := graph placeholder: 'input_max' type: TFTensor typeDouble.
-	op := graph
-		newOperation: 'QuantizeAndDequantizeV2'
-		named: 'out'
-		described: [ :description | 
-			description at: 'signed_input' putBoolean: false.
-			description addInput: (in output: 0).
-			description addInput: (input_min output: 0).
-			description addInput: (input_max output: 0) ].
-	self assert: (op boolAt: 'signed_input') equals: false! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testAttrSetBoolTrue
-	| graph in op |
-	graph := TFGraph create.
-	in := graph placeholder: 'in' type: TFTensor typeDouble.
-	op := graph asString: 'out' described: [:description |
-		description at: 'scientific' putBoolean: true.
-		description addInput: (in output: 0)].
-	
-	self assert: (op boolAt: 'scientific') equals: true.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testAttrSetFloat
-	| graph in op min max |
-	min := -1234.5678e10.
-	max := 12345678e-10 asFraction.
-	graph := TFGraph create.
-	in := graph placeholder: 'in' type: TFTensor typeFloat.
-	op := graph
-		newOperation: 'FakeQuantWithMinMaxArgs'
-		named: 'out'
-		described: [:description |
-			description at: 'min' putFloat: min.
-			description at: 'max' putFloat: max.
-			description addInput: (in output: 0)].
-	
-	self assert: (op floatAt: 'min') closeTo: min.
-	self assert: (op floatAt: 'max') closeTo: max.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/23/2021 10:03:05'!
-testAttrSetShape
-	
-	self testAttrSetShape: #().
-	self testAttrSetShape: #(16r1234567890ABCDEF).
-	self testAttrSetShape: #(1 2 3 4).
-	self testAttrSetShape: (1 to: 16) asArray.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testAttrSetShape: anIntegerArray
-	| graph op |
-	graph := TFGraph create.
-	op := graph
-		newOperation: 'Placeholder'
-		named: 'const'
-		described: [:description |
-			description at: 'shape' putShape: anIntegerArray.
-			description at: 'dtype' putType: TFTensor typeInt64].
-		
-	self assert: (op shapeAt: 'shape') equals: anIntegerArray.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/24/2017 18:57:10'!
-testAttrSetString
-	self testAttrSetString: '1'.
-	self testAttrSetString: '12'.
-	self testAttrSetString: '1234'.
-	self testAttrSetString: '1234567'.
-	self testAttrSetString: '12345678'.
-	self testAttrSetString: '123456789'.
-	self testAttrSetString: ((ByteArray new: 100) atAllPut: 65) asString.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testAttrSetString: aString
-	| graph in op copy |
-	graph := TFGraph create.
-	copy := aString asByteArray.
-	
-	in := graph placeholder: 'in' type: TFTensor typeDouble.
-	op := graph newOperation: 'AsString' named: 'out' described: [:description |
-		description at: 'fill' putString: copy.
-		description addInput: (in output: 0)].
-	
-	copy at: 1 put: 65.	"Change Smalltalk String to see if TensorFlow makes a copy"	
-	
-	self assert: (op stringAt: 'fill') equals: aString.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/11/2021 19:51:27'!
-testAttrSetStrings
-	"self assert: false description: 'DebugIdentity operation does not exist anymore in TF r1.7'.
-	self testAttrSetStrings: #('file://tmp/TFDebug.log').
-	self testAttrSetStrings: #('file://tmp/TFDebug.log' 'file://tmp/TFDebug.2.log')"! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-testAttrSetStrings: aAnArrayOfStrings
-	| graph template in op |
-	graph := TFGraph create.
-	template := #((1 2 3) (4 5 6) (7 8 9)).
-	in := graph const: 'in' value: (TFTensor fromFloats: template).
-	op := graph newOperation: 'DebugIdentity' named: 'out' described: [:description |
-		description at: 'debug_urls' putStrings: aAnArrayOfStrings.
-		description addInput: (in output: 0)].
-	
-	(TFSession on: graph)
-		runOutput: (op output: 0).
-
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/11/2021 19:54:16'!
-testAttrSetStringsInvalid
-	| graph template in notAList |
-	graph := TFGraph create.
-	template := #((1 2 3) (4 5 6) (7 8 9)).
-	in := graph const: 'in' value: (TFTensor fromFloats: template).
-	
-	notAList := 'INVALID_ARGUMENT: AttrValue had value with type ''list(string)'' when ''string'' expected
-	 for attr ''tensor_name''
-	; NodeDef: {{node out}}; Op<name=DebugIdentity; signature=input:T -> output:T; attr=T:type; attr=device_name:string,default=""; attr=tensor_name:string,default=""; attr=debug_urls:list(string),default=[]; attr=gated_grpc:bool,default=false; allows_uninitialized_input=true>'.
-
-	self
-		should: [
-			graph newOperation: 'DebugIdentity' named: 'out' described: [:description |
-				description at: 'tensor_name' putStrings: #('hola' 'como' 'estas?').
-				description addInput: (in output: 0)]]
-		raiseError: notAList.	! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/29/2017 02:53:17'!
-testConcatGraphInputList
-	| wrongSize wrongType |
-	wrongSize := 'INVALID_ARGUMENT: Inconsistent values for attr ''N'' 2 vs. 0 while building NodeDef ''concat'' using Op<name=Concat; signature=concat_dim:int32, values:N*T -> output:T; attr=N:int,min=2; attr=T:type>'.
-	wrongType := 'INVALID_ARGUMENT: Inconsistent values for attr ''T'' DT_INT64 vs. DT_INT32 while building NodeDef ''concat'' using Op<name=Concat; signature=concat_dim:int32, values:N*T -> output:T; attr=N:int,min=2; attr=T:type>'.
-	
-	self concatGraphInputListNoSizeNoType.
-	self concatGraphInputList.
-	self
-		should: [self concatGraphInputListWrongSize]
-		raiseError: wrongSize.
-		
-	self
-		should: [self concatGraphInputListWrongType]
-		raiseError: wrongType.
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/5/2017 23:56:22'!
-testCreateGraphAddTwoInputs
-	| graph |
-	graph := self addGraphTwoInputsInt64.
-	graph delete.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/13/2017 10:10:32'!
-testCreateGraphMulOneInput
-	| graph input mul |
-	graph := self mulGraphOneInputInt64.
-	
-	self shouldnt: [input := graph operationNamed: 'in'] raise: Error.
-	self shouldnt: [mul := graph operationNamed: 'mul'] raise: Error.
-	
-	self assert: input name equals: 'in'.
-	self assert: mul name equals: 'mul'.
-
-	graph delete.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 6/30/2019 00:45:26'!
-testDecodeCSVGraphCreate
-	| defaults |
-	defaults := {
-		TFTensor fromInt64s: #(-1).
-		TFTensor fromInt64s: #(-1).
-		TFTensor fromInt64s: #(-1).
-		TFTensor fromInt64s: #(-1)}.
-		
-	self decodeCSVGraphDefaults: defaults.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
 testDecodeCSVGraphRunCSV: csvLines
 	| defaults graph output records session results values |
 	defaults := {
@@ -4744,168 +3597,6 @@ testDecodeCSVGraphRunCSV: csvLines
 		(results at: i) allInt64s].
 ! !
 
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/13/2017 10:06:38'!
-testDecodeCSVGraphRunManyLines
-	| cols |
-	cols := self testDecodeCSVGraphRunCSV:
-	'1,2,3,4
-	 11,22,33,44
-	 111,222,333,444
-	 1111,2222,3333,4444' lines.
-	
-	
-	self assert: cols first equals: #(1 11 111 1111).
-	self assert: cols second equals: #(2 22 222 2222).
-	self assert: cols third equals: #(3 33 333 3333).
-	self assert: cols fourth equals: #(4 44 444 4444).
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/13/2017 10:10:47'!
-testDecodeCSVGraphRunOneLine
-	| cols |
-	cols := self testDecodeCSVGraphRunCSV: '11111111111,22222222,33333333,44444444' lines.
-	
-	self assert: cols first equals: #(11111111111).
-	self assert: cols second equals: #(22222222).
-	self assert: cols third equals: #(33333333).
-	self assert: cols fourth equals: #(44444444).
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/11/2021 19:54:51'!
-testDescriptionDevice
-	| graph in op expected |
-	graph := TFGraph create.
-	in := graph const: 'const' value: (TFTensor fromInt64: 12345678).
-	op := graph newOperation: 'Mul' named: 'out' described: [:description |
-		description
-			device: 'anInvalidDevice';
-			addInput: (in output: 0);
-			addInput: (in output: 0)].
-	
-	expected :=  'INVALID_ARGUMENT: Malformed device specification ''anInvalidDevice'' in node: {name:''out'' id:3 op device:{} def:{{{node out}} = Mul[T=DT_INT64, _device="anInvalidDevice"](const, const)}}
-	 [[out]]'.
-
-	self
-		should: [(TFSession on: graph) runOutput: (op output: 0)]
-		raiseError: expected.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/6/2017 10:43:49'!
-testFloatAsStringGraphCreate
-	self floatAsStringGraph
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/13/2017 10:11:07'!
-testFloatAsStringGraphRun
-	| result str expected |
-	
-	expected := '0.420000'.
-	result := self runFloatAsStringGraph.
-	
-	self deny: result isNull.
-	self deny: result data isNull.
-	str := result dataBytes.
-	
-	self assert: 8+1+ expected size equals: str size.
-	self assert: (str unsignedLongLongAt: 1) equals: 0.
-	self assert: (str at: 9) equals: expected size.
-	self assert: (str copyFrom: 10 count: expected size) asString equals: expected.
-	
-	result delete.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testGetAttrMetadataBoolean
-	| graph in op template metadata |
-	template := '1234567890abc'.
-	graph := TFGraph create.
-	in := graph placeholder: 'in' type: TFTensor typeDouble.
-	op := graph newOperation: 'AsString' named: 'out' described: [:description |
-		description at: 'fill' putString: template.
-		description addInput: (in output: 0)].
-		
-	metadata := op attrMetadata: 'scientific'.
-	self assert: metadata isBoolean.
-	self assert: metadata isList equals: false.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testGetAttrMetadataFloat
-	| graph in op metadata |
-	graph := TFGraph create.
-	in := graph placeholder: 'in' type: TFTensor typeFloat.
-	op := graph
-		newOperation: 'FakeQuantWithMinMaxArgs'
-		named: 'out'
-		described: [:description |
-			description addInput: (in output: 0)].
-	
-	metadata := op attrMetadata: 'min'.
-	self assert: metadata isFloat.
-	self assert: metadata isList equals: false.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testGetAttrMetadataInt
-	| graph in op template metadata |
-	template := '1234567890abc'.
-	graph := TFGraph create.
-	in := graph placeholder: 'in' type: TFTensor typeDouble.
-	op := graph newOperation: 'AsString' named: 'out' described: [:description |
-		description at: 'fill' putString: template.
-		description addInput: (in output: 0)].
-		
-	metadata := op attrMetadata: 'precision'.
-	self assert: metadata isInt.
-	self assert: metadata isList equals: false.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testGetAttrMetadataShape
-	| graph op template metadata |
-	template := #(1 2 3 4 5).
-	graph := TFGraph create.
-	op := graph 
-		newOperation: 'Placeholder'
-		named: 'const'
-		described: [:description |
-			description at: 'shape' putShape: template.
-			description at: 'dtype' putType: TFTensor typeInt64].
-		
-	metadata := op attrMetadata: 'shape'.
-	self assert: metadata isShape.
-	self assert: metadata isList equals: false.
-	self assert: metadata totalSize equals: template size.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testGetAttrMetadataString
-	| graph in op template metadata |
-	template := '1234567890abc'.
-	graph := TFGraph create.
-	in := graph placeholder: 'in' type: TFTensor typeDouble.
-	op := graph newOperation: 'AsString' named: 'out' described: [:description |
-		description at: 'fill' putString: template.
-		description addInput: (in output: 0)].
-		
-	self assert: (op stringAt: 'fill') equals: template.
-	
-	metadata := op attrMetadata: 'fill'.
-	self assert: metadata isString.
-	self assert: metadata isList equals: false.
-	self assert: metadata totalSize equals: template size.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testGetAttrMetadataTensor
-	| graph op template metadata |
-	template := #(1 2 3 4 5).
-	graph := TFGraph create.
-	op := graph const: 'const' value: (TFTensor fromInt64s: template).
-		
-	metadata := op attrMetadata: 'value'.
-	self assert: metadata isTensor.
-	self assert: metadata isList equals: false.
-! !
-
 !TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
 testGetAttrMetadataType
 	| graph op template metadata |
@@ -4923,14 +3614,14 @@ testGetAttrMetadataType
 	self assert: metadata isList equals: false.
 ! !
 
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/13/2017 10:12:06'!
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/23/2021 16:57:52'!
 testGetOperationOnConstantGraph
 	| graph op |
 	graph := self constantFloatGraphFromDef.
 	self shouldnt: [op := graph operationNamed: 'a'] raise: Error.
 	self assert: op name equals: 'a'.
 	self assert: op type equals: 'Const'.
-	self assert: op InputsCount equals: 0.
+	self assert: op inputsCount equals: 0.
 	self assert: op outputsCount equals: 1.! !
 
 !TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/29/2017 02:58:40'!
@@ -4950,43 +3641,6 @@ testGraph: aTFGraph outputType: anInteger
 	self assert: output type equals: anInteger.
 	output free.! !
 
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/13/2017 10:12:23'!
-testGraphCreationConst
-	| graph operation |
-	graph := self constantInt64Graph.
-	
-	operation := graph operationNamed: 'a'.
-	self assert: operation type equals: 'Const'.
-	self assert: operation name equals: 'a'.
-	self assert: operation InputsCount equals: 0.
-	self assert: operation outputsCount equals: 1.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/23/2021 14:22:27'!
-testInt64AsStringGraph
-	| result tensor |
-
-	tensor := TFTensor fromInt64: 101010101.
-	result := self testAsStringGraphRunOn: tensor.
-	
-	self assert: result allStrings first equals: '101010101'.
-
-	result delete.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/23/2021 14:22:31'!
-testInt64rrayAsStringGraph
-	| result tensor strings template |
-	
-	template := #(101010101 -123321 1 2 3 4).
-	tensor := TFTensor fromInt64s: template.
-	result := self testAsStringGraphRunOn: tensor.
-	strings := result allStrings.
-	
-	strings withIndexDo: [:value :index |
-		self assert: value equals: (template at: index) asString].
-	
-	result delete.! !
-
 !TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
 testNewOperationDescription
 	| graph description |
@@ -4994,51 +3648,6 @@ testNewOperationDescription
 	description := graph newOperationDescription: 'Const' named: 'first_operation'.
 	self deny: description isNull.
 	self should: [description finish] raise: Error description: 'This should have complained of missing attributes'.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testNewOperationMul
-	| graph operation a b |
-	graph := TFGraph create.
-	a := graph placeholder: 'a' type: TFTensor typeInt64.
-	b := graph placeholder: 'b' type: TFTensor typeInt64.
-	
-	operation := graph
-		mul: 'aMultiplication'
-		described: [:description |
-			description addInputFromOutput: 0 of: a.
-			description addInputFromOutput: 0 of: b].
-
-	self assert: operation type equals: 'Mul'.
-	self assert: operation name equals: 'aMultiplication'.
-	self assert: operation InputsCount equals: 2.
-	self assert: operation outputsCount equals: 1.
-	
-	operation := graph operationNamed: 'aMultiplication'.
-	self assert: operation type equals: 'Mul'.
-	self assert: operation name equals: 'aMultiplication'.
-	self assert: operation InputsCount equals: 2.
-	self assert: operation outputsCount equals: 1.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testNewOperationPlaceholder
-	| graph operation |
-	graph := TFGraph create.
-	self shouldnt: [
-		operation := graph placeholder: 'aPlaceholder' type: TFTensor typeInt64.
-	] raise: Error.
-	
-	self assert: operation type equals: 'Placeholder'.
-	self assert: operation name equals: 'aPlaceholder'.
-	self assert: operation InputsCount equals: 0.
-	self assert: operation outputsCount equals: 1.
-	
-	operation := graph operationNamed: 'aPlaceholder'.
-	self assert: operation type equals: 'Placeholder'.
-	self assert: operation name equals: 'aPlaceholder'.
-	self assert: operation InputsCount equals: 0.
-	self assert: operation outputsCount equals: 1.
-! !
 
 !TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/11/2021 19:56:29'!
 testNewOperationPlaceholderNoType
@@ -5049,90 +3658,6 @@ testNewOperationPlaceholderNoType
 		should: [(graph newOperationDescription: 'Placeholder' named: 'placeholder') finish]
 		raiseError: noType.! !
 
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-testNewVariableForTensor
-	| graph var assign result session pisTensor pis |
-	graph := TFGraph create.
-	pisTensor := TFTensor fromFloats: #(3.14 3.1415 3.141516).
-	var := graph variable: 'var' forTensor: pisTensor.
-	pis := graph const: 'pis' value: pisTensor.
-	assign := graph newOperation: 'Assign' named: 'assign' described: [:description |
-		description
-			addInput: (var output: 0);
-			addInput: (pis output: 0)].
-	
-	session := TFSession on: graph.
-	
-	session runOutput: (assign output: 0).
-	result := session runOutput: (var output: 0).
-
-	self assert: result allFloats equals: pisTensor allFloats! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-testNewVariableInitialValue
-	| graph var assign result session pisTensor |
-	graph := TFGraph create.
-	pisTensor := TFTensor fromFloats: #(3.14 3.1415 3.141516).
-	var := graph variable: 'var' initialValue: pisTensor.
-	assign := graph operationNamed: 'var_initializer'.
-	
-	session := TFSession on: graph.
-	
-	session runOutput: (assign output: 0).
-	result := session runOutput: (var output: 0).
-
-	self assert: result allFloats equals: pisTensor allFloats! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-testNewVariableInitialValueAutomaticInitialization
-	| graph var result session pisTensor |
-	graph := TFGraph create.
-	pisTensor := TFTensor fromFloats: #(3.14 3.1415 3.141516).
-	var := graph variable: 'var' initialValue: pisTensor.
-	
-	session := TFSession on: graph.
-	
-	graph initializeOn: session.
-	result := session runOutput: (var output: 0).
-
-	self assert: result allFloats equals: pisTensor allFloats! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-testNewVariableInitialization
-	| graph var assign pi result session |
-	graph := TFGraph create.
-	var := graph variable: 'var' type: TFTensor typeFloat shape: #().
-	pi := graph const: 'pi' value: (TFTensor fromFloats: 3.14).
-	assign := graph newOperation: 'Assign' named: 'assign' described: [:description |
-		description
-			addInput: (var output: 0);
-			addInput: (pi output: 0)].
-	
-	session := TFSession on: graph.
-	
-	session runOutput: (assign output: 0).
-	result := session runOutput: (var output: 0).
-
-	self assert: result allFloats first closeTo: 3.14! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-testNewVariableInitializationNodeNotRun
-	| graph var pi lastError |
-	graph := TFGraph create.
-	var := graph variable: 'var' type: TFTensor typeFloat shape: #().
-	pi := graph const: 'pi' value: (TFTensor fromFloats: 3.14).
-	graph newOperation: 'Assign' named: 'assign' described: [:description |
-		description
-			addInput: (var output: 0);
-			addInput: (pi output: 0)].
-	
-	[(TFSession on: graph)
-		runOutput: (var output: 0)] ifError: [:description :receiver | lastError := description].
-	
-	self
-		assert: 'Error: FAILED_PRECONDITION: Attempting to use uninitialized value var'
-		equals: lastError lines first! !
-
 !TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/11/2021 19:57:14'!
 testNewVariableNoAttributes
 	| graph error |
@@ -5141,48 +3666,6 @@ testNewVariableNoAttributes
 	self
 		should: [graph newOperation: 'Variable' named: 'var']
 		raiseError: error.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-testNewVariableNoInitialization
-	| graph var expectedError lastError |
-	graph := TFGraph create.
-	var := graph variable: 'var' type: TFTensor typeFloat shape: #().
-	[(TFSession on: graph)
-		runOutput: (var output: 0)] ifError: [:description :receiver | lastError := description].
-
-	expectedError := 'Error: FAILED_PRECONDITION: Attempting to use uninitialized value var'.
-	
-	self
-		assert: expectedError equals: lastError lines first
-		! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testOperationAsOperationDifferentGraph
-	| const graph1 graph2 |
-	graph1 := TFGraph create.
-	graph2 := TFGraph create.
-	const := graph1 const: 1.0 asTensor.
-	self should: [const asOperationOn: graph2] raiseError: 'Can''t move an operation to another Graph'.
-	
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testOperationAsOperationOk
-	| const1 const2 graph |
-	graph := TFGraph create.
-	const1 := graph const: 1.0 asTensor.
-	const2 := const1 asOperationOn: graph.
-	
-	self assert: const1 == const2! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testOperationEquals
-	| graph in1 |
-	graph := TFGraph create.
-	in1 := graph placeholder: 'in1' type: TFTensor typeFloat.
-	
-	self assert: in1 = in1.
-	self deny: in1 = 'in1'.! !
 
 !TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 6/30/2019 00:45:28'!
 testOperationOutputTypeFloat
@@ -5197,95 +3680,6 @@ testOperationOutputTypeInt64
 	^self testGraph: self constantInt64GraphFromDef outputType: TFTensor typeInt64! !
 
 !TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-testPlaceholderType: type
-	| graph var session result tensor abs |
-	graph := TFGraph create.
-	tensor := TFTensor type: type shape: #().
-	var := graph placeholder: 'var' type: type.
-	abs := graph newOperation: 'Abs' named: 'abs' described: [:description |
-		description addInput: (var output: 0)].
-	session := TFSession on: graph.
-	
-	result := session
-		runOperation: abs
-		input: (var input: 0)
-		value: tensor
-		output: (abs output: 0).
-
-	result delete.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 6/30/2019 00:45:26'!
-testPlaceholderTypes
-	self testPlaceholderType: TFTensor typeInt64.
-	self testPlaceholderType: TFTensor typeInt32.
-	self testPlaceholderType: TFTensor typeFloat.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/13/2017 10:15:18'!
-testPrintOn
-	| graph printString |
-	graph := self addGraphTwoInputsInt64.
-
-	printString := (graph operationNamed: 'in1') printString substrings.
-	self assert: printString second equals: 'TFOperation'.
-	self assert: printString third equals: '@'.
-	self assert: (printString fourth beginsWith: '16r').
-	self assert: printString fifth equals: '''Placeholder'''.
-	self assert: printString last equals: '''in1'''.
-
-	printString := (graph operationNamed: 'add') printString substrings.
-	self assert: printString second equals: 'TFOperation'.
-	self assert: printString third equals: '@'.
-	self assert: (printString fourth beginsWith: '16r').
-	self assert: printString fifth equals: '''Add'''.
-	self assert: printString last equals: '''add'''.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testRankOfOutput
-	| graph template const rank |
-	graph := TFGraph create.
-	template := TFTensor fromFloats: #(
-		((1) (2) (3)) 
-		((4) (5) (6))
-	).
-	const := graph const: 'const' value: template.
-	rank := graph rankOf: (const output: 0).
-	
-	self assert: template shape size equals: rank.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-testRunGraphAddTwoInputs
-	| graph inputs inputValues add output session results |
-	graph := self addGraphTwoInputsInt64.
-	
-	inputs := Array
-		with: ((graph operationNamed: 'in1') input: 0)
-		with: ((graph operationNamed: 'in2') input: 0).
-	inputValues := Array
-		with: (TFTensor fromInt64: 16r2021222021222021)
-		with: (TFTensor fromInt64: 16r2221202221202221).
-	add := graph operationNamed: 'add'.
-	output := add output: 0.
-	session := TFSession on: graph.
-	results := session
-		runOperations: (Array with: add)
-		inputs: inputs
-		values: inputValues
-		outputs: (Array with: output).
-	
-	self deny: results isNull.
-	self deny: results first isNull.
-	self deny: results first data isNull.
-	self assert: (results first data getHandle signedLongLongAt: 1) equals: 16r4242424242424242.
-
-	graph delete.
-	results first delete.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
 testRunOperationArray
 	| graph operation session |
 	graph := self constantFloatGraphFromDef.
@@ -5295,87 +3689,6 @@ testRunOperationArray
 	self shouldnt: [session runOperations: (Array with: operation)] raise: Error.
 
 	graph delete.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testShapeOfInput
-	| graph template const shape same |
-	graph := TFGraph create.
-	template := TFTensor fromFloats: #(
-		((1) (2) (3)) 
-		((4) (5) (6))
-	).
-	const := graph const: 'const' value: template.
-	same := const identity.
-	shape := graph shapeOf: (same input: 0).
-	
-	self assert: template shape equals: shape.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testShapeOfOutput
-	| graph template const shape |
-	graph := TFGraph create.
-	template := TFTensor fromFloats: #(
-		((1) (2) (3)) 
-		((4) (5) (6))
-	).
-	const := graph const: 'const' value: template.
-	shape := graph shapeOf: (const output: 0).
-	
-	self assert: template shape equals: shape.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testShapeOfOutputSet
-	| graph var shape output |
-	graph := TFGraph create.
-	
-	var := graph newOperation: 'Placeholder' named: 'var' described: [:description |
-		description
-			at: 'dtype' putType: TFTensor typeInt64;
-			at: 'shape' putShape: #(3 -1 -1)].
-	
-	output := var output: 0.
-	
-	shape := graph shapeOf: output.
-	self assert: shape equals: #(3 -1 -1).
-
-	graph shapeOf: output set: #(-1 3 -1).
-
-	shape := graph shapeOf: output.
-	self assert: shape equals: #(3 3 -1).
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/11/2021 19:57:53'!
-testShapeOfOutputSetInvalid
-	| graph template const output |
-	graph := TFGraph create.
-	template := TFTensor fromFloats: #(
-		((1) (2) (3)) 
-		((4) (5) (6))
-	).
-	const := graph const: 'const' value: template.
-	output := const output: 0.
-	
-	self
-		should: [graph shapeOf: output set: #(1 2 3)] 
-		raiseError: 'INVALID_ARGUMENT: Dimension 0 in both shapes must be equal, but are 2 and 1. Shapes are [2,3,1] and [1,2,3].'.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testShapeOfOutputSetInvalidRank
-	| graph template const output |
-	graph := TFGraph create.
-	template := TFTensor fromFloats: #(
-		((1) (2) (3)) 
-		((4) (5) (6))
-	).
-	const := graph const: 'const' value: template.
-	output := const output: 0.
-	
-	self
-		should: [graph shapeOf: output set: #(1 2 3 -1)]
-		raiseError: 'INVALID_ARGUMENT: Shapes must be equal rank, but are 3 and 4'.! !
 
 !TensorFlowCAPITest methodsFor: 'initialization' stamp: 'gera 12/21/2016 02:11:17'!
 setUp
@@ -5422,96 +3735,12 @@ testNewSession
 	self assert: session isNull.! !
 
 !TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
-testRunGraphMulOneInput
-	| graph input inputValue result mul output session |
-	graph := self mulGraphOneInputInt64.
-	
-	input := (graph operationNamed: 'in') input: 0.
-	inputValue := TFTensor fromInt64: 11.
-	mul := graph operationNamed: 'mul'.
-	output := mul output: 0.
-	session := TFSession on: graph.
-	result := session runOperation: mul input: input value: inputValue output: output.
-	
-	self deny: result isNull.
-	self deny: result data isNull.
-	self assert: (result data getHandle signedLongLongAt: 1) equals: 16r4242424242424242.
-
-	result delete.
-	input free.
-	output free.
-	graph delete.! !
-
-!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
-testRunGraphMulTwoInputs
-	| graph inputs inputValues mul output session results |
-	graph := self mulGraphTwoInputsInt64.
-	
-	inputs := Array
-		with: ((graph operationNamed: 'in1') input: 0)
-		with: ((graph operationNamed: 'in2') input: 0).
-	inputValues := Array
-		with: (TFTensor fromInt64: 6)
-		with: (TFTensor fromInt64: 11).
-	mul := graph operationNamed: 'mul2'.
-	output := mul output: 0.
-	session := TFSession on: graph.
-	results := session
-		runOperations: (Array with: mul)
-		inputs: inputs
-		values: inputValues
-		outputs: (Array with: output).
-	
-	self deny: results isNull.
-	self deny: results first isNull.
-	self deny: results first data isNull.
-	self assert: (results first data getHandle signedLongLongAt: 1) equals: 16r4242424242424242.
-
-	graph delete.
-	results first delete.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
-testRunGraphMulTwoInputsRunInputsOutputs
-	| graph inputs inputValues mul output session results |
-	graph := self mulGraphTwoInputsInt64.
-	
-	inputs := Array
-		with: ((graph operationNamed: 'in1') input: 0)
-		with: ((graph operationNamed: 'in2') input: 0).
-	inputValues := Array
-		with: (TFTensor fromInt64: 6)
-		with: (TFTensor fromInt64: 11).
-	mul := graph operationNamed: 'mul2'.
-	output := mul output: 0.
-	session := TFSession on: graph.
-	
-	results := session
-		runInputs: inputs
-		values: inputValues
-		outputs: {output}.
-	
-	self deny: results isNull.
-	self deny: results first isNull.
-	self deny: results first data isNull.
-	self assert: (results first data getHandle signedLongLongAt: 1) equals: 16r4242424242424242.
-
-	graph delete.
-	results first delete.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
 testSessionOnEmptyGraph
 	| session |
 	session := TFSession on: self emptyGraph.
 	self
 		should: [session run]
 		raiseError: 'INVALID_ARGUMENT: Must specify at least one target to fetch or execute.'.! !
-
-!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 1/22/2017 16:28:12'!
-testSessionRunOutput
-	^ self testSessionRunOutputOnGraph: self constantInt64GraphFromDef.
-! !
 
 !TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
 testSessionRunOutputOnGraph: graph
@@ -5527,17 +3756,6 @@ testSessionRunOutputOnGraph: graph
 	self assert: (tensor data getHandle signedLongLongAt: 1) equals: 16r4242424242424242.
 
 	output free.
-	graph delete.! !
-
-!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
-testSessionRunTarget
-	| graph operation session |
-	graph := self constantFloatGraphFromDef.
-	session := TFSession on: graph.
-	operation := graph operationNamed: 'a'.
-	
-	self shouldnt: [session runOperation: operation] raise: Error.
-
 	graph delete.! !
 
 !TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 1/6/2017 00:06:16'!
@@ -5560,300 +3778,6 @@ testSessionRunTargetOutputOnGraph: graph
 
 	output free.
 	graph delete.! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 00:34:29'!
-testAllOperations
-	| graph pisTensor operations names |
-	graph := TFGraph create.
-	pisTensor := TFTensor fromFloats: #(3.14 3.1415 3.141516).
-	graph variable: 'var1' initialValue: pisTensor.
-	graph variable: 'var2' initialValue: pisTensor.
-	graph variable: 'var3' initialValue: pisTensor.
-
-	operations := graph allOperations.
-	
-	self assert: operations size = 9.
-	names := #(
-		'var1' 'var1_initialValue' 'var1_initializer'
-		'var2' 'var2_initialValue' 'var2_initializer'
-		'var3' 'var3_initialValue' 'var3_initializer').
-		
-	names with: operations do: [:name :op |
-		self assert: name equals: op name].
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'JV 5/11/2021 19:55:28'!
-testGraphDefinition
-	| definition operations |
-	definition := self mulGraphTwoInputsInt64 definition.
-	operations := (TFGraph fromString: definition) allInputs.
-		
-	self assert: operations size equals: 2.
-	self assert: operations first name equals: 'in1'.
-	self assert: operations second name equals: 'in2'
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 2/15/2017 01:40:03'!
-testGraphDeletionDoesntBreakOperations
-	| graph in1 in2 add |
-	self assert: false description: 'This test actually fails, and by failing it corrupts external memory and leads to a crash. This means when a TFGraph is deleted, all the TFOperations composing it are also deleted, hence pointers held to them (from Smalltalk or otherwise) become invalid'.
-	
-	graph := self addGraphTwoInputsInt64.
-	graph ignoreFinalization.
-	
-	in1 := graph operationNamed: 'in1'.
-	in2 := graph operationNamed: 'in2'.
-	add := graph operationNamed: 'add'.
-
-	self assert: in1 name equals: 'in1'.
-	self assert: in2 name equals: 'in2'.
-	self assert: add name equals: 'add'.
-	
-	graph delete.
-	
-	self assert: in1 name equals: 'in1'.
-	self assert: in2 name equals: 'in2'.
-	self assert: add name equals: 'add'.
-	
-	graph := self mulGraphTwoInputsInt64.
-	graph ignoreFinalization.
-	graph delete.
-
-	self assert: in1 name equals: 'in1'.
-	self assert: in2 name equals: 'in2'.
-	self assert: add name equals: 'add'.! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 03:35:50'!
-testGraphDeletionDoesntBreakSessions
-	| graph inputs inputValues add output session results |
-	graph := self addGraphTwoInputsInt64.
-	graph ignoreFinalization.
-	
-	inputs := Array
-		with: ((graph operationNamed: 'in1') input: 0)
-		with: ((graph operationNamed: 'in2') input: 0).
-	inputValues := Array
-		with: (TFTensor fromInt64: 16r2021222021222021)
-		with: (TFTensor fromInt64: 16r2221202221202221).
-	add := graph operationNamed: 'add'.
-	output := add output: 0.
-	session := TFSession on: graph.
-	graph delete.
-
-	graph := self addGraphTwoInputsInt64.
-	graph ignoreFinalization.
-	graph delete.
-		
-	results := session
-		runOperations: (Array with: add)
-		inputs: inputs
-		values: inputValues
-		outputs: (Array with: output).
-	
-	self deny: results isNull.
-	self deny: results first isNull.
-	self deny: results first data isNull.
-	self assert: (results first data getHandle signedLongLongAt: 1) = 16r4242424242424242.
-
-	results first delete.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 03:35:50'!
-testGraphFromBlockIdentity
-	| graph output inputs results |
-	graph := TFGraph fromBlock: [:a | a ].
-	
-	inputs := graph allInputs collect: [:placeholder | placeholder input: 0].
-	output := graph operationNamed: 'output'.
-	
-	results := (TFSession on: graph)
-		runInputs: inputs
-		values: {TFTensor fromFloats: 3.1415}
-		outputs: {output output: 0}.
-		
-	self assert: results first allFloats first closeTo: 3.1415! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 03:35:50'!
-testGraphFromBlockIdentityInstance
-	| graph output inputs results |
-	graph := TFGraph create.
-	output := graph fromBlock: [:a | a alias: 'a_1'].	
-	inputs := graph allInputs collect: [:input | input input: 0].
-	
-	results := (TFSession on: graph)
-		runInputs: inputs
-		values: {TFTensor fromFloats: 3.1415}
-		outputs: {output output: 0}.
-		
-	self assert: results first allFloats first closeTo: 3.1415! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 03:35:50'!
-testGraphFromBlockSimple
-	| graph output inputs results |
-	graph := TFGraph fromBlock: [:a :b | a + b].
-	
-	inputs := graph allInputs collect: [:placeholder | placeholder input: 0].
-	output := graph operationNamed: 'output'.
-	
-	results := (TFSession on: graph)
-		runInputs: inputs
-		values: {TFTensor fromFloats: 3.1415. TFTensor fromFloats: 1.2345.}
-		outputs: {output output: 0}.
-		
-	self assert: results first allFloats first closeTo: 3.1415 + 1.2345! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 03:35:50'!
-testGraphFromBlockSimpleInstance
-	| graph output inputs results |
-	graph := TFGraph create.
-	output := graph fromBlock: [:a :b | a + b].	
-	inputs := graph allInputs collect: [:placeholder | placeholder input: 0].
-	
-	results := (TFSession on: graph)
-		runInputs: inputs
-		values: {TFTensor fromFloats: 3.1415. TFTensor fromFloats: 1.2345.}
-		outputs: {output output: 0}.
-		
-	self assert: results first allFloats first closeTo: 3.1415 + 1.2345! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 1/20/2017 18:04:24'!
-testGraphNotFinalizedWhenHeldByOperations
-	| graph in1 in2 add |
-	graph := self addGraphTwoInputsInt64.
-	graph useFinalization.
-	
-	in1 := graph operationNamed: 'in1'.
-	in2 := graph operationNamed: 'in2'.
-	add := graph operationNamed: 'add'.
-
-	self assert: in1 name equals: 'in1'.
-	self assert: in2 name equals: 'in2'.
-	self assert: add name equals: 'add'.
-		
-	graph := nil.
-	Smalltalk garbageCollect.
-	
-	self assert: in1 name equals: 'in1'.
-	self assert: in2 name equals: 'in2'.
-	self assert: add name equals: 'add'.
-	
-	graph := self mulGraphTwoInputsInt64.
-	graph delete.
-
-	self assert: in1 name equals: 'in1'.
-	self assert: in2 name equals: 'in2'.
-	self assert: add name equals: 'add'.! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 1/13/2017 10:13:07'!
-testGraphOperationAt
-	| graph operation context |
-	graph := self mulGraphTwoInputsInt64.
-	context := graph newOperationIteratorContext.
-	
-	operation := graph operationAt: context.
-	self assert: operation name equals: 'in1'.
-	self assert: operation type equals: 'Placeholder'.
-
-	operation := graph operationAt: context.
-	self assert: operation name equals: 'in2'.
-	self assert: operation type equals: 'Placeholder'.
-
-	operation := graph operationAt: context.
-	self assert: operation name equals: 'const'.
-	self assert: operation type equals: 'Const'.
-
-	operation := graph operationAt: context.
-	self assert: operation name equals: 'mul1'.
-	self assert: operation type equals: 'Mul'.
-
-	operation := graph operationAt: context.
-	self assert: operation name equals: 'mul2'.
-	self assert: operation type equals: 'Mul'.
-
-	operation := graph operationAt: context.
-	self assert: operation isNull.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 1/19/2017 11:11:05'!
-testGraphOperationsCount
-	| graph |
-	graph := self mulGraphTwoInputsInt64.
-	
-	self assert: graph operationsCount equals: 5.! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 1/13/2017 10:13:21'!
-testGraphOperationsDo
-	| graph operations |
-	graph := self mulGraphTwoInputsInt64.
-	operations := OrderedCollection new.
-	
-	graph operationsDo: [:op |
-		operations add: op name].
-	
-	self assert: operations size equals: 5.
-	self assert: operations first equals: 'in1'.
-	self assert: operations second equals: 'in2'.
-	self assert: operations third equals: 'const'.
-	self assert: operations fourth equals: 'mul1'.
-	self assert: operations fifth equals: 'mul2'.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 1/29/2017 03:41:15'!
-testGraphOperationsSelect
-	| operations |
-	operations := self mulGraphTwoInputsInt64 allInputs.
-		
-	self assert: operations size equals: 2.
-	self assert: operations first name equals: 'in1'.
-	self assert: operations second name equals: 'in2'.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 1/13/2017 10:13:43'!
-testGraphOperationsSelectEmpty
-	| graph operations |
-	graph := self mulGraphTwoInputsInt64.
-	
-	operations := graph operationsSelect: [:op | false].
-	
-	self assert: operations size equals: 0.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 00:34:29'!
-testGraphRunInputsOutputs
-	| graph output result input |
-	graph := TFGraph create.
-	
-	output := graph fromBlock: [:a |
-		input := a.
-		a @* TFTensor pi].
-
-	result := graph
-		runInputs: {input input: 0}
-		values: {7.23 asTensor}
-		outputs: {output output}.
-	
-	self assert: Float pi * 7.23 closeTo: result first asNumbers.! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 00:34:29'!
-testGraphRunOutput
-	| graph output result |
-	graph := TFGraph create.
-	output := graph const: TFTensor pi.
-	result := graph runOutput: output output.
-	
-	self assert: Float pi closeTo: result asNumbers.! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 00:34:29'!
-testGraphRunOutputs
-	| graph output1 output2 results |
-	graph := TFGraph create.
-	output1 := graph const: TFTensor pi.
-	output2 := output1 @/ 2.0 asTensor.
-
-	results := graph runOutputs: {output1 output. output2 output}.
-	
-	self assert: Float pi closeTo: results first asNumbers.
-	self assert: Float pi / 2 closeTo: results second asNumbers.! !
 
 !TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 00:34:29'!
 testImportBad
@@ -5896,33 +3820,14 @@ testNewGraph
 	graph delete.
 	self assert: graph isNull.! !
 
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 1/20/2017 18:07:50'!
+!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'JV 5/23/2021 16:52:03'!
 testOutputDims
 	| graph operation output |
 	graph := self constantInt64GraphFromDef.
 	operation := graph operationNamed: 'a'.
 	output := operation output: 0.
-	self assert: (graph outputDimenssionsCount: output) equals: 0.
+	self assert: (graph outputDimensionsCount: output) equals: 0.
 	output free.! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 03:35:50'!
-testSessionDeletionDoesntDeleteGraphs
-	| session graph allocatedObjects |
-	graph := TFGraph create.
-	session := TFSession on: graph.
-	session ignoreFinalization.
-	session close.
-	session delete.
-
-	" Allocate some external objects using the library, if the graph was released, we expect its space to be reused "
-	allocatedObjects := OrderedCollection new: 10.
-	10 timesRepeat: [allocatedObjects add: (TFStatus create)].
-	
-	self
-		shouldnt: [graph placeholder: 'a' type: TFTensor typeInt64]
-		raise: Error
-		description: 'The FFI call would crash if the graph was released by deleting the session'.
-! !
 
 !TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'JV 5/11/2021 20:13:30'!
 testWriteDefTo
@@ -6062,13 +3967,6 @@ testSessionOptionsSetTarget
 	options delete.
 	self assert: options isNull.! !
 
-!TensorFlowCAPITest methodsFor: 'testing library' stamp: 'JV 5/11/2021 20:21:00'!
-testGetAllOps
-	| ops |
-	ops := library getAllOps.
-	self assert: (ops dataBytes asString includesSubString: 'tensor').
-	ops delete! !
-
 !TensorFlowCAPITest methodsFor: 'testing library' stamp: 'JV 5/11/2021 19:58:15'!
 testVersion
 	| version |
@@ -6129,1383 +4027,60 @@ testStatusSetGetCode
 	self assert: code equals: 2.
 ! !
 
-!TensorFlowOperationsTest methodsFor: 'other operations' stamp: 'gera 7/3/2019 03:35:50'!
-assert: integers sizeOn: dimension is: expected
-	| graph session const result size |
-	graph := TFGraph create.
-	const := graph const: integers asInt32Tensor.
-	
-	size := const sizeOn: dimension.
-
-	session := TFSession on: graph.
-	result := session runOutput: size output.
-	
-	self assert: expected equals: result asNumbers.! !
-
-!TensorFlowOperationsTest methodsFor: 'other operations' stamp: 'gera 7/3/2019 03:35:50'!
-assertSlice: integers from: begin size: size is: expected
-	| graph session const result slice |
-	graph := TFGraph create.
-	const := graph const: integers asInt32Tensor.
-	
-	slice := const sliceFrom: begin asInt32Tensor size: size asInt32Tensor.
-
-	session := TFSession on: graph.
-	result := session runOutput: slice output.
-	
-	self assert: expected equals: result asNumbers.! !
-
-!TensorFlowOperationsTest methodsFor: 'other operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationDescentRate
-	| graph var output pi result session rate |
-	graph := TFGraph create.
-	var := graph variable: 'var' initialValue: 1.0 asTensor.
-	pi := graph const: 'pi' value: (TFTensor pi).
-	rate := graph const: 'rate' value: 0.7 asTensor.
-	output := var descent: pi rate: rate.
-	
-	session := TFSession on: graph.
-	graph initializeOn: session.
-	result := session runOutput: (output output: 0).
-	
-	self assert: 1-(Float pi * 0.7) closeTo: result allFloats first! !
-
-!TensorFlowOperationsTest methodsFor: 'other operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationDescentRateConstants
-	| graph var output pi result session rate |
-	graph := TFGraph create.
-	var := graph variable: 'var' initialValue: 1.0 asTensor.
-	pi := Float pi asTensor.
-	rate := 0.7 asTensor.
-	output := var descent: pi rate: rate.
-	
-	session := TFSession on: graph.
-	graph initializeOn: session.
-	result := session runOutput: (output output: 0).
-	
-	self assert: 1-(Float pi * 0.7) closeTo: result allFloats first! !
-
-!TensorFlowOperationsTest methodsFor: 'other operations' stamp: 'gera 2/19/2017 15:11:43'!
-testOperationSizeOn
-	| t3x1x4 |
-	t3x1x4 := #(	"shape: (3 1 3)"
-		((1 2 3 0))
-		((4 5 6 0))
-		((7 8 9 0))
-	).
-	self assert: #(1 2 3 4 5 6 7) sizeOn: 0 is: #(7).
-	self assert: t3x1x4 sizeOn: 0 is: #(3).
-	self assert: t3x1x4 sizeOn: 1 is: #(1).
-	self assert: t3x1x4 sizeOn: 2 is: #(4).
- 
-! !
-
-!TensorFlowOperationsTest methodsFor: 'other operations' stamp: 'gera 2/19/2017 12:43:03'!
-testOperationSlice
-	| m3x3 |
-	m3x3 := #(	"shape: (3 1 3)"
-		((1 2 3))
-		((4 5 6))
-		((7 8 9))
-	).
-	self assertSlice: #(1 2 3 4 5 6 7) from: #(0) size: #(1) is: #(1).
-	self assertSlice: m3x3 from: #(0 0 0) size: #(1 1 1) is: #(((1))).
-	self assertSlice: m3x3 from: #(1 0 1) size: #(1 1 1) is: #(((5))).
-	self assertSlice: m3x3 from: #(1 0 1) size: #(1 -1 1) is: #(((5))).
-	self assertSlice: m3x3 from: #(1 0 1) size: #(1 1 -1) is: #(((5 6))).
-	self assertSlice: m3x3 from: #(1 0 1) size: #(1 -1 -1) is: #(((5 6))).
-	self assertSlice: m3x3 from: #(1 0 1) size: #(-1 1 -1) is: #(((5 6)) ((8 9))).
-! !
-
-!TensorFlowOperationsTest methodsFor: 'other operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationSliceSimple
-	| graph session const result slice |
-	graph := TFGraph create.
-	const := graph const: #(1 2 3 4 5 6 7) asInt32Tensor.
-	slice := const sliceFrom: #(0) asInt32Tensor size: #(1) asInt32Tensor.
-
-	session := TFSession on: graph.
-	result := session runOutput: slice output.
-	
-	self assert: #(1) equals: result asNumbers.! !
-
-!TensorFlowOperationsTest methodsFor: 'private' stamp: 'JB 2/7/2017 11:13:02'!
-percentile: percent from: collection
-	| position sorted |
-	position := (collection size * percent) ceiling.
-	sorted := collection sorted: nil.
-	^ sorted at: position
-	! !
-
-!TensorFlowOperationsTest methodsFor: 'initialization' stamp: 'gera 1/20/2017 18:23:31'!
-setUp
-	library := TensorFlowCAPI current! !
-
-!TensorFlowOperationsTest methodsFor: 'initialization' stamp: 'gera 1/31/2017 02:00:03'!
-should: aBlock raiseError: aString
-	| message |
-	message := 'No Error was signaled'.
-	aBlock ifError: [:description :receiver | message := description].
-	self assert: 'Error: ',aString equals: message.! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testGraphTruncatedNormal
-	| graph session result random values std theoreticalDecile expected |	
-	graph := TFGraph create.
-	
-	random := graph truncatedNormalRandomShaped: #(100 100 10).
-
-	session := TFSession on: graph.
-	result := session runOutput: (random output: 0).
-	
-	values := result allFloats.
-	theoreticalDecile := -1.1840324666939051.
-	std := values standardDeviation.
-	self assert: result shape equals: #(100 100 10).
-	self assert: values size equals: 100*100*10.
-	self assert: values min + 2 < 0.01.
-	self assert: 2 - values max < 0.01.
-	self assert: values mean abs < (0.01*std).
-	expected :=  { theoreticalDecile. 
-							theoreticalDecile negated}.
-							
-	#(0.1 0.9) with: expected do:[:p :e| | observed | 
-		observed := self percentile: p from: values.
-		self assert: (observed - e) abs < 0.2].
-	! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testGraphTruncatedNormalStddev
-	| graph session result random values sigma twoSigma std theoreticalDecile expected |	
-	graph := TFGraph create.
-	
-	sigma := 3.14.
-	twoSigma := 2 * sigma.
-	random := graph truncatedNormalRandomShaped: #(100 100 10) stddev: sigma.
-
-	session := TFSession on: graph.
-	result := session runOutput: (random output: 0).
-	values := result allFloats.
-	
-	std := values standardDeviation.
-	theoreticalDecile := -1.1840324666939051.
-		
-	self assert: result shape equals: #(100 100 10).
-	self assert: values size equals: 100*100*10.
-	self assert: twoSigma - (values min abs)  < 0.1.
-	self assert: twoSigma - values max < 0.1.
-	self assert: values mean abs < (0.01 * std).
-	expected :=  { theoreticalDecile * sigma. 
-							theoreticalDecile negated * sigma.
-							-2.
-							2}.
-							
-	#(0.1 0.9 0.25 0.75) with: expected do:[:p :e| | observed | 
-		observed := self percentile: p from: values.
-		self assert: (observed - e) abs < 0.2].
-	! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testGraphUnnamedConst
-	| graph session result const |	
-	graph := TFGraph create.
-	
-	const := graph const: #(1 2 3 4) asFloatTensor.
-
-	session := TFSession on: graph.
-	result := session runOutput: (const output: 0).
-	
-	self assert: result shape equals: #(4).
-	self assert: result allFloats equals: #(1 2 3 4).! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testGraphVariableFromTruncatedNormalStddev
-	| graph session result1 result2 var random values1 values2 init sigma std twoSigma |	
-	graph := TFGraph create.
-	
-	sigma := 3.14.
-	twoSigma := 2 * sigma.
-	random := graph truncatedNormalRandomShaped: #(100 100 10) stddev: sigma.
-	var := graph variable: 'var' initialValueFrom: random.
-	
-	session := TFSession on: graph.
-	init := graph operationNamed: 'var_initializer'.
-	result1 := session runOutput: (init output: 0).
-	result2 := session runOutput: (var output: 0).
-
-	self assert: result1 shape equals: #(100 100 10).
-	
-	values1 := result1 allFloats.
-	std := values1 standardDeviation.
-	self assert: values1 size equals: 100*100*10.	
-	self assert: twoSigma - (values1 min abs)  < 0.1.
-	self assert: twoSigma - values1 max < 0.1.
-	self assert: values1 mean abs < (0.01 * std).	
-	
-	self assert: result1 shape equals: result2 shape.
-	values2 := result2 allFloats.
-	self assert: values1 equals: values2! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testGraphZeros
-	| graph session result zeros values |	
-	graph := TFGraph create.
-	
-	zeros := graph zerosShaped: #(100 100 10).
-
-	session := TFSession on: graph.
-	result := session runOutput: (zeros output: 0).
-	
-	values := result allFloats.
-	self assert: #(100 100 10) equals: result shape.
-	self assert: 100*100*10 equals: values size.
-	self assert: 0 equals: values min.
-	self assert: 0 equals: values max.
-! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationArgMax
-	| graph a session const result output0 output1 axis0 axis1 |
-	
-	a := TFTensor fromFloats: #(
-		(1.1 1.2)
-		(2.1 2.2)
-		(3.1 0.2)
-	).
-	
-	graph := TFGraph create.
-	
-	const := graph const: 'a' value: a.
-	axis0 := graph const: 'axis0' value: (TFTensor fromInt32: 0).
-	axis1 := graph const: 'axis1' value: (TFTensor fromInt32: 1).
-	
-	output0 := const findMaxOn: axis0.
-	output1 := const findMaxOn: axis1.
-	
-	session := TFSession on: graph.
-	result := session runOutput: (output0 output: 0).
-	
-	self assert: result shape equals: #(2).
-	result allInt64s with: #(2 1) do: [:r :t |
-		self assert: r equals: t].
-	
-	result := session runOutput: (output1 output: 0).
-	
-	self assert: result shape equals: #(3).
-	result allInt64s with: #(1 1 0) do: [:r :t |
-		self assert: r equals: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationArgMin
-	| graph a session const result output0 output1 axis0 axis1 |
-	
-	a := TFTensor fromFloats: #(
-		(1.1 1.2)
-		(2.1 2.2)
-		(3.1 0.2)
-	).
-	
-	graph := TFGraph create.
-	
-	const := graph const: 'a' value: a.
-	axis0 := graph const: 'axis0' value: (TFTensor fromInt32: 0).
-	axis1 := graph const: 'axis1' value: (TFTensor fromInt32: 1).
-	
-	output0 := const findMinOn: axis0.
-	output1 := const findMinOn: axis1.
-	
-	session := TFSession on: graph.
-	result := session runOutput: (output0 output: 0).
-	
-	self assert: result shape equals: #(2).
-	result allInt64s with: #(0 2) do: [:r :t |
-		self assert: r equals: t].
-	
-	result := session runOutput: (output1 output: 0).
-	
-	self assert: result shape equals: #(3).
-	result allInt64s with: #(0 0 1) do: [:r :t |
-		self assert: r equals: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationArgMinTwoOutputs
-	| graph a session const results first second output0 output1 axis0 axis1 |
-	
-	a := TFTensor fromFloats: #(
-		(1.1 1.2)
-		(2.1 2.2)
-		(3.1 0.2)
-	).
-	
-	graph := TFGraph create.
-	
-	const := graph const: 'a' value: a.
-	axis0 := graph const: 'axis0' value: (TFTensor fromInt32: 0).
-	axis1 := graph const: 'axis1' value: (TFTensor fromInt32: 1).
-	
-	output0 := (const findMinOn: axis0) output: 0.
-	output1 := (const findMinOn: axis1) output: 0.
-	
-	session := TFSession on: graph.
-	results := session
-		runOutputs: {output0. output1}.
-	
-	first := results at: 1.
-	second := results at: 2.
-	
-	self assert: first shape equals: #(2).
-	first allInt64s with: #(0 2) do: [:r :t |
-		self assert: r equals: t].
-	
-	self assert: second shape equals: #(3).
-	second allInt64s with: #(0 0 1) do: [:r :t |
-		self assert: r equals: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationAssignSub
-	| graph var output pi result session |
-	graph := TFGraph create.
-	var := graph variable: 'var' initialValue: 1.0 asTensor.
-	pi := graph const: 'pi' value: TFTensor pi.
-	output := var -= pi.
-	
-	session := TFSession on: graph.
-	graph initializeOn: session.
-	result := session runOutput: (output output: 0).
-	
-	self assert: 1-Float pi closeTo: result allFloats first! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 00:34:29'!
-testOperationCastTo
-	| graph template cast input result |
-	
-	template := #((1.1 1.2) (2.1 2.2)).	
-	graph := TFGraph create.
-	
-	input := graph const: template asFloatTensor.
-	cast := input castTo: TFTensor typeInt32.
-
-	result := graph runOutput: cast output.
-
-	self assert: template truncated equals: result asNumbers.! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationDiv
-	| graph a b session constA constB result output template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: #((2.0 4.0) (8.0 16.0)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	output := constA @/ constB.
-	template := a allFloats / b allFloats.
-	
-	session := TFSession on: graph.
-	result := session runOutput: (output output: 0).
-	
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationDivScalar
-	| graph a b session constA constB result div template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: 2.0.
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	div := constA @/ constB.
-	template := a allFloats / 2.0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: (div output: 0).
-	
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationGreater
-	| graph a b session constA constB result  template comparisons |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (3.14 2.2)).
-	b := TFTensor fromFloats: #((3.14 3.14) (2.1 3.14)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	comparisons := constA > constB.
-	template := a allFloats with: b allFloats collect:[:x :y| x > y].
-	
-	session := TFSession on: graph.
-	result := session runOutput: (comparisons output: 0).
-	
-	self assert: result shape equals: a shape.
-	result allElements with: template do: [:r :t |
-		self assert: r equals: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationMatMul
-	| graph a b session constA constB result output template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: #((2.0 4.0) (8.0 16.0)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-
-	output := constA * constB.
-	template := {
-		1.1*2.0+(1.2*8.0).		1.1*4.0+(1.2*16.0).
-		2.1*2.0+(2.2*8.0).		2.1*4.0+(2.2*16.0).
-	}.
-
-	session := TFSession on: graph.
-	result := session runOutput: (output output: 0).
-
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationMatMul1x1
-	| graph a b session constA constB output result |
-	
-	a := #((1.1)) asFloatTensor.
-	b := #((3.14)) asFloatTensor.
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-
-	output := constA * constB.
-
-	session := TFSession on: graph.
-	result := session runOutput: (output output: 0).
-
-	self assert: 1.1 * 3.14 closeTo: result allFloats first! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 5/9/2021 19:54:16'!
-testOperationMatMul1x1Wrong
-	| graph a b constA constB |
-	
-	a := #(1.1) asFloatTensor.
-	b := #(2.02) asFloatTensor.
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-
-	self
-		should: [constA * constB]
-		raiseError: 'INVALID_ARGUMENT: Shape must be rank 2 but is rank 1 for ''{{node MatMul_2}} = MatMul[T=DT_FLOAT, transpose_a=false, transpose_b=false](a, b)'' with input shapes: [1], [1].'! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationMatMulABTransposed
-	| graph a b session constA constB result output template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: #((2.0 4.0) (8.0 16.0)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	output := constA \*\ constB.
-	template := {
-		1.1*2.0+(2.1*4.0).		1.1*8.0+(2.1*16.0).
-		1.2*2.0+(2.2*4.0).		1.2*8.0+(2.2*16.0).
-	}.
-
-	session := TFSession on: graph.
-	result := session runOutput: (output output: 0).
-	
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationMatMulATransposed
-	| graph a b session constA constB result output template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: #((2.0 4.0) (8.0 16.0)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	output := constA \* constB.
-	template := {
-		1.1*2.0+(2.1*8.0).		1.1*4.0+(2.1*16.0).
-		1.2*2.0+(2.2*8.0).		1.2*4.0+(2.2*16.0).
-	}.
-
-	session := TFSession on: graph.
-	result := session runOutput: (output output: 0).
-	
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationMatMulBTransposed
-	| graph a b session constA constB result output template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: #((2.0 4.0) (8.0 16.0)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	output := constA *\ constB.
-	template := {
-		1.1*2.0+(1.2*4.0).		1.1*8.0+(1.2*16.0).
-		2.1*2.0+(2.2*4.0).		2.1*8.0+(2.2*16.0).
-	}.
-
-	session := TFSession on: graph.
-	result := session runOutput: (output output: 0).
-	
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 5/9/2021 19:52:35'!
-testOperationMatMulWrongType
-	| graph a b constA constB |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := #((2 4) (8 16)) asInt32Tensor.
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-
-	self
-		should: [constA * constB]
-		raiseError: 'INVALID_ARGUMENT: Inconsistent values for attr ''T'' DT_FLOAT vs. DT_INT32 while building NodeDef ''MatMul_2'' using Op<name=MatMul; signature=a:T, b:T -> product:T; attr=transpose_a:bool,default=false; attr=transpose_b:bool,default=false; attr=T:type,allowed=[DT_BFLOAT16, DT_HALF, DT_FLOAT, DT_DOUBLE, DT_INT32, DT_INT64, DT_COMPLEX64, DT_COMPLEX128]>'.! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationMeanOn
-	| graph a session mean0 mean01 mean1 results meanNone |
-	
-	graph := TFGraph create.
-	a := graph const: #(
-		(1.1 1.2)
-		(2.1 2.2)
-		(3.1 0.2)
-	) asFloatTensor.
-		
-	mean0 := a meanOn: #(0) asInt32Tensor.
-	mean1 := a meanOn: #(1) asInt32Tensor.
-	mean01 := a meanOn: #(0 1) asInt32Tensor.
-	meanNone := a meanOn: #() asInt32Tensor.
-		
-	session := TFSession on: graph.
-	results := session runOutputs: {mean0 output: 0. mean1 output: 0. mean01 output: 0. meanNone output: 0}." mean01bis output: 0}."
-	
-	self assert: #(2) equals: results first shape.
-	self assert: #(3) equals: results second shape.
-	self assert: #() equals: results third shape.
-	self assert: #(3 2) equals: results fourth shape.
-
-	self assertAll: #(2.1 1.2) closeTo: results first allFloats.
-	self assertAll: #(1.15 2.15 1.65) closeTo: results second allFloats.
-	self assertAll: #(1.65) closeTo: results third allFloats.
-	self
-		assertAll: #(
-			1.1 1.2
-			2.1 2.2
-			3.1 0.2)
-		closeTo: results fourth allFloats.
-	! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 5/9/2021 20:15:13'!
-testOperationMinus
-	| graph a b session constA constB result sum template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: #((3.14 3.14) (3.14 3.14)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	sum := constA - constB.
-	
-	session := TFSession on: graph.
-	result := session runOutput: (sum output: 0).
-	
-	template := a allFloats - b allFloats.
-
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationMod
-	| graph a b session constA constB result output template |
-	
-	a := TFTensor fromFloats: #((10.0 11.0) (12.0 13.0)).
-	b := TFTensor fromFloats: #((3.0 2.0) (7.0 5.0)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	output := constA \\ constB.
-	template := a allFloats \\ b allFloats.
-	
-	session := TFSession on: graph.
-	result := session runOutput: (output output: 0).
-	
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationMul
-	| graph a b session constA constB result output template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: #((2.0 4.0) (8.0 16.0)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	output := constA @* constB.
-	template := a allFloats * b allFloats.
-	
-	session := TFSession on: graph.
-	result := session runOutput: (output output: 0).
-	
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationMulScalar
-	| graph a b session constA constB result mul template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: 2.0.
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	mul := constA @* constB.
-	template := a allFloats * 2.0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: (mul output: 0).
-	
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationPlus
-	| graph a b session constA constB result sum template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: #((3.14 3.14) (3.14 3.14)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	sum := constA + constB.
-	template := a allFloats + b allFloats.
-	
-	session := TFSession on: graph.
-	result := session runOutput: (sum output: 0).
-	
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationPlusNegated
-	| graph a b session constA constB result sum template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: #((3.14 3.14) (3.14 3.14)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	sum := constA + constB negated.
-	
-	session := TFSession on: graph.
-	result := session runOutput: (sum output: 0).
-	
-	template := a allFloats - b allFloats.
-
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationPlusNegatedNegated
-	| graph a b session constA constB result sum template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: #((3.14 3.14) (3.14 3.14)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	sum := (constA + constB negated) negated.
-	template := (a allFloats + b allFloats negated) negated.
-	
-	session := TFSession on: graph.
-	result := session runOutput: (sum output: 0).
-	
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationPlusNegatedNegatedPlus
-	| graph a b session constA constB result sum template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: #((3.14 3.14) (3.14 3.14)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	sum := (constA + constB negated) negated + constB negated.
-	template := (a allFloats + b allFloats negated) negated + b allFloats negated.
-	
-	session := TFSession on: graph.
-	result := session runOutput: (sum output: 0).
-	
-	self assert: result shape equals: a shape.
-	
-	result allFloats with: a allFloats negated do: [:r :t |
-		self assert: r closeTo: t].
-	
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationSparseSoftmaxCrossEntropyWithLogits
-	| graph label prediction results session xentropy gradient lastVector loss|
-	
-	graph := TFGraph create.
-	prediction := graph const: #(
-		(0.1 0.2 0.3 0.9 0.0 0.5 0.4)
-		(0.1 0.2 0.1 0.1 0.8 0.1 0.1)
-		(0 0 0 0 0 0 1)
-	) asFloatTensor.
-	label := graph const: #(3 4 6) asInt32Tensor.
-	
-	xentropy := prediction sparseSoftmaxCrossEntropyWithLogits: label.
-	
-	session := TFSession on: graph.
-	results := session runOutputs: {xentropy output: 0. xentropy output: 1}.
-	
-	loss := results first.
-	self assert: #(3) equals: loss shape.
-	self assert: (loss allFloats first between: 1 and: 1.5).
-	self assert: (loss allFloats second between: 1 and: 1.5).
-	self assert: (loss allFloats third between: 1 and: 1.2).
-	
-	gradient := results second.
-	self assert: #(3 7) equals: gradient shape.
-	lastVector := gradient allFloats last: 7.
-	self assert: lastVector last < 0.
-	lastVector allButLastDo: [:x | self assert: x > 0] 
-! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationSparseSoftmaxCrossEntropyWithLogitsUseOutput
-	| graph label prediction results session xentropy gradient lastVector loss|
-	
-	graph := TFGraph create.
-	prediction := graph const: #(
-		(0.1 0.2 0.3 0.9 0.0 0.5 0.4)
-		(0.1 0.2 0.1 0.1 0.8 0.1 0.1)
-		(0 0 0 0 0 0 1)
-	) asFloatTensor.
-	label := graph const: #(3 4 6) asInt32Tensor.
-	
-	xentropy := prediction sparseSoftmaxCrossEntropyWithLogits: label.
-	
-	session := TFSession on: graph.
-	results := session runOutputs: {xentropy output. (xentropy useOutput: 1) output}.
-	
-	loss := results first.
-	self assert: #(3) equals: loss shape.
-	self assert: (loss allFloats first between: 1 and: 1.5).
-	self assert: (loss allFloats second between: 1 and: 1.5).
-	self assert: (loss allFloats third between: 1 and: 1.2).
-	
-	gradient := results second.
-	self assert: #(3 7) equals: gradient shape.
-	lastVector := gradient allFloats last: 7.
-	self assert: lastVector last < 0.
-	lastVector allButLastDo: [:x | self assert: x > 0] 
-! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationSub
-	| graph a b session constA constB result sub template |
-	
-	a := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	b := TFTensor fromFloats: #((3.14 3.14) (3.14 3.14)).
-	
-	graph := TFGraph create.
-	
-	constA := graph const: 'a' value: a.
-	constB := graph const: 'b' value: b.
-	
-	sub := constA - constB.
-	
-	session := TFSession on: graph.
-	result := session runOutput: (sub output: 0).
-	
-	template := a allFloats - b allFloats.
-
-	self assert: result shape equals: a shape.
-	result allFloats with: template do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationSum
-	| graph a session const result output0 output1 axis0 axis1 template sumOn1 sumOn0 |
-	
-	template := #(
-		(1.1 1.2)
-		(2.1 2.2)
-		(3.1 0.2)
-	).
-	
-	sumOn0 := template sum.
-	sumOn1 := template collect: [:line | line sum].
-	
-	a := TFTensor fromFloats: template.
-	
-	graph := TFGraph create.
-	
-	const := graph const: 'a' value: a.
-	axis0 := graph const: 'axis0' value: (TFTensor fromInt32: 0).
-	axis1 := graph const: 'axis1' value: (TFTensor fromInt32: 1).
-	
-	output0 := const sumOn: axis0.
-	output1 := const sumOn: axis1.
-	
-	session := TFSession on: graph.
-	result := session
-		runOperation: output0
-		output: (output0 output: 0).
-	
-	self assert: result shape equals: #(2).
-	result allFloats with: sumOn0 do: [:r :t |
-		self assert: r closeTo: t].
-	
-	result := session
-		runOperation: output1
-		output: (output1 output: 0).
-	
-	self assert: result shape equals: #(3).
-	result allFloats with: sumOn1 do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationSumOnOutputs
-	| graph a session const results first second output0 output1 axis0 axis1 template sumOn1 sumOn0 |
-	
-	template := #(
-		(1.1 1.2)
-		(2.1 2.2)
-		(3.1 0.2)
-	).
-	
-	sumOn0 := template sum.
-	sumOn1 := template collect: [:line | line sum].
-	
-	a := TFTensor fromFloats: template.
-	
-	graph := TFGraph create.
-	
-	const := graph const: 'a' value: a.
-	axis0 := graph const: 'axis0' value: (TFTensor fromInt32: 0).
-	axis1 := graph const: 'axis1' value: (TFTensor fromInt32: 1).
-	
-	output0 := const sumOn: axis0.
-	output1 := const sumOn: axis1.
-	
-	session := TFSession on: graph.
-	results := session runOutputs: {output0 output: 0. output1 output: 0}.
-	first := results at: 1.
-	second := results at: 2.
-	
-	self assert: first shape equals: #(2).
-	first allFloats with: sumOn0 do: [:r :t |
-		self assert: r closeTo: t].
-	
-	self assert: second shape equals: #(3).
-	second allFloats with: sumOn1 do: [:r :t |
-		self assert: r closeTo: t].! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationAbs
-	| graph template session const result output |
-	
-	template := TFTensor fromFloats: #((-1.1 1.2) (-2.1 -2.2)).
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: template.
-	output := const abs output: 0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: output.
-	
-	self assert: result shape equals: template shape.
-	self assert: result allFloats equals: template allFloats abs.
-	
-	output free.! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationAcos
-	| graph template session const result output intput |
-	
-	template := #(1.1 0.2 2.34 0.717273).
-	intput := TFTensor fromFloats: template cos.
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: intput.
-	output := const arcCos output: 0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: output.
-	
-	self assert: result shape equals: intput shape.
-	result allFloats with: template do: [:res :temp |
-		self assert: res closeTo: temp].
-	
-	output free.! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationAsin
-	| graph template session const result output intput |
-	
-	template := #(1.1 0.2 -1.34 0.717273).
-	intput := TFTensor fromFloats: template sin.
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: intput.
-	output := const arcSin output: 0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: output.
-	
-	self assert: result shape equals: intput shape.
-	result allFloats with: template do: [:res :temp |
-		self assert: res closeTo: temp].
-	
-	output free.! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationAtan
-	| graph template session const result output intput |
-	
-	template := #(1.1 0.2 -1.34 0.717273).
-	intput := TFTensor fromFloats: template tan.
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: intput.
-	output := const arcTan output: 0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: output.
-	
-	self assert: result shape equals: intput shape.
-	result allFloats with: template do: [:res :temp |
-		self assert: res closeTo: temp].
-	
-	output free.! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationCos
-	| graph template session const result output intput |
-
-	template := #(0.1 0.0 -0.94 0.717273).
-	intput := TFTensor fromFloats: template arcCos.
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: intput.
-	output := const cos output: 0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: output.
-	
-	self assert: result shape equals: intput shape.
-	result allFloats with: template do: [:res :temp |
-		self assert: res closeTo: temp].
-	
-	output free.! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationExp
-	| graph inputs template session const result output |
-	
-	template := #(-1.1 1.2).
-	
-	inputs := TFTensor fromFloats: template.
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: inputs.
-	output := const exp output: 0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: output.
-	
-	self assert: result shape equals: inputs shape.
-	result allFloats with: template exp do: [:res :temp |
-		self assert: res closeTo: temp].
-	
-	output free.! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationIAlias
-	| graph template const result same1 same2 |
-	graph := TFGraph create.
-	template := TFTensor fromFloats: #(
-		((1) (2) (3)) 
-		((4) (5) (6))
-	).
-	const := graph const: 'const' value: template.
-	same1 := const alias: 'another_name'.
-	same2 := graph operationNamed: 'another_name'.
-	
-	result := (TFSession on: graph) runOutput: (same1 output: 0).
-	
-	self assert: template shape equals: result shape.
-	self assert: #(1 2 3 4 5 6) equals: result allFloats.
-	
-	result := (TFSession on: graph) runOutput: (same2 output: 0).
-	
-	self assert: template shape equals: result shape.
-	self assert: #(1 2 3 4 5 6) equals: result allFloats.
-	
-! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationIdentity
-	| graph template const result same |
-	graph := TFGraph create.
-	template := TFTensor fromFloats: #(
-		((1) (2) (3)) 
-		((4) (5) (6))
-	).
-	const := graph const: 'const' value: template.
-	same := const identity output: 0.
-	
-	result := (TFSession on: graph) runOutput: same.
-	
-	self assert: template shape equals: result shape.
-	self assert: #(1 2 3 4 5 6) equals: result allFloats.! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationMatrixInverse
-	| graph template session const result identity inverse |
-	
-	template := TFTensor fromFloats: #((-1.1 1.2) (-2.1 -2.2)).
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: template.
-	inverse := const inverse.
-	identity := const * inverse output: 0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: identity.
-	
-	self assert: result shape equals: template shape.
-	result allFloats with: #(1.0 0.0 0.0 1.0) do: [:real :expected |
-		self assert: real closeTo: expected].
-	
-	identity free.! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationNegated
-	| graph template session const result negated |
-	
-	template := TFTensor fromFloats: #((1.1 1.2) (2.1 2.2)).
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: template.
-	negated := const negated output: 0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: negated.
-	
-	self assert: result shape equals: template shape.
-	self assert: result allFloats equals: template allFloats negated.
-	
-	negated free.! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationRelu
-	| graph template session const result output |
-	
-	template := #(
-		(-1.1	1.2)
-		(-2.1	2.2)
-		(0		-0)) asFloatTensor.
-		
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: template.
-	output := const rectified output: 0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: output.
-	
-	self assert: result shape equals: template shape.
-	self assert: result allFloats equals: (template allFloats collect: [:each | each max: 0]).
-! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationReluGrad
-	| graph template session result previousGradient rectifiedGrad expected previousGradientTemplate |
-	
-	template := #(
-		(-1.1	1.2)
-		(-2.1	2.2)
-		(0		-0)) asFloatTensor.
-		
-
-	graph := TFGraph create.
-	
-	previousGradientTemplate := #(
-		(0	1)
-		(1	0)
-		(1		1)) asFloatTensor.
-		
-	previousGradient := previousGradientTemplate asOperationOn: graph.
-	rectifiedGrad := previousGradient timesRectifiedGradOf: template.
-	
-	session := TFSession on: graph.
-	result := session runOutput: rectifiedGrad output.
-	
-	self assert: result shape equals: template shape.
-	expected := template allFloats with: previousGradientTemplate allFloats collect:[:x :y| (x sign max: 0) * y].
-	self assert: result allFloats equals: expected.
-! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationShape
-	| graph template session const result shape |
-	
-	template := TFTensor fromFloats: #(((((-1.1 1.2 1)) ((-2.1 -2.2 0))))).
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: template.
-	shape := const shape output.
-	
-	session := TFSession on: graph.
-	result := session runOutput: shape.
-	
-	self assert: {template rank} equals: result shape.
-	self assert: #(1 1 2 1 3) equals: result asNumbers
-! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationSigmoid
-	| graph inputs template session const result output transformed |
-	
-	template := #(-1.1 1.2 0 4).
-	
-	inputs := TFTensor fromFloats: template.
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: inputs.
-	output := const sigmoid output: 0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: output.
-	
-	transformed := template collect:[:x| (x negated exp + 1) reciprocal].
-	self assert: result shape equals: inputs shape.
-	result allFloats with: transformed do: [:res :temp |
-		self assert: res closeTo: temp].
-	
-	output free.! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationSin
-	| graph template session const result output intput |
-
-	template := #(0.1 0.0 -0.94 0.717273).
-	intput := TFTensor fromFloats: template arcSin.
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: intput.
-	output := const sin output: 0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: output.
-	
-	self assert: result shape equals: intput shape.
-	result allFloats with: template do: [:res :temp |
-		self assert: res closeTo: temp].
-	
-	output free.! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationSquared
-	| graph template session const result output |
-	
-	template := TFTensor fromFloats: #((-1.1 1.2) (-2.1 -2.2)).
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: template.
-	output := const squared output: 0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: output.
-	
-	self assert: result shape equals: template shape.
-	result allFloats with: template allFloats squared do: [:res :temp |
-		self assert: res closeTo: temp].
-	
-	output free.! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testOperationTan
-	| graph template session const result output intput |
-
-	template := #(0.1 0.0 -0.94 0.717273).
-	intput := TFTensor fromFloats: template arcTan.
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: intput.
-	output := const tan output: 0.
-	
-	session := TFSession on: graph.
-	result := session runOutput: output.
-	
-	self assert: result shape equals: intput shape.
-	result allFloats with: template do: [:res :temp |
-		self assert: res closeTo: temp].
-	
-	output free.! !
-
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
-testSoftmax
-	| graph template session const result output denominator |
-	
-	template := TFTensor fromFloats: {{0. 3  ln}}.
-	graph := TFGraph create.
-	
-	const := graph const: 'const' value: template.
-	output := const softmax output.
-	
-	session := TFSession on: graph.
-	result := session runOutput: output.
-
-	self assert: result shape equals: template shape.
-	
-	denominator := template allFloats exp sum. 
-	result allFloats with: template allFloats exp / denominator do: [:res :temp |
-		| delta |
-		delta := (res  - temp) abs.
-		self assert: delta < 0.001].
-	
-	output free.
-! !
-
-!Object methodsFor: '*TensorFlow-Kernel' stamp: 'gera 1/7/2017 20:18:45'!
+!Object methodsFor: '*TensorFlowCore' stamp: 'gera 1/7/2017 20:18:45'!
 ignoreFinalization
 	self finalizationRegistry remove: self ifAbsent: [].
 ! !
 
-!Object methodsFor: '*TensorFlow-Kernel' stamp: 'gera 1/7/2017 20:18:16'!
+!Object methodsFor: '*TensorFlowCore' stamp: 'gera 1/7/2017 20:18:16'!
 useFinalization
 	self finalizationRegistry add: self! !
 
-!SequenceableCollection methodsFor: '*TensorFlow-Kernel' stamp: 'gera 6/30/2019 00:45:26'!
+!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
 asBooleanTensor
 	^ TFTensor fromBooleans: self! !
 
-!SequenceableCollection methodsFor: '*TensorFlow-Kernel' stamp: 'gera 6/30/2019 00:45:27'!
+!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:27'!
 asFloatTensor
 	^ TFTensor fromFloats: self! !
 
-!SequenceableCollection methodsFor: '*TensorFlow-Kernel' stamp: 'gera 6/30/2019 00:45:28'!
+!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:28'!
 asInt32Tensor
 	^ TFTensor fromInt32s: self! !
 
-!SequenceableCollection methodsFor: '*TensorFlow-Kernel' stamp: 'gera 6/30/2019 00:45:26'!
+!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
 asInt64Tensor
 	^ TFTensor fromInt64s: self! !
 
-!String methodsFor: '*TensorFlow-Kernel' stamp: 'gera 1/7/2017 04:33:10'!
+!String methodsFor: '*TensorFlowCore' stamp: 'gera 1/7/2017 04:33:10'!
 asAsciiZ
 	^self, Character null asString! !
 
-!String methodsFor: '*TensorFlow-Kernel' stamp: 'gera 6/30/2019 00:45:26'!
+!String methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
 asTensor
 	^ TFTensor fromString: self! !
 
-!Number methodsFor: '*TensorFlow-Kernel' stamp: 'gera 6/30/2019 00:45:26'!
+!Number methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
 asFloatTensor
 	^ TFTensor fromFloats: self! !
 
-!Number methodsFor: '*TensorFlow-Kernel' stamp: 'gera 6/30/2019 00:45:25'!
+!Number methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:25'!
 asInt32Tensor
 	^ TFTensor fromInt32s: self! !
 
-!Number methodsFor: '*TensorFlow-Kernel' stamp: 'gera 6/30/2019 00:45:27'!
+!Number methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:27'!
 asInt64Tensor
 	^ TFTensor fromInt64s: self! !
 
-!Float methodsFor: '*TensorFlow-Kernel' stamp: 'gera 6/30/2019 00:45:26'!
+!Float methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
 asTensor
 	^ TFTensor fromFloats: self! !
 
-!Fraction methodsFor: '*TensorFlow-Kernel' stamp: 'gera 6/30/2019 00:45:27'!
+!Fraction methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:27'!
 asTensor
 	^ TFTensor fromFloats: self! !
 
-!Boolean methodsFor: '*TensorFlow-Kernel' stamp: 'gera 6/30/2019 00:45:27'!
+!Boolean methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:27'!
 asBooleanTensor
 	^ TFTensor fromBooleans: self! !
 TFStructure initialize!
