@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4607] on 24 May 2021 at 3:25:41 pm'!
+'From Cuis 5.0 [latest update: #4607] on 24 May 2021 at 3:32:38 pm'!
 'Description '!
-!provides: 'TensorFlowCore' 1 8!
+!provides: 'TensorFlowCore' 1 9!
 !requires: 'FFI' 1 33 nil!
 !requires: 'Statistics' 1 14 nil!
 SystemOrganization addCategory: 'TensorFlowCore'!
@@ -4312,6 +4312,14 @@ withDimensionsSized: aDimensionsSizeArray	self assertHasValidDimensionsSize: a
 ignoreFinalization
 	self finalizationRegistry remove: self ifAbsent: [].
 ! !
+
+!Object methodsFor: '*TensorFlowCore' stamp: 'JV 5/24/2021 15:32:15'!
+isA: aClass
+
+	"Answer a Boolean which is true if aClass, is the class or
+	 a superclass of the receiver, and false otherwise."
+
+	^(self isMemberOf: aClass) or: [self class inheritsFrom: aClass]! !
 
 !Object methodsFor: '*TensorFlowCore' stamp: 'gera 1/7/2017 20:18:16'!
 useFinalization
