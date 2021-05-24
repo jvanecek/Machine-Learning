@@ -1,240 +1,280 @@
-'From Cuis 5.0 [latest update: #4607] on 24 May 2021 at 9:43:56 am'!
+'From Cuis 5.0 [latest update: #4607] on 24 May 2021 at 3:25:41 pm'!
 'Description '!
-!provides: 'TensorFlowCore' 1 7!
+!provides: 'TensorFlowCore' 1 8!
 !requires: 'FFI' 1 33 nil!
 !requires: 'Statistics' 1 14 nil!
-SystemOrganization addCategory: #TensorFlowCore!
-SystemOrganization addCategory: #'TensorFlowCore-Tests'!
+SystemOrganization addCategory: 'TensorFlowCore'!
+SystemOrganization addCategory: 'TensorFlowCore-Tests'!
 
 
-!classDefinition: #TensorFlowCAPI category: #TensorFlowCore!
-ExternalLibrary subclass: #TensorFlowCAPI
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TensorFlowCAPI class' category: #TensorFlowCore!
-TensorFlowCAPI class
-	instanceVariableNames: 'current'!
-
-!classDefinition: #TFStructure category: #TensorFlowCore!
-ExternalStructure subclass: #TFStructure
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFStructure class' category: #TensorFlowCore!
-TFStructure class
-	instanceVariableNames: ''!
-
-!classDefinition: #ExternalWordArray category: #TensorFlowCore!
-TFStructure subclass: #ExternalWordArray
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'ExternalWordArray class' category: #TensorFlowCore!
-ExternalWordArray class
-	instanceVariableNames: ''!
-
-!classDefinition: #Int64Array category: #TensorFlowCore!
-ExternalWordArray subclass: #Int64Array
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'Int64Array class' category: #TensorFlowCore!
-Int64Array class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFOperationPtrArray category: #TensorFlowCore!
-ExternalWordArray subclass: #TFOperationPtrArray
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFOperationPtrArray class' category: #TensorFlowCore!
-TFOperationPtrArray class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFOutputArray category: #TensorFlowCore!
-ExternalWordArray subclass: #TFOutputArray
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFOutputArray class' category: #TensorFlowCore!
-TFOutputArray class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFTensorPtrArray category: #TensorFlowCore!
-ExternalWordArray subclass: #TFTensorPtrArray
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFTensorPtrArray class' category: #TensorFlowCore!
-TFTensorPtrArray class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFAttrMetadata category: #TensorFlowCore!
-TFStructure subclass: #TFAttrMetadata
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFAttrMetadata class' category: #TensorFlowCore!
-TFAttrMetadata class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFBuffer category: #TensorFlowCore!
-TFStructure subclass: #TFBuffer
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFBuffer class' category: #TensorFlowCore!
-TFBuffer class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFGraph category: #TensorFlowCore!
-TFStructure subclass: #TFGraph
-	instanceVariableNames: 'context'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFGraph class' category: #TensorFlowCore!
-TFGraph class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFImportGraphDefOptions category: #TensorFlowCore!
-TFStructure subclass: #TFImportGraphDefOptions
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFImportGraphDefOptions class' category: #TensorFlowCore!
-TFImportGraphDefOptions class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFOperation category: #TensorFlowCore!
-TFStructure subclass: #TFOperation
-	instanceVariableNames: 'graph output'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFOperation class' category: #TensorFlowCore!
-TFOperation class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFOperationDescription category: #TensorFlowCore!
-TFStructure subclass: #TFOperationDescription
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFOperationDescription class' category: #TensorFlowCore!
-TFOperationDescription class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFOutput category: #TensorFlowCore!
-TFStructure subclass: #TFOutput
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFOutput class' category: #TensorFlowCore!
-TFOutput class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFInput category: #TensorFlowCore!
-TFOutput subclass: #TFInput
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFInput class' category: #TensorFlowCore!
-TFInput class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFSession category: #TensorFlowCore!
-TFStructure subclass: #TFSession
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFSession class' category: #TensorFlowCore!
-TFSession class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFSessionOptions category: #TensorFlowCore!
-TFStructure subclass: #TFSessionOptions
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFSessionOptions class' category: #TensorFlowCore!
-TFSessionOptions class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFStatus category: #TensorFlowCore!
-TFStructure subclass: #TFStatus
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFStatus class' category: #TensorFlowCore!
-TFStatus class
-	instanceVariableNames: ''!
-
-!classDefinition: #TFTensor category: #TensorFlowCore!
-TFStructure subclass: #TFTensor
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowCore'!
-!classDefinition: 'TFTensor class' category: #TensorFlowCore!
-TFTensor class
-	instanceVariableNames: ''!
-
-!classDefinition: #ExternalWordArrayTest category: #'TensorFlowCore-Tests'!
+!classDefinition: #ExternalWordArrayTest category: 'TensorFlowCore-Tests'!
 TestCase subclass: #ExternalWordArrayTest
 	instanceVariableNames: 'library'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TensorFlowCore-Tests'!
-!classDefinition: 'ExternalWordArrayTest class' category: #'TensorFlowCore-Tests'!
+!classDefinition: 'ExternalWordArrayTest class' category: 'TensorFlowCore-Tests'!
 ExternalWordArrayTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #TensorFlowTestCase category: #'TensorFlowCore-Tests'!
+!classDefinition: #TensorFlowTestCase category: 'TensorFlowCore-Tests'!
 TestCase subclass: #TensorFlowTestCase
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TensorFlowCore-Tests'!
-!classDefinition: 'TensorFlowTestCase class' category: #'TensorFlowCore-Tests'!
+!classDefinition: 'TensorFlowTestCase class' category: 'TensorFlowCore-Tests'!
 TensorFlowTestCase class
 	instanceVariableNames: ''!
 
-!classDefinition: #TensorFlowCAPISlowTests category: #'TensorFlowCore-Tests'!
+!classDefinition: #TensorDomainTest category: 'TensorFlowCore-Tests'!
+TensorFlowTestCase subclass: #TensorDomainTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore-Tests'!
+!classDefinition: 'TensorDomainTest class' category: 'TensorFlowCore-Tests'!
+TensorDomainTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #TensorFlowCAPISlowTests category: 'TensorFlowCore-Tests'!
 TensorFlowTestCase subclass: #TensorFlowCAPISlowTests
 	instanceVariableNames: 'library'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TensorFlowCore-Tests'!
-!classDefinition: 'TensorFlowCAPISlowTests class' category: #'TensorFlowCore-Tests'!
+!classDefinition: 'TensorFlowCAPISlowTests class' category: 'TensorFlowCore-Tests'!
 TensorFlowCAPISlowTests class
 	instanceVariableNames: ''!
 
-!classDefinition: #TensorFlowCAPITest category: #'TensorFlowCore-Tests'!
+!classDefinition: #TensorFlowCAPITest category: 'TensorFlowCore-Tests'!
 TensorFlowTestCase subclass: #TensorFlowCAPITest
 	instanceVariableNames: 'library'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TensorFlowCore-Tests'!
-!classDefinition: 'TensorFlowCAPITest class' category: #'TensorFlowCore-Tests'!
+!classDefinition: 'TensorFlowCAPITest class' category: 'TensorFlowCore-Tests'!
 TensorFlowCAPITest class
+	instanceVariableNames: ''!
+
+!classDefinition: #TensorShapeTest category: 'TensorFlowCore-Tests'!
+TensorFlowTestCase subclass: #TensorShapeTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore-Tests'!
+!classDefinition: 'TensorShapeTest class' category: 'TensorFlowCore-Tests'!
+TensorShapeTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #TensorFlowCAPI category: 'TensorFlowCore'!
+ExternalLibrary subclass: #TensorFlowCAPI
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TensorFlowCAPI class' category: 'TensorFlowCore'!
+TensorFlowCAPI class
+	instanceVariableNames: 'current'!
+
+!classDefinition: #TFStructure category: 'TensorFlowCore'!
+ExternalStructure subclass: #TFStructure
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFStructure class' category: 'TensorFlowCore'!
+TFStructure class
+	instanceVariableNames: ''!
+
+!classDefinition: #ExternalWordArray category: 'TensorFlowCore'!
+TFStructure subclass: #ExternalWordArray
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'ExternalWordArray class' category: 'TensorFlowCore'!
+ExternalWordArray class
+	instanceVariableNames: ''!
+
+!classDefinition: #Int64Array category: 'TensorFlowCore'!
+ExternalWordArray subclass: #Int64Array
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'Int64Array class' category: 'TensorFlowCore'!
+Int64Array class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFOperationPtrArray category: 'TensorFlowCore'!
+ExternalWordArray subclass: #TFOperationPtrArray
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFOperationPtrArray class' category: 'TensorFlowCore'!
+TFOperationPtrArray class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFOutputArray category: 'TensorFlowCore'!
+ExternalWordArray subclass: #TFOutputArray
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFOutputArray class' category: 'TensorFlowCore'!
+TFOutputArray class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFTensorPtrArray category: 'TensorFlowCore'!
+ExternalWordArray subclass: #TFTensorPtrArray
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFTensorPtrArray class' category: 'TensorFlowCore'!
+TFTensorPtrArray class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFAttrMetadata category: 'TensorFlowCore'!
+TFStructure subclass: #TFAttrMetadata
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFAttrMetadata class' category: 'TensorFlowCore'!
+TFAttrMetadata class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFBuffer category: 'TensorFlowCore'!
+TFStructure subclass: #TFBuffer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFBuffer class' category: 'TensorFlowCore'!
+TFBuffer class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFGraph category: 'TensorFlowCore'!
+TFStructure subclass: #TFGraph
+	instanceVariableNames: 'context'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFGraph class' category: 'TensorFlowCore'!
+TFGraph class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFImportGraphDefOptions category: 'TensorFlowCore'!
+TFStructure subclass: #TFImportGraphDefOptions
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFImportGraphDefOptions class' category: 'TensorFlowCore'!
+TFImportGraphDefOptions class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFOperation category: 'TensorFlowCore'!
+TFStructure subclass: #TFOperation
+	instanceVariableNames: 'graph output'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFOperation class' category: 'TensorFlowCore'!
+TFOperation class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFOperationDescription category: 'TensorFlowCore'!
+TFStructure subclass: #TFOperationDescription
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFOperationDescription class' category: 'TensorFlowCore'!
+TFOperationDescription class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFOutput category: 'TensorFlowCore'!
+TFStructure subclass: #TFOutput
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFOutput class' category: 'TensorFlowCore'!
+TFOutput class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFInput category: 'TensorFlowCore'!
+TFOutput subclass: #TFInput
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFInput class' category: 'TensorFlowCore'!
+TFInput class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFSession category: 'TensorFlowCore'!
+TFStructure subclass: #TFSession
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFSession class' category: 'TensorFlowCore'!
+TFSession class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFSessionOptions category: 'TensorFlowCore'!
+TFStructure subclass: #TFSessionOptions
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFSessionOptions class' category: 'TensorFlowCore'!
+TFSessionOptions class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFStatus category: 'TensorFlowCore'!
+TFStructure subclass: #TFStatus
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFStatus class' category: 'TensorFlowCore'!
+TFStatus class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFTensor category: 'TensorFlowCore'!
+TFStructure subclass: #TFTensor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TFTensor class' category: 'TensorFlowCore'!
+TFTensor class
+	instanceVariableNames: ''!
+
+!classDefinition: #TensorDomain category: 'TensorFlowCore'!
+Object subclass: #TensorDomain
+	instanceVariableNames: 'type shape'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TensorDomain class' category: 'TensorFlowCore'!
+TensorDomain class
+	instanceVariableNames: ''!
+
+!classDefinition: #TensorShape category: 'TensorFlowCore'!
+Object subclass: #TensorShape
+	instanceVariableNames: 'dimensionSizes'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowCore'!
+!classDefinition: 'TensorShape class' category: 'TensorFlowCore'!
+TensorShape class
 	instanceVariableNames: ''!
 
 
@@ -279,6 +319,1602 @@ printOn: strm
 !TFTensor methodsFor: 'accessing' stamp: 'gera 2/13/2017 23:32:07'!
 elementSize
 	^ self class sizeForType: self type! !
+
+!TensorDomain methodsFor: 'Printing'!
+printOn: aStream	aStream		nextPutAll: (TFTensor descriptionOf: type);		space;		print: shape! !
+
+!TensorShape methodsFor: 'Printing'!
+printOn: aStream	aStream nextPutAll: self description! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 12/29/2016 14:51:01'!
+testArray: anExternalWordArraySubclass sampleElement: anObject
+	| array size  |
+	size := 4.
+	array := anExternalWordArraySubclass new: 4.
+	self assert: size * Smalltalk wordSize = array getHandle size.
+	self assert: (array first isKindOf: anObject class).
+	1 to: size do: [:index |
+		self assert: ((array at: index) isKindOf: anObject class)].
+! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 1/13/2017 12:17:48'!
+testArrayAtPutFor: anExternalWordArraySubclass elementSample: anObject
+	| array size one  |
+	size := 4.
+	array := anExternalWordArraySubclass new: 4.
+	one := array first.
+	
+	array first: anObject.
+	self assert: array first equals: anObject.
+	self assert: (array first isKindOf: anObject class).
+	array first: one.
+	self assert: array first equals: one.
+		
+	1 to: size do: [:index |
+		array at: index put: anObject.
+		self assert: (array at: index) equals: anObject.
+		self assert: ((array at: index) isKindOf: anObject class).
+		array at: index put: one.
+		self assert: (array at: index) equals: one.
+	]
+	! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:06:39'!
+testExternalFromArrayOperation
+	| op1 op2 array |
+	op1 := TFOperation fromHandle: (ExternalAddress new + 11111).
+	op2 := TFOperation fromHandle: (ExternalAddress new + 22222).
+	array := TFOperationPtrArray externalFromArray: (Array with: op1 with: op2).
+
+	self assert: array first getHandle = op1 getHandle.
+	self assert: (array at: 2) getHandle = op2 getHandle.
+! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:30:56'!
+testExternalFromArrayOutput
+	| o1 o2 array |
+	o1 := TFOutput new index: 16r40302010.
+	o2 := TFOutput new index: 16r76543210.
+	array := TFOutputArray externalFromArray: (Array with: o1 with: o2).
+
+	self assert: array first index = o1 index.
+	self assert: (array at: 2) index = o2 index.
+! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:10:27'!
+testExternalFromArrayTensor
+	| t1 t2 array |
+	t1 := TFTensor fromInt64: 16r8070605040302010.
+	t2 := TFTensor fromInt64: 16rFEDCBA9876543210.
+	array := TFTensorPtrArray externalFromArray: (Array with: t1 with: t2).
+	
+	self assert: array first getHandle = t1 getHandle.
+	self assert: (array at: 2) getHandle = t2 getHandle.
+	! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:06:39'!
+testOperationArrayElementsOfRightClass
+	^ self testArray: TFOperationPtrArray sampleElement: TFOperation new.
+! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:30:56'!
+testOutputArrayAtPut
+	| array size one other operation |
+	size := 4.
+	array := TFOutputArray externalNew: size.
+	operation := TFOperation fromHandle: ExternalAddress new + 16rF1F2F3F4.
+	
+	one := TFOutput new.
+	one index: 16r75F6F7F8.
+	one operation: operation.
+
+	other := array first.
+	array first: one.
+
+	self deny: one getHandle = other getHandle.	
+	
+	self assert: one index = other index.
+	self assert: one operation = other operation.
+	
+	operation := TFOperation fromHandle: ExternalAddress new + 16r12345678.
+	one index: 16r75F6F7F8.
+	one operation: operation.
+
+	1 to: size do: [:index |
+		other := array at: index.
+		array at: index put: one.
+
+		self deny: one getHandle = other getHandle.	
+		self assert: one index = other index.
+		self assert: one operation = other operation.
+	]! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:30:56'!
+testOutputArrayElementsAreAliases
+	| array size one other |
+	size := 4.
+	array := TFOutputArray externalNew: size.
+
+	one := array first.
+	other := array at: 1.
+	
+	one index: 12345678.
+	self assert: one index = 12345678.
+	self assert: other index = 12345678.
+
+	other index: 77665544.
+	self assert: one index = 77665544.
+	self assert: other index = 77665544.
+
+	1 to: size do: [:index |
+		one := array at: index.
+		other := array at: index.
+
+		one index: 12348765.
+		self assert: one index = 12348765.
+		self assert: other index = 12348765.
+
+		other index: 77222244.
+		self assert: one index = 77222244.
+		self assert: other index = 77222244].
+! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:30:56'!
+testOutputArrayElementsOfRightClass
+	| array size  |
+	size := 4.
+	array := TFOutputArray externalNew: size.
+	self assert: (array first isKindOf: TFOutput).
+	1 to: size do: [:index |
+		self assert: ((array at: index) isKindOf: TFOutput)].
+! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:10:27'!
+testTensorArrayAtPut
+	| sample |
+	sample := TFTensor fromInt64: 16r12341234.
+	
+	self testArrayAtPutFor: TFTensorPtrArray elementSample: sample.! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:10:27'!
+testTensorArrayElementsOfRightClass
+	^ self testArray: TFTensorPtrArray sampleElement: TFTensor new.! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 12/25/2016 20:54:13'!
+testUIn64ArrayfromArray
+	self testUIn64ArrayfromArray: #(1).
+	self testUIn64ArrayfromArray: #(16r12345678 2 16r76543210 4 16rDEADBEAF 6 16rFFFFFFFF).
+! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 1/13/2017 13:08:30'!
+testUIn64ArrayfromArray: template
+	| array |
+	array := Int64Array externalFromArray: template.
+	
+	template withIndexDo: [:each :index |
+		self assert: ((template at: index) = (array at: index))
+	].
+! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 12/27/2016 18:13:43'!
+testUInt64ArrayAtPut
+	self testArrayAtPutFor: Int64Array elementSample: 12345.
+	self testArrayAtPutFor: Int64Array elementSample: 16rFE00FE00.
+	self testArrayAtPutFor: Int64Array elementSample: 16r7E00FE00FE00FE00.
+	self testArrayAtPutFor: Int64Array elementSample: 16r-7E00FE00FE00FE00.
+! !
+
+!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 12/27/2016 18:11:59'!
+testUInt64ArrayElementsOfRightClass
+	^ self testArray: Int64Array sampleElement: 1234.! !
+
+!TensorFlowTestCase methodsFor: 'asserting' stamp: 'gera 6/29/2019 13:16:30'!
+assert: aNumber closeTo: anotherNumber
+	^ self
+		assert: (self number: aNumber isCloseTo: anotherNumber)
+		description: (self comparingStringBetween: aNumber and: anotherNumber)
+! !
+
+!TensorFlowTestCase methodsFor: 'asserting' stamp: 'gera 6/29/2019 13:12:25'!
+assertAll: expectedArray closeTo: actualArray
+	expectedArray with: actualArray do: [:expected :actual |
+		self assert: expected closeTo: actual]! !
+
+!TensorFlowTestCase methodsFor: 'asserting' stamp: 'gera 6/29/2019 13:15:53'!
+comparingStringDifferentBetween: expected and: actual
+	^ String streamContents: [:stream |
+		stream
+			nextPutAll: 'Expected something different to ';
+			nextPutAll: (expected printStringLimitedTo: 50);
+			nextPutAll: ' but was ';
+			nextPutAll: (actual printStringLimitedTo: 50);
+			nextPutAll: '.'
+		]! !
+
+!TensorFlowTestCase methodsFor: 'asserting' stamp: 'gera 6/29/2019 13:18:11'!
+deny: aNumber closeTo: anotherNumber
+	^ self
+		deny: (self number: aNumber isCloseTo: anotherNumber)
+		description: (self comparingStringDifferentBetween: aNumber and: anotherNumber)
+! !
+
+!TensorFlowTestCase methodsFor: 'asserting' stamp: 'gera 6/29/2019 13:21:52'!
+number: aNumber isCloseTo: anotherNumber
+ 	"are these two numbers close?"
+	self = 0.0 ifTrue: [^anotherNumber abs < 0.0001].
+	anotherNumber = 0 ifTrue: [^aNumber abs < 0.0001].
+	^aNumber = anotherNumber asFloat
+		or: [(aNumber - anotherNumber) abs / (aNumber abs max: anotherNumber abs) < 0.0001]! !
+
+!TensorFlowTestCase methodsFor: 'asserting' stamp: 'JV 5/9/2021 23:11:28'!
+performTest 
+	
+	'test.log' asFileEntry appendStreamDo: [:stream | stream nextPutAll: self asString; cr]. 
+	
+	super performTest.! !
+
+!TensorDomainTest methodsFor: 'tests' stamp: 'JuanVanecek 5/24/2021 14:52'!
+testFloatMatrixDomain	| domain |	domain := TensorDomain ofFloatMatrixSized: 2 by: 1.	self		assert: domain shape equals: #(2 1) asTensorShape;		assert: domain type equals: TFTensor typeFloat;		assert: domain printString equals: 'Float 2x1 matrix'.	self		assert: domain withNewUnknownDimension shape equals: #(-1 2 1) asTensorShape;		assert: domain withNewUnknownDimension type equals: TFTensor typeFloat.	self		assert: domain withSlicedShape shape equals: ( TensorShape vectorSized: 1 );		assert: domain withSlicedShape type equals: TFTensor typeFloat! !
+
+!TensorDomainTest methodsFor: 'tests' stamp: 'JuanVanecek 5/24/2021 14:49'!
+testFloatScalarDomain	| domain |	domain := TensorDomain ofFloatScalar.	self		assert: domain shape representsScalar;		assert: domain type equals: TFTensor typeFloat;		assert: domain printString equals: 'Float Scalar'.	self		assert: domain withNewUnknownDimension shape equals: TensorShape unknown;		assert: domain withNewUnknownDimension type equals: TFTensor typeFloat.	self		should: [ domain withSlicedShape ]		raise: AssertionFailure		withDescription: 'A scalar shaped can''t be sliced'! !
+
+!TensorDomainTest methodsFor: 'tests' stamp: 'JuanVanecek 5/24/2021 14:53'!
+testFloatVectorDomain	| domain |	domain := TensorDomain ofFloatVectorSized: 3.	self		assert: domain shape equals: ( TensorShape vectorSized: 3 );		assert: domain type equals: TFTensor typeFloat;		assert: domain printString equals: 'Float Vector size 3'.	self		assert: domain withNewUnknownDimension shape equals: #(-1 3) asTensorShape;		assert: domain withNewUnknownDimension type equals: TFTensor typeFloat.	self		assert: domain withSlicedShape shape equals: TensorShape scalar;		assert: domain withSlicedShape type equals: TFTensor typeFloat! !
+
+!TensorDomainTest methodsFor: 'tests' stamp: 'JuanVanecek 5/24/2021 14:54'!
+testIntegerScalarDomain	| domain |	domain := TensorDomain ofIntegerScalar.	self		assert: domain shape representsScalar;		assert: domain type equals: TFTensor typeInt32;		assert: domain printString equals: 'Int32 Scalar'.	self		assert: domain withNewUnknownDimension shape equals: TensorShape unknown;		assert: domain withNewUnknownDimension type equals: TFTensor typeInt32.	self		should: [ domain withSlicedShape ]		raise: AssertionFailure		withDescription: 'A scalar shaped can''t be sliced'! !
+
+!TensorDomainTest methodsFor: 'tests' stamp: 'JuanVanecek 5/24/2021 14:55'!
+testLargeIntegerScalarDomain	| domain |	domain := TensorDomain ofLargeIntegerScalar.	self		assert: domain shape representsScalar;		assert: domain type equals: TFTensor typeInt64;		assert: domain printString equals: 'Int64 Scalar'.	self		assert: domain withNewUnknownDimension shape equals: TensorShape unknown;		assert: domain withNewUnknownDimension type equals: TFTensor typeInt64.	self		should: [ domain withSlicedShape ]		raise: AssertionFailure		withDescription: 'A scalar shaped can''t be sliced'! !
+
+!TensorFlowCAPISlowTests methodsFor: 'testing graph' stamp: 'JV 5/23/2021 20:03:07'!
+testGraphFinalizationReleasesExternalMemory
+
+	self
+		assertCreating: 10
+		of: [ TFGraph create useFinalization ]
+		releasesExternalMemoryRepeatingUpTo: 20! !
+
+!TensorFlowCAPISlowTests methodsFor: 'testing options' stamp: 'JV 5/23/2021 20:03:36'!
+testSessionOptionFinalizationReleasesExternalMemory
+
+	self assertCreating: 10 of: [ TFSessionOptions create ] releasesExternalMemoryRepeatingUpTo: 20! !
+
+!TensorFlowCAPISlowTests methodsFor: 'testing session' stamp: 'JV 5/23/2021 20:03:18'!
+testSessionFinalizationReleasesExternalMemory
+
+	| graph |
+
+	graph := TFGraph create.
+	self assertCreating: 20 of: [ TFSession on: graph ] releasesExternalMemoryRepeatingUpTo: 20! !
+
+!TensorFlowCAPISlowTests methodsFor: 'testing status' stamp: 'JV 5/23/2021 20:03:47'!
+testStatusFinalizationReleasesExternalMemory
+
+	self assertCreating: 11 of: [ TFStatus create ] releasesExternalMemoryRepeatingUpTo: 1! !
+
+!TensorFlowCAPISlowTests methodsFor: 'asserting' stamp: 'JV 5/23/2021 20:02:24'!
+assertCreating: anAmount of: aTensorFlowObjectCreator releasesExternalMemoryRepeatingUpTo: timesRepeat
+
+	| total handles |
+
+	total := 0.
+	handles := Set new.
+	timesRepeat timesRepeat: [
+		total := total + anAmount.
+		handles addAll: (
+			(1 to: anAmount) collect: [:i |
+				Smalltalk garbageCollect.
+				aTensorFlowObjectCreator value getHandle ]).
+		handles size < total ifTrue: [
+			" Meaning some external addresses where reused, so we're good "
+			^self]].
+	self 
+		assert: handles size < total
+		description: 'No external address could be reused, check for some leak'
+	! !
+
+!TensorFlowCAPISlowTests methodsFor: 'testing tensor' stamp: 'JV 5/23/2021 20:02:58'!
+testTensorFinalizationReleasesExternalMemory
+	| template | 
+	
+	template := {String new: 10. String new: 100. String new: 1000}.
+	
+	self
+		assertCreating: 20
+		of: [ TFTensor fromStringArray: template ]
+		releasesExternalMemoryRepeatingUpTo: 20
+! !
+
+!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 12/26/2016 10:58:56'!
+constantFloatGraphDef
+	" This GraphDef corresponds to simple Graph, defined as
+	
+		tf.constant(0.42, name='a')
+		
+	 saved as ProtoBuf "
+	^ #[
+ 16r0A 16r2E 16r0A 16r01 16r61 16r12 16r05 16r43 16r6F 16r6E 16r73 16r74 16r2A 16r15 16r0A 16r05
+ 16r76 16r61 16r6C 16r75 16r65 16r12 16r0C 16r42 16r0A 16r08 16r01 16r12 16r00 16r2A 16r04 16r3D
+ 16r0A 16rD7 16r3E 16r2A 16r0B 16r0A 16r05 16r64 16r74 16r79 16r70 16r65 16r12 16r02 16r30 16r01
+ 16r0A 16r0C 16r0A 16r04 16r69 16r6E 16r69 16r74 16r12 16r04 16r4E 16r6F 16r4F 16r70 16r22 16r02
+ 16r08 16r0F] asString! !
+
+!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
+constantFloatGraphFromDef
+	^ TFGraph fromString: self constantFloatGraphDef! !
+
+!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 12/26/2016 11:13:29'!
+constantInt32GraphDef
+	" This GraphDef corresponds to simple Graph, defined as
+	
+		tf.constant(0.42, name='a')
+		
+	 saved as ProtoBuf "
+	^ #[
+ 16r0A 16r2B 16r0A 16r01 16r61 16r12 16r05 16r43 16r6F 16r6E 16r73 16r74 16r2A 16r12 16r0A 16r05
+ 16r76 16r61 16r6C 16r75 16r65 16r12 16r09 16r42 16r07 16r08 16r03 16r12 16r00 16r3A 16r01 16r2A
+ 16r2A 16r0B 16r0A 16r05 16r64 16r74 16r79 16r70 16r65 16r12 16r02 16r30 16r03 16r0A 16r0C 16r0A
+ 16r04 16r69 16r6E 16r69 16r74 16r12 16r04 16r4E 16r6F 16r4F 16r70 16r22 16r02 16r08 16r0F] asString! !
+
+!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
+constantInt32GraphFromDef
+	^ TFGraph fromString: self constantInt32GraphDef! !
+
+!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
+constantInt64Graph
+	| graph operation constant |
+	graph := TFGraph create.
+	constant := TFTensor fromInt64: 16r4242424242424242.
+	
+	self shouldnt: [
+		operation := graph const: 'a' value: constant
+	] raise: Error.
+	self deny: operation isNull.
+	^ graph! !
+
+!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'JV 5/11/2021 20:16:01'!
+constantInt64GraphDef
+	" This GraphDef corresponds to simple Graph, defined as
+	
+		tf.constant(0.42, name='a')
+		
+	 saved as ProtoBuf "
+	^ #[
+ 16r0A 16r33 16r0A 16r01 16r61 16r12 16r05 16r43 16r6F 16r6E 16r73 16r74 16r2A 16r1A 16r0A 16r05
+ 16r76 16r61 16r6C 16r75 16r65 16r12 16r11 16r42 16r0F 16r08 16r09 16r12 16r00 16r52 16r09 16rC2
+ 16r84 16r89 16r92 16rA4 16rC8 16r90 16rA1 16r42 16r2A 16r0B 16r0A 16r05 16r64 16r74 16r79 16r70
+ 16r65 16r12 16r02 16r30 16r09 16r0A 16r0C 16r0A 16r04 16r69 16r6E 16r69 16r74 16r12 16r04 16r4E
+ 16r6F 16r4F 16r70 16r12 16r00 16r22 16r02 16r08 16r0F] asString! !
+
+!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
+constantInt64GraphFromDef
+	^ TFGraph fromString: self constantInt64GraphDef! !
+
+!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
+emptyGraph
+	^ TFGraph fromString: self emptyGraphDef.
+	! !
+
+!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 12/22/2016 01:51:30'!
+emptyGraphDef
+	" This GraphDef corresponds to an Empty Graph (no operations), saved as ProtoBuf "
+	^ #[16r0A 16r0C 16r0A 16r04 16r69 16r6E 16r69 16r74 16r12 16r04 16r4E 16r6F 16r4F 16r70 16r22 16r02 16r08 16r0F] asString! !
+
+!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
+mulGraphTwoInputsInt64ConstTensorDeleted
+	| graph constant const in1 in2 mul1 |
+	graph := TFGraph create.
+	constant := TFTensor fromInt64: 16r2121212121212121.
+	
+	in1 := graph placeholder: 'in1' type: constant type.
+	in2 := graph placeholder: 'in2' type: constant type.
+	const := graph const: 'const' value: constant.
+
+	constant delete.	
+	constant := TFTensor fromInt64: 16r2222222222222222.
+	constant delete.	
+
+	mul1 := graph mul: 'mul1' described: [:description |
+		description addInput: (const output: 0).
+		description addInput: (in1 output: 0)].
+
+	graph mul: 'mul2' described: [:description |
+		description addInput: (mul1 output: 0).
+		description addInput: (in2 output: 0)].
+	
+	^ graph! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:28'!
+assertElementsOf: tensorArray are: allElementsArray
+	self assert: allElementsArray equals: (TFTensor elementsOf: tensorArray)! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
+assertRankOf: aMultidimensionalTensor is: anInteger
+	| rank |
+	rank := TFTensor rankOf: aMultidimensionalTensor.
+	self
+		assert: rank = anInteger
+		description: 'The rank is ', rank printString, ' and should have been ', anInteger printString! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:25'!
+assertShapeOf: aMultidimensionalTensor is: anArray
+	| shape |
+	shape := TFTensor shapeOf: aMultidimensionalTensor.
+	self
+		assert: shape = anArray
+		description: 'The shape is ', shape printString, ' and should have been ', anArray printString! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:28'!
+assertSizeOf: aMultidimensionalTensor is: anInteger
+	| size |
+	size := TFTensor sizeOf: aMultidimensionalTensor.
+	self
+		assert: size = anInteger
+		description: 'The size is ', size printString, ' and should have been ', anInteger printString! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 01:00:06'!
+assertTensor: aTFTensor elementsEquals: tensorArray
+	self assert: aTFTensor allElements equals: tensorArray! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 01:27:15'!
+assertTensor: aTFTensor streamEquals: tensorArray
+	| strm |
+	strm := aTFTensor asStream.
+	tensorArray do: [:each |
+		self assert: each equals: strm next].
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 01:44:48'!
+testArrayFromStream
+	| t template array |
+	t := 1.0 asTensor.
+	template := #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17) readStream.
+	
+	array := t arrayFromStream: template reset shape: #(10).
+	self assert: #(1 2 3 4 5 6 7 8 9 10) equals: array.
+	
+	array := t arrayFromStream: template reset shape: #(2 8).
+	self assert: #((1 2 3 4 5 6 7 8) (9 10 11 12 13 14 15 16)) equals: array.
+	
+	array := t arrayFromStream: template reset shape: #(2 4 2).
+	self assert: #(((1 2) (3 4) (5 6) (7 8)) ((9 10) (11 12) (13 14) (15 16))) equals: array.
+	! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'JB 2/15/2017 23:54:30'!
+testAsBooleanTensor
+	self testAsBooleanTensor: true shape: #().
+	self testAsBooleanTensor: #(true false true false) shape: #(4).
+	self testAsBooleanTensor: #((true false true false) (false true false true)) shape: #(2 4).
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
+testAsBooleanTensor: tensorArray shape: shapeArray
+	| tensor index bools |
+	tensor := tensorArray asBooleanTensor.
+	
+	self assert: tensor shape equals: shapeArray.
+	
+	index := 1.
+	bools := tensor allElements.
+	TFTensor elementsOf: tensorArray do: [:each |
+		self assert: (bools at: index) equals: each.
+		index := index + 1].
+
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/30/2017 18:09:11'!
+testAsFloatTensor
+	self testAsFloatTensor: 1 shape: #().
+	self testAsFloatTensor: #(1 2 3 4) shape: #(4).
+	self testAsFloatTensor: #((1 2 3 4) (3.14 1.71 2.12 -7.8)) shape: #(2 4).
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:28'!
+testAsFloatTensor: tensorArray shape: shapeArray
+	| tensor index floats |
+	tensor := tensorArray asFloatTensor.
+	
+	index := 1.
+	floats := tensor allFloats.
+	TFTensor elementsOf: tensorArray do: [:each |
+		self assert: (floats at: index) closeTo: each.
+		index := index + 1].
+
+	self assert: tensor shape equals: shapeArray! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/31/2017 16:50:15'!
+testAsInt32Tensor
+	self testAsInt32Tensor: 1 shape: #().
+	self testAsInt32Tensor: #(1 2 3 4) shape: #(4).
+	self testAsInt32Tensor: #((1 2 3 4) (-314 171 -212 -78)) shape: #(2 4).
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
+testAsInt32Tensor: tensorArray shape: shapeArray
+	| tensor index ints |
+	tensor := tensorArray asInt32Tensor.
+	
+	self assert: tensor shape equals: shapeArray.
+	
+	index := 1.
+	ints := tensor allInt32s.
+	TFTensor elementsOf: tensorArray do: [:each |
+		self assert: (ints at: index) equals: each.
+		index := index + 1].
+
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 23:11:03'!
+testAsInt64Tensor
+	self testAsInt64Tensor: 1 shape: #().
+	self testAsInt64Tensor: #(1 2 3 4) shape: #(4).
+	self testAsInt64Tensor: #((1 2 3 4) (-314 171 -212 -78)) shape: #(2 4).
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
+testAsInt64Tensor: tensorArray shape: shapeArray
+	| tensor index ints |
+	tensor := tensorArray asInt64Tensor.
+	
+	self assert: tensor shape equals: shapeArray.
+	
+	index := 1.
+	ints := tensor allInt64s.
+	TFTensor elementsOf: tensorArray do: [:each |
+		self assert: (ints at: index) equals: each.
+		index := index + 1].
+
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
+testElementsOf: tensorArray sum: aNumber
+	| sum |
+	sum := 0.
+	TFTensor elementsOf: tensorArray do: [:each |
+		sum := sum + each].
+	
+	self assert: sum equals: aNumber! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/17/2017 18:58:20'!
+testElementsOfTensorDoIteratesAll
+	self testElementsOf: -13123213 sum: -13123213.
+	self testElementsOf: #(123 123 123 123) sum: 123*4.
+	self testElementsOf: #((1 2 3) (4 5 6) (7 8 9) (10 11 12)) sum: 12*13/2.
+	self testElementsOf: #(((1) (2) (3)) ((4) (5) (6)) ((7) (8) (9))) sum: 9*10/2.
+	self
+		testElementsOf: #(((1 100) (2 100) (3 100)) ((4 100) (5 100) (6 100)) ((7 100) (8 100) (9 100)))
+		sum: 9*10/2+(100*9).! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/13/2017 19:50:59'!
+testRanks
+	self assertRankOf: -13123213 is: 0.
+	self assertRankOf: #(123 123 123 123) is: 1.
+	self assertRankOf: #((1 2 3) (4 5 6) (7 8 9)) is: 2.
+	self assertRankOf: #(((1) (2) (3)) ((4) (5) (6)) ((7) (8) (9))) is: 3.! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/13/2017 19:56:50'!
+testShape
+	self assertShapeOf: -13123213 is: #().
+	self assertShapeOf: #(123 123 123 123) is: #(4).
+	self assertShapeOf: #((1 2 3) (4 5 6) (7 8 9) (10 11 12)) is: #(4 3).
+	self assertShapeOf: #(((1) (2) (3)) ((4) (5) (6)) ((7) (8) (9))) is: #(3 3 1).! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/18/2017 00:05:31'!
+testSizes
+	self assertSizeOf: -13123213 is: 1.
+	self assertSizeOf: #(123 123 123 123) is: 4.
+	self assertSizeOf: #((1 2 3) (4 5 6) (7 8 9) (10 11 12)) is: 4*3.
+	self assertSizeOf: #(((1) (2) (3)) ((4) (5) (6)) ((7) (8) (9))) is: 3*3*1.! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 01:11:29'!
+testTensorAllElements
+	self assertTensor: -13123213 asInt32Tensor elementsEquals: #(-13123213).
+	self assertTensor: #(123 123 123 123) asInt32Tensor elementsEquals: #(123 123 123 123).
+	self assertTensor: #((1 2 3) (4 5 6) (7 8 9) (10 11 12)) asFloatTensor elementsEquals: #(1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0).
+	self
+		assertTensor: #(((1 100) (2 100) (3 100)) ((4 100) (5 100) (6 100)) ((7 100) (8 100) (9 100))) asFloatTensor
+		elementsEquals: #(1.0 100.0 2.0 100.0 3.0 100.0 4.0 100.0 5.0 100.0 6.0 100.0 7.0 100.0 8.0 100.0 9.0 100.0).! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:25'!
+testTensorAsNumbers
+	| tensor template array |
+	template := #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16).
+	
+	tensor := TFTensor fromFloats: template shape: #(16).
+	array := tensor asNumbers.
+	self assert: template equals: array.
+	
+	tensor := TFTensor fromFloats: template shape: #(2 8).
+	array := tensor asNumbers.
+	self assert: #((1 2 3 4 5 6 7 8) (9 10 11 12 13 14 15 16)) equals: array.
+	
+	tensor := TFTensor fromFloats: template shape: #(2 4 2).
+	array := tensor asNumbers.
+	self assert: #(((1 2) (3 4) (5 6) (7 8)) ((9 10) (11 12) (13 14) (15 16))) equals: array.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
+testTensorAsNumbersFloats
+	| tensor template array |
+	template := #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16).
+	
+	tensor := TFTensor fromFloats: template shape: #(16).
+	array := tensor asNumbers.
+	self assert: #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16) equals: array.
+	
+	tensor := TFTensor fromFloats: template shape: #(2 8).
+	array := tensor asNumbers.
+	self assert: #((1 2 3 4 5 6 7 8) (9 10 11 12 13 14 15 16)) equals: array.
+	
+	tensor := TFTensor fromFloats: template shape: #(2 4 2).
+	array := tensor asNumbers.
+	self assert: #(((1 2) (3 4) (5 6) (7 8)) ((9 10) (11 12) (13 14) (15 16))) equals: array.
+	! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
+testTensorAsNumbersInt32
+	| tensor template array |
+	template := #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16).
+	
+	tensor := TFTensor fromInt32s: template shape: #(16).
+	array := tensor asNumbers.
+	self assert: #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16) equals: array.
+	
+	tensor := TFTensor fromInt32s: template shape: #(2 8).
+	array := tensor asNumbers.
+	self assert: #((1 2 3 4 5 6 7 8) (9 10 11 12 13 14 15 16)) equals: array.
+	
+	tensor := TFTensor fromInt32s: template shape: #(2 4 2).
+	array := tensor asNumbers.
+	self assert: #(((1 2) (3 4) (5 6) (7 8)) ((9 10) (11 12) (13 14) (15 16))) equals: array.
+	! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 08:05:47'!
+testTensorAsNumbersRank0
+	self assert: 1 equals: 1 asInt32Tensor asNumbers.
+	self assert: 1.0 equals: 1.0 asTensor asNumbers.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 01:28:38'!
+testTensorAsStream
+	self assertTensor: -13123213 asInt32Tensor streamEquals: #(-13123213).
+	self assertTensor: #(123 123 123 123) asInt32Tensor streamEquals: #(123 123 123 123).
+	self assertTensor: #((1 2 3) (4 5 6) (7 8 9) (10 11 12)) asFloatTensor streamEquals: #(1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0).
+	self
+		assertTensor: #(((1 100) (2 100) (3 100)) ((4 100) (5 100) (6 100)) ((7 100) (8 100) (9 100))) asFloatTensor
+		streamEquals: #(1.0 100.0 2.0 100.0 3.0 100.0 4.0 100.0 5.0 100.0 6.0 100.0 7.0 100.0 8.0 100.0 9.0 100.0).! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:25'!
+testTensorByteSize
+	| tensor |
+	tensor := TFTensor
+		type: TFTensor typeInt64
+		shape: #(2 3).
+
+	self assert: tensor byteSize equals: (8*2*3)! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
+testTensorData
+	| tensor |
+	tensor := TFTensor
+		type: TFTensor typeInt64
+		shape: #(2 3).
+	self assert: tensor rank equals: 2.
+	self deny: tensor data getHandle asInteger = 0.
+	self deny: tensor data getHandle isNil.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/18/2017 17:04:47'!
+testTensorElementsOf
+	self
+		assertElementsOf: -13123213
+		are: #(-13123213).
+	self
+		assertElementsOf: #(123 123 123 123)
+		are: #(123 123 123 123).
+	self
+		assertElementsOf: #((1 2 3) (4 5 6) (7 8 9) (10 11 12))
+		are: (1 to: 12) asArray.
+	self
+		assertElementsOf: #(((1) (2) (3)) ((4) (5) (6)) ((7) (8) (9)))
+		are: (1 to: 9) asArray.
+	self
+		assertElementsOf: #(((1 100) (2 100) (3 100)) ((4 100) (5 100) (6 100)) ((7 100) (8 100) (9 100)))
+		are: #(1 100 2 100 3 100 4 100 5 100 6 100 7 100 8 100 9 100)
+		
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
+testTensorFromDoublesOutOfRange
+	| tensor template values |
+	template := #(1.23456 0.0 -1.234567 1.0e39 1.0e-50 1.0e309 1.0e-324) copy.
+	tensor := TFTensor fromDoubles: template.
+	
+	template at: 6 put: Float infinity.
+	
+	values := tensor allElements.
+		
+	self assert: tensor shape equals: #(7).
+	self assert: tensor size equals: 7.
+	self assert: tensor byteSize equals: (7*8).
+	template with: values do: [:expected :actual |
+		self assert: expected closeTo: actual].
+	self assert: 0.0 equals: values last.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
+testTensorFromDoublesOutOfRangeForFloats
+	| tensor template values |
+	template := #(1.23456 0.0 -1.234567 3.402824e38 1.175494351e-46 1.0e39 1.0e-50) copy.
+	tensor := TFTensor fromDoubles: template.
+	
+	values := tensor allElements.
+		
+	self assert: tensor shape equals: #(7).
+	self assert: tensor size equals: 7.
+	self assert: tensor byteSize equals: (7*8).
+	template with: values do: [:expected :actual |
+		self assert: expected closeTo: actual].
+	self assert: 0.0 ~= values last.
+	self assert: 0.0 ~= (values at: 5).! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
+testTensorFromDoublesShape
+	| tensor template values |
+	template := #(1.23456 0.0 -1.234567 1.1).
+	tensor := TFTensor fromDoubles: template shape: #(2 2).
+	values := tensor allElements.
+		
+	self assert: tensor shape equals: #(2 2).
+	self assert: tensor size equals: 4.
+	self assert: tensor byteSize equals: (tensor size*8).
+	template with: values do: [:templ :actual |
+		self assert: templ closeTo: actual]
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
+testTensorFromFloats
+	| tensor template values |
+	template := #(1.23456 0.0 -1.234567 3.402823466e38 1.175494351e-38).
+	tensor := TFTensor fromFloats: template.
+	values := tensor allFloats.
+		
+	self assert: tensor shape equals: #(5).
+	self assert: tensor size equals: 5.
+	self assert: tensor byteSize equals: (5*4).
+	template @ values do: [:point |
+		self assert: point x closeTo: point y]
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:25'!
+testTensorFromFloats2x2
+	| tensor template values |
+	template := #(
+		(-1.1 -2.1)
+		(-1.2 -2.2)).
+		
+	tensor := TFTensor fromFloats: template.
+	values := tensor allFloats.
+		
+	self assert: tensor shape equals: #(2 2).
+	self assert: tensor size equals: 4.
+	self assert: tensor byteSize equals: (4*4).
+		
+	#(-1.1 -2.1 -1.2 -2.2) with: values do: [:reference :value |
+		self assert: reference closeTo: value]
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
+testTensorFromFloatsOutOfRange
+	| tensor template values |
+	template := #(1.23456 0.0 -1.234567 3.402824e38 1.175494351e-46 1.0e39 1.0e-50) copy.
+	tensor := TFTensor fromFloats: template.
+	
+	template at: 4 put: Float infinity.
+	template at: 6 put: Float infinity.
+	
+	values := tensor allElements.
+		
+	self assert: tensor shape equals: #(7).
+	self assert: tensor size equals: 7.
+	self assert: tensor byteSize equals: (7*4).
+	template with: values do: [:expected :actual |
+		self assert: expected closeTo: actual].
+	self assert: 0.0 equals: values last.
+	self assert: 0.0 equals: (values at: 5).! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:28'!
+testTensorFromFloatsScalar
+	| tensor template values |
+	template := 3.141516.
+	tensor := TFTensor fromFloats: template.
+	values := tensor allFloats.
+		
+	self assert: tensor shape equals: #().
+	self assert: tensor size equals: 1.
+	self assert: tensor byteSize equals: (1*4).
+	
+	self assert: template closeTo: values first.! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
+testTensorFromFloatsShape
+	| tensor template values |
+	template := #(1.23456 0.0 -1.234567 1.1).
+	tensor := TFTensor fromFloats: template shape: #(2 2).
+	values := tensor allFloats.
+		
+	self assert: tensor shape equals: #(2 2).
+	self assert: tensor size equals: 4.
+	self assert: tensor byteSize equals: (tensor size*4).
+	template with: values do: [:templ :actual |
+		self assert: templ closeTo: actual]
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
+testTensorFromFloatsShapeUndefinedSize
+	| template |
+	template := #(1.23456 0.0 -1.234567 1.1).
+	
+	self
+		should: [TFTensor fromFloats: template shape: #(2 2 -1)]
+		raiseError: 'Inferred size and real size don''t match.'.! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:28'!
+testTensorFromInt32
+	| tensor template values |
+	template := -1123123123.
+	tensor := TFTensor fromInt32: template.
+	values := tensor allInt32s.
+		
+	self assert: tensor shape equals: #().
+	self assert: tensor size equals: 1.
+	self assert: tensor byteSize equals: 4.
+	self assert: values equals: {template}.! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
+testTensorFromInt32Shape
+	| tensor template values |
+	template := #(123456 0 -1234567 11).
+	tensor := TFTensor fromInt32s: template shape: #(2 2).
+	values := tensor allFloats.
+		
+	self assert: tensor type equals: TFTensor typeInt32.
+	self assert: tensor shape equals: #(2 2).
+	self assert: tensor size equals: 4.
+	self assert: tensor byteSize equals: (tensor size*4).
+	template with: values do: [:templ :actual |
+		self assert: templ closeTo: actual]
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
+testTensorFromInt32s
+	| tensor template values |
+	template := #(0 -1 1 -2 2 32768 65536 -1123123123).
+	tensor := TFTensor fromInt32s: template.
+	values := tensor allInt32s.
+		
+	self assert: tensor shape equals: {template size}.
+	self assert: tensor size equals: template size.
+	self assert: tensor byteSize equals: (template size*4).
+	self assert: values equals: template.! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:25'!
+testTensorFromInt64Shape
+	| tensor template values |
+	template := #(123456 0 -1234567 11).
+	tensor := TFTensor fromInt64s: template shape: #(2 2).
+	values := tensor allFloats.
+		
+	self assert: tensor type equals: TFTensor typeInt64.
+	self assert: tensor shape equals: #(2 2).
+	self assert: tensor size equals: 4.
+	self assert: tensor byteSize equals: (tensor size*8).
+	template with: values do: [:templ :actual |
+		self assert: templ closeTo: actual]
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:25'!
+testTensorFromInt64s
+	| tensor template values |
+	template := #(16r1234567812345678 0 -12345678910111213).
+	tensor := TFTensor fromInt64s: template.
+	values := tensor allInt64s.
+	
+	self assert: tensor shape equals: #(3).
+	self assert: tensor size equals: 3.
+	self assert: tensor byteSize equals: (3*8).
+	self assert: template equals: values.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
+testTensorNewScalar
+	| tensor |
+	tensor := TFTensor type: TFTensor typeInt64 shape: #().
+	tensor ignoreFinalization.
+	
+	self deny: tensor isNull.
+	tensor delete.
+	self assert: tensor isNull.! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 12/26/2016 14:44:54'!
+testTensorShape0D
+	^ self testTensorShape: #()! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 12/26/2016 14:45:28'!
+testTensorShape10D
+	^ self testTensorShape: #(1 2 3 4 5 6 7 8 9 10)! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 12/26/2016 14:44:50'!
+testTensorShape1D
+	^ self testTensorShape: #(7)! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 12/26/2016 14:44:40'!
+testTensorShape2D
+	^ self testTensorShape: #(1 4)! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
+testTensorShape: anArray
+	| tensor shape size |
+	tensor := TFTensor
+		type: TFTensor typeInt64
+		shape: anArray.
+	self assert: tensor rank equals: anArray size.
+	anArray withIndexDo: [:each :index |
+		self assert: (tensor sizeOn: index - 1) equals: (anArray at: index)].
+	shape := tensor shape.
+	size := anArray isEmpty
+		ifTrue: [1]
+		ifFalse: [anArray product].
+	self assert: shape equals: anArray.
+	self assert: tensor size equals: size.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
+testTensorType
+	| tensor |
+	tensor := TFTensor type: TFTensor typeInt64 shape: #().
+	self assert: tensor type equals: tensor class typeInt64.
+
+	tensor := TFTensor type: TFTensor typeFloat shape: #().
+	self assert: tensor type equals: tensor class typeFloat.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:28'!
+testTensorTypes
+	| types |
+	types := #(
+		Float 1
+		Double 2
+		Int32 3
+		UInt8 4
+		Int16 5
+		Int8 6
+		String 7
+		Complex64 8
+		Int64 9
+		Boolean 10
+		QInt8 11
+		QUInt8 12
+		QInt32 13
+		BFloat16 14
+		QInt16 15
+		QUInt16 16
+		UInt16 17
+		Complex128 18
+		Half 19
+		Resource 20).
+	types pairsDo: [:name :value |
+		self assert: (TFTensor perform: (#type, name) asSymbol) equals: value]! !
+
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'gera 6/30/2019 00:45:28'!
+assertTensorFromStrings: strings shape: shape
+	| tensor |
+	tensor := TFTensor fromStrings: strings shape: shape.
+
+	self assert: shape equals: tensor shape.	
+	self assert: strings equals: tensor allStrings.
+
+	! !
+
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'gera 1/31/2017 00:47:19'!
+testStringAsTensor
+	| tensor template |
+	template := 'hola manola'.
+	
+	tensor := template asTensor.
+	
+	self assert: tensor dataBytes first equals: template size.
+	self assert: tensor dataBytes allButFirst asString equals: template.! !
+
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/23/2021 14:22:19'!
+testStringDecode
+	| size string encoded decoded status |
+	" This test assumes the internal representation of a TensorFlow string. May fail if they change it "
+	
+	string := 'a ver como queda este string encodeado?'.
+	
+	status := TFStatus create.
+	size := library stringEncodedSize: string.
+	encoded := ExternalAddress gcallocate: size + 20.
+	encoded byteAt: size + 1 put: $@ asciiValue.
+	library stringEncode: string len: string size destination: encoded len: size + 20 status: status.
+	status check.
+
+	decoded := library stringDecode: encoded.
+
+	self deny: decoded = (string, '@').
+	self assert: decoded equals: string.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'gera 1/13/2017 10:16:53'!
+testStringEncode
+	| size string encoded encodedSize |
+	" This test assumes the internal representation of a TensorFlow string. May fail if they change it "
+	
+	string := 'a ver como queda este string encodeado?'.
+	size := library stringEncodedSize: string.
+	encoded := ByteArray new: size+20.
+	encodedSize := library stringEncode: string to: encoded.
+	
+	self assert: encodedSize equals: size.
+	self assert: (encoded byteAt: 1) equals: string size.
+	self assert: (encoded structAt: 2 length: string size) asString equals: string.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'gera 7/3/2019 03:33:19'!
+testStringEncodeExternal
+	| size string encoded encodedSize status |
+	" This test assumes the internal representation of a TensorFlow string. May fail if they change it "
+	
+	status := TFStatus create.
+	string := 'a ver como queda este string encodeado?'.
+	
+	size := library stringEncodedSize: string.
+	encoded := ExternalAddress gcallocate: size + 20.
+	encodedSize := library stringEncode: string len: string size destination: encoded len: size + 20 status: status.
+
+	status check.
+	self assert: encodedSize equals: size.
+	self assert: (encoded unsignedByteAt: 1) equals: string size.
+	self assert: (encoded structAt: 2 length: string size) asString equals: string.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'gera 1/13/2017 10:17:31'!
+testStringSize
+	self assert: (library primStringEncodedSize: 0) equals: (0+1).
+	self assert: (library primStringEncodedSize: 127) equals: (127+1).
+	self assert: (library primStringEncodedSize: 128) equals: (128+2).
+	self assert: (library primStringEncodedSize: 127*127) equals: (127*127+2).
+	self assert: (library primStringEncodedSize: 127*127+123) equals: (127*127+123+2).
+	self assert: (library primStringEncodedSize: 127*127*127) equals: (127*127*127+3).
+
+	self assert: (library stringEncodedSize: '') equals: (0+1).
+	self assert: (library stringEncodedSize: (String new: 127)) equals: (127+1).
+	self assert: (library stringEncodedSize: (String new: 128)) equals: (128+2).
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'gera 6/30/2019 00:45:25'!
+testTensorFromString
+	| tensor template |
+	template := 'hola manola'.
+	
+	tensor := TFTensor fromString: template.
+	
+	self assert: tensor dataBytes first equals: template size.
+	self assert: tensor dataBytes allButFirst asString equals: template.! !
+
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/23/2021 14:22:07'!
+testTensorFromStringArray
+	| tensor template |
+
+	template := #('hola manola' 'te traje una lola' 'pamela' 'que pandulce!!').
+	
+	tensor := TFTensor fromStringArray: template.
+	
+	self assert: tensor allStrings equals: template.! !
+
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/23/2021 14:22:01'!
+testTensorFromStrings
+	| tensor template flatten |
+
+	template := #(('hola manola' 'te traje una lola') ('pamela' 'que pandulce!!') ('habia una vez' 'truz')).
+	flatten := TFTensor elementsOf: template.
+	tensor := TFTensor fromStrings: template.
+
+	self assert: #(3 2) equals: tensor shape.	
+	self assert: flatten equals: tensor allStrings.
+
+	! !
+
+!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/23/2021 14:21:49'!
+testTensorFromStringsShape
+	| template |
+	
+	template := #('hola manola' 'te traje una lola' 'pamela' 'que pandulce!!' 'habia una vez' 'truz').
+	
+	self assertTensorFromStrings: template shape: #(6).
+	self assertTensorFromStrings: template shape: #(3 2).
+	self assertTensorFromStrings: template shape: #(1 1 6 1 1).
+	self assertTensorFromStrings: #('hola como estas?') shape: #().
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
+testDecodeCSVGraphRunCSV: csvLines
+	| defaults graph output records session results values |
+	defaults := {
+		TFTensor fromInt64s: #(-1).
+		TFTensor fromInt64s: #(-1).
+		TFTensor fromInt64s: #(-1).
+		TFTensor fromInt64s: #(-1)}.
+		
+	graph := self decodeCSVGraphDefaults: defaults.
+	records := (graph operationNamed: 'records') input: 0.
+	output := graph operationNamed: 'output'.
+	values := TFTensor fromStringArray: csvLines.
+	
+	session := TFSession on: graph.
+	results := session
+		runOperations: {output}
+		inputs: {records}
+		values: {values}
+		outputs: {
+			(output output: 0).
+			(output output: 1).
+			(output output: 2).
+			(output output: 3)}.
+		
+	graph delete.
+	
+	^ (1 to: 4) collect: [:i |
+		(results at: i) allInt64s].
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
+testGetAttrMetadataType
+	| graph op template metadata |
+	template := #(1 2 3 4 5).
+	graph := TFGraph create.
+	op := graph 
+		newOperation: 'Placeholder'
+		named: 'const'
+		described: [:description |
+			description at: 'shape' putShape: template.
+			description at: 'dtype' putType: TFTensor typeInt64].
+		
+	metadata := op attrMetadata: 'dtype'.
+	self assert: metadata isType.
+	self assert: metadata isList equals: false.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/23/2021 16:57:52'!
+testGetOperationOnConstantGraph
+	| graph op |
+	graph := self constantFloatGraphFromDef.
+	self shouldnt: [op := graph operationNamed: 'a'] raise: Error.
+	self assert: op name equals: 'a'.
+	self assert: op type equals: 'Const'.
+	self assert: op inputsCount equals: 0.
+	self assert: op outputsCount equals: 1.! !
+
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/29/2017 02:58:40'!
+testGetOperationOnEmptyGraph
+	| graph |
+	graph := self emptyGraph.
+	
+	self
+		should: [graph operationNamed: 'something']
+		raiseError: 'Operation not found'.! !
+
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/13/2017 10:12:12'!
+testGraph: aTFGraph outputType: anInteger
+	| operation output |
+	operation := aTFGraph operationNamed: 'a'.
+	output := operation output: 0.
+	self assert: output type equals: anInteger.
+	output free.! !
+
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
+testNewOperationDescription
+	| graph description |
+	graph := TFGraph create.
+	description := graph newOperationDescription: 'Const' named: 'first_operation'.
+	self deny: description isNull.
+	self should: [description finish] raise: Error description: 'This should have complained of missing attributes'.! !
+
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/11/2021 19:56:29'!
+testNewOperationPlaceholderNoType
+	| graph noType |
+	noType := 'INVALID_ARGUMENT: NodeDef missing attr ''dtype'' from Op<name=Placeholder; signature= -> output:dtype; attr=dtype:type; attr=shape:shape,default=<unknown>>; NodeDef: {{node placeholder}}'.
+	graph := TFGraph create.
+	self
+		should: [(graph newOperationDescription: 'Placeholder' named: 'placeholder') finish]
+		raiseError: noType.! !
+
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/11/2021 19:57:14'!
+testNewVariableNoAttributes
+	| graph error |
+	graph := TFGraph create.
+	error :=  'INVALID_ARGUMENT: NodeDef missing attrs ''shape'', ''dtype'' from Op<name=Variable; signature= -> ref:Ref(dtype); attr=shape:shape; attr=dtype:type; attr=container:string,default=""; attr=shared_name:string,default=""; is_stateful=true>; NodeDef: {{node var}}'.
+	self
+		should: [graph newOperation: 'Variable' named: 'var']
+		raiseError: error.! !
+
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 6/30/2019 00:45:28'!
+testOperationOutputTypeFloat
+	^self testGraph: self constantFloatGraphFromDef outputType: TFTensor typeFloat! !
+
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 6/30/2019 00:45:26'!
+testOperationOutputTypeInt32
+	^self testGraph: self constantInt32GraphFromDef outputType: TFTensor typeInt32! !
+
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 6/30/2019 00:45:25'!
+testOperationOutputTypeInt64
+	^self testGraph: self constantInt64GraphFromDef outputType: TFTensor typeInt64! !
+
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
+testRunOperationArray
+	| graph operation session |
+	graph := self constantFloatGraphFromDef.
+	session := TFSession on: graph.
+	operation := graph operationNamed: 'a'.
+	
+	self shouldnt: [session runOperations: (Array with: operation)] raise: Error.
+
+	graph delete.! !
+
+!TensorFlowCAPITest methodsFor: 'initialization' stamp: 'gera 12/21/2016 02:11:17'!
+setUp
+	library := TensorFlowCAPI current! !
+
+!TensorFlowCAPITest methodsFor: 'initialization' stamp: 'gera 1/29/2017 02:51:28'!
+should: aBlock raiseError: aString
+	| message |
+	message := 'No Error was signaled'.
+	aBlock ifError: [:description :receiver | message := description].
+	self assert: 'Error: ',aString equals: message.! !
+
+!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
+tesCloseSessionTwiceNoCrash
+	| graph session |
+	graph := TFGraph create.
+	session := TFSession on: graph.
+	self deny: session isNull.
+	session ignoreFinalization.
+	session close.
+	session close.
+	session delete.
+	self assert: session isNull.! !
+
+!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
+testCloseSession
+	| graph session |
+	graph := TFGraph create.
+	session := TFSession on: graph.
+	self deny: session isNull.
+	session ignoreFinalization.
+	self shouldnt: [session close] raise: Error.
+	self shouldnt: [session delete] raise: Error.
+	self assert: session isNull.! !
+
+!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
+testNewSession
+	| graph session |
+	graph := TFGraph create.
+	session := TFSession on: graph.
+	session ignoreFinalization.
+	self deny: session isNull.
+	session delete.
+	self assert: session isNull.! !
+
+!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
+testSessionOnEmptyGraph
+	| session |
+	session := TFSession on: self emptyGraph.
+	self
+		should: [session run]
+		raiseError: 'INVALID_ARGUMENT: Must specify at least one target to fetch or execute.'.! !
+
+!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
+testSessionRunOutputOnGraph: graph
+	| operation session output tensor |
+	session := TFSession on: graph.
+	operation := graph operationNamed: 'a'.
+	output := operation output: 0.
+	
+	tensor := session runOutput: output.
+	
+	self deny: tensor isNull.
+	self deny: tensor data isNull.
+	self assert: (tensor data getHandle signedLongLongAt: 1) equals: 16r4242424242424242.
+
+	output free.
+	graph delete.! !
+
+!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 1/6/2017 00:06:16'!
+testSessionRunTargetOutput
+	^ self testSessionRunTargetOutputOnGraph: self constantInt64GraphFromDef.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
+testSessionRunTargetOutputOnGraph: graph
+	| operation session output tensor |
+	session := TFSession on: graph.
+	operation := graph operationNamed: 'a'.
+	output := operation output: 0.
+	
+	tensor := session runOperation: operation output: output.
+	
+	self deny: tensor isNull.
+	self deny: tensor data isNull.
+	self assert: (tensor data getHandle signedLongLongAt: 1) equals: 16r4242424242424242.
+
+	output free.
+	graph delete.! !
+
+!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 00:34:29'!
+testImportBad
+	| graph buffer |
+	graph := TFGraph create.
+	buffer := TFBuffer fromString: 'ouch'.
+	
+	self
+		should: [graph import: buffer]
+		raiseError: 'INVALID_ARGUMENT: Invalid GraphDef'.
+	
+	buffer delete.! !
+
+!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 1/20/2017 18:06:41'!
+testImportConstantGraph
+	self shouldnt: [
+		self constantFloatGraphFromDef.
+		self constantInt32GraphFromDef.
+		self constantInt64GraphFromDef.
+	] raise: Error.
+	! !
+
+!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 1/20/2017 18:06:23'!
+testImportEmpty
+	self shouldnt: [self emptyGraph] raise: Error.
+	! !
+
+!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 03:35:50'!
+testInitializeOn
+	| graph session |
+	graph := TFGraph create.
+	session := TFSession on: graph.
+	self shouldnt: [graph initializeOn: session] raise: Error.! !
+
+!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 00:34:29'!
+testNewGraph
+	| graph |
+	graph := TFGraph create.
+	self deny: graph isNull.
+	graph delete.
+	self assert: graph isNull.! !
+
+!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'JV 5/23/2021 16:52:03'!
+testOutputDims
+	| graph operation output |
+	graph := self constantInt64GraphFromDef.
+	operation := graph operationNamed: 'a'.
+	output := operation output: 0.
+	self assert: (graph outputDimensionsCount: output) equals: 0.
+	output free.! !
+
+!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'JV 5/11/2021 20:13:30'!
+testWriteDefTo
+	| graph stream |
+	graph := self constantInt64GraphFromDef.
+	stream := WriteStream on: String new.
+	graph writeDefTo: stream.
+	self assert: stream contents size equals: self constantInt64GraphDef size! !
+
+!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 2/9/2017 10:50:45'!
+testWriteDefToFileNamed
+	| graph filename filedata |
+	filename := 'temporaryGraph.pb'.
+	graph := self constantInt64GraphFromDef.
+	graph writeDefToFileNamed: filename.
+
+     filedata := filename asFileEntry readStream upToEnd.
+	filename asFileEntry delete.
+
+	self assert: self constantInt64GraphDef size equals: filedata size.! !
+
+!TensorFlowCAPITest methodsFor: 'testing buffer' stamp: 'gera 7/3/2019 00:28:37'!
+testBufferDataBytes
+	| buffer string data |
+	string := ' hola manola'.
+	buffer := TFBuffer fromString: string.
+
+	data := buffer dataBytes.
+	self assert: string equals: data asString.
+	
+	buffer delete.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing buffer' stamp: 'gera 7/3/2019 00:28:37'!
+testBufferNoNeedExternalize
+	| buffer string data |
+	string := ' hola manola'.
+	buffer := TFBuffer fromString: string.
+	
+	string := string copy.
+	Smalltalk garbageCollect.
+	
+	data := buffer dataBytes.
+	self assert: string equals: data asString.
+	
+	buffer delete.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing buffer' stamp: 'gera 7/3/2019 00:28:37'!
+testNewBufferFromFileNamed
+	| buffer string data temporaryFile |
+	string := ' hola manola'.
+	temporaryFile := 'temporaryFile.txt'.
+	temporaryFile asFileEntry writeStream nextPutAll: string; close.
+
+	buffer := TFBuffer fromFileNamed: temporaryFile.
+	temporaryFile asFileEntry delete.
+	
+	self deny: buffer isNull.
+	self assert: buffer length equals: string size.
+	
+	data := buffer data fromCString first: string size.
+	self assert: string equals: data.
+	
+	buffer delete.
+	self assert: buffer isNull.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing buffer' stamp: 'gera 7/3/2019 00:28:37'!
+testNewBufferFromString
+	| buffer string data |
+	string := ' hola manola'.
+	buffer := TFBuffer fromString: string.
+	self deny: buffer isNull.
+	self assert: buffer length equals: string size.
+	
+	data := buffer data fromCString first: string size.
+	self assert: string equals: data.
+	
+	buffer delete.
+	self assert: buffer isNull.! !
+
+!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 1/13/2017 10:10:56'!
+testExternalizeString
+	| original copy |
+	original := 'hola manola'.
+	copy := library externalizeString: original.
+	original withIndexDo: [:each :index |
+		self assert: each asciiValue equals: (copy byteAt: index)].
+	self assert: (copy byteAt: original size + 1) equals: 0.
+	copy free.! !
+
+!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 7/3/2019 01:08:38'!
+testNewImportGraphDefOptions
+	| options |
+	options := TFImportGraphDefOptions create.
+	self deny: options isNull.
+	options delete.
+	self assert: options isNull.! !
+
+!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 7/3/2019 03:35:40'!
+testNewSessionOptions
+	| options |
+	options := TFSessionOptions create.
+	self deny: options isNull.
+	options delete.
+	self assert: options isNull.! !
+
+!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 7/3/2019 03:35:40'!
+testSessionOptionsFromProtoBufEmpty
+	TFSessionOptions fromProtoBuf: ''.! !
+
+!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 7/3/2019 03:35:40'!
+testSessionOptionsFromProtoBufInvalid
+	self
+		should: [TFSessionOptions fromProtoBuf: '.']
+		raiseError: 'INVALID_ARGUMENT: Unparseable ConfigProto'.! !
+
+!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 7/3/2019 03:35:40'!
+testSessionOptionsFromProtoBufValid
+	"
+	In [241]: tf.ConfigProto(allow_soft_placement=True, log_device_placement=True).SerializeToString()
+	Out[241]: b'8\x01@\x01'
+	"
+	| config |
+	
+	config := #[16r38 1 16r40 1].
+	TFSessionOptions fromProtoBuf: config.
+	! !
+
+!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 12/28/2016 00:12:49'!
+testSessionOptionsSetTarget
+	| options |
+	options := library newSessionOptions.
+	self deny: options isNull.
+	options target: 'local'.
+	options delete.
+	self assert: options isNull.! !
+
+!TensorFlowCAPITest methodsFor: 'testing library' stamp: 'JV 5/11/2021 19:58:15'!
+testVersion
+	| version |
+	version := library version.
+	self assert: (#('2.3.1') includes: version)! !
+
+!TensorFlowCAPITest methodsFor: 'testing status' stamp: 'gera 7/3/2019 03:33:19'!
+testNewStatus
+	| status |
+	status := TFStatus create.
+	status ignoreFinalization.
+	
+	self deny: status isNull.
+	status delete.
+	self assert: status isNull.! !
+
+!TensorFlowCAPITest methodsFor: 'testing status' stamp: 'gera 7/3/2019 03:33:19'!
+testStatusCodes
+	| status  msg |
+	status := TFStatus create.
+	
+	self assert: status isOk.
+	self assert: status codeText equals: 'OK'.
+	self shouldnt: [status check] raise: Error.
+	
+	msg := 'You cancelled it!!'.
+	status code: 1 message: msg.
+	self assert: status codeText equals: 'CANCELLED'.
+	
+	self
+		should: [status check]
+		raiseError: 'CANCELLED: ', msg! !
+
+!TensorFlowCAPITest methodsFor: 'testing status' stamp: 'gera 7/3/2019 03:33:19'!
+testStatusGetMessage
+	| status message |
+	status := TFStatus create.
+	
+	status code: 1 message: 'All is one'.
+	message := status message.
+	self assert: message equals: 'All is one'.
+
+	status code: 7 message: 'Something is very seven'.
+	message := status message.
+	self assert: message equals: 'Something is very seven'.
+! !
+
+!TensorFlowCAPITest methodsFor: 'testing status' stamp: 'gera 7/3/2019 03:33:19'!
+testStatusSetGetCode
+	| status code |
+	status := TFStatus create.
+	status code: 1 message: ''.
+	code := status code.
+	self assert: code equals: 1.
+
+	status code: 2 message: ''.
+	code := status code.
+	self assert: code equals: 2.
+! !
+
+!TensorShapeTest methodsFor: 'Tests'!
+testCantCreateShapeWithBigNegativeNumbers	self		should: [ TensorShape withDimensionsSized: #( -2 10 ) ]		raise: AssertionFailure		withDescription: 'Dimensions sizes should be a greater or equal than -1 integer array'! !
+
+!TensorShapeTest methodsFor: 'Tests'!
+testMatrixShape	| shape |	shape := TensorShape matrixSized: 2 by: 3.	self		assert: shape dimensionSizes equals: #(2 3);		deny: shape representsScalar;		deny: shape representsVector;		assert: shape representsMatrix;		assert: shape totalAmountOfElements equals: 6;		assert: shape size equals: 2;		assert: shape rank equals: 2;		assert: shape description equals: '2x3 matrix';		deny: shape isCompatibleWithNHWShapes;		assert: shape flattened equals: (TensorShape vectorSized: 6)! !
+
+!TensorShapeTest methodsFor: 'Tests'!
+testScalarShape	| shape |	shape := TensorShape scalar.	self		assert: shape dimensionSizes isEmpty;		assert: shape representsScalar;		deny: shape representsVector;		deny: shape representsMatrix;		assert: shape totalAmountOfElements equals: 1;		assert: shape size equals: 0;		assert: shape rank equals: 0;		assert: shape description equals: 'Scalar';		deny: shape isCompatibleWithNHWShapes;		assert: shape flattened equals: TensorShape scalar! !
+
+!TensorShapeTest methodsFor: 'Tests'!
+testThreeDimensionalShape	| shape |	shape := TensorShape withDimensionsSized: #(5 2 3).	self		assert: shape dimensionSizes equals: #(5 2 3);		deny: shape representsScalar;		deny: shape representsVector;		deny: shape representsMatrix;		assert: shape totalAmountOfElements equals: 30;		assert: shape size equals: 3;		assert: shape rank equals: 3;		assert: shape description equals: '#(5 2 3)';		assert: shape isCompatibleWithNHWShapes;		assert: shape flattened equals: (TensorShape matrixSized: 5 by: 6)! !
+
+!TensorShapeTest methodsFor: 'Tests'!
+testVectorShape	| shape |	shape := TensorShape vectorSized: 4.	self		assert: shape dimensionSizes equals: #(4);		deny: shape representsScalar;		assert: shape representsVector;		deny: shape representsMatrix;		assert: shape totalAmountOfElements equals: 4;		assert: shape size equals: 1;		assert: shape rank equals: 1;		assert: shape description equals: 'Vector size 4';		deny: shape isCompatibleWithNHWShapes;		assert: shape flattened equals: (TensorShape vectorSized: 4)! !
 
 !TensorFlowCAPI methodsFor: 'tensor' stamp: 'gera 12/27/2016 11:56:22'!
 allocateTensorType: anInteger shape: aLonnLongArray rank: dimCount length: len
@@ -2479,1565 +4115,198 @@ typeUInt16
 typeUInt8
 	^4! !
 
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 12/29/2016 14:51:01'!
-testArray: anExternalWordArraySubclass sampleElement: anObject
-	| array size  |
-	size := 4.
-	array := anExternalWordArraySubclass new: 4.
-	self assert: size * Smalltalk wordSize = array getHandle size.
-	self assert: (array first isKindOf: anObject class).
-	1 to: size do: [:index |
-		self assert: ((array at: index) isKindOf: anObject class)].
-! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 1/13/2017 12:17:48'!
-testArrayAtPutFor: anExternalWordArraySubclass elementSample: anObject
-	| array size one  |
-	size := 4.
-	array := anExternalWordArraySubclass new: 4.
-	one := array first.
-	
-	array first: anObject.
-	self assert: array first equals: anObject.
-	self assert: (array first isKindOf: anObject class).
-	array first: one.
-	self assert: array first equals: one.
-		
-	1 to: size do: [:index |
-		array at: index put: anObject.
-		self assert: (array at: index) equals: anObject.
-		self assert: ((array at: index) isKindOf: anObject class).
-		array at: index put: one.
-		self assert: (array at: index) equals: one.
-	]
-	! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:06:39'!
-testExternalFromArrayOperation
-	| op1 op2 array |
-	op1 := TFOperation fromHandle: (ExternalAddress new + 11111).
-	op2 := TFOperation fromHandle: (ExternalAddress new + 22222).
-	array := TFOperationPtrArray externalFromArray: (Array with: op1 with: op2).
-
-	self assert: array first getHandle = op1 getHandle.
-	self assert: (array at: 2) getHandle = op2 getHandle.
-! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:30:56'!
-testExternalFromArrayOutput
-	| o1 o2 array |
-	o1 := TFOutput new index: 16r40302010.
-	o2 := TFOutput new index: 16r76543210.
-	array := TFOutputArray externalFromArray: (Array with: o1 with: o2).
-
-	self assert: array first index = o1 index.
-	self assert: (array at: 2) index = o2 index.
-! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:10:27'!
-testExternalFromArrayTensor
-	| t1 t2 array |
-	t1 := TFTensor fromInt64: 16r8070605040302010.
-	t2 := TFTensor fromInt64: 16rFEDCBA9876543210.
-	array := TFTensorPtrArray externalFromArray: (Array with: t1 with: t2).
-	
-	self assert: array first getHandle = t1 getHandle.
-	self assert: (array at: 2) getHandle = t2 getHandle.
-	! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:06:39'!
-testOperationArrayElementsOfRightClass
-	^ self testArray: TFOperationPtrArray sampleElement: TFOperation new.
-! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:30:56'!
-testOutputArrayAtPut
-	| array size one other operation |
-	size := 4.
-	array := TFOutputArray externalNew: size.
-	operation := TFOperation fromHandle: ExternalAddress new + 16rF1F2F3F4.
-	
-	one := TFOutput new.
-	one index: 16r75F6F7F8.
-	one operation: operation.
-
-	other := array first.
-	array first: one.
-
-	self deny: one getHandle = other getHandle.	
-	
-	self assert: one index = other index.
-	self assert: one operation = other operation.
-	
-	operation := TFOperation fromHandle: ExternalAddress new + 16r12345678.
-	one index: 16r75F6F7F8.
-	one operation: operation.
-
-	1 to: size do: [:index |
-		other := array at: index.
-		array at: index put: one.
-
-		self deny: one getHandle = other getHandle.	
-		self assert: one index = other index.
-		self assert: one operation = other operation.
-	]! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:30:56'!
-testOutputArrayElementsAreAliases
-	| array size one other |
-	size := 4.
-	array := TFOutputArray externalNew: size.
-
-	one := array first.
-	other := array at: 1.
-	
-	one index: 12345678.
-	self assert: one index = 12345678.
-	self assert: other index = 12345678.
-
-	other index: 77665544.
-	self assert: one index = 77665544.
-	self assert: other index = 77665544.
-
-	1 to: size do: [:index |
-		one := array at: index.
-		other := array at: index.
-
-		one index: 12348765.
-		self assert: one index = 12348765.
-		self assert: other index = 12348765.
-
-		other index: 77222244.
-		self assert: one index = 77222244.
-		self assert: other index = 77222244].
-! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:30:56'!
-testOutputArrayElementsOfRightClass
-	| array size  |
-	size := 4.
-	array := TFOutputArray externalNew: size.
-	self assert: (array first isKindOf: TFOutput).
-	1 to: size do: [:index |
-		self assert: ((array at: index) isKindOf: TFOutput)].
-! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:10:27'!
-testTensorArrayAtPut
-	| sample |
-	sample := TFTensor fromInt64: 16r12341234.
-	
-	self testArrayAtPutFor: TFTensorPtrArray elementSample: sample.! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:10:27'!
-testTensorArrayElementsOfRightClass
-	^ self testArray: TFTensorPtrArray sampleElement: TFTensor new.! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 12/25/2016 20:54:13'!
-testUIn64ArrayfromArray
-	self testUIn64ArrayfromArray: #(1).
-	self testUIn64ArrayfromArray: #(16r12345678 2 16r76543210 4 16rDEADBEAF 6 16rFFFFFFFF).
-! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 1/13/2017 13:08:30'!
-testUIn64ArrayfromArray: template
-	| array |
-	array := Int64Array externalFromArray: template.
-	
-	template withIndexDo: [:each :index |
-		self assert: ((template at: index) = (array at: index))
-	].
-! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 12/27/2016 18:13:43'!
-testUInt64ArrayAtPut
-	self testArrayAtPutFor: Int64Array elementSample: 12345.
-	self testArrayAtPutFor: Int64Array elementSample: 16rFE00FE00.
-	self testArrayAtPutFor: Int64Array elementSample: 16r7E00FE00FE00FE00.
-	self testArrayAtPutFor: Int64Array elementSample: 16r-7E00FE00FE00FE00.
-! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 12/27/2016 18:11:59'!
-testUInt64ArrayElementsOfRightClass
-	^ self testArray: Int64Array sampleElement: 1234.! !
-
-!TensorFlowTestCase methodsFor: 'asserting' stamp: 'gera 6/29/2019 13:16:30'!
-assert: aNumber closeTo: anotherNumber
-	^ self
-		assert: (self number: aNumber isCloseTo: anotherNumber)
-		description: (self comparingStringBetween: aNumber and: anotherNumber)
-! !
-
-!TensorFlowTestCase methodsFor: 'asserting' stamp: 'gera 6/29/2019 13:12:25'!
-assertAll: expectedArray closeTo: actualArray
-	expectedArray with: actualArray do: [:expected :actual |
-		self assert: expected closeTo: actual]! !
-
-!TensorFlowTestCase methodsFor: 'asserting' stamp: 'gera 6/29/2019 13:15:53'!
-comparingStringDifferentBetween: expected and: actual
-	^ String streamContents: [:stream |
-		stream
-			nextPutAll: 'Expected something different to ';
-			nextPutAll: (expected printStringLimitedTo: 50);
-			nextPutAll: ' but was ';
-			nextPutAll: (actual printStringLimitedTo: 50);
-			nextPutAll: '.'
-		]! !
-
-!TensorFlowTestCase methodsFor: 'asserting' stamp: 'gera 6/29/2019 13:18:11'!
-deny: aNumber closeTo: anotherNumber
-	^ self
-		deny: (self number: aNumber isCloseTo: anotherNumber)
-		description: (self comparingStringDifferentBetween: aNumber and: anotherNumber)
-! !
-
-!TensorFlowTestCase methodsFor: 'asserting' stamp: 'gera 6/29/2019 13:21:52'!
-number: aNumber isCloseTo: anotherNumber
- 	"are these two numbers close?"
-	self = 0.0 ifTrue: [^anotherNumber abs < 0.0001].
-	anotherNumber = 0 ifTrue: [^aNumber abs < 0.0001].
-	^aNumber = anotherNumber asFloat
-		or: [(aNumber - anotherNumber) abs / (aNumber abs max: anotherNumber abs) < 0.0001]! !
-
-!TensorFlowTestCase methodsFor: 'asserting' stamp: 'JV 5/9/2021 23:11:28'!
-performTest 
-	
-	'test.log' asFileEntry appendStreamDo: [:stream | stream nextPutAll: self asString; cr]. 
-	
-	super performTest.! !
-
-!TensorFlowCAPISlowTests methodsFor: 'testing graph' stamp: 'JV 5/23/2021 20:03:07'!
-testGraphFinalizationReleasesExternalMemory
-
-	self
-		assertCreating: 10
-		of: [ TFGraph create useFinalization ]
-		releasesExternalMemoryRepeatingUpTo: 20! !
-
-!TensorFlowCAPISlowTests methodsFor: 'testing options' stamp: 'JV 5/23/2021 20:03:36'!
-testSessionOptionFinalizationReleasesExternalMemory
-
-	self assertCreating: 10 of: [ TFSessionOptions create ] releasesExternalMemoryRepeatingUpTo: 20! !
-
-!TensorFlowCAPISlowTests methodsFor: 'testing session' stamp: 'JV 5/23/2021 20:03:18'!
-testSessionFinalizationReleasesExternalMemory
-
-	| graph |
-
-	graph := TFGraph create.
-	self assertCreating: 20 of: [ TFSession on: graph ] releasesExternalMemoryRepeatingUpTo: 20! !
-
-!TensorFlowCAPISlowTests methodsFor: 'testing status' stamp: 'JV 5/23/2021 20:03:47'!
-testStatusFinalizationReleasesExternalMemory
-
-	self assertCreating: 11 of: [ TFStatus create ] releasesExternalMemoryRepeatingUpTo: 1! !
-
-!TensorFlowCAPISlowTests methodsFor: 'asserting' stamp: 'JV 5/23/2021 20:02:24'!
-assertCreating: anAmount of: aTensorFlowObjectCreator releasesExternalMemoryRepeatingUpTo: timesRepeat
-
-	| total handles |
-
-	total := 0.
-	handles := Set new.
-	timesRepeat timesRepeat: [
-		total := total + anAmount.
-		handles addAll: (
-			(1 to: anAmount) collect: [:i |
-				Smalltalk garbageCollect.
-				aTensorFlowObjectCreator value getHandle ]).
-		handles size < total ifTrue: [
-			" Meaning some external addresses where reused, so we're good "
-			^self]].
-	self 
-		assert: handles size < total
-		description: 'No external address could be reused, check for some leak'
-	! !
-
-!TensorFlowCAPISlowTests methodsFor: 'testing tensor' stamp: 'JV 5/23/2021 20:02:58'!
-testTensorFinalizationReleasesExternalMemory
-	| template | 
-	
-	template := {String new: 10. String new: 100. String new: 1000}.
-	
-	self
-		assertCreating: 20
-		of: [ TFTensor fromStringArray: template ]
-		releasesExternalMemoryRepeatingUpTo: 20
-! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 12/26/2016 10:58:56'!
-constantFloatGraphDef
-	" This GraphDef corresponds to simple Graph, defined as
-	
-		tf.constant(0.42, name='a')
-		
-	 saved as ProtoBuf "
-	^ #[
- 16r0A 16r2E 16r0A 16r01 16r61 16r12 16r05 16r43 16r6F 16r6E 16r73 16r74 16r2A 16r15 16r0A 16r05
- 16r76 16r61 16r6C 16r75 16r65 16r12 16r0C 16r42 16r0A 16r08 16r01 16r12 16r00 16r2A 16r04 16r3D
- 16r0A 16rD7 16r3E 16r2A 16r0B 16r0A 16r05 16r64 16r74 16r79 16r70 16r65 16r12 16r02 16r30 16r01
- 16r0A 16r0C 16r0A 16r04 16r69 16r6E 16r69 16r74 16r12 16r04 16r4E 16r6F 16r4F 16r70 16r22 16r02
- 16r08 16r0F] asString! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-constantFloatGraphFromDef
-	^ TFGraph fromString: self constantFloatGraphDef! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 12/26/2016 11:13:29'!
-constantInt32GraphDef
-	" This GraphDef corresponds to simple Graph, defined as
-	
-		tf.constant(0.42, name='a')
-		
-	 saved as ProtoBuf "
-	^ #[
- 16r0A 16r2B 16r0A 16r01 16r61 16r12 16r05 16r43 16r6F 16r6E 16r73 16r74 16r2A 16r12 16r0A 16r05
- 16r76 16r61 16r6C 16r75 16r65 16r12 16r09 16r42 16r07 16r08 16r03 16r12 16r00 16r3A 16r01 16r2A
- 16r2A 16r0B 16r0A 16r05 16r64 16r74 16r79 16r70 16r65 16r12 16r02 16r30 16r03 16r0A 16r0C 16r0A
- 16r04 16r69 16r6E 16r69 16r74 16r12 16r04 16r4E 16r6F 16r4F 16r70 16r22 16r02 16r08 16r0F] asString! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-constantInt32GraphFromDef
-	^ TFGraph fromString: self constantInt32GraphDef! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-constantInt64Graph
-	| graph operation constant |
-	graph := TFGraph create.
-	constant := TFTensor fromInt64: 16r4242424242424242.
-	
-	self shouldnt: [
-		operation := graph const: 'a' value: constant
-	] raise: Error.
-	self deny: operation isNull.
-	^ graph! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'JV 5/11/2021 20:16:01'!
-constantInt64GraphDef
-	" This GraphDef corresponds to simple Graph, defined as
-	
-		tf.constant(0.42, name='a')
-		
-	 saved as ProtoBuf "
-	^ #[
- 16r0A 16r33 16r0A 16r01 16r61 16r12 16r05 16r43 16r6F 16r6E 16r73 16r74 16r2A 16r1A 16r0A 16r05
- 16r76 16r61 16r6C 16r75 16r65 16r12 16r11 16r42 16r0F 16r08 16r09 16r12 16r00 16r52 16r09 16rC2
- 16r84 16r89 16r92 16rA4 16rC8 16r90 16rA1 16r42 16r2A 16r0B 16r0A 16r05 16r64 16r74 16r79 16r70
- 16r65 16r12 16r02 16r30 16r09 16r0A 16r0C 16r0A 16r04 16r69 16r6E 16r69 16r74 16r12 16r04 16r4E
- 16r6F 16r4F 16r70 16r12 16r00 16r22 16r02 16r08 16r0F] asString! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-constantInt64GraphFromDef
-	^ TFGraph fromString: self constantInt64GraphDef! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-emptyGraph
-	^ TFGraph fromString: self emptyGraphDef.
-	! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 12/22/2016 01:51:30'!
-emptyGraphDef
-	" This GraphDef corresponds to an Empty Graph (no operations), saved as ProtoBuf "
-	^ #[16r0A 16r0C 16r0A 16r04 16r69 16r6E 16r69 16r74 16r12 16r04 16r4E 16r6F 16r4F 16r70 16r22 16r02 16r08 16r0F] asString! !
-
-!TensorFlowCAPITest methodsFor: 'graphs' stamp: 'gera 7/3/2019 00:34:29'!
-mulGraphTwoInputsInt64ConstTensorDeleted
-	| graph constant const in1 in2 mul1 |
-	graph := TFGraph create.
-	constant := TFTensor fromInt64: 16r2121212121212121.
-	
-	in1 := graph placeholder: 'in1' type: constant type.
-	in2 := graph placeholder: 'in2' type: constant type.
-	const := graph const: 'const' value: constant.
-
-	constant delete.	
-	constant := TFTensor fromInt64: 16r2222222222222222.
-	constant delete.	
-
-	mul1 := graph mul: 'mul1' described: [:description |
-		description addInput: (const output: 0).
-		description addInput: (in1 output: 0)].
-
-	graph mul: 'mul2' described: [:description |
-		description addInput: (mul1 output: 0).
-		description addInput: (in2 output: 0)].
-	
-	^ graph! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:28'!
-assertElementsOf: tensorArray are: allElementsArray
-	self assert: allElementsArray equals: (TFTensor elementsOf: tensorArray)! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
-assertRankOf: aMultidimensionalTensor is: anInteger
-	| rank |
-	rank := TFTensor rankOf: aMultidimensionalTensor.
-	self
-		assert: rank = anInteger
-		description: 'The rank is ', rank printString, ' and should have been ', anInteger printString! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:25'!
-assertShapeOf: aMultidimensionalTensor is: anArray
-	| shape |
-	shape := TFTensor shapeOf: aMultidimensionalTensor.
-	self
-		assert: shape = anArray
-		description: 'The shape is ', shape printString, ' and should have been ', anArray printString! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:28'!
-assertSizeOf: aMultidimensionalTensor is: anInteger
-	| size |
-	size := TFTensor sizeOf: aMultidimensionalTensor.
-	self
-		assert: size = anInteger
-		description: 'The size is ', size printString, ' and should have been ', anInteger printString! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 01:00:06'!
-assertTensor: aTFTensor elementsEquals: tensorArray
-	self assert: aTFTensor allElements equals: tensorArray! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 01:27:15'!
-assertTensor: aTFTensor streamEquals: tensorArray
-	| strm |
-	strm := aTFTensor asStream.
-	tensorArray do: [:each |
-		self assert: each equals: strm next].
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 01:44:48'!
-testArrayFromStream
-	| t template array |
-	t := 1.0 asTensor.
-	template := #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17) readStream.
-	
-	array := t arrayFromStream: template reset shape: #(10).
-	self assert: #(1 2 3 4 5 6 7 8 9 10) equals: array.
-	
-	array := t arrayFromStream: template reset shape: #(2 8).
-	self assert: #((1 2 3 4 5 6 7 8) (9 10 11 12 13 14 15 16)) equals: array.
-	
-	array := t arrayFromStream: template reset shape: #(2 4 2).
-	self assert: #(((1 2) (3 4) (5 6) (7 8)) ((9 10) (11 12) (13 14) (15 16))) equals: array.
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'JB 2/15/2017 23:54:30'!
-testAsBooleanTensor
-	self testAsBooleanTensor: true shape: #().
-	self testAsBooleanTensor: #(true false true false) shape: #(4).
-	self testAsBooleanTensor: #((true false true false) (false true false true)) shape: #(2 4).
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
-testAsBooleanTensor: tensorArray shape: shapeArray
-	| tensor index bools |
-	tensor := tensorArray asBooleanTensor.
-	
-	self assert: tensor shape equals: shapeArray.
-	
-	index := 1.
-	bools := tensor allElements.
-	TFTensor elementsOf: tensorArray do: [:each |
-		self assert: (bools at: index) equals: each.
-		index := index + 1].
-
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/30/2017 18:09:11'!
-testAsFloatTensor
-	self testAsFloatTensor: 1 shape: #().
-	self testAsFloatTensor: #(1 2 3 4) shape: #(4).
-	self testAsFloatTensor: #((1 2 3 4) (3.14 1.71 2.12 -7.8)) shape: #(2 4).
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:28'!
-testAsFloatTensor: tensorArray shape: shapeArray
-	| tensor index floats |
-	tensor := tensorArray asFloatTensor.
-	
-	index := 1.
-	floats := tensor allFloats.
-	TFTensor elementsOf: tensorArray do: [:each |
-		self assert: (floats at: index) closeTo: each.
-		index := index + 1].
-
-	self assert: tensor shape equals: shapeArray! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/31/2017 16:50:15'!
-testAsInt32Tensor
-	self testAsInt32Tensor: 1 shape: #().
-	self testAsInt32Tensor: #(1 2 3 4) shape: #(4).
-	self testAsInt32Tensor: #((1 2 3 4) (-314 171 -212 -78)) shape: #(2 4).
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
-testAsInt32Tensor: tensorArray shape: shapeArray
-	| tensor index ints |
-	tensor := tensorArray asInt32Tensor.
-	
-	self assert: tensor shape equals: shapeArray.
-	
-	index := 1.
-	ints := tensor allInt32s.
-	TFTensor elementsOf: tensorArray do: [:each |
-		self assert: (ints at: index) equals: each.
-		index := index + 1].
-
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 23:11:03'!
-testAsInt64Tensor
-	self testAsInt64Tensor: 1 shape: #().
-	self testAsInt64Tensor: #(1 2 3 4) shape: #(4).
-	self testAsInt64Tensor: #((1 2 3 4) (-314 171 -212 -78)) shape: #(2 4).
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
-testAsInt64Tensor: tensorArray shape: shapeArray
-	| tensor index ints |
-	tensor := tensorArray asInt64Tensor.
-	
-	self assert: tensor shape equals: shapeArray.
-	
-	index := 1.
-	ints := tensor allInt64s.
-	TFTensor elementsOf: tensorArray do: [:each |
-		self assert: (ints at: index) equals: each.
-		index := index + 1].
-
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
-testElementsOf: tensorArray sum: aNumber
-	| sum |
-	sum := 0.
-	TFTensor elementsOf: tensorArray do: [:each |
-		sum := sum + each].
-	
-	self assert: sum equals: aNumber! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/17/2017 18:58:20'!
-testElementsOfTensorDoIteratesAll
-	self testElementsOf: -13123213 sum: -13123213.
-	self testElementsOf: #(123 123 123 123) sum: 123*4.
-	self testElementsOf: #((1 2 3) (4 5 6) (7 8 9) (10 11 12)) sum: 12*13/2.
-	self testElementsOf: #(((1) (2) (3)) ((4) (5) (6)) ((7) (8) (9))) sum: 9*10/2.
-	self
-		testElementsOf: #(((1 100) (2 100) (3 100)) ((4 100) (5 100) (6 100)) ((7 100) (8 100) (9 100)))
-		sum: 9*10/2+(100*9).! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/13/2017 19:50:59'!
-testRanks
-	self assertRankOf: -13123213 is: 0.
-	self assertRankOf: #(123 123 123 123) is: 1.
-	self assertRankOf: #((1 2 3) (4 5 6) (7 8 9)) is: 2.
-	self assertRankOf: #(((1) (2) (3)) ((4) (5) (6)) ((7) (8) (9))) is: 3.! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/13/2017 19:56:50'!
-testShape
-	self assertShapeOf: -13123213 is: #().
-	self assertShapeOf: #(123 123 123 123) is: #(4).
-	self assertShapeOf: #((1 2 3) (4 5 6) (7 8 9) (10 11 12)) is: #(4 3).
-	self assertShapeOf: #(((1) (2) (3)) ((4) (5) (6)) ((7) (8) (9))) is: #(3 3 1).! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 1/18/2017 00:05:31'!
-testSizes
-	self assertSizeOf: -13123213 is: 1.
-	self assertSizeOf: #(123 123 123 123) is: 4.
-	self assertSizeOf: #((1 2 3) (4 5 6) (7 8 9) (10 11 12)) is: 4*3.
-	self assertSizeOf: #(((1) (2) (3)) ((4) (5) (6)) ((7) (8) (9))) is: 3*3*1.! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 01:11:29'!
-testTensorAllElements
-	self assertTensor: -13123213 asInt32Tensor elementsEquals: #(-13123213).
-	self assertTensor: #(123 123 123 123) asInt32Tensor elementsEquals: #(123 123 123 123).
-	self assertTensor: #((1 2 3) (4 5 6) (7 8 9) (10 11 12)) asFloatTensor elementsEquals: #(1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0).
-	self
-		assertTensor: #(((1 100) (2 100) (3 100)) ((4 100) (5 100) (6 100)) ((7 100) (8 100) (9 100))) asFloatTensor
-		elementsEquals: #(1.0 100.0 2.0 100.0 3.0 100.0 4.0 100.0 5.0 100.0 6.0 100.0 7.0 100.0 8.0 100.0 9.0 100.0).! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:25'!
-testTensorAsNumbers
-	| tensor template array |
-	template := #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16).
-	
-	tensor := TFTensor fromFloats: template shape: #(16).
-	array := tensor asNumbers.
-	self assert: template equals: array.
-	
-	tensor := TFTensor fromFloats: template shape: #(2 8).
-	array := tensor asNumbers.
-	self assert: #((1 2 3 4 5 6 7 8) (9 10 11 12 13 14 15 16)) equals: array.
-	
-	tensor := TFTensor fromFloats: template shape: #(2 4 2).
-	array := tensor asNumbers.
-	self assert: #(((1 2) (3 4) (5 6) (7 8)) ((9 10) (11 12) (13 14) (15 16))) equals: array.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
-testTensorAsNumbersFloats
-	| tensor template array |
-	template := #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16).
-	
-	tensor := TFTensor fromFloats: template shape: #(16).
-	array := tensor asNumbers.
-	self assert: #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16) equals: array.
-	
-	tensor := TFTensor fromFloats: template shape: #(2 8).
-	array := tensor asNumbers.
-	self assert: #((1 2 3 4 5 6 7 8) (9 10 11 12 13 14 15 16)) equals: array.
-	
-	tensor := TFTensor fromFloats: template shape: #(2 4 2).
-	array := tensor asNumbers.
-	self assert: #(((1 2) (3 4) (5 6) (7 8)) ((9 10) (11 12) (13 14) (15 16))) equals: array.
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
-testTensorAsNumbersInt32
-	| tensor template array |
-	template := #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16).
-	
-	tensor := TFTensor fromInt32s: template shape: #(16).
-	array := tensor asNumbers.
-	self assert: #(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16) equals: array.
-	
-	tensor := TFTensor fromInt32s: template shape: #(2 8).
-	array := tensor asNumbers.
-	self assert: #((1 2 3 4 5 6 7 8) (9 10 11 12 13 14 15 16)) equals: array.
-	
-	tensor := TFTensor fromInt32s: template shape: #(2 4 2).
-	array := tensor asNumbers.
-	self assert: #(((1 2) (3 4) (5 6) (7 8)) ((9 10) (11 12) (13 14) (15 16))) equals: array.
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 08:05:47'!
-testTensorAsNumbersRank0
-	self assert: 1 equals: 1 asInt32Tensor asNumbers.
-	self assert: 1.0 equals: 1.0 asTensor asNumbers.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/15/2017 01:28:38'!
-testTensorAsStream
-	self assertTensor: -13123213 asInt32Tensor streamEquals: #(-13123213).
-	self assertTensor: #(123 123 123 123) asInt32Tensor streamEquals: #(123 123 123 123).
-	self assertTensor: #((1 2 3) (4 5 6) (7 8 9) (10 11 12)) asFloatTensor streamEquals: #(1.0 2.0 3.0 4.0 5.0 6.0 7.0 8.0 9.0 10.0 11.0 12.0).
-	self
-		assertTensor: #(((1 100) (2 100) (3 100)) ((4 100) (5 100) (6 100)) ((7 100) (8 100) (9 100))) asFloatTensor
-		streamEquals: #(1.0 100.0 2.0 100.0 3.0 100.0 4.0 100.0 5.0 100.0 6.0 100.0 7.0 100.0 8.0 100.0 9.0 100.0).! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:25'!
-testTensorByteSize
-	| tensor |
-	tensor := TFTensor
-		type: TFTensor typeInt64
-		shape: #(2 3).
-
-	self assert: tensor byteSize equals: (8*2*3)! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
-testTensorData
-	| tensor |
-	tensor := TFTensor
-		type: TFTensor typeInt64
-		shape: #(2 3).
-	self assert: tensor rank equals: 2.
-	self deny: tensor data getHandle asInteger = 0.
-	self deny: tensor data getHandle isNil.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 2/18/2017 17:04:47'!
-testTensorElementsOf
-	self
-		assertElementsOf: -13123213
-		are: #(-13123213).
-	self
-		assertElementsOf: #(123 123 123 123)
-		are: #(123 123 123 123).
-	self
-		assertElementsOf: #((1 2 3) (4 5 6) (7 8 9) (10 11 12))
-		are: (1 to: 12) asArray.
-	self
-		assertElementsOf: #(((1) (2) (3)) ((4) (5) (6)) ((7) (8) (9)))
-		are: (1 to: 9) asArray.
-	self
-		assertElementsOf: #(((1 100) (2 100) (3 100)) ((4 100) (5 100) (6 100)) ((7 100) (8 100) (9 100)))
-		are: #(1 100 2 100 3 100 4 100 5 100 6 100 7 100 8 100 9 100)
-		
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
-testTensorFromDoublesOutOfRange
-	| tensor template values |
-	template := #(1.23456 0.0 -1.234567 1.0e39 1.0e-50 1.0e309 1.0e-324) copy.
-	tensor := TFTensor fromDoubles: template.
-	
-	template at: 6 put: Float infinity.
-	
-	values := tensor allElements.
-		
-	self assert: tensor shape equals: #(7).
-	self assert: tensor size equals: 7.
-	self assert: tensor byteSize equals: (7*8).
-	template with: values do: [:expected :actual |
-		self assert: expected closeTo: actual].
-	self assert: 0.0 equals: values last.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
-testTensorFromDoublesOutOfRangeForFloats
-	| tensor template values |
-	template := #(1.23456 0.0 -1.234567 3.402824e38 1.175494351e-46 1.0e39 1.0e-50) copy.
-	tensor := TFTensor fromDoubles: template.
-	
-	values := tensor allElements.
-		
-	self assert: tensor shape equals: #(7).
-	self assert: tensor size equals: 7.
-	self assert: tensor byteSize equals: (7*8).
-	template with: values do: [:expected :actual |
-		self assert: expected closeTo: actual].
-	self assert: 0.0 ~= values last.
-	self assert: 0.0 ~= (values at: 5).! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
-testTensorFromDoublesShape
-	| tensor template values |
-	template := #(1.23456 0.0 -1.234567 1.1).
-	tensor := TFTensor fromDoubles: template shape: #(2 2).
-	values := tensor allElements.
-		
-	self assert: tensor shape equals: #(2 2).
-	self assert: tensor size equals: 4.
-	self assert: tensor byteSize equals: (tensor size*8).
-	template with: values do: [:templ :actual |
-		self assert: templ closeTo: actual]
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
-testTensorFromFloats
-	| tensor template values |
-	template := #(1.23456 0.0 -1.234567 3.402823466e38 1.175494351e-38).
-	tensor := TFTensor fromFloats: template.
-	values := tensor allFloats.
-		
-	self assert: tensor shape equals: #(5).
-	self assert: tensor size equals: 5.
-	self assert: tensor byteSize equals: (5*4).
-	template @ values do: [:point |
-		self assert: point x closeTo: point y]
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:25'!
-testTensorFromFloats2x2
-	| tensor template values |
-	template := #(
-		(-1.1 -2.1)
-		(-1.2 -2.2)).
-		
-	tensor := TFTensor fromFloats: template.
-	values := tensor allFloats.
-		
-	self assert: tensor shape equals: #(2 2).
-	self assert: tensor size equals: 4.
-	self assert: tensor byteSize equals: (4*4).
-		
-	#(-1.1 -2.1 -1.2 -2.2) with: values do: [:reference :value |
-		self assert: reference closeTo: value]
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
-testTensorFromFloatsOutOfRange
-	| tensor template values |
-	template := #(1.23456 0.0 -1.234567 3.402824e38 1.175494351e-46 1.0e39 1.0e-50) copy.
-	tensor := TFTensor fromFloats: template.
-	
-	template at: 4 put: Float infinity.
-	template at: 6 put: Float infinity.
-	
-	values := tensor allElements.
-		
-	self assert: tensor shape equals: #(7).
-	self assert: tensor size equals: 7.
-	self assert: tensor byteSize equals: (7*4).
-	template with: values do: [:expected :actual |
-		self assert: expected closeTo: actual].
-	self assert: 0.0 equals: values last.
-	self assert: 0.0 equals: (values at: 5).! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:28'!
-testTensorFromFloatsScalar
-	| tensor template values |
-	template := 3.141516.
-	tensor := TFTensor fromFloats: template.
-	values := tensor allFloats.
-		
-	self assert: tensor shape equals: #().
-	self assert: tensor size equals: 1.
-	self assert: tensor byteSize equals: (1*4).
-	
-	self assert: template closeTo: values first.! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
-testTensorFromFloatsShape
-	| tensor template values |
-	template := #(1.23456 0.0 -1.234567 1.1).
-	tensor := TFTensor fromFloats: template shape: #(2 2).
-	values := tensor allFloats.
-		
-	self assert: tensor shape equals: #(2 2).
-	self assert: tensor size equals: 4.
-	self assert: tensor byteSize equals: (tensor size*4).
-	template with: values do: [:templ :actual |
-		self assert: templ closeTo: actual]
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
-testTensorFromFloatsShapeUndefinedSize
-	| template |
-	template := #(1.23456 0.0 -1.234567 1.1).
-	
-	self
-		should: [TFTensor fromFloats: template shape: #(2 2 -1)]
-		raiseError: 'Inferred size and real size don''t match.'.! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:28'!
-testTensorFromInt32
-	| tensor template values |
-	template := -1123123123.
-	tensor := TFTensor fromInt32: template.
-	values := tensor allInt32s.
-		
-	self assert: tensor shape equals: #().
-	self assert: tensor size equals: 1.
-	self assert: tensor byteSize equals: 4.
-	self assert: values equals: {template}.! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
-testTensorFromInt32Shape
-	| tensor template values |
-	template := #(123456 0 -1234567 11).
-	tensor := TFTensor fromInt32s: template shape: #(2 2).
-	values := tensor allFloats.
-		
-	self assert: tensor type equals: TFTensor typeInt32.
-	self assert: tensor shape equals: #(2 2).
-	self assert: tensor size equals: 4.
-	self assert: tensor byteSize equals: (tensor size*4).
-	template with: values do: [:templ :actual |
-		self assert: templ closeTo: actual]
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
-testTensorFromInt32s
-	| tensor template values |
-	template := #(0 -1 1 -2 2 32768 65536 -1123123123).
-	tensor := TFTensor fromInt32s: template.
-	values := tensor allInt32s.
-		
-	self assert: tensor shape equals: {template size}.
-	self assert: tensor size equals: template size.
-	self assert: tensor byteSize equals: (template size*4).
-	self assert: values equals: template.! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:25'!
-testTensorFromInt64Shape
-	| tensor template values |
-	template := #(123456 0 -1234567 11).
-	tensor := TFTensor fromInt64s: template shape: #(2 2).
-	values := tensor allFloats.
-		
-	self assert: tensor type equals: TFTensor typeInt64.
-	self assert: tensor shape equals: #(2 2).
-	self assert: tensor size equals: 4.
-	self assert: tensor byteSize equals: (tensor size*8).
-	template with: values do: [:templ :actual |
-		self assert: templ closeTo: actual]
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:25'!
-testTensorFromInt64s
-	| tensor template values |
-	template := #(16r1234567812345678 0 -12345678910111213).
-	tensor := TFTensor fromInt64s: template.
-	values := tensor allInt64s.
-	
-	self assert: tensor shape equals: #(3).
-	self assert: tensor size equals: 3.
-	self assert: tensor byteSize equals: (3*8).
-	self assert: template equals: values.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:27'!
-testTensorNewScalar
-	| tensor |
-	tensor := TFTensor type: TFTensor typeInt64 shape: #().
-	tensor ignoreFinalization.
-	
-	self deny: tensor isNull.
-	tensor delete.
-	self assert: tensor isNull.! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 12/26/2016 14:44:54'!
-testTensorShape0D
-	^ self testTensorShape: #()! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 12/26/2016 14:45:28'!
-testTensorShape10D
-	^ self testTensorShape: #(1 2 3 4 5 6 7 8 9 10)! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 12/26/2016 14:44:50'!
-testTensorShape1D
-	^ self testTensorShape: #(7)! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 12/26/2016 14:44:40'!
-testTensorShape2D
-	^ self testTensorShape: #(1 4)! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
-testTensorShape: anArray
-	| tensor shape size |
-	tensor := TFTensor
-		type: TFTensor typeInt64
-		shape: anArray.
-	self assert: tensor rank equals: anArray size.
-	anArray withIndexDo: [:each :index |
-		self assert: (tensor sizeOn: index - 1) equals: (anArray at: index)].
-	shape := tensor shape.
-	size := anArray isEmpty
-		ifTrue: [1]
-		ifFalse: [anArray product].
-	self assert: shape equals: anArray.
-	self assert: tensor size equals: size.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:26'!
-testTensorType
-	| tensor |
-	tensor := TFTensor type: TFTensor typeInt64 shape: #().
-	self assert: tensor type equals: tensor class typeInt64.
-
-	tensor := TFTensor type: TFTensor typeFloat shape: #().
-	self assert: tensor type equals: tensor class typeFloat.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing tensor' stamp: 'gera 6/30/2019 00:45:28'!
-testTensorTypes
-	| types |
-	types := #(
-		Float 1
-		Double 2
-		Int32 3
-		UInt8 4
-		Int16 5
-		Int8 6
-		String 7
-		Complex64 8
-		Int64 9
-		Boolean 10
-		QInt8 11
-		QUInt8 12
-		QInt32 13
-		BFloat16 14
-		QInt16 15
-		QUInt16 16
-		UInt16 17
-		Complex128 18
-		Half 19
-		Resource 20).
-	types pairsDo: [:name :value |
-		self assert: (TFTensor perform: (#type, name) asSymbol) equals: value]! !
-
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'gera 6/30/2019 00:45:28'!
-assertTensorFromStrings: strings shape: shape
-	| tensor |
-	tensor := TFTensor fromStrings: strings shape: shape.
-
-	self assert: shape equals: tensor shape.	
-	self assert: strings equals: tensor allStrings.
-
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'gera 1/31/2017 00:47:19'!
-testStringAsTensor
-	| tensor template |
-	template := 'hola manola'.
-	
-	tensor := template asTensor.
-	
-	self assert: tensor dataBytes first equals: template size.
-	self assert: tensor dataBytes allButFirst asString equals: template.! !
-
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/23/2021 14:22:19'!
-testStringDecode
-	| size string encoded decoded status |
-	" This test assumes the internal representation of a TensorFlow string. May fail if they change it "
-	
-	string := 'a ver como queda este string encodeado?'.
-	
-	status := TFStatus create.
-	size := library stringEncodedSize: string.
-	encoded := ExternalAddress gcallocate: size + 20.
-	encoded byteAt: size + 1 put: $@ asciiValue.
-	library stringEncode: string len: string size destination: encoded len: size + 20 status: status.
-	status check.
-
-	decoded := library stringDecode: encoded.
-
-	self deny: decoded = (string, '@').
-	self assert: decoded equals: string.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'gera 1/13/2017 10:16:53'!
-testStringEncode
-	| size string encoded encodedSize |
-	" This test assumes the internal representation of a TensorFlow string. May fail if they change it "
-	
-	string := 'a ver como queda este string encodeado?'.
-	size := library stringEncodedSize: string.
-	encoded := ByteArray new: size+20.
-	encodedSize := library stringEncode: string to: encoded.
-	
-	self assert: encodedSize equals: size.
-	self assert: (encoded byteAt: 1) equals: string size.
-	self assert: (encoded structAt: 2 length: string size) asString equals: string.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'gera 7/3/2019 03:33:19'!
-testStringEncodeExternal
-	| size string encoded encodedSize status |
-	" This test assumes the internal representation of a TensorFlow string. May fail if they change it "
-	
-	status := TFStatus create.
-	string := 'a ver como queda este string encodeado?'.
-	
-	size := library stringEncodedSize: string.
-	encoded := ExternalAddress gcallocate: size + 20.
-	encodedSize := library stringEncode: string len: string size destination: encoded len: size + 20 status: status.
-
-	status check.
-	self assert: encodedSize equals: size.
-	self assert: (encoded unsignedByteAt: 1) equals: string size.
-	self assert: (encoded structAt: 2 length: string size) asString equals: string.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'gera 1/13/2017 10:17:31'!
-testStringSize
-	self assert: (library primStringEncodedSize: 0) equals: (0+1).
-	self assert: (library primStringEncodedSize: 127) equals: (127+1).
-	self assert: (library primStringEncodedSize: 128) equals: (128+2).
-	self assert: (library primStringEncodedSize: 127*127) equals: (127*127+2).
-	self assert: (library primStringEncodedSize: 127*127+123) equals: (127*127+123+2).
-	self assert: (library primStringEncodedSize: 127*127*127) equals: (127*127*127+3).
-
-	self assert: (library stringEncodedSize: '') equals: (0+1).
-	self assert: (library stringEncodedSize: (String new: 127)) equals: (127+1).
-	self assert: (library stringEncodedSize: (String new: 128)) equals: (128+2).
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'gera 6/30/2019 00:45:25'!
-testTensorFromString
-	| tensor template |
-	template := 'hola manola'.
-	
-	tensor := TFTensor fromString: template.
-	
-	self assert: tensor dataBytes first equals: template size.
-	self assert: tensor dataBytes allButFirst asString equals: template.! !
-
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/23/2021 14:22:07'!
-testTensorFromStringArray
-	| tensor template |
-
-	template := #('hola manola' 'te traje una lola' 'pamela' 'que pandulce!!').
-	
-	tensor := TFTensor fromStringArray: template.
-	
-	self assert: tensor allStrings equals: template.! !
-
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/23/2021 14:22:01'!
-testTensorFromStrings
-	| tensor template flatten |
-
-	template := #(('hola manola' 'te traje una lola') ('pamela' 'que pandulce!!') ('habia una vez' 'truz')).
-	flatten := TFTensor elementsOf: template.
-	tensor := TFTensor fromStrings: template.
-
-	self assert: #(3 2) equals: tensor shape.	
-	self assert: flatten equals: tensor allStrings.
-
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing strings' stamp: 'JV 5/23/2021 14:21:49'!
-testTensorFromStringsShape
-	| template |
-	
-	template := #('hola manola' 'te traje una lola' 'pamela' 'que pandulce!!' 'habia una vez' 'truz').
-	
-	self assertTensorFromStrings: template shape: #(6).
-	self assertTensorFromStrings: template shape: #(3 2).
-	self assertTensorFromStrings: template shape: #(1 1 6 1 1).
-	self assertTensorFromStrings: #('hola como estas?') shape: #().
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-testDecodeCSVGraphRunCSV: csvLines
-	| defaults graph output records session results values |
-	defaults := {
-		TFTensor fromInt64s: #(-1).
-		TFTensor fromInt64s: #(-1).
-		TFTensor fromInt64s: #(-1).
-		TFTensor fromInt64s: #(-1)}.
-		
-	graph := self decodeCSVGraphDefaults: defaults.
-	records := (graph operationNamed: 'records') input: 0.
-	output := graph operationNamed: 'output'.
-	values := TFTensor fromStringArray: csvLines.
-	
-	session := TFSession on: graph.
-	results := session
-		runOperations: {output}
-		inputs: {records}
-		values: {values}
-		outputs: {
-			(output output: 0).
-			(output output: 1).
-			(output output: 2).
-			(output output: 3)}.
-		
-	graph delete.
-	
-	^ (1 to: 4) collect: [:i |
-		(results at: i) allInt64s].
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testGetAttrMetadataType
-	| graph op template metadata |
-	template := #(1 2 3 4 5).
-	graph := TFGraph create.
-	op := graph 
-		newOperation: 'Placeholder'
-		named: 'const'
-		described: [:description |
-			description at: 'shape' putShape: template.
-			description at: 'dtype' putType: TFTensor typeInt64].
-		
-	metadata := op attrMetadata: 'dtype'.
-	self assert: metadata isType.
-	self assert: metadata isList equals: false.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/23/2021 16:57:52'!
-testGetOperationOnConstantGraph
-	| graph op |
-	graph := self constantFloatGraphFromDef.
-	self shouldnt: [op := graph operationNamed: 'a'] raise: Error.
-	self assert: op name equals: 'a'.
-	self assert: op type equals: 'Const'.
-	self assert: op inputsCount equals: 0.
-	self assert: op outputsCount equals: 1.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/29/2017 02:58:40'!
-testGetOperationOnEmptyGraph
-	| graph |
-	graph := self emptyGraph.
-	
-	self
-		should: [graph operationNamed: 'something']
-		raiseError: 'Operation not found'.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 1/13/2017 10:12:12'!
-testGraph: aTFGraph outputType: anInteger
-	| operation output |
-	operation := aTFGraph operationNamed: 'a'.
-	output := operation output: 0.
-	self assert: output type equals: anInteger.
-	output free.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
-testNewOperationDescription
-	| graph description |
-	graph := TFGraph create.
-	description := graph newOperationDescription: 'Const' named: 'first_operation'.
-	self deny: description isNull.
-	self should: [description finish] raise: Error description: 'This should have complained of missing attributes'.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/11/2021 19:56:29'!
-testNewOperationPlaceholderNoType
-	| graph noType |
-	noType := 'INVALID_ARGUMENT: NodeDef missing attr ''dtype'' from Op<name=Placeholder; signature= -> output:dtype; attr=dtype:type; attr=shape:shape,default=<unknown>>; NodeDef: {{node placeholder}}'.
-	graph := TFGraph create.
-	self
-		should: [(graph newOperationDescription: 'Placeholder' named: 'placeholder') finish]
-		raiseError: noType.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/11/2021 19:57:14'!
-testNewVariableNoAttributes
-	| graph error |
-	graph := TFGraph create.
-	error :=  'INVALID_ARGUMENT: NodeDef missing attrs ''shape'', ''dtype'' from Op<name=Variable; signature= -> ref:Ref(dtype); attr=shape:shape; attr=dtype:type; attr=container:string,default=""; attr=shared_name:string,default=""; is_stateful=true>; NodeDef: {{node var}}'.
-	self
-		should: [graph newOperation: 'Variable' named: 'var']
-		raiseError: error.! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 6/30/2019 00:45:28'!
-testOperationOutputTypeFloat
-	^self testGraph: self constantFloatGraphFromDef outputType: TFTensor typeFloat! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 6/30/2019 00:45:26'!
-testOperationOutputTypeInt32
-	^self testGraph: self constantInt32GraphFromDef outputType: TFTensor typeInt32! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 6/30/2019 00:45:25'!
-testOperationOutputTypeInt64
-	^self testGraph: self constantInt64GraphFromDef outputType: TFTensor typeInt64! !
-
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
-testRunOperationArray
-	| graph operation session |
-	graph := self constantFloatGraphFromDef.
-	session := TFSession on: graph.
-	operation := graph operationNamed: 'a'.
-	
-	self shouldnt: [session runOperations: (Array with: operation)] raise: Error.
-
-	graph delete.! !
-
-!TensorFlowCAPITest methodsFor: 'initialization' stamp: 'gera 12/21/2016 02:11:17'!
-setUp
-	library := TensorFlowCAPI current! !
-
-!TensorFlowCAPITest methodsFor: 'initialization' stamp: 'gera 1/29/2017 02:51:28'!
-should: aBlock raiseError: aString
-	| message |
-	message := 'No Error was signaled'.
-	aBlock ifError: [:description :receiver | message := description].
-	self assert: 'Error: ',aString equals: message.! !
-
-!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
-tesCloseSessionTwiceNoCrash
-	| graph session |
-	graph := TFGraph create.
-	session := TFSession on: graph.
-	self deny: session isNull.
-	session ignoreFinalization.
-	session close.
-	session close.
-	session delete.
-	self assert: session isNull.! !
-
-!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
-testCloseSession
-	| graph session |
-	graph := TFGraph create.
-	session := TFSession on: graph.
-	self deny: session isNull.
-	session ignoreFinalization.
-	self shouldnt: [session close] raise: Error.
-	self shouldnt: [session delete] raise: Error.
-	self assert: session isNull.! !
-
-!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
-testNewSession
-	| graph session |
-	graph := TFGraph create.
-	session := TFSession on: graph.
-	session ignoreFinalization.
-	self deny: session isNull.
-	session delete.
-	self assert: session isNull.! !
-
-!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
-testSessionOnEmptyGraph
-	| session |
-	session := TFSession on: self emptyGraph.
-	self
-		should: [session run]
-		raiseError: 'INVALID_ARGUMENT: Must specify at least one target to fetch or execute.'.! !
-
-!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
-testSessionRunOutputOnGraph: graph
-	| operation session output tensor |
-	session := TFSession on: graph.
-	operation := graph operationNamed: 'a'.
-	output := operation output: 0.
-	
-	tensor := session runOutput: output.
-	
-	self deny: tensor isNull.
-	self deny: tensor data isNull.
-	self assert: (tensor data getHandle signedLongLongAt: 1) equals: 16r4242424242424242.
-
-	output free.
-	graph delete.! !
-
-!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 1/6/2017 00:06:16'!
-testSessionRunTargetOutput
-	^ self testSessionRunTargetOutputOnGraph: self constantInt64GraphFromDef.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing session' stamp: 'gera 7/3/2019 03:35:50'!
-testSessionRunTargetOutputOnGraph: graph
-	| operation session output tensor |
-	session := TFSession on: graph.
-	operation := graph operationNamed: 'a'.
-	output := operation output: 0.
-	
-	tensor := session runOperation: operation output: output.
-	
-	self deny: tensor isNull.
-	self deny: tensor data isNull.
-	self assert: (tensor data getHandle signedLongLongAt: 1) equals: 16r4242424242424242.
-
-	output free.
-	graph delete.! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 00:34:29'!
-testImportBad
-	| graph buffer |
-	graph := TFGraph create.
-	buffer := TFBuffer fromString: 'ouch'.
-	
-	self
-		should: [graph import: buffer]
-		raiseError: 'INVALID_ARGUMENT: Invalid GraphDef'.
-	
-	buffer delete.! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 1/20/2017 18:06:41'!
-testImportConstantGraph
-	self shouldnt: [
-		self constantFloatGraphFromDef.
-		self constantInt32GraphFromDef.
-		self constantInt64GraphFromDef.
-	] raise: Error.
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 1/20/2017 18:06:23'!
-testImportEmpty
-	self shouldnt: [self emptyGraph] raise: Error.
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 03:35:50'!
-testInitializeOn
-	| graph session |
-	graph := TFGraph create.
-	session := TFSession on: graph.
-	self shouldnt: [graph initializeOn: session] raise: Error.! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 7/3/2019 00:34:29'!
-testNewGraph
-	| graph |
-	graph := TFGraph create.
-	self deny: graph isNull.
-	graph delete.
-	self assert: graph isNull.! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'JV 5/23/2021 16:52:03'!
-testOutputDims
-	| graph operation output |
-	graph := self constantInt64GraphFromDef.
-	operation := graph operationNamed: 'a'.
-	output := operation output: 0.
-	self assert: (graph outputDimensionsCount: output) equals: 0.
-	output free.! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'JV 5/11/2021 20:13:30'!
-testWriteDefTo
-	| graph stream |
-	graph := self constantInt64GraphFromDef.
-	stream := WriteStream on: String new.
-	graph writeDefTo: stream.
-	self assert: stream contents size equals: self constantInt64GraphDef size! !
-
-!TensorFlowCAPITest methodsFor: 'testing graph' stamp: 'gera 2/9/2017 10:50:45'!
-testWriteDefToFileNamed
-	| graph filename filedata |
-	filename := 'temporaryGraph.pb'.
-	graph := self constantInt64GraphFromDef.
-	graph writeDefToFileNamed: filename.
-
-     filedata := filename asFileEntry readStream upToEnd.
-	filename asFileEntry delete.
-
-	self assert: self constantInt64GraphDef size equals: filedata size.! !
-
-!TensorFlowCAPITest methodsFor: 'testing buffer' stamp: 'gera 7/3/2019 00:28:37'!
-testBufferDataBytes
-	| buffer string data |
-	string := ' hola manola'.
-	buffer := TFBuffer fromString: string.
-
-	data := buffer dataBytes.
-	self assert: string equals: data asString.
-	
-	buffer delete.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing buffer' stamp: 'gera 7/3/2019 00:28:37'!
-testBufferNoNeedExternalize
-	| buffer string data |
-	string := ' hola manola'.
-	buffer := TFBuffer fromString: string.
-	
-	string := string copy.
-	Smalltalk garbageCollect.
-	
-	data := buffer dataBytes.
-	self assert: string equals: data asString.
-	
-	buffer delete.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing buffer' stamp: 'gera 7/3/2019 00:28:37'!
-testNewBufferFromFileNamed
-	| buffer string data temporaryFile |
-	string := ' hola manola'.
-	temporaryFile := 'temporaryFile.txt'.
-	temporaryFile asFileEntry writeStream nextPutAll: string; close.
-
-	buffer := TFBuffer fromFileNamed: temporaryFile.
-	temporaryFile asFileEntry delete.
-	
-	self deny: buffer isNull.
-	self assert: buffer length equals: string size.
-	
-	data := buffer data fromCString first: string size.
-	self assert: string equals: data.
-	
-	buffer delete.
-	self assert: buffer isNull.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing buffer' stamp: 'gera 7/3/2019 00:28:37'!
-testNewBufferFromString
-	| buffer string data |
-	string := ' hola manola'.
-	buffer := TFBuffer fromString: string.
-	self deny: buffer isNull.
-	self assert: buffer length equals: string size.
-	
-	data := buffer data fromCString first: string size.
-	self assert: string equals: data.
-	
-	buffer delete.
-	self assert: buffer isNull.! !
-
-!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 1/13/2017 10:10:56'!
-testExternalizeString
-	| original copy |
-	original := 'hola manola'.
-	copy := library externalizeString: original.
-	original withIndexDo: [:each :index |
-		self assert: each asciiValue equals: (copy byteAt: index)].
-	self assert: (copy byteAt: original size + 1) equals: 0.
-	copy free.! !
-
-!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 7/3/2019 01:08:38'!
-testNewImportGraphDefOptions
-	| options |
-	options := TFImportGraphDefOptions create.
-	self deny: options isNull.
-	options delete.
-	self assert: options isNull.! !
-
-!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 7/3/2019 03:35:40'!
-testNewSessionOptions
-	| options |
-	options := TFSessionOptions create.
-	self deny: options isNull.
-	options delete.
-	self assert: options isNull.! !
-
-!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 7/3/2019 03:35:40'!
-testSessionOptionsFromProtoBufEmpty
-	TFSessionOptions fromProtoBuf: ''.! !
-
-!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 7/3/2019 03:35:40'!
-testSessionOptionsFromProtoBufInvalid
-	self
-		should: [TFSessionOptions fromProtoBuf: '.']
-		raiseError: 'INVALID_ARGUMENT: Unparseable ConfigProto'.! !
-
-!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 7/3/2019 03:35:40'!
-testSessionOptionsFromProtoBufValid
-	"
-	In [241]: tf.ConfigProto(allow_soft_placement=True, log_device_placement=True).SerializeToString()
-	Out[241]: b'8\x01@\x01'
-	"
-	| config |
-	
-	config := #[16r38 1 16r40 1].
-	TFSessionOptions fromProtoBuf: config.
-	! !
-
-!TensorFlowCAPITest methodsFor: 'testing options' stamp: 'gera 12/28/2016 00:12:49'!
-testSessionOptionsSetTarget
-	| options |
-	options := library newSessionOptions.
-	self deny: options isNull.
-	options target: 'local'.
-	options delete.
-	self assert: options isNull.! !
-
-!TensorFlowCAPITest methodsFor: 'testing library' stamp: 'JV 5/11/2021 19:58:15'!
-testVersion
-	| version |
-	version := library version.
-	self assert: (#('2.3.1') includes: version)! !
-
-!TensorFlowCAPITest methodsFor: 'testing status' stamp: 'gera 7/3/2019 03:33:19'!
-testNewStatus
-	| status |
-	status := TFStatus create.
-	status ignoreFinalization.
-	
-	self deny: status isNull.
-	status delete.
-	self assert: status isNull.! !
-
-!TensorFlowCAPITest methodsFor: 'testing status' stamp: 'gera 7/3/2019 03:33:19'!
-testStatusCodes
-	| status  msg |
-	status := TFStatus create.
-	
-	self assert: status isOk.
-	self assert: status codeText equals: 'OK'.
-	self shouldnt: [status check] raise: Error.
-	
-	msg := 'You cancelled it!!'.
-	status code: 1 message: msg.
-	self assert: status codeText equals: 'CANCELLED'.
-	
-	self
-		should: [status check]
-		raiseError: 'CANCELLED: ', msg! !
-
-!TensorFlowCAPITest methodsFor: 'testing status' stamp: 'gera 7/3/2019 03:33:19'!
-testStatusGetMessage
-	| status message |
-	status := TFStatus create.
-	
-	status code: 1 message: 'All is one'.
-	message := status message.
-	self assert: message equals: 'All is one'.
-
-	status code: 7 message: 'Something is very seven'.
-	message := status message.
-	self assert: message equals: 'Something is very seven'.
-! !
-
-!TensorFlowCAPITest methodsFor: 'testing status' stamp: 'gera 7/3/2019 03:33:19'!
-testStatusSetGetCode
-	| status code |
-	status := TFStatus create.
-	status code: 1 message: ''.
-	code := status code.
-	self assert: code equals: 1.
-
-	status code: 2 message: ''.
-	code := status code.
-	self assert: code equals: 2.
-! !
+!TFTensor class methodsFor: 'as yet unclassified' stamp: 'JV 5/24/2021 15:06:41'!
+descriptionOf: aType
+
+	^ Dictionary new
+		at: self typeBFloat16 put: 'BFloat16';
+		at: self typeBoolean put: 'Bool';
+		at: self typeComplex put: 'Complex';
+		at: self typeComplex128 put: 'Complex128';
+		at: self typeComplex64 put: 'Complex64';
+		at: self typeDouble put: 'Double';
+		at: self typeFloat put: 'Float';
+		at: self typeHalf put: 'Half';
+		at: self typeInt16 put: 'Int16';
+		at: self typeInt32 put: 'Int32';
+		at: self typeInt64 put: 'Int64';
+		at: self typeInt8 put: 'Int8';
+		at: self typeQint16 put: 'QInt16';
+		at: self typeQint32 put: 'QInt32';
+		at: self typeQint8 put: 'QInt8';
+		at: self typeQuint16 put: 'QUInt16';
+		at: self typeQuint8 put: 'QUInt8';
+		at: self typeResource put: 'Resource';
+		at: self typeString put: 'String';
+		at: self typeUint16 put: 'UInt16';
+		at: self typeUint32 put: 'Uint32';
+		at: self typeUint64 put: 'Uint64';
+		at: self typeUint8 value put: 'Uint8';
+		at: self typeVariant put: 'Variant';
+		at: aType! !
+
+!TFTensor class methodsFor: 'accessing' stamp: 'JV 5/24/2021 15:15:58'!
+typeComplex
+	^8! !
+
+!TFTensor class methodsFor: 'accessing' stamp: 'JV 5/24/2021 15:16:25'!
+typeQint16
+	^16! !
+
+!TFTensor class methodsFor: 'accessing' stamp: 'JV 5/24/2021 15:17:21'!
+typeQint32
+	^13! !
+
+!TFTensor class methodsFor: 'accessing' stamp: 'JV 5/24/2021 15:17:40'!
+typeQint8
+	^11! !
+
+!TFTensor class methodsFor: 'accessing' stamp: 'JV 5/24/2021 15:18:03'!
+typeQuint16
+	^16! !
+
+!TFTensor class methodsFor: 'accessing' stamp: 'JV 5/24/2021 15:18:24'!
+typeQuint8
+	^12! !
+
+!TFTensor class methodsFor: 'accessing' stamp: 'JV 5/24/2021 15:19:37'!
+typeUint16
+	^17! !
+
+!TFTensor class methodsFor: 'accessing' stamp: 'JV 5/24/2021 15:20:27'!
+typeUint64
+	^23! !
+
+!TFTensor class methodsFor: 'accessing' stamp: 'JV 5/24/2021 15:20:51'!
+typeUint8
+	^4! !
+
+!TFTensor class methodsFor: 'accessing' stamp: 'JV 5/24/2021 15:21:09'!
+typeVariant
+	^21! !
+
+!TFTensor class methodsFor: 'accessing class hierarchy' stamp: 'JV 5/24/2021 15:19:55'!
+typeUint32
+	^22! !
+
+!TensorDomain methodsFor: 'Accessing'!
+shape	^shape! !
+
+!TensorDomain methodsFor: 'Accessing'!
+type	^type! !
+
+!TensorDomain methodsFor: 'Accessing'!
+withNewUnknownDimension	^TensorDomain		of: self type		withShape: (			TensorShape withDimensionsSized: (				OrderedCollection new					add: -1;					addAll: self shape dimensionSizes;					asArray))! !
+
+!TensorDomain methodsFor: 'Accessing' stamp: 'JV 5/24/2021 15:25:00'!
+withSlicedShape
+
+	self shape representsScalar
+		ifTrue: [ AssertionFailure signal: 'A scalar shaped can''t be sliced' ].
+
+	^ TensorDomain
+		of: self type
+		withShape: ( TensorShape withDimensionsSized: self shape dimensionSizes allButFirst )! !
+
+!TensorDomain methodsFor: 'Initialization'!
+initializeOf: aTensorType withShape: aTensorShape	type := aTensorType.	shape := aTensorShape! !
+
+!TensorDomain class methodsFor: 'Instance Creation'!
+of: aTensorType withShape: aTensorShape	^self new initializeOf: aTensorType withShape: aTensorShape! !
+
+!TensorDomain class methodsFor: 'Instance Creation'!
+ofFloatMatrixSized: aNumberOfRows by: aNumberOfColumns	^self		of: TFTensor typeFloat		withShape: (TensorShape matrixSized: aNumberOfRows by: aNumberOfColumns)! !
+
+!TensorDomain class methodsFor: 'Instance Creation'!
+ofFloatScalar	^self of: TFTensor typeFloat withShape: TensorShape scalar! !
+
+!TensorDomain class methodsFor: 'Instance Creation'!
+ofFloatVectorSized: anInteger	^self of: TFTensor typeFloat withShape: (TensorShape vectorSized: anInteger)! !
+
+!TensorDomain class methodsFor: 'Instance Creation'!
+ofIntegerScalar	^self of: TFTensor typeInt32 withShape: TensorShape scalar! !
+
+!TensorDomain class methodsFor: 'Instance Creation'!
+ofLargeIntegerScalar	^self of: TFTensor typeInt64 withShape: TensorShape scalar! !
+
+!TensorShape methodsFor: 'Comparing'!
+= anObject	^((anObject isA: TensorShape) and: [self dimensionSizes = anObject dimensionSizes])		or: [(anObject isA: SequenceableCollection) and: [self dimensionSizes = anObject asArray]]! !
+
+!TensorShape methodsFor: 'Comparing'!
+hash	^self dimensionSizes hash! !
+
+!TensorShape methodsFor: 'Initialization'!
+initializeDimensionSized: anArray	dimensionSizes := anArray! !
+
+!TensorShape methodsFor: 'Testing'!
+isCompatibleWithNHWShapes		"NHW shape is those with (number of images in the batch, height, width) shape "		^self rank = 3! !
+
+!TensorShape methodsFor: 'Testing'!
+representsMatrix	^self rank = 2! !
+
+!TensorShape methodsFor: 'Testing'!
+representsScalar	^self rank = 0! !
+
+!TensorShape methodsFor: 'Testing'!
+representsVector	^self rank = 1! !
+
+!TensorShape methodsFor: 'Converting'!
+asInt32Tensor	^self dimensionSizes asInt32Tensor! !
+
+!TensorShape methodsFor: 'Converting'!
+asInt64Tensor	^self dimensionSizes asInt64Tensor! !
+
+!TensorShape methodsFor: 'Converting'!
+asTensorShape	^self! !
+
+!TensorShape methodsFor: 'Converting'!
+flattened	self rank < 2 ifTrue: [^self].	self representsMatrix		ifTrue: [^self class vectorSized: dimensionSizes first * dimensionSizes second].	^self class matrixSized: dimensionSizes first by: dimensionSizes second * dimensionSizes third! !
+
+!TensorShape methodsFor: 'Accessing' stamp: 'JV 5/24/2021 14:20:20'!
+description
+	self representsScalar ifTrue: [^'Scalar'].
+	self representsVector ifTrue: [^String streamContents: [:stream | stream nextPutAll: 'Vector size '; print: self dimensionSizes anyOne]].
+	self representsMatrix ifTrue: [^String streamContents: [:stream | stream print: self dimensionSizes first; nextPut: $x; print: self dimensionSizes second; nextPutAll: ' matrix']].
+	^ self dimensionSizes asString! !
+
+!TensorShape methodsFor: 'Accessing'!
+dimensionSizes	^dimensionSizes! !
+
+!TensorShape methodsFor: 'Accessing'!
+numberOfFeatures	" When shape represents a matrix, the second dimensions is the total amount of columns, 	 which is the numbe of features in a dataset"	^self dimensionSizes second! !
+
+!TensorShape methodsFor: 'Accessing'!
+rank	^self dimensionSizes size! !
+
+!TensorShape methodsFor: 'Accessing'!
+size	^dimensionSizes size! !
+
+!TensorShape methodsFor: 'Accessing'!
+totalAmountOfElements	^self dimensionSizes inject: 1 into: [ :prev :next | prev * next ]! !
+
+!TensorShape class methodsFor: 'Instance Creation'!
+assertHasValidDimensionsSize: aDimensionsSizeArray	((aDimensionsSizeArray isA: Array) and: [ 		 aDimensionsSizeArray allSatisfy: [ :dimensionSize | 			 (dimensionSize isA: Integer) and: [ dimensionSize >= -1 ] ] ]) 		ifFalse: [ 			AssertionFailure signal:				#'Dimensions sizes should be a greater or equal than -1 integer array' ]! !
+
+!TensorShape class methodsFor: 'Instance Creation'!
+matrixSized: aNumberOfRows by: aNumberOfColumns	^self withDimensionsSized: (Array with: aNumberOfRows with: aNumberOfColumns)! !
+
+!TensorShape class methodsFor: 'Instance Creation'!
+numberOfBatches: anInteger height: aHeight width: aWidth channels: anAmountOfChannels	^self withDimensionsSized:		(Array with: anInteger with: aHeight with: aWidth with: anAmountOfChannels)! !
+
+!TensorShape class methodsFor: 'Instance Creation'!
+scalar	^self withDimensionsSized: #()! !
+
+!TensorShape class methodsFor: 'Instance Creation' stamp: 'JV 5/24/2021 15:23:19'!
+unknown	^self new initializeDimensionSized: #(-1)! !
+
+!TensorShape class methodsFor: 'Instance Creation'!
+unknownBatchSizeWith: aNumberOfFeatures	^self matrixSized: -1 by: aNumberOfFeatures! !
+
+!TensorShape class methodsFor: 'Instance Creation'!
+vectorSized: anInteger	^self withDimensionsSized: (Array with: anInteger)! !
+
+!TensorShape class methodsFor: 'Instance Creation'!
+withDimensionsSized: aDimensionsSizeArray	self assertHasValidDimensionsSize: aDimensionsSizeArray.	^ self new initializeDimensionSized: aDimensionsSizeArray! !
 
 !Object methodsFor: '*TensorFlowCore' stamp: 'gera 1/7/2017 20:18:45'!
 ignoreFinalization
@@ -4048,29 +4317,9 @@ ignoreFinalization
 useFinalization
 	self finalizationRegistry add: self! !
 
-!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
+!Boolean methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:27'!
 asBooleanTensor
 	^ TFTensor fromBooleans: self! !
-
-!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:27'!
-asFloatTensor
-	^ TFTensor fromFloats: self! !
-
-!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:28'!
-asInt32Tensor
-	^ TFTensor fromInt32s: self! !
-
-!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
-asInt64Tensor
-	^ TFTensor fromInt64s: self! !
-
-!String methodsFor: '*TensorFlowCore' stamp: 'gera 1/7/2017 04:33:10'!
-asAsciiZ
-	^self, Character null asString! !
-
-!String methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
-asTensor
-	^ TFTensor fromString: self! !
 
 !Number methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
 asFloatTensor
@@ -4092,7 +4341,67 @@ asTensor
 asTensor
 	^ TFTensor fromFloats: self! !
 
-!Boolean methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:27'!
+!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
 asBooleanTensor
 	^ TFTensor fromBooleans: self! !
+
+!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:27'!
+asFloatTensor
+	^ TFTensor fromFloats: self! !
+
+!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:28'!
+asInt32Tensor
+	^ TFTensor fromInt32s: self! !
+
+!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
+asInt64Tensor
+	^ TFTensor fromInt64s: self! !
+
+!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'JV 5/24/2021 14:58:54'!
+asTensorShape
+	^ TensorShape withDimensionsSized: self! !
+
+!String methodsFor: '*TensorFlowCore' stamp: 'gera 1/7/2017 04:33:10'!
+asAsciiZ
+	^self, Character null asString! !
+
+!String methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
+asTensor
+	^ TFTensor fromString: self! !
+
+!TestCase methodsFor: '*TensorFlowCore-Tests' stamp: 'JV 5/24/2021 14:12:23'!
+assert: firstString isEqualSkippingSeparatorsTo: secondString
+
+	| firstSanitizedString secondSanitizedString |
+
+	firstSanitizedString := firstString reject: [ :character | character isSeparator ].
+	secondSanitizedString := secondString reject: [ :character | character isSeparator ].
+	self assert: firstSanitizedString equals: secondSanitizedString! !
+
+!TestCase methodsFor: '*TensorFlowCore-Tests' stamp: 'JV 5/24/2021 14:12:01'!
+executeShould: aBlock inScopeOf: anException withSignalDo: anotherBlock
+
+	^[
+		aBlock value.
+		false]
+			on: anException
+			do: [:aSignal |
+				anotherBlock value: aSignal.
+				aSignal sunitExitWith: true]! !
+
+!TestCase methodsFor: '*TensorFlowCore-Tests' stamp: 'JV 5/24/2021 14:09:11'!
+should: aBlock raise: anException withDescription: aString
+
+	self
+		should: aBlock
+		raise: anException
+		withSignalDo: [:exception |
+			self assert: exception messageText isEqualSkippingSeparatorsTo: aString]! !
+
+!TestCase methodsFor: '*TensorFlowCore-Tests' stamp: 'JV 5/24/2021 14:11:44'!
+should: aBlock raise: anException withSignalDo: anotherBlock
+
+	^self
+		assert: (self executeShould: aBlock inScopeOf: anException withSignalDo: anotherBlock)
+		description: 'Expected exception wasn''t raised'! !
 TFStructure initialize!
