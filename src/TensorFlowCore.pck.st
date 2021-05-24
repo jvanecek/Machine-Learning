@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4607] on 24 May 2021 at 9:13:04 am'!
+'From Cuis 5.0 [latest update: #4607] on 24 May 2021 at 9:43:56 am'!
 'Description '!
-!provides: 'TensorFlowCore' 1 3!
+!provides: 'TensorFlowCore' 1 7!
 !requires: 'FFI' 1 33 nil!
 !requires: 'Statistics' 1 14 nil!
 SystemOrganization addCategory: #TensorFlowCore!
@@ -2546,15 +2546,6 @@ testExternalFromArrayTensor
 	! !
 
 !ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:06:39'!
-testOperationArrayAtPut
-	| graph sample |
-	graph := TFGraph create.
-	sample := graph placeholder: 'var' type: TFTensor typeInt64.
-	
-	self testArrayAtPutFor: TFOperationPtrArray elementSample: sample.
-! !
-
-!ExternalWordArrayTest methodsFor: 'testing' stamp: 'gera 7/3/2019 03:06:39'!
 testOperationArrayElementsOfRightClass
 	^ self testArray: TFOperationPtrArray sampleElement: TFOperation new.
 ! !
@@ -2740,6 +2731,27 @@ testSessionFinalizationReleasesExternalMemory
 testStatusFinalizationReleasesExternalMemory
 
 	self assertCreating: 11 of: [ TFStatus create ] releasesExternalMemoryRepeatingUpTo: 1! !
+
+!TensorFlowCAPISlowTests methodsFor: 'asserting' stamp: 'JV 5/23/2021 20:02:24'!
+assertCreating: anAmount of: aTensorFlowObjectCreator releasesExternalMemoryRepeatingUpTo: timesRepeat
+
+	| total handles |
+
+	total := 0.
+	handles := Set new.
+	timesRepeat timesRepeat: [
+		total := total + anAmount.
+		handles addAll: (
+			(1 to: anAmount) collect: [:i |
+				Smalltalk garbageCollect.
+				aTensorFlowObjectCreator value getHandle ]).
+		handles size < total ifTrue: [
+			" Meaning some external addresses where reused, so we're good "
+			^self]].
+	self 
+		assert: handles size < total
+		description: 'No external address could be reused, check for some leak'
+	! !
 
 !TensorFlowCAPISlowTests methodsFor: 'testing tensor' stamp: 'JV 5/23/2021 20:02:58'!
 testTensorFinalizationReleasesExternalMemory

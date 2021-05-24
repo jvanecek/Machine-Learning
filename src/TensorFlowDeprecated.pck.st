@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4607] on 24 May 2021 at 9:13:07 am'!
+'From Cuis 5.0 [latest update: #4607] on 24 May 2021 at 9:43:58 am'!
 'Description '!
-!provides: 'TensorFlowDeprecated' 1 3!
+!provides: 'TensorFlowDeprecated' 1 5!
 !requires: 'TensorFlowCore' 1 1 nil!
 SystemOrganization addCategory: #'TensorFlowDeprecated-Core'!
 SystemOrganization addCategory: #'TensorFlowDeprecated-Core-Tests'!
@@ -3619,26 +3619,14 @@ unaryOp: aString named: name
 unaryOp: aString named: name described: oneArgBlock
 	^ self op: aString withAll: {} named: name described: oneArgBlock! !
 
-!TensorFlowCAPISlowTests methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/23/2021 20:02:24'!
-assertCreating: anAmount of: aTensorFlowObjectCreator releasesExternalMemoryRepeatingUpTo: timesRepeat
-
-	| total handles |
-
-	total := 0.
-	handles := Set new.
-	timesRepeat timesRepeat: [
-		total := total + anAmount.
-		handles addAll: (
-			(1 to: anAmount) collect: [:i |
-				Smalltalk garbageCollect.
-				aTensorFlowObjectCreator value getHandle ]).
-		handles size < total ifTrue: [
-			" Meaning some external addresses where reused, so we're good "
-			^self]].
-	self 
-		assert: handles size < total
-		description: 'No external address could be reused, check for some leak'
-	! !
+!ExternalWordArrayTest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:06:39'!
+testOperationArrayAtPut
+	| graph sample |
+	graph := TFGraph create.
+	sample := graph placeholder: 'var' type: TFTensor typeInt64.
+	
+	self testArrayAtPutFor: TFOperationPtrArray elementSample: sample.
+! !
 
 !TensorFlowCAPISlowTests methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 1/29/2017 02:22:17'!
 mulGraphTwoInputsInt64ConstTensorDeleted
