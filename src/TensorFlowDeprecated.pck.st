@@ -1,211 +1,211 @@
-'From Cuis 5.0 [latest update: #4607] on 24 May 2021 at 9:43:58 am'!
+'From Cuis 5.0 [latest update: #4607] on 25 May 2021 at 8:39:15 am'!
 'Description '!
-!provides: 'TensorFlowDeprecated' 1 5!
+!provides: 'TensorFlowDeprecated' 1 6!
 !requires: 'TensorFlowCore' 1 1 nil!
-SystemOrganization addCategory: #'TensorFlowDeprecated-Core'!
-SystemOrganization addCategory: #'TensorFlowDeprecated-Core-Tests'!
-SystemOrganization addCategory: #'TensorFlowDeprecated-Examples'!
-SystemOrganization addCategory: #'TensorFlowDeprecated-ExamplesTests'!
+SystemOrganization addCategory: 'TensorFlowDeprecated-Core'!
+SystemOrganization addCategory: 'TensorFlowDeprecated-Core-Tests'!
+SystemOrganization addCategory: 'TensorFlowDeprecated-Examples'!
+SystemOrganization addCategory: 'TensorFlowDeprecated-ExamplesTests'!
 
 
-!classDefinition: #BatchTrainer category: #'TensorFlowDeprecated-Examples'!
-Object subclass: #BatchTrainer
-	instanceVariableNames: 'plan batchSize imageSet labelSet imageTesting labelTesting'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'BatchTrainer class' category: #'TensorFlowDeprecated-Examples'!
-BatchTrainer class
-	instanceVariableNames: ''!
-
-!classDefinition: #ExamplePlan category: #'TensorFlowDeprecated-Examples'!
-Object subclass: #ExamplePlan
-	instanceVariableNames: 'graph inputs outputs session'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'ExamplePlan class' category: #'TensorFlowDeprecated-Examples'!
-ExamplePlan class
-	instanceVariableNames: ''!
-
-!classDefinition: #BackpropagationBackwardPlan category: #'TensorFlowDeprecated-Examples'!
-ExamplePlan subclass: #BackpropagationBackwardPlan
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'BackpropagationBackwardPlan class' category: #'TensorFlowDeprecated-Examples'!
-BackpropagationBackwardPlan class
-	instanceVariableNames: ''!
-
-!classDefinition: #BackpropagationForwardPlan category: #'TensorFlowDeprecated-Examples'!
-ExamplePlan subclass: #BackpropagationForwardPlan
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'BackpropagationForwardPlan class' category: #'TensorFlowDeprecated-Examples'!
-BackpropagationForwardPlan class
-	instanceVariableNames: ''!
-
-!classDefinition: #BackpropagationPlan category: #'TensorFlowDeprecated-Examples'!
-ExamplePlan subclass: #BackpropagationPlan
-	instanceVariableNames: 'weights activation target learn delta lastDelta'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'BackpropagationPlan class' category: #'TensorFlowDeprecated-Examples'!
-BackpropagationPlan class
-	instanceVariableNames: ''!
-
-!classDefinition: #ExampleNearestNeighborPlan category: #'TensorFlowDeprecated-Examples'!
-ExamplePlan subclass: #ExampleNearestNeighborPlan
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'ExampleNearestNeighborPlan class' category: #'TensorFlowDeprecated-Examples'!
-ExampleNearestNeighborPlan class
-	instanceVariableNames: ''!
-
-!classDefinition: #ExampleOLSPlan category: #'TensorFlowDeprecated-Examples'!
-ExamplePlan subclass: #ExampleOLSPlan
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'ExampleOLSPlan class' category: #'TensorFlowDeprecated-Examples'!
-ExampleOLSPlan class
-	instanceVariableNames: ''!
-
-!classDefinition: #MNIST3LayersNNExamplePlan category: #'TensorFlowDeprecated-Examples'!
-Object subclass: #MNIST3LayersNNExamplePlan
-	instanceVariableNames: 'session graph weights1 biases1 weights2 biases2 weights3 biases3 prediction input expectedLabel loss netInput activation hidden2 hidden1 learn'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'MNIST3LayersNNExamplePlan class' category: #'TensorFlowDeprecated-Examples'!
-MNIST3LayersNNExamplePlan class
-	instanceVariableNames: ''!
-
-!classDefinition: #MNIST3LayersNNSigmoid category: #'TensorFlowDeprecated-Examples'!
-MNIST3LayersNNExamplePlan subclass: #MNIST3LayersNNSigmoid
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'MNIST3LayersNNSigmoid class' category: #'TensorFlowDeprecated-Examples'!
-MNIST3LayersNNSigmoid class
-	instanceVariableNames: ''!
-
-!classDefinition: #MNISTFile category: #'TensorFlowDeprecated-Examples'!
-Object subclass: #MNISTFile
-	instanceVariableNames: 'magic count items'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'MNISTFile class' category: #'TensorFlowDeprecated-Examples'!
-MNISTFile class
-	instanceVariableNames: ''!
-
-!classDefinition: #MNISTImageFile category: #'TensorFlowDeprecated-Examples'!
-MNISTFile subclass: #MNISTImageFile
-	instanceVariableNames: 'rows columns'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'MNISTImageFile class' category: #'TensorFlowDeprecated-Examples'!
-MNISTImageFile class
-	instanceVariableNames: 'trainingSet testSet'!
-
-!classDefinition: #MNISTLabelFile category: #'TensorFlowDeprecated-Examples'!
-MNISTFile subclass: #MNISTLabelFile
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'MNISTLabelFile class' category: #'TensorFlowDeprecated-Examples'!
-MNISTLabelFile class
-	instanceVariableNames: 'trainingSet testSet'!
-
-!classDefinition: #MNISTSoftMaxExamplePlan category: #'TensorFlowDeprecated-Examples'!
-Object subclass: #MNISTSoftMaxExamplePlan
-	instanceVariableNames: 'session graph weights biases prediction netInput input loss expectedLabel learnWeights learnBiases activation'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'MNISTSoftMaxExamplePlan class' category: #'TensorFlowDeprecated-Examples'!
-MNISTSoftMaxExamplePlan class
-	instanceVariableNames: ''!
-
-!classDefinition: #NearestNeighbor category: #'TensorFlowDeprecated-Examples'!
-Object subclass: #NearestNeighbor
-	instanceVariableNames: 'plan'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'NearestNeighbor class' category: #'TensorFlowDeprecated-Examples'!
-NearestNeighbor class
-	instanceVariableNames: ''!
-
-!classDefinition: #OLSExample category: #'TensorFlowDeprecated-Examples'!
-Object subclass: #OLSExample
-	instanceVariableNames: 'plan'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'OLSExample class' category: #'TensorFlowDeprecated-Examples'!
-OLSExample class
-	instanceVariableNames: ''!
-
-!classDefinition: #RegressionNNExample category: #'TensorFlowDeprecated-Examples'!
-Object subclass: #RegressionNNExample
-	instanceVariableNames: 'graph input weights1 biases1 weights2 biases2 weights3 biases3 prediction netInput weights4 biases4 hidden1 hidden2 expectedLabel loss session hidden3 learn'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'RegressionNNExample class' category: #'TensorFlowDeprecated-Examples'!
-RegressionNNExample class
-	instanceVariableNames: ''!
-
-!classDefinition: #SimpleNeuralNetworkExample category: #'TensorFlowDeprecated-Examples'!
-Object subclass: #SimpleNeuralNetworkExample
-	instanceVariableNames: 'forward backward weights'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TensorFlowDeprecated-Examples'!
-!classDefinition: 'SimpleNeuralNetworkExample class' category: #'TensorFlowDeprecated-Examples'!
-SimpleNeuralNetworkExample class
-	instanceVariableNames: ''!
-
-!classDefinition: #TensorFlowOperationsTest category: #'TensorFlowDeprecated-Core-Tests'!
+!classDefinition: #TensorFlowOperationsTest category: 'TensorFlowDeprecated-Core-Tests'!
 TensorFlowTestCase subclass: #TensorFlowOperationsTest
 	instanceVariableNames: 'library'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TensorFlowDeprecated-Core-Tests'!
-!classDefinition: 'TensorFlowOperationsTest class' category: #'TensorFlowDeprecated-Core-Tests'!
+!classDefinition: 'TensorFlowOperationsTest class' category: 'TensorFlowDeprecated-Core-Tests'!
 TensorFlowOperationsTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #TensorFlowExamplesSlowTest category: #'TensorFlowDeprecated-ExamplesTests'!
+!classDefinition: #TensorFlowExamplesSlowTest category: 'TensorFlowDeprecated-ExamplesTests'!
 TensorFlowTestCase subclass: #TensorFlowExamplesSlowTest
 	instanceVariableNames: 'images labels'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TensorFlowDeprecated-ExamplesTests'!
-!classDefinition: 'TensorFlowExamplesSlowTest class' category: #'TensorFlowDeprecated-ExamplesTests'!
+!classDefinition: 'TensorFlowExamplesSlowTest class' category: 'TensorFlowDeprecated-ExamplesTests'!
 TensorFlowExamplesSlowTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #TensorFlowExamplesTest category: #'TensorFlowDeprecated-ExamplesTests'!
+!classDefinition: #TensorFlowExamplesTest category: 'TensorFlowDeprecated-ExamplesTests'!
 TensorFlowTestCase subclass: #TensorFlowExamplesTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TensorFlowDeprecated-ExamplesTests'!
-!classDefinition: 'TensorFlowExamplesTest class' category: #'TensorFlowDeprecated-ExamplesTests'!
+!classDefinition: 'TensorFlowExamplesTest class' category: 'TensorFlowDeprecated-ExamplesTests'!
 TensorFlowExamplesTest class
+	instanceVariableNames: ''!
+
+!classDefinition: #BatchTrainer category: 'TensorFlowDeprecated-Examples'!
+Object subclass: #BatchTrainer
+	instanceVariableNames: 'plan batchSize imageSet labelSet imageTesting labelTesting'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'BatchTrainer class' category: 'TensorFlowDeprecated-Examples'!
+BatchTrainer class
+	instanceVariableNames: ''!
+
+!classDefinition: #ExamplePlan category: 'TensorFlowDeprecated-Examples'!
+Object subclass: #ExamplePlan
+	instanceVariableNames: 'graph inputs outputs session'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'ExamplePlan class' category: 'TensorFlowDeprecated-Examples'!
+ExamplePlan class
+	instanceVariableNames: ''!
+
+!classDefinition: #BackpropagationBackwardPlan category: 'TensorFlowDeprecated-Examples'!
+ExamplePlan subclass: #BackpropagationBackwardPlan
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'BackpropagationBackwardPlan class' category: 'TensorFlowDeprecated-Examples'!
+BackpropagationBackwardPlan class
+	instanceVariableNames: ''!
+
+!classDefinition: #BackpropagationForwardPlan category: 'TensorFlowDeprecated-Examples'!
+ExamplePlan subclass: #BackpropagationForwardPlan
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'BackpropagationForwardPlan class' category: 'TensorFlowDeprecated-Examples'!
+BackpropagationForwardPlan class
+	instanceVariableNames: ''!
+
+!classDefinition: #BackpropagationPlan category: 'TensorFlowDeprecated-Examples'!
+ExamplePlan subclass: #BackpropagationPlan
+	instanceVariableNames: 'weights activation target learn delta lastDelta'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'BackpropagationPlan class' category: 'TensorFlowDeprecated-Examples'!
+BackpropagationPlan class
+	instanceVariableNames: ''!
+
+!classDefinition: #ExampleNearestNeighborPlan category: 'TensorFlowDeprecated-Examples'!
+ExamplePlan subclass: #ExampleNearestNeighborPlan
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'ExampleNearestNeighborPlan class' category: 'TensorFlowDeprecated-Examples'!
+ExampleNearestNeighborPlan class
+	instanceVariableNames: ''!
+
+!classDefinition: #ExampleOLSPlan category: 'TensorFlowDeprecated-Examples'!
+ExamplePlan subclass: #ExampleOLSPlan
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'ExampleOLSPlan class' category: 'TensorFlowDeprecated-Examples'!
+ExampleOLSPlan class
+	instanceVariableNames: ''!
+
+!classDefinition: #MNIST3LayersNNExamplePlan category: 'TensorFlowDeprecated-Examples'!
+Object subclass: #MNIST3LayersNNExamplePlan
+	instanceVariableNames: 'session graph weights1 biases1 weights2 biases2 weights3 biases3 prediction input expectedLabel loss netInput activation hidden2 hidden1 learn'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'MNIST3LayersNNExamplePlan class' category: 'TensorFlowDeprecated-Examples'!
+MNIST3LayersNNExamplePlan class
+	instanceVariableNames: ''!
+
+!classDefinition: #MNIST3LayersNNSigmoid category: 'TensorFlowDeprecated-Examples'!
+MNIST3LayersNNExamplePlan subclass: #MNIST3LayersNNSigmoid
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'MNIST3LayersNNSigmoid class' category: 'TensorFlowDeprecated-Examples'!
+MNIST3LayersNNSigmoid class
+	instanceVariableNames: ''!
+
+!classDefinition: #MNISTFile category: 'TensorFlowDeprecated-Examples'!
+Object subclass: #MNISTFile
+	instanceVariableNames: 'magic count items'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'MNISTFile class' category: 'TensorFlowDeprecated-Examples'!
+MNISTFile class
+	instanceVariableNames: ''!
+
+!classDefinition: #MNISTImageFile category: 'TensorFlowDeprecated-Examples'!
+MNISTFile subclass: #MNISTImageFile
+	instanceVariableNames: 'rows columns'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'MNISTImageFile class' category: 'TensorFlowDeprecated-Examples'!
+MNISTImageFile class
+	instanceVariableNames: 'trainingSet testSet'!
+
+!classDefinition: #MNISTLabelFile category: 'TensorFlowDeprecated-Examples'!
+MNISTFile subclass: #MNISTLabelFile
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'MNISTLabelFile class' category: 'TensorFlowDeprecated-Examples'!
+MNISTLabelFile class
+	instanceVariableNames: 'trainingSet testSet'!
+
+!classDefinition: #MNISTSoftMaxExamplePlan category: 'TensorFlowDeprecated-Examples'!
+Object subclass: #MNISTSoftMaxExamplePlan
+	instanceVariableNames: 'session graph weights biases prediction netInput input loss expectedLabel learnWeights learnBiases activation'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'MNISTSoftMaxExamplePlan class' category: 'TensorFlowDeprecated-Examples'!
+MNISTSoftMaxExamplePlan class
+	instanceVariableNames: ''!
+
+!classDefinition: #NearestNeighbor category: 'TensorFlowDeprecated-Examples'!
+Object subclass: #NearestNeighbor
+	instanceVariableNames: 'plan'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'NearestNeighbor class' category: 'TensorFlowDeprecated-Examples'!
+NearestNeighbor class
+	instanceVariableNames: ''!
+
+!classDefinition: #OLSExample category: 'TensorFlowDeprecated-Examples'!
+Object subclass: #OLSExample
+	instanceVariableNames: 'plan'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'OLSExample class' category: 'TensorFlowDeprecated-Examples'!
+OLSExample class
+	instanceVariableNames: ''!
+
+!classDefinition: #RegressionNNExample category: 'TensorFlowDeprecated-Examples'!
+Object subclass: #RegressionNNExample
+	instanceVariableNames: 'graph input weights1 biases1 weights2 biases2 weights3 biases3 prediction netInput weights4 biases4 hidden1 hidden2 expectedLabel loss session hidden3 learn'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'RegressionNNExample class' category: 'TensorFlowDeprecated-Examples'!
+RegressionNNExample class
+	instanceVariableNames: ''!
+
+!classDefinition: #SimpleNeuralNetworkExample category: 'TensorFlowDeprecated-Examples'!
+Object subclass: #SimpleNeuralNetworkExample
+	instanceVariableNames: 'forward backward weights'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowDeprecated-Examples'!
+!classDefinition: 'SimpleNeuralNetworkExample class' category: 'TensorFlowDeprecated-Examples'!
+SimpleNeuralNetworkExample class
 	instanceVariableNames: ''!
 
 
@@ -217,1150 +217,6 @@ I compute a regression on arbitrary functions.
 Implementation of http://cs.stanford.edu/people/karpathy/convnetjs/demo/regression.html
 
 RegressionNNExample exampleTrainedAndPlot!
-
-!BatchTrainer methodsFor: 'initialization' stamp: 'JB 2/18/2017 20:36:29'!
-initialize
-	super initialize.
-	batchSize := 100.
-	imageSet := MNISTImageFile trainingSet.
-	labelSet := MNISTLabelFile trainingSet.
-	imageTesting := MNISTImageFile testSet.
-	labelTesting := MNISTLabelFile testSet.
-	self use3Layers.
-! !
-
-!BatchTrainer methodsFor: 'initialization' stamp: 'JB 2/18/2017 20:28:05'!
-use3Layers
-	plan := MNIST3LayersNNExamplePlan new.! !
-
-!BatchTrainer methodsFor: 'initialization' stamp: 'JB 2/19/2017 17:09:45'!
-use3LayersSigmoid
-	plan := MNIST3LayersNNSigmoid new.! !
-
-!BatchTrainer methodsFor: 'initialization' stamp: 'JB 2/18/2017 20:28:22'!
-useSoftmax
-	plan := MNISTSoftMaxExamplePlan new.! !
-
-!BatchTrainer methodsFor: 'private' stamp: 'JB 2/18/2017 20:23:39'!
-predict: images andCompareTo: labels
-	| equals result |
-	result := (plan predict: images) asNumbers.
-	equals := result with: labels collect:[:x :y| (x = y) ifTrue:[1] ifFalse:[0]].
-	^ equals mean asFloat.
-! !
-
-!BatchTrainer methodsFor: 'private' stamp: 'JB 2/18/2017 20:21:23'!
-trainAt: index
-	| images labels loss report result |
-	images := imageSet bytesAt: index take: batchSize.
-	labels := labelSet at: index take: batchSize.
-	result := plan predict: images andLearnFrom: labels.
-	loss := result at: 2.
-	report := index asString, ': ', loss asNumbers asString.
-	Transcript show: report;
-					newLine
-	! !
-
-!BatchTrainer methodsFor: 'running' stamp: 'JB 2/18/2017 20:27:19'!
-predictOnTesting
-	| images labels |
-	images := imageTesting bytesAt: 1 take: imageTesting count.
-	labels := labelTesting at: 1 take: labelTesting count.
-	^ self predict: images andCompareTo: labels! !
-
-!BatchTrainer methodsFor: 'running' stamp: 'JB 2/18/2017 20:26:40'!
-predictOnTraining
-	| images labels |
-	images := imageSet bytesAt: 1 take: 10 * batchSize.
-	labels := labelSet at: 1 take: 10 * batchSize.
-	^ self predict: images andCompareTo: labels! !
-
-!BatchTrainer methodsFor: 'running' stamp: 'JB 2/18/2017 20:22:07'!
-train
-	(1 to: labelSet count -1 by: batchSize) do: [:index| self trainAt: index].! !
-
-!ExamplePlan methodsFor: 'initialization' stamp: 'gera 1/29/2017 05:12:34'!
-initialize
-	self initializeGraph.
-	self initializeSession.! !
-
-!ExamplePlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 00:34:29'!
-initializeGraph
-	graph := TFGraph create
-	! !
-
-!ExamplePlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 03:35:50'!
-initializeSession
-	session := TFSession on: graph.
-	graph initializeOn: session.
-! !
-
-!ExamplePlan methodsFor: 'running' stamp: 'gera 1/29/2017 05:19:43'!
-runOn: inputValues
-	| results |	
-		
-	results := session
-		runInputs: inputs
-		values: inputValues
-		outputs: outputs.
-		
-	^ results first
-	! !
-
-!BackpropagationBackwardPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:25'!
-initializeGraph
-	| inputVariable weights actual delta learningRate newWeights target one |
-	super initializeGraph.
-	inputVariable := graph placeholder: 'Input' type: TFTensor typeFloat.
-	target := graph placeholder: 'target' type: TFTensor typeFloat.
-	actual := graph placeholder: 'actual' type: TFTensor typeFloat.
-	weights := graph placeholder: 'weights' type: TFTensor typeFloat.
-	learningRate := graph const: 'learningRate' value: 0.9 asTensor.
-	one := graph const: 'one' value: 1.0 asTensor.
-	delta := (target - actual) negated @* actual @* (one - actual) @* inputVariable.
-	newWeights := weights - (learningRate @* delta).
-	outputs := {newWeights output: 0}.
-	inputs := {inputVariable input: 0. weights input: 0. target input:0. actual input: 0}! !
-
-!BackpropagationForwardPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:26'!
-initializeGraph
-	| activation inputVariable netInput weights |
-	super initializeGraph.
-	inputVariable := graph placeholder: 'Input' type: TFTensor typeFloat.
-	weights := graph placeholder: 'weights' type: TFTensor typeFloat.
-	netInput := weights * inputVariable.
-	activation := netInput sigmoid.
-	outputs := {activation output: 0}.
-	inputs := {inputVariable input: 0. weights input: 0}! !
-
-!BackpropagationPlan methodsFor: 'accessing' stamp: 'gera 1/29/2017 11:17:26'!
-delta
-	^ lastDelta! !
-
-!BackpropagationPlan methodsFor: 'accessing' stamp: 'gera 1/29/2017 08:32:19'!
-graph
-	^ graph! !
-
-!BackpropagationPlan methodsFor: 'accessing' stamp: 'gera 1/29/2017 08:40:28'!
-weights
-	^ session runOutput: (weights output: 0)! !
-
-!BackpropagationPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:26'!
-initializeBackwardGraph
-	| actual learningRate learningRateValue one input |
-	actual := activation.
-	one := graph const: 'one' value: #((1 1) (1 1)) asFloatTensor.
-	
-	learningRateValue := 0.9 asTensor.
-	learningRate := graph const: 'learningRate' value: learningRateValue.
-
-	input := inputs first operationOn: graph.
-	
-	target := graph placeholder: 'target' type: TFTensor typeFloat.
-	
-	delta := (target - actual) negated @* actual @* (one - actual) @* input.
-	
-	"learn := weights assign: weights - learningRate @* delta."
-	"learn := weights -= learningRate @* delta."
-	learn := weights descent: delta rate: learningRate.! !
-
-!BackpropagationPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:25'!
-initializeForwardGraph
-	| input |
-	input := graph placeholder: 'Input' type: TFTensor typeFloat.
-	
-	activation := (weights * input) sigmoid.
-	
-	outputs := {activation output: 0}.
-	inputs := {input input: 0}! !
-
-!BackpropagationPlan methodsFor: 'initialization' stamp: 'gera 1/29/2017 05:28:36'!
-initializeGraph
-	super initializeGraph.
-	self
-		initializeVariables;
-		initializeForwardGraph;
-		initializeBackwardGraph.! !
-
-!BackpropagationPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:26'!
-initializeVariables
-	| initialWeights |
-	Random withDefaultDo: [:random |
-		initialWeights := (1 to: 4) collect: [:unused | random next]].
-	initialWeights := TFTensor fromFloats: initialWeights shape: #(2 2).
-	
-	weights := graph variable: 'weights' initialValue: initialWeights.! !
-
-!BackpropagationPlan methodsFor: 'training' stamp: 'gera 1/29/2017 15:09:30'!
-learn: sample with: expected
-	| results |	
-	results := session
-		runInputs: {inputs first. target input: 0}
-		values: {sample. expected}
-		outputs: {learn output: 0. delta output: 0}.
-	
-	lastDelta := results at: 2.
-	^ results first
-	! !
-
-!ExampleNearestNeighborPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:25'!
-initializeGraph
-	| neg add abs axis axisValue distance testing training prediction |
-	super initializeGraph.
-	
-	training := graph placeholder: 'training' type: TFTensor typeFloat.
-	testing := graph placeholder: 'testing' type: TFTensor typeFloat.
-	axisValue := TFTensor fromInt32: 0.
-	axis := graph const: 'axis' value: axisValue.
-	neg := graph newOperation: 'Neg' named: 'neg' described: [:description |
-		description addInput: (testing output: 0)].
-	add := graph add: 'add' described:[:description| 
-		description addInput: (neg output: 0).
-		description addInput: (training output: 0).
-		].
-	abs := graph newOperation: 'Abs' named: 'abs' described: [:description|
-		description addInput: (add output: 0)].
-	distance := graph newOperation: 'Sum' named: 'distance' described: [:description|
-		description addInput: (abs output: 0).
-		description addInput: (axis output: 0).].
-	
-	prediction := graph newOperation: 'ArgMin' named: 'argmin' described:[:description|
-		description addInput: (distance output: 0).
-		description addInput: (axis output: 0)].
-	
-	outputs := {prediction output: 0}.
-	inputs := {training input: 0. testing input: 0}.! !
-
-!ExampleNearestNeighborPlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 00:34:29'!
-initializeGraphWithOperations
-	| axis distance testing training prediction |
-	graph := TFGraph create.
-	
-	training := graph placeholder: 'training' type: TFTensor typeFloat.
-	testing := graph placeholder: 'testing' type: TFTensor typeFloat.
-	axis := 0 asInt32Tensor.
-	
-	distance := (testing - training) abs sumOn: axis.
-	prediction := distance findMinOn: axis.
-	
-	outputs := {prediction output: 0}.
-	inputs := {training input: 0. testing input: 0}.
-! !
-
-!ExampleNearestNeighborPlan methodsFor: 'evaluating' stamp: 'gera 1/21/2017 04:19:59'!
-predict: covariatesTesting from: covariatesTraining
-	| result |
-
- 	result := self runOn: {covariatesTraining. covariatesTesting}.
-	^ result allInt64s + 1! !
-
-!ExampleOLSPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:27'!
-initializeGraph
-	| x xtx y xty inverse result |
-	super initializeGraph.
-	
-	x := graph placeholder: 'x' type: TFTensor typeFloat.
-	y := graph placeholder: 'y' type: TFTensor typeFloat.
-	
-	xtx := graph newOperation: 'MatMul' named:'xTx' described:[:description|
-		description addInput: (x output: 0).
-		description addInput: (x output: 0).
-		description at: 'transpose_a' putBoolean: true.
-		].
-	
-	inverse := graph newOperation: 'MatrixInverse' named:'inv' described:[:description|
-		description addInput: (xtx output: 0)].
-	
-	xty := graph newOperation: 'MatMul' named:'xTy' described:[:description|
-		description addInput: (x output: 0).
-		description addInput: (y output: 0).
-		description at: 'transpose_a' putBoolean: true.
-		].
-	
-	result := graph newOperation: 'MatMul' named:'result' described:[:description|
-		description addInput: (inverse output: 0).
-		description addInput: (xty output: 0).
-		].
-	
-	outputs := {result output: 0}.
-	inputs := {x input: 0. y input: 0}.! !
-
-!ExampleOLSPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:26'!
-initializeGraphWithOperations
-	| x y prediction |
-	super initializeGraph.
-	
-	x := graph placeholder: 'x' type: TFTensor typeFloat.
-	y := graph placeholder: 'y' type: TFTensor typeFloat.
-	
-	prediction := (x \* x) inverse * (x \* y).
-	
-	outputs := {prediction output: 0}.
-	inputs := {x input: 0. y input: 0}.! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 1/31/2017 01:44:41'!
-graph
-	^ graph! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 1/31/2017 14:41:15'!
-hidden1Size
-	^ 128! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 1/31/2017 14:41:18'!
-hidden2Size
-	^ 32! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 1/31/2017 14:34:12'!
-inputSize
-	^ 28*28! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 1/31/2017 01:47:08'!
-intput
-	^ input! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 2/2/2017 02:27:05'!
-lossGradient
-	^ (loss output: 1)! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 1/31/2017 14:41:30'!
-outputSize
-	^ 10! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 1/31/2017 09:56:01'!
-initialize
-	self
-		initializeGraph;
-		initializeParameters;
-		initializeInferenceGraph;
-		initializeLossGraph;
-		initializeLearningGraph;
-		initializeSession.! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 00:34:29'!
-initializeGraph
-	graph := TFGraph create! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 2/22/2017 00:10:23'!
-initializeInferenceGraph
-	hidden1 := graph
-		fromBlock: [:image |
-			input := image.
-			(image * weights1 + biases1) rectified]
-		named: 'layer1'.
-	hidden2 := graph fromBlock: [(hidden1 * weights2 + biases2) rectified] named: 'layer2'.
-	prediction := graph
-		fromBlock: [
-			netInput := hidden2 * weights3 + biases3.
-			netInput softmax findMaxOn: 1 asInt32Tensor]
-		named: 'layer3'.
-! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:27'!
-initializeLearningGraph
-	|  axis0 backprop learningRate batchSize learnBiases1 learnBiases2 learnBiases3 learnWeights1 learnWeights2 learnWeights3 |
-	
-	learningRate := graph const: 0.1 asTensor.
-	batchSize := graph fromBlock: [(input sizeOn: 0) castTo: TFTensor typeFloat] named: 'batchSize'.
-	axis0 := graph const: #(0) asInt32Tensor. 
-	graph
-		fromBlock: [
-			| biasGradient activationGradient | 
-			activationGradient := activation useOutput: 1.
-			biasGradient := activationGradient meanOn: axis0.
-			learnWeights3 := weights3 descent: hidden2 \* activationGradient @/ batchSize rate: learningRate.
-			learnBiases3 := biases3 descent: biasGradient rate: learningRate.
-			backprop := activationGradient *\ weights3]
-		named: 'learning3'.
-		
-	graph fromBlock: [
-		| gradient |
-		gradient := backprop timesRectifiedGradOf: hidden2.
-		learnWeights2 := weights2 descent: hidden1 \* gradient @/ batchSize rate: learningRate.
-		learnBiases2 := biases2 descent: (gradient meanOn: axis0) rate: learningRate.
-		backprop := gradient *\ weights2] 
-			named: 'learning2'.
-			
-	graph fromBlock: [
-		| gradient | 
-		gradient := backprop timesRectifiedGradOf: hidden1.
-		learnWeights1 := weights1 descent: input \* gradient @/ batchSize rate: learningRate.
-		learnBiases1 := biases1 descent: (gradient meanOn: axis0) rate: learningRate] 
-			named: 'learning1'.
-			
-	learn := graph newOperation: 'Identity' named: 'learn' described: [:description |
-		description
-			addInput: loss output;
-			addControlInput: learnWeights1 output;
-			addControlInput: learnBiases1 output;
-			addControlInput: learnWeights2 output;
-			addControlInput: learnBiases2 output;
-			addControlInput: learnWeights3 output;
-			addControlInput: learnBiases3 output].
-! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:28'!
-initializeLossGraph
-	loss := graph
-		fromBlock: [:expected |
-			expectedLabel := expected.
-			activation := netInput sparseSoftmaxCrossEntropyWithLogits: expected.
-			activation meanOn: #(0) asInt32Tensor]
-		inputTypes: {TFTensor typeInt32}
-		named: 'loss'.! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 2/16/2017 09:35:09'!
-initializeParameters
-	| aux |
-		graph
-			fromBlock: [
-				aux := graph truncatedNormalRandomShaped: {self inputSize. self hidden1Size} stddev: 1.0 / self inputSize sqrt.
-				weights1 := graph variable: 'weights1' initialValueFrom: aux.
-				aux := graph zerosShaped: {self hidden1Size}.
-				biases1 := graph variable: 'biases1' initialValueFrom: aux.
-
-				aux := graph truncatedNormalRandomShaped: {self hidden1Size. self hidden2Size} stddev: 1.0 / self hidden1Size sqrt.
-				weights2 := graph variable: 'weights2' initialValueFrom: aux.
-				aux := graph zerosShaped: {self hidden2Size}.
-				biases2 := graph variable: 'biases2' initialValueFrom: aux.
-
-				aux := graph truncatedNormalRandomShaped: {self hidden2Size. self outputSize} stddev: 1.0 / self hidden2Size sqrt.
-				weights3 := graph variable: 'weights3' initialValueFrom: aux.
-				aux := graph zerosShaped: {self outputSize}.
-				biases3 := graph variable: 'biases3' initialValueFrom: aux]
-			named: 'parameters'
-! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 03:35:50'!
-initializeSession
-	session := TFSession on: graph.
-	graph initializeOn: session.! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'running' stamp: 'gera 2/22/2017 00:10:30'!
-predict: inputs
-	| results |
-	results := session
-		runInputs: {input input: 0}
-		values: {inputs asFloatTensor}
-		outputs: {prediction output}.
-	^ results first! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'running' stamp: 'gera 2/22/2017 00:10:58'!
-predict: inputs andCompareTo: label
-	| results |
-	results := session
-		runInputs: {input input: 0. expectedLabel input: 0}
-		values: {inputs asFloatTensor. label asInt32Tensor}
-		outputs: {prediction output. loss output}.
-	^ results! !
-
-!MNIST3LayersNNExamplePlan methodsFor: 'running' stamp: 'gera 2/26/2017 15:13:22'!
-predict: inputs andLearnFrom: label
-	| results |
-	results := session
-		runInputs: {input input: 0. expectedLabel input: 0}
-		values: {inputs asFloatTensor. label asInt32Tensor}
-		outputs: {loss output. learn output}.
-	^ results! !
-
-!MNIST3LayersNNSigmoid methodsFor: 'initialization' stamp: 'gera 2/25/2017 11:31:02'!
-initializeInferenceGraph
-	hidden1 := graph
-		fromBlock: [:image |
-			input := image.
-			(image * weights1 + biases1) sigmoid]
-		named: 'layer1'.
-	hidden2 := graph fromBlock: [(hidden1 * weights2 + biases2) sigmoid] named: 'layer2'.
-	prediction := graph
-		fromBlock: [
-			netInput := hidden2 * weights3 + biases3.
-			netInput findMaxOn: 1 asInt32Tensor]
-		named: 'layer3'.
-! !
-
-!MNIST3LayersNNSigmoid methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:28'!
-initializeLearningGraph
-	| axis0 activationGradient gradient1 gradient2 learningRate biasGradient one batchSize learnBiases1 learnBiases2 learnBiases3 learnWeights1 learnWeights2 learnWeights3 |
-	
-	learningRate := graph const: 0.1 asTensor.
-	batchSize := graph fromBlock: [(input sizeOn: 0) castTo: TFTensor typeFloat] named: 'batchSize'.
-	axis0 := #(0) asInt32Tensor. 
-	graph
-		fromBlock: [
-			activationGradient := activation useOutput: 1.
-			biasGradient := activationGradient meanOn: axis0.
-			learnWeights3 := weights3 descent: hidden2 \* activationGradient @/ batchSize rate: learningRate.
-			learnBiases3 := biases3 descent: biasGradient rate: learningRate]
-		named: 'learning3'.
-		
-	one := 1.0 asTensor asOperationOn: graph.
-	graph fromBlock: [
-		gradient2 := (activationGradient *\ weights3) @* hidden2 @* (one - hidden2).
-		learnWeights2 := weights2 descent: hidden1 \* gradient2 @/ batchSize  rate: learningRate.
-		learnBiases2 := biases2 descent: (gradient2 meanOn: axis0) rate: learningRate] 
-			named: 'learning2'.
-			
-	graph fromBlock: [
-		gradient1 := (gradient2 *\ weights2) @* hidden1 @* ( one - hidden1).
-		learnWeights1 := weights1 descent: input \* gradient1 @/ batchSize  rate: learningRate.
-		learnBiases1 := biases1 descent: (gradient1 meanOn: axis0) rate: learningRate] 
-			named: 'learning1'.
-			
-	learn := graph newOperation: 'Identity' named: 'learn' described: [:description |
-		description
-			addInput: loss output;
-			addControlInput: learnWeights1 output;
-			addControlInput: learnBiases1 output;
-			addControlInput: learnWeights2 output;
-			addControlInput: learnBiases2 output;
-			addControlInput: learnWeights3 output;
-			addControlInput: learnBiases3 output].
-! !
-
-!MNISTFile methodsFor: 'converting' stamp: 'JB 2/5/2017 15:04:26'!
-asTensor
-	^ self subclassResponsibility ! !
-
-!MNISTFile methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:58:05'!
-count
-	^ count! !
-
-!MNISTFile methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:58:10'!
-items
-	^ items! !
-
-!MNISTFile methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:58:01'!
-magic
-	^ magic! !
-
-!MNISTFile methodsFor: 'initialization' stamp: 'JB 2/5/2017 15:37:24'!
-parse: aStream
-	magic := aStream nextUnsignedInt32BigEndian: true.
-	count :=  aStream nextUnsignedInt32BigEndian: true.
-
-	! !
-
-!MNISTFile class methodsFor: 'private' stamp: 'JV 5/23/2021 09:43:32'!
-download: aName
-		| url response content file |
-		" I changed the original http://yann.lecun.com/exdb/mnist/, because is constantly unavailable "
-		url := 'https://github.com/jvanecek/datasets/blob/main/mnist-handwritten/' , aName, '?raw=true'.
-		response := WebClient httpGet: url.
-		content := response content asByteArray.
-		file := ('dataset/', name) asFileEntry.
-		file < content.
-		^ file! !
-
-!MNISTFile class methodsFor: 'instance creation' stamp: 'JB 2/5/2017 15:36:27'!
-fromFile: aString
-	| file filename stream compressed|
-	filename := aString, '.gz'.
-	file := ('dataset/', filename) asFileEntry.
-	file exists ifFalse:[ file := self download: filename].
-	compressed := file readStream contentsOfEntireFile.
-	stream := (GZipReadStream on: compressed) upToEnd asByteArray readStream.
-	^ self fromStream: stream
-	! !
-
-!MNISTFile class methodsFor: 'instance creation' stamp: 'JB 2/5/2017 15:26:40'!
-fromStream: aStream
-	| answer |
-	answer := self new.
-	^ answer parse: aStream! !
-
-!MNISTFile class methodsFor: 'instance creation' stamp: 'JB 2/5/2017 15:28:39'!
-testSet
-	^self fromFile: self testName
-	! !
-
-!MNISTFile class methodsFor: 'instance creation' stamp: 'JB 2/5/2017 15:28:58'!
-trainingSet
-	^self fromFile: self trainName
-	! !
-
-!MNISTFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:07:25'!
-magic
-	^ self subclassResponsibility ! !
-
-!MNISTFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:16:07'!
-testName
-	^ self subclassResponsibility ! !
-
-!MNISTFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:16:03'!
-trainName
-	^ self subclassResponsibility ! !
-
-!MNISTImageFile methodsFor: 'converting' stamp: 'gera 6/30/2019 00:45:26'!
-asTensor
-	^  TFTensor fromFloats:  items shape: {count. rows * columns}.! !
-
-!MNISTImageFile methodsFor: 'accessing' stamp: 'JB 2/10/2017 00:50:56'!
-at: imageIndex
-	| bytes |
-	bytes := self bytesAt: imageIndex.
-	^ GrayForm extent: rows @ columns bits: bytes! !
-
-!MNISTImageFile methodsFor: 'accessing' stamp: 'JB 2/10/2017 00:50:21'!
-bytesAt: imageIndex
-	| size base |
-	size := columns * rows.
-	base := imageIndex - 1 * size + 1.
-	^ items copyFrom: base to: base + size - 1.! !
-
-!MNISTImageFile methodsFor: 'accessing' stamp: 'JB 2/18/2017 18:23:25'!
-bytesAt: base take: batchSize
-	^ (base to: base + batchSize -1) collect:[:index| self bytesAt: index]! !
-
-!MNISTImageFile methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:58:35'!
-columns
-	^ columns! !
-
-!MNISTImageFile methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:58:26'!
-rows
-	^ rows! !
-
-!MNISTImageFile methodsFor: 'initialization' stamp: 'JB 2/5/2017 15:10:42'!
-parse: aStream
-	super parse: aStream.
-	rows := aStream nextUnsignedInt32BigEndian: true.
-	columns := aStream nextUnsignedInt32BigEndian: true.
-	items := aStream upToEnd.! !
-
-!MNISTImageFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:09:23'!
-magic
-	^ 2051! !
-
-!MNISTImageFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:16:30'!
-testName
-	^ 't10k-images-idx3-ubyte'! !
-
-!MNISTImageFile class methodsFor: 'accessing' stamp: 'JV 5/22/2021 11:14:21'!
-testSet
-	
-	testSet isNil ifTrue: [testSet := super testSet]. 
-	^testSet! !
-
-!MNISTImageFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:16:46'!
-trainName
-	^ 'train-images-idx3-ubyte'! !
-
-!MNISTImageFile class methodsFor: 'accessing' stamp: 'JV 5/22/2021 11:13:15'!
-trainingSet
-	
-	trainingSet isNil ifTrue: [trainingSet := super trainingSet]. 
-	^trainingSet! !
-
-!MNISTLabelFile methodsFor: 'converting' stamp: 'JB 2/10/2017 00:44:04'!
-asTensor
-	^ items asInt32Tensor ! !
-
-!MNISTLabelFile methodsFor: 'accessing' stamp: 'gera 2/7/2017 09:37:58'!
-at: index
-	^ items at: index! !
-
-!MNISTLabelFile methodsFor: 'accessing' stamp: 'JB 2/18/2017 18:23:10'!
-at: base take: batchSize
-	^ (base to: base + batchSize - 1) collect:[:index| self at: index]! !
-
-!MNISTLabelFile methodsFor: 'initialization' stamp: 'JB 2/5/2017 15:01:28'!
-parse: aStream
-	super parse: aStream.
-	items := aStream upToEnd.
-	
-	! !
-
-!MNISTLabelFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 13:22:30'!
-magic
-	^ 2049! !
-
-!MNISTLabelFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:17:11'!
-testName
-	^ 't10k-labels-idx1-ubyte'! !
-
-!MNISTLabelFile class methodsFor: 'accessing' stamp: 'JV 5/22/2021 11:14:15'!
-testSet
-	
-	testSet isNil ifTrue: [testSet := super testSet]. 
-	^testSet! !
-
-!MNISTLabelFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:17:29'!
-trainName
-	^ 'train-labels-idx1-ubyte'! !
-
-!MNISTLabelFile class methodsFor: 'accessing' stamp: 'JV 5/22/2021 11:13:57'!
-trainingSet
-	
-	trainingSet isNil ifTrue: [trainingSet := super trainingSet]. 
-	^trainingSet! !
-
-!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 2/2/2017 19:26:53'!
-initialize
-	self
-		initializeGraph;
-		initializeParameters;
-		initializeInferenceGraph;
-		initializeLossGraph;
-		initializeLearningGraph;
-		initializeSession.! !
-
-!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 00:34:29'!
-initializeGraph
-	graph := TFGraph create! !
-
-!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 2/12/2017 23:10:20'!
-initializeInferenceGraph
-	prediction := graph
-		fromBlock: [:image |
-			input := image.
-			netInput := image * weights + biases.
-			netInput softmax findMaxOn: 1 asInt32Tensor]
-		named: 'inference'! !
-
-!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:26'!
-initializeLearningGraph
-	| learningRate activationGradient biasGradient |
-	graph
-		fromBlock: [ | batchSize |
-			learningRate := 0.9 asTensor.
-			activationGradient := activation useOutput: 1.
-			biasGradient := activationGradient meanOn: #(0) asInt32Tensor.
-			batchSize := (input sizeOn: 0) castTo: TFTensor typeFloat.
-			learnWeights := weights descent: input \* activationGradient @/ batchSize rate: learningRate.
-			learnBiases := biases descent: biasGradient rate: learningRate]
-		named: 'learning'! !
-
-!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:27'!
-initializeLossGraph
-	loss := graph
-		fromBlock: [:expected |
-			expectedLabel := expected.
-			activation := netInput sparseSoftmaxCrossEntropyWithLogits: expected.
-			activation meanOn: #(0) asInt32Tensor]
-		inputTypes: {TFTensor typeInt32}
-		named: 'loss'
-! !
-
-!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 2/2/2017 19:29:23'!
-initializeParameters
-	| aux |
-	aux := graph zerosShaped: {self inputSize. self outputSize}.
-	weights := graph variable: 'weights' initialValueFrom: aux.
-	aux := graph zerosShaped: {self outputSize}.
-	biases := graph variable: 'biases' initialValueFrom: aux.! !
-
-!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 03:35:50'!
-initializeSession
-	session := TFSession on: graph.
-	graph initializeOn: session.! !
-
-!MNISTSoftMaxExamplePlan methodsFor: 'accessing' stamp: 'gera 2/2/2017 19:30:14'!
-inputSize
-	^ 28*28! !
-
-!MNISTSoftMaxExamplePlan methodsFor: 'accessing' stamp: 'gera 2/2/2017 19:29:56'!
-outputSize
-	^ 10! !
-
-!MNISTSoftMaxExamplePlan methodsFor: 'running' stamp: 'gera 2/2/2017 19:37:26'!
-predict: inputs
-	| results |
-	results := session
-		runInputs: {input input: 0}
-		values: {inputs asFloatTensor}
-		outputs: {prediction output: 0}.
-	^ results first! !
-
-!MNISTSoftMaxExamplePlan methodsFor: 'running' stamp: 'gera 2/12/2017 23:07:52'!
-predict: inputs andCompareTo: label
-	| results |
-	results := session
-		runInputs: {input input: 0. expectedLabel input: 0}
-		values: {inputs asFloatTensor. label asInt32Tensor}
-		outputs: {prediction output. loss output}.
-	^ results! !
-
-!MNISTSoftMaxExamplePlan methodsFor: 'running' stamp: 'gera 2/19/2017 10:52:34'!
-predict: inputs andLearnFrom: label
-	| results |
-	results := session
-		runInputs: {input input: 0. expectedLabel input: 0}
-		values: {inputs asFloatTensor. label asInt32Tensor}
-		outputs: {loss output. learnWeights output. learnBiases output}.
-	^ results! !
-
-!NearestNeighbor methodsFor: 'private-csv' stamp: 'gera 7/3/2019 03:35:50'!
-decodeCSV: csvLines graphRun: description
-	|  graph output records session results values answer |
-		
-	graph := self decodeCSVGraphDefaults: description.
-	records := (graph operationNamed: 'records') input: 0.
-	output := graph operationNamed: 'output'.
-	values := TFTensor fromStringArray: csvLines.
-	
-	session := TFSession on: graph.
-	results := session
-		runOperations: {output}
-		inputs: {records}
-		values: {values}
-		outputs: {
-			(output output: 0).
-			(output output: 1).
-			(output output: 2).
-			(output output: 3).
-			(output output: 4)}.
-		
-	graph delete.
-	
-	answer := (1 to: 4) asOrderedCollection collect: [:i |
-		(results at: i) allFloats].
-	^ answer add: (results at: 5) allInt64s; yourself.! !
-
-!NearestNeighbor methodsFor: 'private-csv' stamp: 'gera 7/3/2019 00:34:29'!
-decodeCSVGraphDefaults: anArrayOfTFTensors
-	| graph records defaults |
-	
-	graph := TFGraph create.
-	records := (graph placeholder: 'records' type: TFTensor typeString) output: 0.
-	defaults := Array new: anArrayOfTFTensors size.
-	
-	anArrayOfTFTensors withIndexDo: [:each :index |
-		| one |
-		one := (graph const: 'default',index printString value: each) output: 0.
-		defaults at: index put: one].
-	graph newOperation: 'DecodeCSV' named: 'output' described: [:description |
-		description addInput: records.
-		description addInputs: defaults].
-	
-	^ graph! !
-
-!NearestNeighbor methodsFor: 'private-csv' stamp: 'gera 6/30/2019 00:45:26'!
-irisDescription
-	^{TFTensor fromFloats: #(-1.0).
-		TFTensor fromFloats: #(-1.0).
-		TFTensor fromFloats: #(-1.0).
-		TFTensor fromFloats: #(-1.0).
-		TFTensor fromInt64s: #(-1)}! !
-
-!NearestNeighbor methodsFor: 'private-csv' stamp: 'gera 1/16/2017 23:00:14'!
-irisFile
-	^ self class irisFile! !
-
-!NearestNeighbor methodsFor: 'initialization' stamp: 'JB 1/19/2017 10:46:56'!
-initialize
-	plan := ExampleNearestNeighborPlan new.! !
-
-!NearestNeighbor methodsFor: 'initialization' stamp: 'jb 1/15/2017 23:28:54'!
-loadDataSet
-	| dataSet description stream |
-	stream := self irisFile.
-	stream nextLine.
-	dataSet := self testingAndTrainingFrom: stream.
-	description := self irisDescription.
-	^ dataSet collect: [ :csv |
-		self
-			decodeCSV: csv
-			graphRun: description ].! !
-
-!NearestNeighbor methodsFor: 'running' stamp: 'gera 1/30/2017 17:56:34'!
-run
-	| covariatesTr covariatesTe predictions size dataset testing training |
-	dataset := self loadDataSet.
-	training := dataset first.
-	testing := dataset second.
-	covariatesTr := training allButLast asFloatTensor.
-	size := testing first size.
-	predictions := (1 to: size) collect: [ :i | | covariates index predicted results trueValue |
-		covariates := testing  collect:[:col| {col at: i}].
-		covariatesTe := covariates allButLast asFloatTensor.
-		results := plan predict: covariatesTe from: covariatesTr.
-		index := results first.
-		trueValue := covariates fifth first.
-		predicted := training fifth at: index.
-		trueValue = predicted
-			ifTrue: [ 1 ]
-			ifFalse: [ 0 ]].
-	^ predictions.! !
-
-!NearestNeighbor methodsFor: 'sampling' stamp: 'jb 1/15/2017 19:13:00'!
-testingAndTrainingFrom: stream
-	| p random testing training lines |
-	lines := stream upToEnd lines.
-	p := 0.7.
-	training := OrderedCollection new.
-	testing := OrderedCollection new.
-	random := Random new.
-	lines collect: [ :line | | collection |
-		line isEmpty ifFalse: [
-			collection := random next < p
-				ifTrue: [ training ]
-				ifFalse: [ testing ].
-			collection add: line ]].
-	^ {training. testing}.! !
-
-!NearestNeighbor class methodsFor: 'as yet unclassified' stamp: 'gera 1/16/2017 23:00:53'!
-irisFile
-	^ '../Machine-Learning/datasets/iris.csv' asFileEntry readStream.! !
-
-!NearestNeighbor class methodsFor: 'instance creation' stamp: 'gera 1/16/2017 23:12:43'!
-new
-	^ super new initialize! !
-
-!OLSExample methodsFor: 'initialization' stamp: 'JB 1/19/2017 10:29:16'!
-initialize
-	plan := ExampleOLSPlan new.! !
-
-!OLSExample methodsFor: 'initialization' stamp: 'gera 1/29/2017 05:15:58'!
-initializeWithOperations
-	plan := ExampleOLSPlan new initializeGraphWithOperations initializeSession! !
-
-!OLSExample methodsFor: 'running' stamp: 'gera 1/21/2017 04:20:26'!
-regress: x on: y
-	| result |
-	result := plan runOn: {x. y}.
-	^ result allFloats! !
-
-!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:33:25'!
-graph
-	^ graph! !
-
-!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:33:41'!
-hidden1Size
-	^ 20! !
-
-!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:33:46'!
-hidden2Size
-	^ 20! !
-
-!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:33:54'!
-hidden3Size
-	^ 20! !
-
-!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:33:59'!
-inputSize
-	^ 1! !
-
-!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:34:03'!
-intput
-	^ input! !
-
-!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:34:23'!
-outputSize
-	^ 1! !
-
-!RegressionNNExample methodsFor: 'initialization' stamp: 'JB 2/22/2017 22:33:07'!
-initialize
-	self
-		initializeGraph;
-		initializeParameters;
-		initializeInferenceGraph;
-		initializeLossGraph;
-		initializeLearningGraph;
-		initializeSession.! !
-
-!RegressionNNExample methodsFor: 'initialization' stamp: 'gera 7/3/2019 00:34:29'!
-initializeGraph
-	graph := TFGraph create! !
-
-!RegressionNNExample methodsFor: 'initialization' stamp: 'gera 2/26/2017 12:52:24'!
-initializeInferenceGraph
-	hidden1 := graph
-		fromBlock: [:image |
-			input := image.
-			(image * weights1 + biases1) rectified]
-		named: 'layer1'.
-	hidden2 := graph fromBlock: [(hidden1 * weights2 + biases2) sigmoid] named: 'layer2'.
-	hidden3 := graph fromBlock: [(hidden2 * weights3 + biases3) sigmoid] named: 'layer3'.
-	prediction := graph fromBlock: [hidden3 * weights4 + biases4] named: 'layer4'.
-! !
-
-!RegressionNNExample methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:28'!
-initializeLearningGraph
-	|  axis0 learningRate batchSize biasGradient one backprop learnBiases1 learnBiases2 learnBiases3 learnBiases4 learnWeights1 learnWeights2 learnWeights3 learnWeights4 |
-	
-	learningRate := 0.1 asTensor.
-	batchSize := graph fromBlock: [(input sizeOn: 0) castTo: TFTensor typeFloat] named: 'batchSize'.
-	axis0 := graph const: #(0) asInt32Tensor. 
-	one := 1.0 asTensor asOperationOn: graph.
-	graph
-		fromBlock: [ | gradient|
-			gradient := (prediction - expectedLabel).
-			biasGradient := gradient meanOn: axis0.
-			learnWeights4 := weights4 descent: hidden3 \* gradient @/ batchSize rate: learningRate.
-			learnBiases4 := biases4 descent: biasGradient rate: learningRate.
-			backprop :=  (gradient *\ weights4)]
-		named: 'learning4'.	
-	
-	graph
-		fromBlock: [ | gradient | 
-			gradient := backprop @* hidden3 @* (one - hidden3).
-			biasGradient := gradient meanOn: axis0.
-			learnWeights3 := weights3 descent: hidden2 \* gradient @/ batchSize rate: learningRate.
-			learnBiases3 := biases3 descent: biasGradient rate: learningRate.
-			backprop := (gradient *\ weights3)]
-		named: 'learning3'.
-		
-	graph fromBlock: [ | gradient |
-		gradient :=  backprop @* hidden2 @* (one - hidden2).
-		learnWeights2 := weights2 descent: hidden1 \* gradient @/ batchSize  rate: learningRate.
-		learnBiases2 := biases2 descent: (gradient meanOn: axis0) rate: learningRate.
-		backprop :=  (gradient *\ weights2)]
-			named: 'learning2'.
-			
-	graph fromBlock: [ | gradient |
-		gradient := backprop timesRectifiedGradOf: hidden1.
-		learnWeights1 := weights1 descent: input \* gradient rate: learningRate.
-		learnBiases1 := biases1 descent: (gradient meanOn: axis0) rate: learningRate] 
-			named: 'learning1'.
-
-	learn := graph newOperation: 'Identity' named: 'learn' described: [:description |
-		description
-			addInput: loss output;
-			addControlInput: learnWeights1 output;
-			addControlInput: learnBiases1 output;
-			addControlInput: learnWeights2 output;
-			addControlInput: learnBiases2 output;
-			addControlInput: learnWeights3 output;
-			addControlInput: learnBiases3 output;
-			addControlInput: learnWeights4 output;
-			addControlInput: learnBiases4 output].
-! !
-
-!RegressionNNExample methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:26'!
-initializeLossGraph
-	loss := graph
-		fromBlock: [ :expected |
-			expectedLabel := expected.
-			(prediction - expectedLabel) squared meanOn: #(0) asInt32Tensor ]
-		inputTypes: {TFTensor typeFloat}
-		named: 'loss'.! !
-
-!RegressionNNExample methodsFor: 'initialization' stamp: 'gera 2/26/2017 17:45:31'!
-initializeParameters
-	| aux |
-	graph
-		fromBlock: [
-			aux := graph truncatedNormalRandomShaped: {self inputSize. self hidden1Size} stddev: 1.0 / self inputSize sqrt.
-			weights1 := graph variable: 'weights1' initialValueFrom: aux.
-			aux := graph zerosShaped: {self hidden1Size}.
-			biases1 := graph variable: 'biases1' initialValueFrom: aux.
-
-			aux := graph truncatedNormalRandomShaped: {self hidden1Size. self hidden2Size} stddev: 1.0 / self hidden1Size sqrt.
-			weights2 := graph variable: 'weights2' initialValueFrom: aux.
-			aux := graph zerosShaped: {self hidden2Size}.
-			biases2 := graph variable: 'biases2' initialValueFrom: aux.
-
-			aux := graph truncatedNormalRandomShaped: {self hidden2Size. self hidden3Size } stddev: 1.0 / self hidden2Size sqrt.
-			weights3 := graph variable: 'weights3' initialValueFrom: aux.
-			aux := graph zerosShaped: {self hidden3Size }.
-			biases3 := graph variable: 'biases3' initialValueFrom: aux.
-			
-			aux := graph truncatedNormalRandomShaped: {self hidden3Size. self outputSize } stddev: 1.0 / self hidden3Size sqrt.
-			weights4 := graph variable: 'weights4' initialValueFrom: aux.
-			aux := graph zerosShaped: {self outputSize }.
-			biases4 := graph variable: 'biases4' initialValueFrom: aux]
-		named: 'parameters'
-		
-		
-! !
-
-!RegressionNNExample methodsFor: 'initialization' stamp: 'gera 7/3/2019 03:35:50'!
-initializeSession
-	session := TFSession on: graph.
-	graph initializeOn: session! !
-
-!RegressionNNExample methodsFor: 'running' stamp: 'JB 2/22/2017 22:33:07'!
-predict: inputs
-	| results |
-	results := session
-		runInputs: {input input: 0}
-		values: {inputs asFloatTensor}
-		outputs: {prediction output: 0}.
-	^ results first! !
-
-!RegressionNNExample methodsFor: 'running' stamp: 'JB 2/22/2017 23:03:05'!
-predict: inputs andCompareTo: label
-	| results |
-	results := session
-		runInputs: {input input: 0. expectedLabel input: 0}
-		values: {inputs asFloatTensor. label asFloatTensor}
-		outputs: {prediction output: 0. loss output: 0}.
-	^ results! !
-
-!RegressionNNExample methodsFor: 'running' stamp: 'gera 2/26/2017 15:17:10'!
-predict: inputs andLearnFrom: label
-	| results |
-	results := session
-		runInputs: {input input: 0. expectedLabel input: 0}
-		values: {inputs asFloatTensor. label asFloatTensor}
-		outputs: {loss output:0. learn output}.
-	^ results! !
-
-!RegressionNNExample class methodsFor: 'examples' stamp: 'JB 2/23/2017 00:12:28'!
-exampleFunction
-	^ [ :x | | y |
-			y := x * 10 - 5.
-			y * y sin ].! !
-
-!RegressionNNExample class methodsFor: 'examples' stamp: 'gera 2/25/2017 12:02:17'!
-exampleTrainedAndPlot
-	" self exampleTrainedAndPlot "
-	| function net predictor g |
-	function :=  self exampleFunction.
-	net := self exampleTrainedOn: function.
-	predictor := [:x |
-		| result |
-		result := net predict: {{x}}.
-		result asNumbers first first] .
-	
-	g := FunctionGraphMorph new.
-	g domain: (0 to: 1).
-	g addFunction: function color: Color green.
-	g addFunction: predictor color: Color red.
-	(g embeddedInMorphicWindowLabeled: 'graph') openInWorld.
-	^ net! !
-
-!RegressionNNExample class methodsFor: 'examples' stamp: 'gera 2/25/2017 12:03:03'!
-exampleTrainedOn: function
-	| net rnd interval xs ys |
-	net := self new.
-	rnd := Random new.
-	xs :=  (1 to: 100) collect: [:i | {rnd next}].
-	ys := xs collect: [:x | {function value: x first}].
-	interval := 1 to: xs size.
-	
-	10000 timesRepeat: [
-		|x indices y |
-		indices := (1 to: 60) collect: [:i| interval atRandom].
-		x := indices collect: [:index | xs at: index].
-		y :=  indices collect: [:index | ys at: index].
-		net predict: x andLearnFrom: y].
-	^ net! !
-
-!SimpleNeuralNetworkExample methodsFor: 'accessing' stamp: 'gera 1/30/2017 17:56:57'!
-initialWeights: aCollection
-	weights := aCollection asFloatTensor! !
-
-!SimpleNeuralNetworkExample methodsFor: 'initialization' stamp: 'JB 1/25/2017 15:22:27'!
-initialize
-	forward := BackpropagationForwardPlan new.
-	backward := BackpropagationBackwardPlan new.! !
-
-!SimpleNeuralNetworkExample methodsFor: 'learning' stamp: 'JB 1/25/2017 15:25:47'!
-learn: sample with: expected
-		| result |
-	result := forward runOn: {sample. weights}.
-	weights := backward runOn: {sample. weights. expected. result}.! !
-
-!SimpleNeuralNetworkExample methodsFor: 'learning' stamp: 'JB 1/25/2017 15:29:01'!
-learnAll: samples to: targets steps: n
-	n timesRepeat: [
-		samples with: targets do:[:sample :target| self learn: sample with: target]
-		]! !
-
-!SimpleNeuralNetworkExample methodsFor: 'service' stamp: 'JB 1/25/2017 15:26:43'!
-predict: sample
-		| result |
-	result := forward runOn: {sample. weights}.
-	^ result allFloats ! !
 
 !TensorFlowOperationsTest methodsFor: 'other operations' stamp: 'gera 7/3/2019 03:35:50'!
 assert: integers sizeOn: dimension is: expected
@@ -1470,7 +326,7 @@ percentile: percent from: collection
 	^ sorted at: position
 	! !
 
-!TensorFlowOperationsTest methodsFor: 'initialization' stamp: 'gera 1/20/2017 18:23:31'!
+!TensorFlowOperationsTest methodsFor: 'initialization' stamp: 'JV 5/24/2021 22:56:51'!
 setUp
 	library := TensorFlowCAPI current! !
 
@@ -3212,412 +2068,1149 @@ testSimpleNeuralNetwork
 	targetValues with: prediction do:[:real :predicted| 
 		self assert: (real - predicted) abs < 0.1]! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/5/2017 05:21:30'!
-add: nameString described: aBlock
-	^self newOperation: 'Add' named: nameString described: aBlock! !
-
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/5/2017 23:55:21'!
-asString: nameString described: aBlock
-	^self newOperation: 'AsString' named: nameString described: aBlock! !
-
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 12/30/2016 12:16:54'!
-concat: nameString described: aBlock
-	^self newOperation: 'Concat' named: nameString described: aBlock! !
-
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/31/2017 15:07:44'!
-const: aTFTensor
-	| name |
-	name := self nameFor: 'constant'.
-	^ self const: name value: aTFTensor! !
-
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 12/28/2016 02:07:25'!
-const: nameString value: aTFTensor
-	^ self
-		newOperation: 'Const'
-		named: nameString
-		described: [:description |
-			description at: 'dtype' putType: aTFTensor type.
-			description at: 'value' putTensor: aTFTensor]! !
-
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 6/30/2019 00:45:28'!
-fromBlock: aBlockClosure
-	| types |
-	types := Array new: aBlockClosure argumentCount.
-	types atAllPut: TFTensor typeFloat.
-	^ self fromBlock: aBlockClosure inputTypes: types! !
-
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/2/2017 19:46:21'!
-fromBlock: aBlockClosure inputTypes: anArray
-	| inputs index |
-	index := 0.
-	inputs := (1 to: aBlockClosure argumentCount) collect: [:each |
-		index := index + 1.
-		self inputType: (anArray at: index)].
-	^ aBlockClosure valueWithArguments: inputs.
+!BatchTrainer methodsFor: 'initialization' stamp: 'JB 2/18/2017 20:36:29'!
+initialize
+	super initialize.
+	batchSize := 100.
+	imageSet := MNISTImageFile trainingSet.
+	labelSet := MNISTLabelFile trainingSet.
+	imageTesting := MNISTImageFile testSet.
+	labelTesting := MNISTLabelFile testSet.
+	self use3Layers.
 ! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/10/2017 15:26:14'!
-fromBlock: aBlockClosure inputTypes: anArray named: nameString
-	| previousContext answer |
-	previousContext := context.
-	context := context, nameString, '/'.
-	answer := self fromBlock: aBlockClosure inputTypes: anArray.
-	context := previousContext.
-	^ answer! !
+!BatchTrainer methodsFor: 'initialization' stamp: 'JB 2/18/2017 20:28:05'!
+use3Layers
+	plan := MNIST3LayersNNExamplePlan new.! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 6/30/2019 00:45:27'!
-fromBlock: aBlockClosure named: nameString
-	| types |
-	types := Array new: aBlockClosure argumentCount.
-	types atAllPut: TFTensor typeFloat.
-	^ self fromBlock: aBlockClosure inputTypes: types named: nameString! !
+!BatchTrainer methodsFor: 'initialization' stamp: 'JB 2/19/2017 17:09:45'!
+use3LayersSigmoid
+	plan := MNIST3LayersNNSigmoid new.! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/2/2017 19:45:59'!
-inputType: typeInteger
-	^ self
-		newOperation: 'Placeholder'
-		named: (self nameFor: 'input')
-		described: [:description |
-			description at: 'dtype' putType: typeInteger]! !
+!BatchTrainer methodsFor: 'initialization' stamp: 'JB 2/18/2017 20:28:22'!
+useSoftmax
+	plan := MNISTSoftMaxExamplePlan new.! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 12/28/2016 02:11:44'!
-mul: nameString described: aBlock
-	^self newOperation: 'Mul' named: nameString described: aBlock! !
+!BatchTrainer methodsFor: 'private' stamp: 'JB 2/18/2017 20:23:39'!
+predict: images andCompareTo: labels
+	| equals result |
+	result := (plan predict: images) asNumbers.
+	equals := result with: labels collect:[:x :y| (x = y) ifTrue:[1] ifFalse:[0]].
+	^ equals mean asFloat.
+! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/6/2017 17:21:53'!
-placeholder: nameString type: typeInteger
-	^ self
-		newOperation: 'Placeholder'
-		named: nameString
-		described: [:description |
-			description at: 'dtype' putType: typeInteger]! !
+!BatchTrainer methodsFor: 'private' stamp: 'JB 2/18/2017 20:21:23'!
+trainAt: index
+	| images labels loss report result |
+	images := imageSet bytesAt: index take: batchSize.
+	labels := labelSet at: index take: batchSize.
+	result := plan predict: images andLearnFrom: labels.
+	loss := result at: 2.
+	report := index asString, ': ', loss asNumbers asString.
+	Transcript show: report;
+					newLine
+	! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 7/3/2019 03:33:19'!
-shapeOf: aTFOutputOrInput set: shape
-	| status value |
-	value := Int64Array externalFromArray: shape.
-	status := TFStatus create.
+!BatchTrainer methodsFor: 'running' stamp: 'JB 2/18/2017 20:27:19'!
+predictOnTesting
+	| images labels |
+	images := imageTesting bytesAt: 1 take: imageTesting count.
+	labels := labelTesting at: 1 take: labelTesting count.
+	^ self predict: images andCompareTo: labels! !
+
+!BatchTrainer methodsFor: 'running' stamp: 'JB 2/18/2017 20:26:40'!
+predictOnTraining
+	| images labels |
+	images := imageSet bytesAt: 1 take: 10 * batchSize.
+	labels := labelSet at: 1 take: 10 * batchSize.
+	^ self predict: images andCompareTo: labels! !
+
+!BatchTrainer methodsFor: 'running' stamp: 'JB 2/18/2017 20:22:07'!
+train
+	(1 to: labelSet count -1 by: batchSize) do: [:index| self trainAt: index].! !
+
+!ExamplePlan methodsFor: 'initialization' stamp: 'gera 1/29/2017 05:12:34'!
+initialize
+	self initializeGraph.
+	self initializeSession.! !
+
+!ExamplePlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 00:34:29'!
+initializeGraph
+	graph := TFGraph create
+	! !
+
+!ExamplePlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 03:35:50'!
+initializeSession
+	session := TFSession on: graph.
+	graph initializeOn: session.
+! !
+
+!ExamplePlan methodsFor: 'running' stamp: 'gera 1/29/2017 05:19:43'!
+runOn: inputValues
+	| results |	
+		
+	results := session
+		runInputs: inputs
+		values: inputValues
+		outputs: outputs.
+		
+	^ results first
+	! !
+
+!BackpropagationBackwardPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:25'!
+initializeGraph
+	| inputVariable weights actual delta learningRate newWeights target one |
+	super initializeGraph.
+	inputVariable := graph placeholder: 'Input' type: TFTensor typeFloat.
+	target := graph placeholder: 'target' type: TFTensor typeFloat.
+	actual := graph placeholder: 'actual' type: TFTensor typeFloat.
+	weights := graph placeholder: 'weights' type: TFTensor typeFloat.
+	learningRate := graph const: 'learningRate' value: 0.9 asTensor.
+	one := graph const: 'one' value: 1.0 asTensor.
+	delta := (target - actual) negated @* actual @* (one - actual) @* inputVariable.
+	newWeights := weights - (learningRate @* delta).
+	outputs := {newWeights output: 0}.
+	inputs := {inputVariable input: 0. weights input: 0. target input:0. actual input: 0}! !
+
+!BackpropagationForwardPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:26'!
+initializeGraph
+	| activation inputVariable netInput weights |
+	super initializeGraph.
+	inputVariable := graph placeholder: 'Input' type: TFTensor typeFloat.
+	weights := graph placeholder: 'weights' type: TFTensor typeFloat.
+	netInput := weights * inputVariable.
+	activation := netInput sigmoid.
+	outputs := {activation output: 0}.
+	inputs := {inputVariable input: 0. weights input: 0}! !
+
+!BackpropagationPlan methodsFor: 'accessing' stamp: 'gera 1/29/2017 11:17:26'!
+delta
+	^ lastDelta! !
+
+!BackpropagationPlan methodsFor: 'accessing' stamp: 'gera 1/29/2017 08:32:19'!
+graph
+	^ graph! !
+
+!BackpropagationPlan methodsFor: 'accessing' stamp: 'gera 1/29/2017 08:40:28'!
+weights
+	^ session runOutput: (weights output: 0)! !
+
+!BackpropagationPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:26'!
+initializeBackwardGraph
+	| actual learningRate learningRateValue one input |
+	actual := activation.
+	one := graph const: 'one' value: #((1 1) (1 1)) asFloatTensor.
 	
-	self library
-		graph: self
-		setShapeOf: aTFOutputOrInput
-		to: value
-		size: shape size
-		status: status.
-	status check.! !
+	learningRateValue := 0.9 asTensor.
+	learningRate := graph const: 'learningRate' value: learningRateValue.
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 6/30/2019 00:45:27'!
-truncatedNormalRandomShaped: shapeArray
-	| shape |
-	shape := self const: shapeArray asInt32Tensor.
-	^ shape unaryOp: 'TruncatedNormal' described: [:description |
-		description at: 'dtype' putType: TFTensor typeFloat]! !
+	input := inputs first operationOn: graph.
+	
+	target := graph placeholder: 'target' type: TFTensor typeFloat.
+	
+	delta := (target - actual) negated @* actual @* (one - actual) @* input.
+	
+	"learn := weights assign: weights - learningRate @* delta."
+	"learn := weights -= learningRate @* delta."
+	learn := weights descent: delta rate: learningRate.! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/31/2017 17:44:21'!
-truncatedNormalRandomShaped: shapeArray stddev: aNumber
-	| random |
-	random := self truncatedNormalRandomShaped: shapeArray.
-	^ random @* (self const: aNumber asTensor)! !
+!BackpropagationPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:25'!
+initializeForwardGraph
+	| input |
+	input := graph placeholder: 'Input' type: TFTensor typeFloat.
+	
+	activation := (weights * input) sigmoid.
+	
+	outputs := {activation output: 0}.
+	inputs := {input input: 0}! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 03:23:14'!
-variable: nameString forTensor: aTFTensor
-	^ self variable: nameString type: aTFTensor type shape: aTFTensor shape! !
+!BackpropagationPlan methodsFor: 'initialization' stamp: 'gera 1/29/2017 05:28:36'!
+initializeGraph
+	super initializeGraph.
+	self
+		initializeVariables;
+		initializeForwardGraph;
+		initializeBackwardGraph.! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/1/2017 01:02:23'!
-variable: nameString initialValue: aTFTensor
-	| const var |
-	var := self variable: nameString forTensor: aTFTensor.
-	const := self const: nameString, '_initialValue' value: aTFTensor.
-	var assign: const.
-	^ var! !
+!BackpropagationPlan methodsFor: 'initialization' stamp: 'JV 5/25/2021 08:16:15'!
+initializeVariables
+	| initialWeights |
+	Random withDefaultDo: [:random |
+		initialWeights := (1 to: 4) collect: [:unused | random next]].
+	initialWeights := TFTensor fromFloats: initialWeights shape: #(2 2) asTensorShape.
+	
+	weights := graph variable: 'weights' initialValue: initialWeights.! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/1/2017 01:22:52'!
-variable: nameString initialValueFrom: aTFOperation
-	| output var shape |
-	output := aTFOperation output: 0.
-	shape := self shapeOf: output.
-	var := self variable: nameString type: output type shape: shape..
-	var assign: aTFOperation.
-	^ var! !
+!BackpropagationPlan methodsFor: 'training' stamp: 'gera 1/29/2017 15:09:30'!
+learn: sample with: expected
+	| results |	
+	results := session
+		runInputs: {inputs first. target input: 0}
+		values: {sample. expected}
+		outputs: {learn output: 0. delta output: 0}.
+	
+	lastDelta := results at: 2.
+	^ results first
+	! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 03:04:54'!
-variable: nameString type: typeInteger shape: anArray
-	^ self
-		newOperation: 'Variable'
-		named: nameString
-		described: [:description |
-			description
-				at: 'dtype' putType: typeInteger;
-				at: 'shape' putShape: anArray]! !
+!ExampleNearestNeighborPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:25'!
+initializeGraph
+	| neg add abs axis axisValue distance testing training prediction |
+	super initializeGraph.
+	
+	training := graph placeholder: 'training' type: TFTensor typeFloat.
+	testing := graph placeholder: 'testing' type: TFTensor typeFloat.
+	axisValue := TFTensor fromInt32: 0.
+	axis := graph const: 'axis' value: axisValue.
+	neg := graph newOperation: 'Neg' named: 'neg' described: [:description |
+		description addInput: (testing output: 0)].
+	add := graph add: 'add' described:[:description| 
+		description addInput: (neg output: 0).
+		description addInput: (training output: 0).
+		].
+	abs := graph newOperation: 'Abs' named: 'abs' described: [:description|
+		description addInput: (add output: 0)].
+	distance := graph newOperation: 'Sum' named: 'distance' described: [:description|
+		description addInput: (abs output: 0).
+		description addInput: (axis output: 0).].
+	
+	prediction := graph newOperation: 'ArgMin' named: 'argmin' described:[:description|
+		description addInput: (distance output: 0).
+		description addInput: (axis output: 0)].
+	
+	outputs := {prediction output: 0}.
+	inputs := {training input: 0. testing input: 0}.! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/17/2017 00:47:45'!
-zerosShaped: shapeArray
-	| shape |
-	shape := self const: shapeArray asInt32Tensor.
-	^ shape binaryOp: 'Fill' with: 0.0 asTensor! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/20/2017 18:22:38'!
-* aTFOperation
-	^ self binaryOp: 'MatMul' with: aTFOperation! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/21/2017 02:26:09'!
-*\ aTFOperation
-	^ self
-		binaryOp: 'MatMul'
-		with: aTFOperation
-		described: [:description |
-			description at: 'transpose_b' putBoolean: true]
+!ExampleNearestNeighborPlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 00:34:29'!
+initializeGraphWithOperations
+	| axis distance testing training prediction |
+	graph := TFGraph create.
+	
+	training := graph placeholder: 'training' type: TFTensor typeFloat.
+	testing := graph placeholder: 'testing' type: TFTensor typeFloat.
+	axis := 0 asInt32Tensor.
+	
+	distance := (testing - training) abs sumOn: axis.
+	prediction := distance findMinOn: axis.
+	
+	outputs := {prediction output: 0}.
+	inputs := {training input: 0. testing input: 0}.
 ! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 11:19:11'!
-+ aTFOperation
-	^ self binaryOp: 'Add' with: aTFOperation! !
+!ExampleNearestNeighborPlan methodsFor: 'evaluating' stamp: 'gera 1/21/2017 04:19:59'!
+predict: covariatesTesting from: covariatesTraining
+	| result |
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 19:47:10'!
-- aTFOperation
-	^ self binaryOp: 'Sub' with: aTFOperation! !
+ 	result := self runOn: {covariatesTraining. covariatesTesting}.
+	^ result allInt64s + 1! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 15:21:14'!
--= aTFOperation
-	^ self binaryOp: 'AssignSub' with: aTFOperation! !
+!ExampleOLSPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:27'!
+initializeGraph
+	| x xtx y xty inverse result |
+	super initializeGraph.
+	
+	x := graph placeholder: 'x' type: TFTensor typeFloat.
+	y := graph placeholder: 'y' type: TFTensor typeFloat.
+	
+	xtx := graph newOperation: 'MatMul' named:'xTx' described:[:description|
+		description addInput: (x output: 0).
+		description addInput: (x output: 0).
+		description at: 'transpose_a' putBoolean: true.
+		].
+	
+	inverse := graph newOperation: 'MatrixInverse' named:'inv' described:[:description|
+		description addInput: (xtx output: 0)].
+	
+	xty := graph newOperation: 'MatMul' named:'xTy' described:[:description|
+		description addInput: (x output: 0).
+		description addInput: (y output: 0).
+		description at: 'transpose_a' putBoolean: true.
+		].
+	
+	result := graph newOperation: 'MatMul' named:'result' described:[:description|
+		description addInput: (inverse output: 0).
+		description addInput: (xty output: 0).
+		].
+	
+	outputs := {result output: 0}.
+	inputs := {x input: 0. y input: 0}.! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 2/15/2017 23:27:00'!
-> aTFOperation
-	^ self binaryOp: 'Greater' with: aTFOperation! !
+!ExampleOLSPlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:26'!
+initializeGraphWithOperations
+	| x y prediction |
+	super initializeGraph.
+	
+	x := graph placeholder: 'x' type: TFTensor typeFloat.
+	y := graph placeholder: 'y' type: TFTensor typeFloat.
+	
+	prediction := (x \* x) inverse * (x \* y).
+	
+	outputs := {prediction output: 0}.
+	inputs := {x input: 0. y input: 0}.! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/20/2017 18:20:07'!
-@* aTFOperation
-	^ self binaryOp: 'Mul' with: aTFOperation! !
+!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 1/31/2017 01:44:41'!
+graph
+	^ graph! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 15:19:17'!
-@/ aTFOperation
-	^ self binaryOp: 'Div' with: aTFOperation
-	! !
+!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 1/31/2017 14:41:15'!
+hidden1Size
+	^ 128! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/21/2017 02:26:18'!
-\* aTFOperation
-	^ self
-		binaryOp: 'MatMul'
-		with: aTFOperation
-		described: [:description |
-			description at: 'transpose_a' putBoolean: true]
+!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 1/31/2017 14:41:18'!
+hidden2Size
+	^ 32! !
+
+!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 1/31/2017 14:34:12'!
+inputSize
+	^ 28*28! !
+
+!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 1/31/2017 01:47:08'!
+intput
+	^ input! !
+
+!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 2/2/2017 02:27:05'!
+lossGradient
+	^ (loss output: 1)! !
+
+!MNIST3LayersNNExamplePlan methodsFor: 'accessing' stamp: 'gera 1/31/2017 14:41:30'!
+outputSize
+	^ 10! !
+
+!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 1/31/2017 09:56:01'!
+initialize
+	self
+		initializeGraph;
+		initializeParameters;
+		initializeInferenceGraph;
+		initializeLossGraph;
+		initializeLearningGraph;
+		initializeSession.! !
+
+!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 00:34:29'!
+initializeGraph
+	graph := TFGraph create! !
+
+!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 2/22/2017 00:10:23'!
+initializeInferenceGraph
+	hidden1 := graph
+		fromBlock: [:image |
+			input := image.
+			(image * weights1 + biases1) rectified]
+		named: 'layer1'.
+	hidden2 := graph fromBlock: [(hidden1 * weights2 + biases2) rectified] named: 'layer2'.
+	prediction := graph
+		fromBlock: [
+			netInput := hidden2 * weights3 + biases3.
+			netInput softmax findMaxOn: 1 asInt32Tensor]
+		named: 'layer3'.
 ! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 2/17/2017 20:01:18'!
-\*\ aTFOperation
-	^ self
-		binaryOp: 'MatMul'
-		with: aTFOperation
-		described: [:description |
-			description at: 'transpose_a' putBoolean: true.
-			description at: 'transpose_b' putBoolean: true]
+!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:27'!
+initializeLearningGraph
+	|  axis0 backprop learningRate batchSize learnBiases1 learnBiases2 learnBiases3 learnWeights1 learnWeights2 learnWeights3 |
+	
+	learningRate := graph const: 0.1 asTensor.
+	batchSize := graph fromBlock: [(input sizeOn: 0) castTo: TFTensor typeFloat] named: 'batchSize'.
+	axis0 := graph const: #(0) asInt32Tensor. 
+	graph
+		fromBlock: [
+			| biasGradient activationGradient | 
+			activationGradient := activation useOutput: 1.
+			biasGradient := activationGradient meanOn: axis0.
+			learnWeights3 := weights3 descent: hidden2 \* activationGradient @/ batchSize rate: learningRate.
+			learnBiases3 := biases3 descent: biasGradient rate: learningRate.
+			backprop := activationGradient *\ weights3]
+		named: 'learning3'.
+		
+	graph fromBlock: [
+		| gradient |
+		gradient := backprop timesRectifiedGradOf: hidden2.
+		learnWeights2 := weights2 descent: hidden1 \* gradient @/ batchSize rate: learningRate.
+		learnBiases2 := biases2 descent: (gradient meanOn: axis0) rate: learningRate.
+		backprop := gradient *\ weights2] 
+			named: 'learning2'.
+			
+	graph fromBlock: [
+		| gradient | 
+		gradient := backprop timesRectifiedGradOf: hidden1.
+		learnWeights1 := weights1 descent: input \* gradient @/ batchSize rate: learningRate.
+		learnBiases1 := biases1 descent: (gradient meanOn: axis0) rate: learningRate] 
+			named: 'learning1'.
+			
+	learn := graph newOperation: 'Identity' named: 'learn' described: [:description |
+		description
+			addInput: loss output;
+			addControlInput: learnWeights1 output;
+			addControlInput: learnBiases1 output;
+			addControlInput: learnWeights2 output;
+			addControlInput: learnBiases2 output;
+			addControlInput: learnWeights3 output;
+			addControlInput: learnBiases3 output].
 ! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 12:52:43'!
-\\ aTFOperation
-	^ self binaryOp: 'Mod' with: aTFOperation! !
+!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:28'!
+initializeLossGraph
+	loss := graph
+		fromBlock: [:expected |
+			expectedLabel := expected.
+			activation := netInput sparseSoftmaxCrossEntropyWithLogits: expected.
+			activation meanOn: #(0) asInt32Tensor]
+		inputTypes: {TFTensor typeInt32}
+		named: 'loss'.! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 12:55:41'!
-abs
-	^ self unaryOp: 'Abs'! !
+!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 2/16/2017 09:35:09'!
+initializeParameters
+	| aux |
+		graph
+			fromBlock: [
+				aux := graph truncatedNormalRandomShaped: {self inputSize. self hidden1Size} stddev: 1.0 / self inputSize sqrt.
+				weights1 := graph variable: 'weights1' initialValueFrom: aux.
+				aux := graph zerosShaped: {self hidden1Size}.
+				biases1 := graph variable: 'biases1' initialValueFrom: aux.
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 11:59:40'!
-alias: nameString
-	^ self unaryOp: 'Identity' named: nameString! !
+				aux := graph truncatedNormalRandomShaped: {self hidden1Size. self hidden2Size} stddev: 1.0 / self hidden1Size sqrt.
+				weights2 := graph variable: 'weights2' initialValueFrom: aux.
+				aux := graph zerosShaped: {self hidden2Size}.
+				biases2 := graph variable: 'biases2' initialValueFrom: aux.
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 12:58:32'!
-arcCos
-	^ self unaryOp: 'Acos'
-	! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 13:03:06'!
-arcSin
-	^ self unaryOp: 'Asin'
-	! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 13:04:36'!
-arcTan
-	^ self unaryOp: 'Atan'
-	! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/1/2017 01:02:16'!
-assign: aTFOperation
-	^ self
-		binaryOp: 'Assign'
-		with: aTFOperation
-		named: self name, '_initializer'! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/21/2017 02:22:49'!
-binaryOp: aString with: aTFOperation
-	^ self binaryOp: aString with: aTFOperation described: [:nothing]
+				aux := graph truncatedNormalRandomShaped: {self hidden2Size. self outputSize} stddev: 1.0 / self hidden2Size sqrt.
+				weights3 := graph variable: 'weights3' initialValueFrom: aux.
+				aux := graph zerosShaped: {self outputSize}.
+				biases3 := graph variable: 'biases3' initialValueFrom: aux]
+			named: 'parameters'
 ! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 15:14:52'!
-binaryOp: aString with: aTFOperation described: oneArgBlock
-	| name |
-	name := self nameFor: aString.
-	^ self binaryOp: aString with: aTFOperation named: name described: oneArgBlock! !
+!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 03:35:50'!
+initializeSession
+	session := TFSession on: graph.
+	graph initializeOn: session.! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 04:54:08'!
-binaryOp: aString with: aTFOperation named: name
-	^ self binaryOp: aString with: aTFOperation named: name described: [:nothing]
+!MNIST3LayersNNExamplePlan methodsFor: 'running' stamp: 'gera 2/22/2017 00:10:30'!
+predict: inputs
+	| results |
+	results := session
+		runInputs: {input input: 0}
+		values: {inputs asFloatTensor}
+		outputs: {prediction output}.
+	^ results first! !
+
+!MNIST3LayersNNExamplePlan methodsFor: 'running' stamp: 'gera 2/22/2017 00:10:58'!
+predict: inputs andCompareTo: label
+	| results |
+	results := session
+		runInputs: {input input: 0. expectedLabel input: 0}
+		values: {inputs asFloatTensor. label asInt32Tensor}
+		outputs: {prediction output. loss output}.
+	^ results! !
+
+!MNIST3LayersNNExamplePlan methodsFor: 'running' stamp: 'gera 2/26/2017 15:13:22'!
+predict: inputs andLearnFrom: label
+	| results |
+	results := session
+		runInputs: {input input: 0. expectedLabel input: 0}
+		values: {inputs asFloatTensor. label asInt32Tensor}
+		outputs: {loss output. learn output}.
+	^ results! !
+
+!MNIST3LayersNNSigmoid methodsFor: 'initialization' stamp: 'gera 2/25/2017 11:31:02'!
+initializeInferenceGraph
+	hidden1 := graph
+		fromBlock: [:image |
+			input := image.
+			(image * weights1 + biases1) sigmoid]
+		named: 'layer1'.
+	hidden2 := graph fromBlock: [(hidden1 * weights2 + biases2) sigmoid] named: 'layer2'.
+	prediction := graph
+		fromBlock: [
+			netInput := hidden2 * weights3 + biases3.
+			netInput findMaxOn: 1 asInt32Tensor]
+		named: 'layer3'.
 ! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:26:18'!
-binaryOp: aString with: aTFOperation named: name described: oneArgBlock
-	^ self op: aString withAll: {aTFOperation} named: name described: oneArgBlock! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 15:40:22'!
-castTo: typeInteger
-	^ self unaryOp: 'Cast' described: [:description |
-		description at: 'DstT' putType: typeInteger]! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 13:08:18'!
-cos
-	^ self unaryOp: 'Cos'
-	! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:37:15'!
-descent: delta rate: learningRate
-	^ self op: 'ApplyGradientDescent' withAll: {learningRate. delta}! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 1/23/2017 10:39:24'!
-exp
-	^ self unaryOp: 'Exp'
-	! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 2/11/2017 13:23:34'!
-findMaxOn: aTFOperation
-	^ self binaryOp: 'ArgMax' with: aTFOperation! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/21/2017 03:37:51'!
-findMinOn: aTFOperation
-	^ self binaryOp: 'ArgMin' with: aTFOperation! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/23/2017 09:52:07'!
-identity
-	^ self unaryOp: 'Identity'
-	! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/21/2017 05:15:34'!
-inverse
-	^ self unaryOp: 'MatrixInverse'! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/17/2017 00:45:25'!
-meanOn:  shapeTensorOrOperation
-	^ self binaryOp: 'Mean' with: shapeTensorOrOperation! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/30/2017 23:39:24'!
-nameFor: namePrefix
-	^ graph nameFor: namePrefix! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 11:14:17'!
-negated
-	^ self unaryOp: 'Neg'! !
-
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:32:50'!
-op: aString withAll: aTFOperationArray
-	^ self op: aString withAll: aTFOperationArray described: [:nothing]
+!MNIST3LayersNNSigmoid methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:28'!
+initializeLearningGraph
+	| axis0 activationGradient gradient1 gradient2 learningRate biasGradient one batchSize learnBiases1 learnBiases2 learnBiases3 learnWeights1 learnWeights2 learnWeights3 |
+	
+	learningRate := graph const: 0.1 asTensor.
+	batchSize := graph fromBlock: [(input sizeOn: 0) castTo: TFTensor typeFloat] named: 'batchSize'.
+	axis0 := #(0) asInt32Tensor. 
+	graph
+		fromBlock: [
+			activationGradient := activation useOutput: 1.
+			biasGradient := activationGradient meanOn: axis0.
+			learnWeights3 := weights3 descent: hidden2 \* activationGradient @/ batchSize rate: learningRate.
+			learnBiases3 := biases3 descent: biasGradient rate: learningRate]
+		named: 'learning3'.
+		
+	one := 1.0 asTensor asOperationOn: graph.
+	graph fromBlock: [
+		gradient2 := (activationGradient *\ weights3) @* hidden2 @* (one - hidden2).
+		learnWeights2 := weights2 descent: hidden1 \* gradient2 @/ batchSize  rate: learningRate.
+		learnBiases2 := biases2 descent: (gradient2 meanOn: axis0) rate: learningRate] 
+			named: 'learning2'.
+			
+	graph fromBlock: [
+		gradient1 := (gradient2 *\ weights2) @* hidden1 @* ( one - hidden1).
+		learnWeights1 := weights1 descent: input \* gradient1 @/ batchSize  rate: learningRate.
+		learnBiases1 := biases1 descent: (gradient1 meanOn: axis0) rate: learningRate] 
+			named: 'learning1'.
+			
+	learn := graph newOperation: 'Identity' named: 'learn' described: [:description |
+		description
+			addInput: loss output;
+			addControlInput: learnWeights1 output;
+			addControlInput: learnBiases1 output;
+			addControlInput: learnWeights2 output;
+			addControlInput: learnBiases2 output;
+			addControlInput: learnWeights3 output;
+			addControlInput: learnBiases3 output].
 ! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:32:46'!
-op: aString withAll: aTFOperationArray described: oneArgBlock
-	| name |
-	name := self nameFor: aString.
-	^ self op: aString withAll: aTFOperationArray named: name described: oneArgBlock! !
+!MNISTFile methodsFor: 'converting' stamp: 'JB 2/5/2017 15:04:26'!
+asTensor
+	^ self subclassResponsibility ! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:33:17'!
-op: aString withAll: aTFOperationArray named: name
-	^ self op: aString withAll: aTFOperationArray named: name described: [:nothing]
+!MNISTFile methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:58:05'!
+count
+	^ count! !
+
+!MNISTFile methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:58:10'!
+items
+	^ items! !
+
+!MNISTFile methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:58:01'!
+magic
+	^ magic! !
+
+!MNISTFile methodsFor: 'initialization' stamp: 'JB 2/5/2017 15:37:24'!
+parse: aStream
+	magic := aStream nextUnsignedInt32BigEndian: true.
+	count :=  aStream nextUnsignedInt32BigEndian: true.
+
+	! !
+
+!MNISTFile class methodsFor: 'private' stamp: 'JV 5/23/2021 09:43:32'!
+download: aName
+		| url response content file |
+		" I changed the original http://yann.lecun.com/exdb/mnist/, because is constantly unavailable "
+		url := 'https://github.com/jvanecek/datasets/blob/main/mnist-handwritten/' , aName, '?raw=true'.
+		response := WebClient httpGet: url.
+		content := response content asByteArray.
+		file := ('dataset/', name) asFileEntry.
+		file < content.
+		^ file! !
+
+!MNISTFile class methodsFor: 'instance creation' stamp: 'JB 2/5/2017 15:36:27'!
+fromFile: aString
+	| file filename stream compressed|
+	filename := aString, '.gz'.
+	file := ('dataset/', filename) asFileEntry.
+	file exists ifFalse:[ file := self download: filename].
+	compressed := file readStream contentsOfEntireFile.
+	stream := (GZipReadStream on: compressed) upToEnd asByteArray readStream.
+	^ self fromStream: stream
+	! !
+
+!MNISTFile class methodsFor: 'instance creation' stamp: 'JB 2/5/2017 15:26:40'!
+fromStream: aStream
+	| answer |
+	answer := self new.
+	^ answer parse: aStream! !
+
+!MNISTFile class methodsFor: 'instance creation' stamp: 'JB 2/5/2017 15:28:39'!
+testSet
+	^self fromFile: self testName
+	! !
+
+!MNISTFile class methodsFor: 'instance creation' stamp: 'JB 2/5/2017 15:28:58'!
+trainingSet
+	^self fromFile: self trainName
+	! !
+
+!MNISTFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:07:25'!
+magic
+	^ self subclassResponsibility ! !
+
+!MNISTFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:16:07'!
+testName
+	^ self subclassResponsibility ! !
+
+!MNISTFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:16:03'!
+trainName
+	^ self subclassResponsibility ! !
+
+!MNISTImageFile methodsFor: 'converting' stamp: 'gera 6/30/2019 00:45:26'!
+asTensor
+	^  TFTensor fromFloats:  items shape: {count. rows * columns}.! !
+
+!MNISTImageFile methodsFor: 'accessing' stamp: 'JB 2/10/2017 00:50:56'!
+at: imageIndex
+	| bytes |
+	bytes := self bytesAt: imageIndex.
+	^ GrayForm extent: rows @ columns bits: bytes! !
+
+!MNISTImageFile methodsFor: 'accessing' stamp: 'JB 2/10/2017 00:50:21'!
+bytesAt: imageIndex
+	| size base |
+	size := columns * rows.
+	base := imageIndex - 1 * size + 1.
+	^ items copyFrom: base to: base + size - 1.! !
+
+!MNISTImageFile methodsFor: 'accessing' stamp: 'JB 2/18/2017 18:23:25'!
+bytesAt: base take: batchSize
+	^ (base to: base + batchSize -1) collect:[:index| self bytesAt: index]! !
+
+!MNISTImageFile methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:58:35'!
+columns
+	^ columns! !
+
+!MNISTImageFile methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:58:26'!
+rows
+	^ rows! !
+
+!MNISTImageFile methodsFor: 'initialization' stamp: 'JB 2/5/2017 15:10:42'!
+parse: aStream
+	super parse: aStream.
+	rows := aStream nextUnsignedInt32BigEndian: true.
+	columns := aStream nextUnsignedInt32BigEndian: true.
+	items := aStream upToEnd.! !
+
+!MNISTImageFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:09:23'!
+magic
+	^ 2051! !
+
+!MNISTImageFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:16:30'!
+testName
+	^ 't10k-images-idx3-ubyte'! !
+
+!MNISTImageFile class methodsFor: 'accessing' stamp: 'JV 5/22/2021 11:14:21'!
+testSet
+	
+	testSet isNil ifTrue: [testSet := super testSet]. 
+	^testSet! !
+
+!MNISTImageFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:16:46'!
+trainName
+	^ 'train-images-idx3-ubyte'! !
+
+!MNISTImageFile class methodsFor: 'accessing' stamp: 'JV 5/22/2021 11:13:15'!
+trainingSet
+	
+	trainingSet isNil ifTrue: [trainingSet := super trainingSet]. 
+	^trainingSet! !
+
+!MNISTLabelFile methodsFor: 'converting' stamp: 'JB 2/10/2017 00:44:04'!
+asTensor
+	^ items asInt32Tensor ! !
+
+!MNISTLabelFile methodsFor: 'accessing' stamp: 'gera 2/7/2017 09:37:58'!
+at: index
+	^ items at: index! !
+
+!MNISTLabelFile methodsFor: 'accessing' stamp: 'JB 2/18/2017 18:23:10'!
+at: base take: batchSize
+	^ (base to: base + batchSize - 1) collect:[:index| self at: index]! !
+
+!MNISTLabelFile methodsFor: 'initialization' stamp: 'JB 2/5/2017 15:01:28'!
+parse: aStream
+	super parse: aStream.
+	items := aStream upToEnd.
+	
+	! !
+
+!MNISTLabelFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 13:22:30'!
+magic
+	^ 2049! !
+
+!MNISTLabelFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:17:11'!
+testName
+	^ 't10k-labels-idx1-ubyte'! !
+
+!MNISTLabelFile class methodsFor: 'accessing' stamp: 'JV 5/22/2021 11:14:15'!
+testSet
+	
+	testSet isNil ifTrue: [testSet := super testSet]. 
+	^testSet! !
+
+!MNISTLabelFile class methodsFor: 'accessing' stamp: 'JB 2/5/2017 15:17:29'!
+trainName
+	^ 'train-labels-idx1-ubyte'! !
+
+!MNISTLabelFile class methodsFor: 'accessing' stamp: 'JV 5/22/2021 11:13:57'!
+trainingSet
+	
+	trainingSet isNil ifTrue: [trainingSet := super trainingSet]. 
+	^trainingSet! !
+
+!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 2/2/2017 19:26:53'!
+initialize
+	self
+		initializeGraph;
+		initializeParameters;
+		initializeInferenceGraph;
+		initializeLossGraph;
+		initializeLearningGraph;
+		initializeSession.! !
+
+!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 00:34:29'!
+initializeGraph
+	graph := TFGraph create! !
+
+!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 2/12/2017 23:10:20'!
+initializeInferenceGraph
+	prediction := graph
+		fromBlock: [:image |
+			input := image.
+			netInput := image * weights + biases.
+			netInput softmax findMaxOn: 1 asInt32Tensor]
+		named: 'inference'! !
+
+!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:26'!
+initializeLearningGraph
+	| learningRate activationGradient biasGradient |
+	graph
+		fromBlock: [ | batchSize |
+			learningRate := 0.9 asTensor.
+			activationGradient := activation useOutput: 1.
+			biasGradient := activationGradient meanOn: #(0) asInt32Tensor.
+			batchSize := (input sizeOn: 0) castTo: TFTensor typeFloat.
+			learnWeights := weights descent: input \* activationGradient @/ batchSize rate: learningRate.
+			learnBiases := biases descent: biasGradient rate: learningRate]
+		named: 'learning'! !
+
+!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:27'!
+initializeLossGraph
+	loss := graph
+		fromBlock: [:expected |
+			expectedLabel := expected.
+			activation := netInput sparseSoftmaxCrossEntropyWithLogits: expected.
+			activation meanOn: #(0) asInt32Tensor]
+		inputTypes: {TFTensor typeInt32}
+		named: 'loss'
 ! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/25/2017 11:47:40'!
-op: aString withAll: aTFOperationArray named: name described: oneArgBlock
-	^ graph newOperation: aString named: name described: [:description |
-		description addInput: self output.
-		aTFOperationArray do: [:each |
-			| input |
-			input := (each asOperationOn: graph) output.
-			description addInput: input].
-		oneArgBlock value: description].
-	! !
+!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 2/2/2017 19:29:23'!
+initializeParameters
+	| aux |
+	aux := graph zerosShaped: {self inputSize. self outputSize}.
+	weights := graph variable: 'weights' initialValueFrom: aux.
+	aux := graph zerosShaped: {self outputSize}.
+	biases := graph variable: 'biases' initialValueFrom: aux.! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/31/2017 01:33:48'!
-rectified
-	^ self unaryOp: 'Relu'! !
+!MNISTSoftMaxExamplePlan methodsFor: 'initialization' stamp: 'gera 7/3/2019 03:35:50'!
+initializeSession
+	session := TFSession on: graph.
+	graph initializeOn: session.! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/18/2017 19:14:52'!
-shape
-	^ self unaryOp: 'Shape'
-	! !
+!MNISTSoftMaxExamplePlan methodsFor: 'accessing' stamp: 'gera 2/2/2017 19:30:14'!
+inputSize
+	^ 28*28! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'Javier Burroni 1/24/2017 21:36:48'!
-sigmoid
-	^ self unaryOp: 'Sigmoid'! !
+!MNISTSoftMaxExamplePlan methodsFor: 'accessing' stamp: 'gera 2/2/2017 19:29:56'!
+outputSize
+	^ 10! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 13:08:09'!
-sin
-	^ self unaryOp: 'Sin'
-	! !
+!MNISTSoftMaxExamplePlan methodsFor: 'running' stamp: 'gera 2/2/2017 19:37:26'!
+predict: inputs
+	| results |
+	results := session
+		runInputs: {input input: 0}
+		values: {inputs asFloatTensor}
+		outputs: {prediction output: 0}.
+	^ results first! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 15:14:55'!
-sizeOn: dimensionInteger
-	^ self shape sliceFrom: {dimensionInteger} asInt32Tensor size: #(1) asInt32Tensor.! !
+!MNISTSoftMaxExamplePlan methodsFor: 'running' stamp: 'gera 2/12/2017 23:07:52'!
+predict: inputs andCompareTo: label
+	| results |
+	results := session
+		runInputs: {input input: 0. expectedLabel input: 0}
+		values: {inputs asFloatTensor. label asInt32Tensor}
+		outputs: {prediction output. loss output}.
+	^ results! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:39:00'!
-sliceFrom: begin size: size
-	^ self op: 'Slice' withAll: {begin. size}! !
+!MNISTSoftMaxExamplePlan methodsFor: 'running' stamp: 'gera 2/19/2017 10:52:34'!
+predict: inputs andLearnFrom: label
+	| results |
+	results := session
+		runInputs: {input input: 0. expectedLabel input: 0}
+		values: {inputs asFloatTensor. label asInt32Tensor}
+		outputs: {loss output. learnWeights output. learnBiases output}.
+	^ results! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 2/7/2017 11:32:45'!
-softmax
-	^ self unaryOp: 'Softmax'
+!NearestNeighbor methodsFor: 'private-csv' stamp: 'gera 7/3/2019 03:35:50'!
+decodeCSV: csvLines graphRun: description
+	|  graph output records session results values answer |
+		
+	graph := self decodeCSVGraphDefaults: description.
+	records := (graph operationNamed: 'records') input: 0.
+	output := graph operationNamed: 'output'.
+	values := TFTensor fromStringArray: csvLines.
+	
+	session := TFSession on: graph.
+	results := session
+		runOperations: {output}
+		inputs: {records}
+		values: {values}
+		outputs: {
+			(output output: 0).
+			(output output: 1).
+			(output output: 2).
+			(output output: 3).
+			(output output: 4)}.
+		
+	graph delete.
+	
+	answer := (1 to: 4) asOrderedCollection collect: [:i |
+		(results at: i) allFloats].
+	^ answer add: (results at: 5) allInt64s; yourself.! !
+
+!NearestNeighbor methodsFor: 'private-csv' stamp: 'gera 7/3/2019 00:34:29'!
+decodeCSVGraphDefaults: anArrayOfTFTensors
+	| graph records defaults |
+	
+	graph := TFGraph create.
+	records := (graph placeholder: 'records' type: TFTensor typeString) output: 0.
+	defaults := Array new: anArrayOfTFTensors size.
+	
+	anArrayOfTFTensors withIndexDo: [:each :index |
+		| one |
+		one := (graph const: 'default',index printString value: each) output: 0.
+		defaults at: index put: one].
+	graph newOperation: 'DecodeCSV' named: 'output' described: [:description |
+		description addInput: records.
+		description addInputs: defaults].
+	
+	^ graph! !
+
+!NearestNeighbor methodsFor: 'private-csv' stamp: 'gera 6/30/2019 00:45:26'!
+irisDescription
+	^{TFTensor fromFloats: #(-1.0).
+		TFTensor fromFloats: #(-1.0).
+		TFTensor fromFloats: #(-1.0).
+		TFTensor fromFloats: #(-1.0).
+		TFTensor fromInt64s: #(-1)}! !
+
+!NearestNeighbor methodsFor: 'private-csv' stamp: 'gera 1/16/2017 23:00:14'!
+irisFile
+	^ self class irisFile! !
+
+!NearestNeighbor methodsFor: 'initialization' stamp: 'JB 1/19/2017 10:46:56'!
+initialize
+	plan := ExampleNearestNeighborPlan new.! !
+
+!NearestNeighbor methodsFor: 'initialization' stamp: 'jb 1/15/2017 23:28:54'!
+loadDataSet
+	| dataSet description stream |
+	stream := self irisFile.
+	stream nextLine.
+	dataSet := self testingAndTrainingFrom: stream.
+	description := self irisDescription.
+	^ dataSet collect: [ :csv |
+		self
+			decodeCSV: csv
+			graphRun: description ].! !
+
+!NearestNeighbor methodsFor: 'running' stamp: 'gera 1/30/2017 17:56:34'!
+run
+	| covariatesTr covariatesTe predictions size dataset testing training |
+	dataset := self loadDataSet.
+	training := dataset first.
+	testing := dataset second.
+	covariatesTr := training allButLast asFloatTensor.
+	size := testing first size.
+	predictions := (1 to: size) collect: [ :i | | covariates index predicted results trueValue |
+		covariates := testing  collect:[:col| {col at: i}].
+		covariatesTe := covariates allButLast asFloatTensor.
+		results := plan predict: covariatesTe from: covariatesTr.
+		index := results first.
+		trueValue := covariates fifth first.
+		predicted := training fifth at: index.
+		trueValue = predicted
+			ifTrue: [ 1 ]
+			ifFalse: [ 0 ]].
+	^ predictions.! !
+
+!NearestNeighbor methodsFor: 'sampling' stamp: 'jb 1/15/2017 19:13:00'!
+testingAndTrainingFrom: stream
+	| p random testing training lines |
+	lines := stream upToEnd lines.
+	p := 0.7.
+	training := OrderedCollection new.
+	testing := OrderedCollection new.
+	random := Random new.
+	lines collect: [ :line | | collection |
+		line isEmpty ifFalse: [
+			collection := random next < p
+				ifTrue: [ training ]
+				ifFalse: [ testing ].
+			collection add: line ]].
+	^ {training. testing}.! !
+
+!NearestNeighbor class methodsFor: 'as yet unclassified' stamp: 'gera 1/16/2017 23:00:53'!
+irisFile
+	^ '../Machine-Learning/datasets/iris.csv' asFileEntry readStream.! !
+
+!NearestNeighbor class methodsFor: 'instance creation' stamp: 'gera 1/16/2017 23:12:43'!
+new
+	^ super new initialize! !
+
+!OLSExample methodsFor: 'initialization' stamp: 'JB 1/19/2017 10:29:16'!
+initialize
+	plan := ExampleOLSPlan new.! !
+
+!OLSExample methodsFor: 'initialization' stamp: 'gera 1/29/2017 05:15:58'!
+initializeWithOperations
+	plan := ExampleOLSPlan new initializeGraphWithOperations initializeSession! !
+
+!OLSExample methodsFor: 'running' stamp: 'gera 1/21/2017 04:20:26'!
+regress: x on: y
+	| result |
+	result := plan runOn: {x. y}.
+	^ result allFloats! !
+
+!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:33:25'!
+graph
+	^ graph! !
+
+!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:33:41'!
+hidden1Size
+	^ 20! !
+
+!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:33:46'!
+hidden2Size
+	^ 20! !
+
+!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:33:54'!
+hidden3Size
+	^ 20! !
+
+!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:33:59'!
+inputSize
+	^ 1! !
+
+!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:34:03'!
+intput
+	^ input! !
+
+!RegressionNNExample methodsFor: 'accessing' stamp: 'JB 2/22/2017 22:34:23'!
+outputSize
+	^ 1! !
+
+!RegressionNNExample methodsFor: 'initialization' stamp: 'JB 2/22/2017 22:33:07'!
+initialize
+	self
+		initializeGraph;
+		initializeParameters;
+		initializeInferenceGraph;
+		initializeLossGraph;
+		initializeLearningGraph;
+		initializeSession.! !
+
+!RegressionNNExample methodsFor: 'initialization' stamp: 'gera 7/3/2019 00:34:29'!
+initializeGraph
+	graph := TFGraph create! !
+
+!RegressionNNExample methodsFor: 'initialization' stamp: 'gera 2/26/2017 12:52:24'!
+initializeInferenceGraph
+	hidden1 := graph
+		fromBlock: [:image |
+			input := image.
+			(image * weights1 + biases1) rectified]
+		named: 'layer1'.
+	hidden2 := graph fromBlock: [(hidden1 * weights2 + biases2) sigmoid] named: 'layer2'.
+	hidden3 := graph fromBlock: [(hidden2 * weights3 + biases3) sigmoid] named: 'layer3'.
+	prediction := graph fromBlock: [hidden3 * weights4 + biases4] named: 'layer4'.
 ! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/2/2017 02:09:13'!
-sparseSoftmaxCrossEntropyWithLogits: aTFOperation
-	^ self
-		binaryOp: 'SparseSoftmaxCrossEntropyWithLogits'
-		with: aTFOperation
-		named: (self nameFor: 'SparseSoftmaxCrossEntropyWithLogits')! !
+!RegressionNNExample methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:28'!
+initializeLearningGraph
+	|  axis0 learningRate batchSize biasGradient one backprop learnBiases1 learnBiases2 learnBiases3 learnBiases4 learnWeights1 learnWeights2 learnWeights3 learnWeights4 |
+	
+	learningRate := 0.1 asTensor.
+	batchSize := graph fromBlock: [(input sizeOn: 0) castTo: TFTensor typeFloat] named: 'batchSize'.
+	axis0 := graph const: #(0) asInt32Tensor. 
+	one := 1.0 asTensor asOperationOn: graph.
+	graph
+		fromBlock: [ | gradient|
+			gradient := (prediction - expectedLabel).
+			biasGradient := gradient meanOn: axis0.
+			learnWeights4 := weights4 descent: hidden3 \* gradient @/ batchSize rate: learningRate.
+			learnBiases4 := biases4 descent: biasGradient rate: learningRate.
+			backprop :=  (gradient *\ weights4)]
+		named: 'learning4'.	
+	
+	graph
+		fromBlock: [ | gradient | 
+			gradient := backprop @* hidden3 @* (one - hidden3).
+			biasGradient := gradient meanOn: axis0.
+			learnWeights3 := weights3 descent: hidden2 \* gradient @/ batchSize rate: learningRate.
+			learnBiases3 := biases3 descent: biasGradient rate: learningRate.
+			backprop := (gradient *\ weights3)]
+		named: 'learning3'.
+		
+	graph fromBlock: [ | gradient |
+		gradient :=  backprop @* hidden2 @* (one - hidden2).
+		learnWeights2 := weights2 descent: hidden1 \* gradient @/ batchSize  rate: learningRate.
+		learnBiases2 := biases2 descent: (gradient meanOn: axis0) rate: learningRate.
+		backprop :=  (gradient *\ weights2)]
+			named: 'learning2'.
+			
+	graph fromBlock: [ | gradient |
+		gradient := backprop timesRectifiedGradOf: hidden1.
+		learnWeights1 := weights1 descent: input \* gradient rate: learningRate.
+		learnBiases1 := biases1 descent: (gradient meanOn: axis0) rate: learningRate] 
+			named: 'learning1'.
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 1/25/2017 11:50:16'!
-squared
-	^ self @* self
-	! !
+	learn := graph newOperation: 'Identity' named: 'learn' described: [:description |
+		description
+			addInput: loss output;
+			addControlInput: learnWeights1 output;
+			addControlInput: learnBiases1 output;
+			addControlInput: learnWeights2 output;
+			addControlInput: learnBiases2 output;
+			addControlInput: learnWeights3 output;
+			addControlInput: learnBiases3 output;
+			addControlInput: learnWeights4 output;
+			addControlInput: learnBiases4 output].
+! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/21/2017 03:30:55'!
-sumOn: aTFOperation
-	^ self binaryOp: 'Sum' with: aTFOperation! !
+!RegressionNNExample methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:26'!
+initializeLossGraph
+	loss := graph
+		fromBlock: [ :expected |
+			expectedLabel := expected.
+			(prediction - expectedLabel) squared meanOn: #(0) asInt32Tensor ]
+		inputTypes: {TFTensor typeFloat}
+		named: 'loss'.! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 13:08:05'!
-tan
-	^ self unaryOp: 'Tan'
-	! !
+!RegressionNNExample methodsFor: 'initialization' stamp: 'gera 2/26/2017 17:45:31'!
+initializeParameters
+	| aux |
+	graph
+		fromBlock: [
+			aux := graph truncatedNormalRandomShaped: {self inputSize. self hidden1Size} stddev: 1.0 / self inputSize sqrt.
+			weights1 := graph variable: 'weights1' initialValueFrom: aux.
+			aux := graph zerosShaped: {self hidden1Size}.
+			biases1 := graph variable: 'biases1' initialValueFrom: aux.
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 2/17/2017 11:38:27'!
-timesRectifiedGradOf: aTFOperation
-	^ self binaryOp: 'ReluGrad' with: aTFOperation! !
+			aux := graph truncatedNormalRandomShaped: {self hidden1Size. self hidden2Size} stddev: 1.0 / self hidden1Size sqrt.
+			weights2 := graph variable: 'weights2' initialValueFrom: aux.
+			aux := graph zerosShaped: {self hidden2Size}.
+			biases2 := graph variable: 'biases2' initialValueFrom: aux.
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 15:14:27'!
-unaryOp: aString
-	| name |
-	name := self nameFor: aString.
-	^ self unaryOp: aString named: name! !
+			aux := graph truncatedNormalRandomShaped: {self hidden2Size. self hidden3Size } stddev: 1.0 / self hidden2Size sqrt.
+			weights3 := graph variable: 'weights3' initialValueFrom: aux.
+			aux := graph zerosShaped: {self hidden3Size }.
+			biases3 := graph variable: 'biases3' initialValueFrom: aux.
+			
+			aux := graph truncatedNormalRandomShaped: {self hidden3Size. self outputSize } stddev: 1.0 / self hidden3Size sqrt.
+			weights4 := graph variable: 'weights4' initialValueFrom: aux.
+			aux := graph zerosShaped: {self outputSize }.
+			biases4 := graph variable: 'biases4' initialValueFrom: aux]
+		named: 'parameters'
+		
+		
+! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/31/2017 16:53:48'!
-unaryOp: aString described: oneArgBlock
-	| name |
-	name := self nameFor: aString.
-	^ self unaryOp: aString named: name described: oneArgBlock! !
+!RegressionNNExample methodsFor: 'initialization' stamp: 'gera 7/3/2019 03:35:50'!
+initializeSession
+	session := TFSession on: graph.
+	graph initializeOn: session! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/31/2017 16:58:06'!
-unaryOp: aString named: name
-	^ self unaryOp: aString named: name described: [:description | ].
-	! !
+!RegressionNNExample methodsFor: 'running' stamp: 'JB 2/22/2017 22:33:07'!
+predict: inputs
+	| results |
+	results := session
+		runInputs: {input input: 0}
+		values: {inputs asFloatTensor}
+		outputs: {prediction output: 0}.
+	^ results first! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:26:59'!
-unaryOp: aString named: name described: oneArgBlock
-	^ self op: aString withAll: {} named: name described: oneArgBlock! !
+!RegressionNNExample methodsFor: 'running' stamp: 'JB 2/22/2017 23:03:05'!
+predict: inputs andCompareTo: label
+	| results |
+	results := session
+		runInputs: {input input: 0. expectedLabel input: 0}
+		values: {inputs asFloatTensor. label asFloatTensor}
+		outputs: {prediction output: 0. loss output: 0}.
+	^ results! !
+
+!RegressionNNExample methodsFor: 'running' stamp: 'gera 2/26/2017 15:17:10'!
+predict: inputs andLearnFrom: label
+	| results |
+	results := session
+		runInputs: {input input: 0. expectedLabel input: 0}
+		values: {inputs asFloatTensor. label asFloatTensor}
+		outputs: {loss output:0. learn output}.
+	^ results! !
+
+!RegressionNNExample class methodsFor: 'examples' stamp: 'JB 2/23/2017 00:12:28'!
+exampleFunction
+	^ [ :x | | y |
+			y := x * 10 - 5.
+			y * y sin ].! !
+
+!RegressionNNExample class methodsFor: 'examples' stamp: 'gera 2/25/2017 12:02:17'!
+exampleTrainedAndPlot
+	" self exampleTrainedAndPlot "
+	| function net predictor g |
+	function :=  self exampleFunction.
+	net := self exampleTrainedOn: function.
+	predictor := [:x |
+		| result |
+		result := net predict: {{x}}.
+		result asNumbers first first] .
+	
+	g := FunctionGraphMorph new.
+	g domain: (0 to: 1).
+	g addFunction: function color: Color green.
+	g addFunction: predictor color: Color red.
+	(g embeddedInMorphicWindowLabeled: 'graph') openInWorld.
+	^ net! !
+
+!RegressionNNExample class methodsFor: 'examples' stamp: 'gera 2/25/2017 12:03:03'!
+exampleTrainedOn: function
+	| net rnd interval xs ys |
+	net := self new.
+	rnd := Random new.
+	xs :=  (1 to: 100) collect: [:i | {rnd next}].
+	ys := xs collect: [:x | {function value: x first}].
+	interval := 1 to: xs size.
+	
+	10000 timesRepeat: [
+		|x indices y |
+		indices := (1 to: 60) collect: [:i| interval atRandom].
+		x := indices collect: [:index | xs at: index].
+		y :=  indices collect: [:index | ys at: index].
+		net predict: x andLearnFrom: y].
+	^ net! !
+
+!SimpleNeuralNetworkExample methodsFor: 'accessing' stamp: 'gera 1/30/2017 17:56:57'!
+initialWeights: aCollection
+	weights := aCollection asFloatTensor! !
+
+!SimpleNeuralNetworkExample methodsFor: 'initialization' stamp: 'JB 1/25/2017 15:22:27'!
+initialize
+	forward := BackpropagationForwardPlan new.
+	backward := BackpropagationBackwardPlan new.! !
+
+!SimpleNeuralNetworkExample methodsFor: 'learning' stamp: 'JB 1/25/2017 15:25:47'!
+learn: sample with: expected
+		| result |
+	result := forward runOn: {sample. weights}.
+	weights := backward runOn: {sample. weights. expected. result}.! !
+
+!SimpleNeuralNetworkExample methodsFor: 'learning' stamp: 'JB 1/25/2017 15:29:01'!
+learnAll: samples to: targets steps: n
+	n timesRepeat: [
+		samples with: targets do:[:sample :target| self learn: sample with: target]
+		]! !
+
+!SimpleNeuralNetworkExample methodsFor: 'service' stamp: 'JB 1/25/2017 15:26:43'!
+predict: sample
+		| result |
+	result := forward runOn: {sample. weights}.
+	^ result allFloats ! !
 
 !ExternalWordArrayTest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:06:39'!
 testOperationArrayAtPut
@@ -4913,11 +4506,11 @@ testOperationEquals
 	self assert: in1 = in1.
 	self deny: in1 = 'in1'.! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/25/2021 08:11:04'!
 testPlaceholderType: type
 	| graph var session result tensor abs |
 	graph := TFGraph create.
-	tensor := TFTensor type: type shape: #().
+	tensor := TFTensor newTyped: type shaped: TensorShape scalar.
 	var := graph placeholder: 'var' type: type.
 	abs := graph newOperation: 'Abs' named: 'abs' described: [:description |
 		description addInput: (var output: 0)].
@@ -5260,3 +4853,410 @@ testTensorFromFloats2x2SameElementsOrder
 	
 	consts with: values do: [:const :value |
 		self assert: const closeTo: value].! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/5/2017 05:21:30'!
+add: nameString described: aBlock
+	^self newOperation: 'Add' named: nameString described: aBlock! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/5/2017 23:55:21'!
+asString: nameString described: aBlock
+	^self newOperation: 'AsString' named: nameString described: aBlock! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 12/30/2016 12:16:54'!
+concat: nameString described: aBlock
+	^self newOperation: 'Concat' named: nameString described: aBlock! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/31/2017 15:07:44'!
+const: aTFTensor
+	| name |
+	name := self nameFor: 'constant'.
+	^ self const: name value: aTFTensor! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 12/28/2016 02:07:25'!
+const: nameString value: aTFTensor
+	^ self
+		newOperation: 'Const'
+		named: nameString
+		described: [:description |
+			description at: 'dtype' putType: aTFTensor type.
+			description at: 'value' putTensor: aTFTensor]! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 6/30/2019 00:45:28'!
+fromBlock: aBlockClosure
+	| types |
+	types := Array new: aBlockClosure argumentCount.
+	types atAllPut: TFTensor typeFloat.
+	^ self fromBlock: aBlockClosure inputTypes: types! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/2/2017 19:46:21'!
+fromBlock: aBlockClosure inputTypes: anArray
+	| inputs index |
+	index := 0.
+	inputs := (1 to: aBlockClosure argumentCount) collect: [:each |
+		index := index + 1.
+		self inputType: (anArray at: index)].
+	^ aBlockClosure valueWithArguments: inputs.
+! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/10/2017 15:26:14'!
+fromBlock: aBlockClosure inputTypes: anArray named: nameString
+	| previousContext answer |
+	previousContext := context.
+	context := context, nameString, '/'.
+	answer := self fromBlock: aBlockClosure inputTypes: anArray.
+	context := previousContext.
+	^ answer! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 6/30/2019 00:45:27'!
+fromBlock: aBlockClosure named: nameString
+	| types |
+	types := Array new: aBlockClosure argumentCount.
+	types atAllPut: TFTensor typeFloat.
+	^ self fromBlock: aBlockClosure inputTypes: types named: nameString! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/2/2017 19:45:59'!
+inputType: typeInteger
+	^ self
+		newOperation: 'Placeholder'
+		named: (self nameFor: 'input')
+		described: [:description |
+			description at: 'dtype' putType: typeInteger]! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 12/28/2016 02:11:44'!
+mul: nameString described: aBlock
+	^self newOperation: 'Mul' named: nameString described: aBlock! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/6/2017 17:21:53'!
+placeholder: nameString type: typeInteger
+	^ self
+		newOperation: 'Placeholder'
+		named: nameString
+		described: [:description |
+			description at: 'dtype' putType: typeInteger]! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 7/3/2019 03:33:19'!
+shapeOf: aTFOutputOrInput set: shape
+	| status value |
+	value := Int64Array externalFromArray: shape.
+	status := TFStatus create.
+	
+	self library
+		graph: self
+		setShapeOf: aTFOutputOrInput
+		to: value
+		size: shape size
+		status: status.
+	status check.! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 6/30/2019 00:45:27'!
+truncatedNormalRandomShaped: shapeArray
+	| shape |
+	shape := self const: shapeArray asInt32Tensor.
+	^ shape unaryOp: 'TruncatedNormal' described: [:description |
+		description at: 'dtype' putType: TFTensor typeFloat]! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/31/2017 17:44:21'!
+truncatedNormalRandomShaped: shapeArray stddev: aNumber
+	| random |
+	random := self truncatedNormalRandomShaped: shapeArray.
+	^ random @* (self const: aNumber asTensor)! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 03:23:14'!
+variable: nameString forTensor: aTFTensor
+	^ self variable: nameString type: aTFTensor type shape: aTFTensor shape! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/1/2017 01:02:23'!
+variable: nameString initialValue: aTFTensor
+	| const var |
+	var := self variable: nameString forTensor: aTFTensor.
+	const := self const: nameString, '_initialValue' value: aTFTensor.
+	var assign: const.
+	^ var! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/1/2017 01:22:52'!
+variable: nameString initialValueFrom: aTFOperation
+	| output var shape |
+	output := aTFOperation output: 0.
+	shape := self shapeOf: output.
+	var := self variable: nameString type: output type shape: shape..
+	var assign: aTFOperation.
+	^ var! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 03:04:54'!
+variable: nameString type: typeInteger shape: anArray
+	^ self
+		newOperation: 'Variable'
+		named: nameString
+		described: [:description |
+			description
+				at: 'dtype' putType: typeInteger;
+				at: 'shape' putShape: anArray]! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/17/2017 00:47:45'!
+zerosShaped: shapeArray
+	| shape |
+	shape := self const: shapeArray asInt32Tensor.
+	^ shape binaryOp: 'Fill' with: 0.0 asTensor! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/20/2017 18:22:38'!
+* aTFOperation
+	^ self binaryOp: 'MatMul' with: aTFOperation! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/21/2017 02:26:09'!
+*\ aTFOperation
+	^ self
+		binaryOp: 'MatMul'
+		with: aTFOperation
+		described: [:description |
+			description at: 'transpose_b' putBoolean: true]
+! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 11:19:11'!
++ aTFOperation
+	^ self binaryOp: 'Add' with: aTFOperation! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 19:47:10'!
+- aTFOperation
+	^ self binaryOp: 'Sub' with: aTFOperation! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 15:21:14'!
+-= aTFOperation
+	^ self binaryOp: 'AssignSub' with: aTFOperation! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 2/15/2017 23:27:00'!
+> aTFOperation
+	^ self binaryOp: 'Greater' with: aTFOperation! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/20/2017 18:20:07'!
+@* aTFOperation
+	^ self binaryOp: 'Mul' with: aTFOperation! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 15:19:17'!
+@/ aTFOperation
+	^ self binaryOp: 'Div' with: aTFOperation
+	! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/21/2017 02:26:18'!
+\* aTFOperation
+	^ self
+		binaryOp: 'MatMul'
+		with: aTFOperation
+		described: [:description |
+			description at: 'transpose_a' putBoolean: true]
+! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 2/17/2017 20:01:18'!
+\*\ aTFOperation
+	^ self
+		binaryOp: 'MatMul'
+		with: aTFOperation
+		described: [:description |
+			description at: 'transpose_a' putBoolean: true.
+			description at: 'transpose_b' putBoolean: true]
+! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 12:52:43'!
+\\ aTFOperation
+	^ self binaryOp: 'Mod' with: aTFOperation! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 12:55:41'!
+abs
+	^ self unaryOp: 'Abs'! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 11:59:40'!
+alias: nameString
+	^ self unaryOp: 'Identity' named: nameString! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 12:58:32'!
+arcCos
+	^ self unaryOp: 'Acos'
+	! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 13:03:06'!
+arcSin
+	^ self unaryOp: 'Asin'
+	! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 13:04:36'!
+arcTan
+	^ self unaryOp: 'Atan'
+	! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/1/2017 01:02:16'!
+assign: aTFOperation
+	^ self
+		binaryOp: 'Assign'
+		with: aTFOperation
+		named: self name, '_initializer'! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/21/2017 02:22:49'!
+binaryOp: aString with: aTFOperation
+	^ self binaryOp: aString with: aTFOperation described: [:nothing]
+! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 15:14:52'!
+binaryOp: aString with: aTFOperation described: oneArgBlock
+	| name |
+	name := self nameFor: aString.
+	^ self binaryOp: aString with: aTFOperation named: name described: oneArgBlock! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 04:54:08'!
+binaryOp: aString with: aTFOperation named: name
+	^ self binaryOp: aString with: aTFOperation named: name described: [:nothing]
+! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:26:18'!
+binaryOp: aString with: aTFOperation named: name described: oneArgBlock
+	^ self op: aString withAll: {aTFOperation} named: name described: oneArgBlock! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 15:40:22'!
+castTo: typeInteger
+	^ self unaryOp: 'Cast' described: [:description |
+		description at: 'DstT' putType: typeInteger]! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 13:08:18'!
+cos
+	^ self unaryOp: 'Cos'
+	! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:37:15'!
+descent: delta rate: learningRate
+	^ self op: 'ApplyGradientDescent' withAll: {learningRate. delta}! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 1/23/2017 10:39:24'!
+exp
+	^ self unaryOp: 'Exp'
+	! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 2/11/2017 13:23:34'!
+findMaxOn: aTFOperation
+	^ self binaryOp: 'ArgMax' with: aTFOperation! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/21/2017 03:37:51'!
+findMinOn: aTFOperation
+	^ self binaryOp: 'ArgMin' with: aTFOperation! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/23/2017 09:52:07'!
+identity
+	^ self unaryOp: 'Identity'
+	! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/21/2017 05:15:34'!
+inverse
+	^ self unaryOp: 'MatrixInverse'! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/17/2017 00:45:25'!
+meanOn:  shapeTensorOrOperation
+	^ self binaryOp: 'Mean' with: shapeTensorOrOperation! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/30/2017 23:39:24'!
+nameFor: namePrefix
+	^ graph nameFor: namePrefix! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 11:14:17'!
+negated
+	^ self unaryOp: 'Neg'! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:32:50'!
+op: aString withAll: aTFOperationArray
+	^ self op: aString withAll: aTFOperationArray described: [:nothing]
+! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:32:46'!
+op: aString withAll: aTFOperationArray described: oneArgBlock
+	| name |
+	name := self nameFor: aString.
+	^ self op: aString withAll: aTFOperationArray named: name described: oneArgBlock! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:33:17'!
+op: aString withAll: aTFOperationArray named: name
+	^ self op: aString withAll: aTFOperationArray named: name described: [:nothing]
+! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/25/2017 11:47:40'!
+op: aString withAll: aTFOperationArray named: name described: oneArgBlock
+	^ graph newOperation: aString named: name described: [:description |
+		description addInput: self output.
+		aTFOperationArray do: [:each |
+			| input |
+			input := (each asOperationOn: graph) output.
+			description addInput: input].
+		oneArgBlock value: description].
+	! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/31/2017 01:33:48'!
+rectified
+	^ self unaryOp: 'Relu'! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/18/2017 19:14:52'!
+shape
+	^ self unaryOp: 'Shape'
+	! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'Javier Burroni 1/24/2017 21:36:48'!
+sigmoid
+	^ self unaryOp: 'Sigmoid'! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 13:08:09'!
+sin
+	^ self unaryOp: 'Sin'
+	! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 15:14:55'!
+sizeOn: dimensionInteger
+	^ self shape sliceFrom: {dimensionInteger} asInt32Tensor size: #(1) asInt32Tensor.! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:39:00'!
+sliceFrom: begin size: size
+	^ self op: 'Slice' withAll: {begin. size}! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 2/7/2017 11:32:45'!
+softmax
+	^ self unaryOp: 'Softmax'
+! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/2/2017 02:09:13'!
+sparseSoftmaxCrossEntropyWithLogits: aTFOperation
+	^ self
+		binaryOp: 'SparseSoftmaxCrossEntropyWithLogits'
+		with: aTFOperation
+		named: (self nameFor: 'SparseSoftmaxCrossEntropyWithLogits')! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 1/25/2017 11:50:16'!
+squared
+	^ self @* self
+	! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/21/2017 03:30:55'!
+sumOn: aTFOperation
+	^ self binaryOp: 'Sum' with: aTFOperation! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/19/2017 13:08:05'!
+tan
+	^ self unaryOp: 'Tan'
+	! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JB 2/17/2017 11:38:27'!
+timesRectifiedGradOf: aTFOperation
+	^ self binaryOp: 'ReluGrad' with: aTFOperation! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/29/2017 15:14:27'!
+unaryOp: aString
+	| name |
+	name := self nameFor: aString.
+	^ self unaryOp: aString named: name! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/31/2017 16:53:48'!
+unaryOp: aString described: oneArgBlock
+	| name |
+	name := self nameFor: aString.
+	^ self unaryOp: aString named: name described: oneArgBlock! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/31/2017 16:58:06'!
+unaryOp: aString named: name
+	^ self unaryOp: aString named: name described: [:description | ].
+	! !
+
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/19/2017 11:26:59'!
+unaryOp: aString named: name described: oneArgBlock
+	^ self op: aString withAll: {} named: name described: oneArgBlock! !
