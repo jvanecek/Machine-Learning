@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4607] on 25 May 2021 at 8:43:30 am'!
+'From Cuis 5.0 [latest update: #4607] on 29 May 2021 at 11:25:35 am'!
 'Description '!
-!provides: 'TensorFlowDeprecated' 1 7!
+!provides: 'TensorFlowDeprecated' 1 8!
 !requires: 'TensorFlowCore' 1 1 nil!
 !requires: 'WebClient' 1 20 nil!
 SystemOrganization addCategory: 'TensorFlowDeprecated-Core'!
@@ -4935,19 +4935,10 @@ placeholder: nameString type: typeInteger
 		described: [:description |
 			description at: 'dtype' putType: typeInteger]! !
 
-!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 7/3/2019 03:33:19'!
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JV 5/29/2021 11:18:43'!
 shapeOf: aTFOutputOrInput set: shape
-	| status value |
-	value := Int64Array externalFromArray: shape.
-	status := TFStatus create.
 	
-	self library
-		graph: self
-		setShapeOf: aTFOutputOrInput
-		to: value
-		size: shape size
-		status: status.
-	status check.! !
+	^ self library graph: self setShapeOf: aTFOutputOrInput to: shape! !
 
 !TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 6/30/2019 00:45:27'!
 truncatedNormalRandomShaped: shapeArray
@@ -5083,12 +5074,12 @@ arcTan
 	^ self unaryOp: 'Atan'
 	! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/1/2017 01:02:16'!
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JV 5/29/2021 11:20:41'!
 assign: aTFOperation
 	^ self
 		binaryOp: 'Assign'
 		with: aTFOperation
-		named: self name, '_initializer'! !
+		named: (self nameFor: self name, '_initializer') ! !
 
 !TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/21/2017 02:22:49'!
 binaryOp: aString with: aTFOperation
