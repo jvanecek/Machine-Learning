@@ -13,11 +13,13 @@ packages :=
     add: '../src/TensorFlowCore.pck.st'; 
     add: '../src/TensorFlowDeprecated.pck.st'; 
     add: '../src/TensorFlowEnvironment.pck.st'; 
-    add: '../src/TFVariableSpecification.pck.st'; 
     add: '../src/TFTensorModifier.pck.st'; 
     add: '../src/TFOperation.pck.st'; 
+    add: '../src/TFVariableSpecification.pck.st'; 
     yourself. 
 
 packages do: [:package |
-  CodePackageFile installPackage: package asFileEntry]
+  CodePackageFile installPackage: package asFileEntry]. 
+
+Preferences smallFonts
 ```
