@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4607] on 29 May 2021 at 11:25:37 am'!
+'From Cuis 5.0 [latest update: #4607] on 29 May 2021 at 11:28:45 pm'!
 'Description '!
-!provides: 'TensorFlowCore' 1 11!
+!provides: 'TensorFlowCore' 1 12!
 !requires: 'FFI' 1 33 nil!
 !requires: 'Statistics' 1 14 nil!
 SystemOrganization addCategory: 'TensorFlowCore'!
@@ -2276,7 +2276,7 @@ version
 	<cdecl: char* 'TF_Version' (void)>
 	^ self externalCallFailed.! !
 
-!TensorFlowCuisLibrary methodsFor: 'operation' stamp: 'gera 12/26/2016 13:13:55'!
+!TensorFlowCuisLibrary methodsFor: 'operation' stamp: 'JV 5/29/2021 19:32:23'!
 forGraph: aTFGraph outputDims: aTFOutput status: aTFStatus
 	<cdecl: ulonglong 'TF_GraphGetTensorNumDims' (TFGraph* TFOutput TFStatus*)>
 	^ self externalCallFailed! !
@@ -2620,6 +2620,16 @@ runSession: aTFSession outputs: anArrayOfTFOutputs
 		
 	status check.
 	^ outvalues! !
+
+!TensorFlowCuisLibrary methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 17:48:13'!
+description: aTFOperationDescription addInputs: anArrayOfTFOutput 
+	
+	| inputs |
+	inputs := TFOutputArray externalFromArray: anArrayOfTFOutput.
+	self
+		description: aTFOperationDescription
+		addInputs: inputs
+		size: anArrayOfTFOutput size.! !
 
 !TensorFlowCuisLibrary class methodsFor: 'accessing' stamp: 'jb 12/26/2016 10:19:17'!
 current
@@ -2981,6 +2991,14 @@ operationNamed: aString
 	^ answer
 ! !
 
+!TFGraph methodsFor: 'accessing' stamp: 'JV 5/29/2021 17:29:07'!
+operationNamed: aString ifFound: aFoundBlock ifNotFound: aNotFoundBlock
+
+	| answer |
+
+	answer := self library graph: self getOperationNamed: aString asAsciiZ.
+	^answer isNull ifTrue: aNotFoundBlock ifFalse: [aFoundBlock cull: answer]! !
+
 !TFGraph methodsFor: 'accessing' stamp: 'gera 1/19/2017 11:10:01'!
 operationsCount
 	| answer |
@@ -3113,13 +3131,10 @@ runOutputs: anArrayOfTFOutputs
 	self initializeOn: session.
 	^ session runOutputs: anArrayOfTFOutputs! !
 
-!TFGraph methodsFor: 'outputs' stamp: 'JV 5/23/2021 16:52:03'!
+!TFGraph methodsFor: 'outputs' stamp: 'JV 5/29/2021 17:35:00'!
 outputDimensionsCount: aTFOutput
-	| status answer |
-	status := TFStatus create.
-	answer := self library forGraph: self outputDims: aTFOutput status: status.
-	status check.
-	^answer! !
+
+	^ self library forGraph: self outputDims: aTFOutput! !
 
 !TFGraph methodsFor: 'outputs' stamp: 'JV 5/29/2021 10:45:02'!
 rankOf: aTFOutputOrInput
@@ -3174,6 +3189,11 @@ create
 !TFOperation methodsFor: 'accessing' stamp: 'gera 12/22/2016 03:57:05'!
 device
 	^ self library operationDevice: self! !
+
+!TFOperation methodsFor: 'accessing' stamp: 'JV 5/29/2021 17:50:18'!
+firstInput
+	
+	^ self input: 0! !
 
 !TFOperation methodsFor: 'accessing' stamp: 'JV 5/29/2021 09:36:31'!
 firstOutput
@@ -3377,14 +3397,10 @@ addInputFromOutput: indexInteger of: aTFOperation
 		addInput: input
 	] ensure: [input free]! !
 
-!TFOperationDescription methodsFor: 'inputs' stamp: 'gera 7/3/2019 03:30:56'!
+!TFOperationDescription methodsFor: 'inputs' stamp: 'JV 5/29/2021 17:47:39'!
 addInputs: anArrayOfTFOutput
-	| inputs |
-	inputs := TFOutputArray externalFromArray: anArrayOfTFOutput.
-	self library
-		description: self
-		addInputs: inputs
-		size: anArrayOfTFOutput size.! !
+
+	self library description: self addInputs: anArrayOfTFOutput! !
 
 !TFOperationDescription methodsFor: 'attributes' stamp: 'gera 1/9/2017 19:53:37'!
 at: attribute putBoolean: value
@@ -3526,7 +3542,7 @@ fields
 		(pad 'long'))
 	! !
 
-!TFOutput class methodsFor: 'instance creation' stamp: 'JV 5/29/2021 09:37:59'!
+!TFOutput class methodsFor: 'instance creation' stamp: 'JV 5/29/2021 19:08:35'!
 onOperation: aTFOperation index: anInteger
 	^ self externalNew
 		operation: aTFOperation;
@@ -3803,6 +3819,11 @@ finalize
 !TFStatus class methodsFor: 'instance creation' stamp: 'JV 5/24/2021 23:03:58'!
 create
 	^ TensorFlowCAPI current newAutoreleaseStatus! !
+
+!TFTensor methodsFor: 'accessing' stamp: 'JV 5/29/2021 17:38:18'!
+asTensor
+	
+	^ self! !
 
 !TFTensor methodsFor: 'accessing' stamp: 'gera 2/13/2017 23:34:13'!
 byteSize
@@ -4834,6 +4855,11 @@ asInt32Tensor
 asInt64Tensor
 	^ TFTensor fromInt64s: self! !
 
+!Number methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 17:46:56'!
+asTensor
+
+	^self subclassResponsibility! !
+
 !Float methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
 asTensor
 	^ TFTensor fromFloats: self! !
@@ -4842,12 +4868,43 @@ asTensor
 asTensor
 	^ TFTensor fromFloats: self! !
 
+!Integer methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 17:26:11'!
+asTensor
+
+	^self asInt32Tensor! !
+
 !BlockClosure methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 09:47:59'!
 cull: anArg 
 	
 	^numArgs = 0 
 		ifTrue: [self value]
 		ifFalse: [self value: anArg]! !
+
+!Collection methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 17:31:21'!
+flatCollect: aBlock as: aCollectionClass
+	"Evaluate aBlock for each of the receiver's elements and answer the
+	list of all resulting values flatten one level. Assumes that aBlock returns some kind
+	of collection for each element. Equivalent to the lisp's mapcan"
+	| col |
+	col := aCollectionClass new: self size. 	
+	self do: [ :each |
+		col addAll: (aBlock value: each) ].
+	^col! !
+
+!Collection methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 17:43:58'!
+softmax
+	" This assumes self represents a Matrix (is a collection of collection of numbers)
+	 To make our softmax function numerically stable, we simply normalize the values in the vector, 
+	 by multiplying the numerator and denominator with a constant C. We can choose an arbitrary 
+	 value for log(C) term, but generally log(C)=-max(a) is chosen, as it shifts all of elements in the 
+	 vector to negative to zero, and negatives with large exponents saturate to zero rather than 
+	 the infinity, avoiding overflowing - (Taken from PolyMath)"
+
+	| total max |
+
+	max := self max.
+	total := (self collect: [:x | (x - max) exp]) sum.
+	^self collect: [:x | (x - max) exp / total]! !
 
 !SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
 asBooleanTensor
@@ -4869,6 +4926,23 @@ asInt64Tensor
 asTensorShape
 	^ TensorShape withDimensionsSized: self! !
 
+!SequenceableCollection methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 20:17:58'!
+doWithIndex: aBlockClosure 
+	
+	^ self withIndexDo: aBlockClosure! !
+
+!SequenceableCollection class methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 20:14:00'!
+new: newSize streamContents: blockWithArg
+	| stream |
+	stream := WriteStream on: (self streamSpecies new: newSize).
+	blockWithArg value: stream.
+	^ stream contents! !
+
+!ArrayedCollection class methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 20:16:10'!
+streamSpecies
+	
+	^ Array! !
+
 !String methodsFor: '*TensorFlowCore' stamp: 'gera 1/7/2017 04:33:10'!
 asAsciiZ
 	^self, Character null asString! !
@@ -4876,6 +4950,97 @@ asAsciiZ
 !String methodsFor: '*TensorFlowCore' stamp: 'gera 6/30/2019 00:45:26'!
 asTensor
 	^ TFTensor fromString: self! !
+
+!String methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 20:17:06'!
+expandMacrosWith: aTFVariableNode 
+	
+	^ self expandMacrosWithArguments: {aTFVariableNode}! !
+
+!String methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 19:52:49'!
+expandMacrosWith: anArgument1 with: anArgument2
+	
+	^ self expandMacrosWithArguments: {anArgument1. anArgument2} ! !
+
+!String methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 19:54:08'!
+expandMacrosWithArguments: anArray
+	"Interpret the receiver pattern (<1p>, <1s>, <t>...) with argument passed in anArray."
+	
+	"<Np> writes the N-th argument using #printString, but without trancating it."
+	"('<1p>: <2p>' expandMacrosWith: 'Number' with: 5 with: nil) >>> '''Number'': 5'"
+	
+	"<Ns> writes the N-th argument, which should be a String, or a collection of printable objects.
+	Note also important distinction for single-quotes inside the argument; with <p> they will be doubled."
+	"('<1s> vs <1p>' expandMacrosWith: 'it''em') >>> 'it''em vs ''it''''em'''"
+	
+	"Whitespace characters:"
+	"'<t>' expandMacros >>> String tab"
+	"'<r>' expandMacros >>> String cr"
+	"'<n>' expandMacros >>> OSPlatform current lineEnding"
+	"'<l>' expandMacros >>> String lf"
+	
+	"Writing '<' character:
+	To write '<', prepend it with a percent sign."
+	"'%<n>' expandMacros >>> '<n>'"
+	
+	"Ternary operator:
+	An if-else string can be written with <N?yes-string:no-string>.
+	The N-th argument must be a Boolean.
+	Yes-string cannot contain colon ':', as it terminates the yes-string.
+	No-string cannot contain closing angle bracket '>', as it terminates the no-string."
+	"('<1?success:error>' expandMacrosWith: true) >>> 'success'"
+	"('<1?success:is error>' expandMacrosWith: false) >>> 'is error'"
+	
+	| readStream char index |
+	^ self class
+		new: self size
+		streamContents:
+			[ :newStream | 
+			readStream := self readStream.
+			[ readStream atEnd ]
+				whileFalse:
+					[ char := readStream next.
+					char == $<
+						ifTrue:
+							[ | nextChar |
+							nextChar := readStream next asUppercase.
+							nextChar == $R
+								ifTrue: [ newStream cr ].
+							nextChar == $L
+								ifTrue: [ newStream lf ].
+							nextChar == $T
+								ifTrue: [ newStream tab ].
+							nextChar == $N
+								ifTrue: [ newStream cr ].
+							nextChar isDigit
+								ifTrue:
+									[ index := nextChar digitValue.
+									[ readStream atEnd or: [ (nextChar := readStream next asUppercase) isDigit not ] ]
+										whileFalse: [ index := index * 10 + nextChar digitValue ] ].
+							nextChar == $?
+								ifTrue:
+									[ | trueString falseString |
+									trueString := readStream upTo: $:.
+									falseString := readStream upTo: $>.
+									readStream position: readStream position - 1.
+									newStream
+										nextPutAll:
+											((anArray at: index)
+												ifTrue: [ trueString ]
+												ifFalse: [ falseString ]) ].
+							nextChar == $P
+								ifTrue: [ (anArray at: index) printOn: newStream  ].
+							nextChar == $S
+								ifTrue: [ newStream nextPutAll: (anArray at: index) ].
+							readStream skipTo: $> ]
+						ifFalse: [ newStream
+								nextPut:
+									(char == $%
+										ifTrue: [ readStream next ]
+										ifFalse: [ char ]) ] ] ]! !
+
+!Symbol methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 17:32:38'!
+value: anObject 
+	^anObject perform: self.! !
 
 !TestCase methodsFor: '*TensorFlowCore-Tests' stamp: 'JV 5/24/2021 14:12:23'!
 assert: firstString isEqualSkippingSeparatorsTo: secondString
