@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 30 May 2021 at 4:59:51 pm'!
+'From Cuis 5.0 [latest update: #4619] on 30 May 2021 at 5:08:03 pm'!
 'Description '!
-!provides: 'TensorFlowDeprecated' 1 11!
+!provides: 'TensorFlowDeprecated' 1 12!
 !requires: 'TensorFlowCore' 1 1 nil!
 !requires: 'WebClient' 1 20 nil!
 SystemOrganization addCategory: 'TensorFlowDeprecated-Core'!
