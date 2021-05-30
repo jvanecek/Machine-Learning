@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 30 May 2021 at 5:08:03 pm'!
+'From Cuis 5.0 [latest update: #4619] on 30 May 2021 at 5:13:38 pm'!
 'Description '!
-!provides: 'TensorFlowDeprecated' 1 12!
+!provides: 'TensorFlowDeprecated' 1 13!
 !requires: 'TensorFlowCore' 1 1 nil!
 !requires: 'WebClient' 1 20 nil!
 SystemOrganization addCategory: 'TensorFlowDeprecated-Core'!
@@ -1906,7 +1906,7 @@ testForward
 	self assert: result first closeTo: (1 + 0.5) reciprocal;
 		 assert: result second closeTo: 0.5! !
 
-!TensorFlowExamplesTest methodsFor: 'testing MNIST' stamp: 'JB 2/17/2017 19:26:22'!
+!TensorFlowExamplesTest methodsFor: 'testing MNIST' stamp: 'JV 5/30/2021 17:12:45'!
 testMNIST3LayersNNForwardGraph
 	" Not sure how to test this better. weights are random, so output is random.
 	I believe that choosing the right input value the output should comply with some statistics,
@@ -1923,7 +1923,7 @@ testMNIST3LayersNNForwardGraph
 			}]
 		raise: Error.
 
-	self assert: {2} equals: result shape.
+	self assert: (TensorShape vectorSized: 2) equals: result shape.
 	first := result asNumbers first.
 	second := result asNumbers second.
 	self assert: (0 <= first and: [ first < 10 ]).
@@ -1933,7 +1933,7 @@ testMNIST3LayersNNForwardGraph
 testMNIST3LayersNNInitialization
 	MNIST3LayersNNExamplePlan new.! !
 
-!TensorFlowExamplesTest methodsFor: 'testing MNIST' stamp: 'JB 2/17/2017 19:32:50'!
+!TensorFlowExamplesTest methodsFor: 'testing MNIST' stamp: 'JV 5/30/2021 17:13:00'!
 testMNIST3LayersNNLossGraph
 	" Not sure how to test this better. weights are random, so output is random.
 	I believe that choosing the right input value the output should comply with some statistics,
@@ -1952,16 +1952,16 @@ testMNIST3LayersNNLossGraph
 				]
 		raise: Error.
 
-	self assert: {2} equals: results first shape.
+	self assert: (TensorShape vectorSized: 2) equals: results first shape.
 	first := results first asNumbers first.
 	second := results first asNumbers second.
 	self assert: (0 <= first and: [ first < 10 ]).
 	self assert: (0 <= second and: [ second < 10 ]).
 	
-	self assert: #() equals: results second shape.
+	self assert: TensorShape scalar equals: results second shape.
 	self assert: (results second asNumbers > 0).! !
 
-!TensorFlowExamplesTest methodsFor: 'testing MNIST' stamp: 'JB 2/11/2017 14:08:37'!
+!TensorFlowExamplesTest methodsFor: 'testing MNIST' stamp: 'JV 5/30/2021 17:13:07'!
 testMNISTSoftMaxForwardGraph
 	" Not sure how to test this better. weights are random, so output is random.
 	I believe that choosing the right input value the output should comply with some statistics,
@@ -1978,12 +1978,12 @@ testMNISTSoftMaxForwardGraph
 			}]
 		raise: Error.
 
-	self assert: {2} equals: result shape.
+	self assert: (TensorShape vectorSized: 2) equals: result shape.
 	self assert: result allInt32s first closeTo: 0.
 	self assert: result allInt32s second closeTo: 0.
 ! !
 
-!TensorFlowExamplesTest methodsFor: 'testing MNIST' stamp: 'JB 2/17/2017 19:29:28'!
+!TensorFlowExamplesTest methodsFor: 'testing MNIST' stamp: 'JV 5/30/2021 17:13:21'!
 testMNISTSoftMaxLossGraph
 	" Not sure how to test this better. weights are random, so output is random.
 	I believe that choosing the right input value the output should comply with some statistics,
@@ -2002,12 +2002,12 @@ testMNISTSoftMaxLossGraph
 				]
 		raise: Error.
 
-	self assert: {2} equals: results first shape.
+	self assert: (TensorShape vectorSized: 2) equals: results first shape.
 	self assert: results first asNumbers first equals: 0.
 	self assert: results first asNumbers second equals: 0.
 
 	
-	self assert: #() equals: results second shape.
+	self assert: TensorShape scalar equals: results second shape.
 	self assert: (results second allFloats sum abs > 0).! !
 
 !TensorFlowExamplesTest methodsFor: 'testing MNIST' stamp: 'gera 2/2/2017 19:33:39'!
