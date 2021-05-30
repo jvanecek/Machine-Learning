@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4607] on 30 May 2021 at 12:59:24 pm'!
+'From Cuis 5.0 [latest update: #4619] on 30 May 2021 at 4:59:51 pm'!
 'Description '!
-!provides: 'TensorFlowDeprecated' 1 9!
+!provides: 'TensorFlowDeprecated' 1 11!
 !requires: 'TensorFlowCore' 1 1 nil!
 !requires: 'WebClient' 1 20 nil!
 SystemOrganization addCategory: 'TensorFlowDeprecated-Core'!
@@ -436,7 +436,7 @@ testGraphVariableFromTruncatedNormalStddev
 	values2 := result2 allFloats.
 	self assert: values1 equals: values2! !
 
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 5/30/2021 16:37:55'!
 testGraphZeros
 	| graph session result zeros values |	
 	graph := TFGraph create.
@@ -447,7 +447,7 @@ testGraphZeros
 	result := session runOutput: (zeros output: 0).
 	
 	values := result allFloats.
-	self assert: #(100 100 10) equals: result shape.
+	self assert: #(100 100 10) asTensorShape equals: result shape.
 	self assert: 100*100*10 equals: values size.
 	self assert: 0 equals: values min.
 	self assert: 0 equals: values max.
@@ -689,7 +689,7 @@ testOperationMatMul1x1
 
 	self assert: 1.1 * 3.14 closeTo: result allFloats first! !
 
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 5/9/2021 19:54:16'!
+!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 5/30/2021 16:38:28'!
 testOperationMatMul1x1Wrong
 	| graph a b constA constB |
 	
@@ -703,7 +703,7 @@ testOperationMatMul1x1Wrong
 
 	self
 		should: [constA * constB]
-		raiseError: 'INVALID_ARGUMENT: Shape must be rank 2 but is rank 1 for ''{{node MatMul_2}} = MatMul[T=DT_FLOAT, transpose_a=false, transpose_b=false](a, b)'' with input shapes: [1], [1].'! !
+		raiseError: 'INVALID_ARGUMENT: Shape must be rank 2 but is rank 1 for ''{{node MatMul}} = MatMul[T=DT_FLOAT, transpose_a=false, transpose_b=false](a, b)'' with input shapes: [1], [1].'! !
 
 !TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
 testOperationMatMulABTransposed
@@ -780,7 +780,7 @@ testOperationMatMulBTransposed
 	result allFloats with: template do: [:r :t |
 		self assert: r closeTo: t].! !
 
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 5/9/2021 19:52:35'!
+!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 5/30/2021 16:40:57'!
 testOperationMatMulWrongType
 	| graph a b constA constB |
 	
@@ -794,9 +794,9 @@ testOperationMatMulWrongType
 
 	self
 		should: [constA * constB]
-		raiseError: 'INVALID_ARGUMENT: Inconsistent values for attr ''T'' DT_FLOAT vs. DT_INT32 while building NodeDef ''MatMul_2'' using Op<name=MatMul; signature=a:T, b:T -> product:T; attr=transpose_a:bool,default=false; attr=transpose_b:bool,default=false; attr=T:type,allowed=[DT_BFLOAT16, DT_HALF, DT_FLOAT, DT_DOUBLE, DT_INT32, DT_INT64, DT_COMPLEX64, DT_COMPLEX128]>'.! !
+		raiseError: 'INVALID_ARGUMENT: Inconsistent values for attr ''T'' DT_FLOAT vs. DT_INT32 while building NodeDef ''MatMul'' using Op<name=MatMul; signature=a:T, b:T -> product:T; attr=transpose_a:bool,default=false; attr=transpose_b:bool,default=false; attr=T:type,allowed=[DT_BFLOAT16, DT_HALF, DT_FLOAT, DT_DOUBLE, DT_INT32, DT_INT64, DT_COMPLEX64, DT_COMPLEX128]>'.! !
 
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 5/30/2021 16:42:13'!
 testOperationMeanOn
 	| graph a session mean0 mean01 mean1 results meanNone |
 	
@@ -815,10 +815,10 @@ testOperationMeanOn
 	session := TFSession on: graph.
 	results := session runOutputs: {mean0 output: 0. mean1 output: 0. mean01 output: 0. meanNone output: 0}." mean01bis output: 0}."
 	
-	self assert: #(2) equals: results first shape.
-	self assert: #(3) equals: results second shape.
-	self assert: #() equals: results third shape.
-	self assert: #(3 2) equals: results fourth shape.
+	self assert: (TensorShape vectorSized: 2) equals: results first shape.
+	self assert: (TensorShape vectorSized: 3) asTensorShape equals: results second shape.
+	self assert: TensorShape scalar equals: results third shape.
+	self assert: (TensorShape matrixSized: 3 by: 2) asTensorShape equals: results fourth shape.
 
 	self assertAll: #(2.1 1.2) closeTo: results first allFloats.
 	self assertAll: #(1.15 2.15 1.65) closeTo: results second allFloats.
@@ -1013,7 +1013,7 @@ testOperationPlusNegatedNegatedPlus
 	result allFloats with: template do: [:r :t |
 		self assert: r closeTo: t].! !
 
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 5/30/2021 16:43:20'!
 testOperationSparseSoftmaxCrossEntropyWithLogits
 	| graph label prediction results session xentropy gradient lastVector loss|
 	
@@ -1031,19 +1031,19 @@ testOperationSparseSoftmaxCrossEntropyWithLogits
 	results := session runOutputs: {xentropy output: 0. xentropy output: 1}.
 	
 	loss := results first.
-	self assert: #(3) equals: loss shape.
+	self assert: (TensorShape vectorSized: 3) equals: loss shape.
 	self assert: (loss allFloats first between: 1 and: 1.5).
 	self assert: (loss allFloats second between: 1 and: 1.5).
 	self assert: (loss allFloats third between: 1 and: 1.2).
 	
 	gradient := results second.
-	self assert: #(3 7) equals: gradient shape.
+	self assert: (TensorShape matrixSized: 3 by: 7) equals: gradient shape.
 	lastVector := gradient allFloats last: 7.
 	self assert: lastVector last < 0.
 	lastVector allButLastDo: [:x | self assert: x > 0] 
 ! !
 
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 5/30/2021 16:43:46'!
 testOperationSparseSoftmaxCrossEntropyWithLogitsUseOutput
 	| graph label prediction results session xentropy gradient lastVector loss|
 	
@@ -1061,13 +1061,13 @@ testOperationSparseSoftmaxCrossEntropyWithLogitsUseOutput
 	results := session runOutputs: {xentropy output. (xentropy useOutput: 1) output}.
 	
 	loss := results first.
-	self assert: #(3) equals: loss shape.
+	self assert: (TensorShape vectorSized: 3) equals: loss shape.
 	self assert: (loss allFloats first between: 1 and: 1.5).
 	self assert: (loss allFloats second between: 1 and: 1.5).
 	self assert: (loss allFloats third between: 1 and: 1.2).
 	
 	gradient := results second.
-	self assert: #(3 7) equals: gradient shape.
+	self assert: (TensorShape matrixSized: 3 by: 7) equals: gradient shape.
 	lastVector := gradient allFloats last: 7.
 	self assert: lastVector last < 0.
 	lastVector allButLastDo: [:x | self assert: x > 0] 
@@ -1392,7 +1392,7 @@ testOperationRelu
 	self assert: result allFloats equals: (template allFloats collect: [:each | each max: 0]).
 ! !
 
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'JV 5/30/2021 16:49:55'!
 testOperationReluGrad
 	| graph template session result previousGradient rectifiedGrad expected previousGradientTemplate |
 	
@@ -1410,7 +1410,7 @@ testOperationReluGrad
 		(1		1)) asFloatTensor.
 		
 	previousGradient := previousGradientTemplate asOperationOn: graph.
-	rectifiedGrad := previousGradient timesRectifiedGradOf: template.
+	rectifiedGrad := previousGradient value timesRectifiedGradOf: template.
 	
 	session := TFSession on: graph.
 	result := session runOutput: rectifiedGrad output.
@@ -1420,7 +1420,7 @@ testOperationReluGrad
 	self assert: result allFloats equals: expected.
 ! !
 
-!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowOperationsTest methodsFor: 'unary operations' stamp: 'JV 5/30/2021 16:42:49'!
 testOperationShape
 	| graph template session const result shape |
 	
@@ -1433,7 +1433,7 @@ testOperationShape
 	session := TFSession on: graph.
 	result := session runOutput: shape.
 	
-	self assert: {template rank} equals: result shape.
+	self assert: (TensorShape vectorSized: template rank) equals: result shape.
 	self assert: #(1 1 2 1 3) equals: result asNumbers
 ! !
 
@@ -2838,7 +2838,7 @@ predict: inputs andLearnFrom: label
 		outputs: {loss output. learnWeights output. learnBiases output}.
 	^ results! !
 
-!NearestNeighbor methodsFor: 'private-csv' stamp: 'gera 7/3/2019 03:35:50'!
+!NearestNeighbor methodsFor: 'private-csv' stamp: 'JV 5/30/2021 16:36:02'!
 decodeCSV: csvLines graphRun: description
 	|  graph output records session results values answer |
 		
@@ -2849,8 +2849,7 @@ decodeCSV: csvLines graphRun: description
 	
 	session := TFSession on: graph.
 	results := session
-		runOperations: {output}
-		inputs: {records}
+		runInputs: {records}
 		values: {values}
 		outputs: {
 			(output output: 0).
@@ -3226,7 +3225,7 @@ testOperationArrayAtPut
 mulGraphTwoInputsInt64ConstTensorDeleted
 	^ TensorFlowCAPITest new mulGraphTwoInputsInt64ConstTensorDeleted! !
 
-!TensorFlowCAPISlowTests methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowCAPISlowTests methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 15:39:26'!
 testRunGraphMulTwoInputsConstTensorDeleted
 	| graph inputs inputValues mul output session results |
 	graph := self mulGraphTwoInputsInt64ConstTensorDeleted.
@@ -3247,8 +3246,7 @@ testRunGraphMulTwoInputsConstTensorDeleted
 	output := mul output: 0.
 	session := TFSession on: graph.
 	results := session
-		runOperations: (Array with: mul)
-		inputs: inputs
+		runInputs: inputs
 		values: inputValues
 		outputs: (Array with: output).
 	
@@ -3536,7 +3534,7 @@ testAllVariables
 	self assert: vars third = var3.
 	! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 15:43:26'!
 testAsStringGraphRunOn: tensor
 	| graph session in out result |
 	graph := self asStringGraphType: tensor type.
@@ -3546,14 +3544,13 @@ testAsStringGraphRunOn: tensor
 	out := graph operationNamed: 'out'.
 	
 	result := session
-		runOperation: out
-		input: (in input: 0)
-		value: tensor
-		output: (out output: 0).
+		runInputs: {(in input: 0)}
+		values: {tensor}
+		outputs: {(out output: 0)}.
 
 	graph delete.
 
-	^ result! !
+	^ result first! !
 
 !TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 00:34:29'!
 testAttrGetBoolFalse
@@ -4428,11 +4425,11 @@ testNewVariableInitialValueAutomaticInitialization
 
 	self assert: result allFloats equals: pisTensor allFloats! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 16:27:41'!
 testNewVariableInitialization
 	| graph var assign pi result session |
 	graph := TFGraph create.
-	var := graph variable: 'var' type: TFTensor typeFloat shape: #().
+	var := graph variable: 'var' type: TFTensor typeFloat shape: TensorShape scalar.
 	pi := graph const: 'pi' value: (TFTensor fromFloats: 3.14).
 	assign := graph newOperation: 'Assign' named: 'assign' described: [:description |
 		description
@@ -4446,11 +4443,11 @@ testNewVariableInitialization
 
 	self assert: result allFloats first closeTo: 3.14! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 15:57:06'!
 testNewVariableInitializationNodeNotRun
 	| graph var pi lastError |
 	graph := TFGraph create.
-	var := graph variable: 'var' type: TFTensor typeFloat shape: #().
+	var := graph variable: 'var' type: TFTensor typeFloat shape: TensorShape scalar.
 	pi := graph const: 'pi' value: (TFTensor fromFloats: 3.14).
 	graph newOperation: 'Assign' named: 'assign' described: [:description |
 		description
@@ -4464,11 +4461,11 @@ testNewVariableInitializationNodeNotRun
 		assert: 'Error: FAILED_PRECONDITION: Attempting to use uninitialized value var'
 		equals: lastError lines first! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 16:27:52'!
 testNewVariableNoInitialization
 	| graph var expectedError lastError |
 	graph := TFGraph create.
-	var := graph variable: 'var' type: TFTensor typeFloat shape: #().
+	var := graph variable: 'var' type: TFTensor typeFloat shape: TensorShape scalar.
 	[(TFSession on: graph)
 		runOutput: (var output: 0)] ifError: [:description :receiver | lastError := description].
 
@@ -4506,7 +4503,7 @@ testOperationEquals
 	self assert: in1 = in1.
 	self deny: in1 = 'in1'.! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/25/2021 08:11:04'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 16:28:04'!
 testPlaceholderType: type
 	| graph var session result tensor abs |
 	graph := TFGraph create.
@@ -4517,12 +4514,11 @@ testPlaceholderType: type
 	session := TFSession on: graph.
 	
 	result := session
-		runOperation: abs
-		input: (var input: 0)
-		value: tensor
-		output: (abs output: 0).
+		runInputs: {(var input: 0)}
+		values: {tensor}
+		outputs: {(abs output: 0)}.
 
-	result delete.
+	result first delete.
 ! !
 
 !TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 6/30/2019 00:45:26'!
@@ -4566,7 +4562,7 @@ testRankOfOutput
 	self assert: template shape size equals: rank.
 ! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 15:58:11'!
 testRunGraphAddTwoInputs
 	| graph inputs inputValues add output session results |
 	graph := self addGraphTwoInputsInt64.
@@ -4581,8 +4577,7 @@ testRunGraphAddTwoInputs
 	output := add output: 0.
 	session := TFSession on: graph.
 	results := session
-		runOperations: (Array with: add)
-		inputs: inputs
+		runInputs: inputs
 		values: inputValues
 		outputs: (Array with: output).
 	
@@ -4595,7 +4590,7 @@ testRunGraphAddTwoInputs
 	results first delete.
 ! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 15:58:48'!
 testRunGraphMulOneInput
 	| graph input inputValue result mul output session |
 	graph := self mulGraphOneInputInt64.
@@ -4605,7 +4600,7 @@ testRunGraphMulOneInput
 	mul := graph operationNamed: 'mul'.
 	output := mul output: 0.
 	session := TFSession on: graph.
-	result := session runOperation: mul input: input value: inputValue output: output.
+	result := (session runInputs: {input} values: {inputValue} outputs: {output}) first.
 	
 	self deny: result isNull.
 	self deny: result data isNull.
@@ -4616,7 +4611,7 @@ testRunGraphMulOneInput
 	output free.
 	graph delete.! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 16:28:26'!
 testRunGraphMulTwoInputs
 	| graph inputs inputValues mul output session results |
 	graph := self mulGraphTwoInputsInt64.
@@ -4631,8 +4626,7 @@ testRunGraphMulTwoInputs
 	output := mul output: 0.
 	session := TFSession on: graph.
 	results := session
-		runOperations: (Array with: mul)
-		inputs: inputs
+		runInputs: inputs
 		values: inputValues
 		outputs: (Array with: output).
 	
@@ -4738,7 +4732,7 @@ testShapeOfOutput
 	self assert: template shape equals: shape.
 ! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 00:34:29'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 16:36:49'!
 testShapeOfOutputSet
 	| graph var shape output |
 	graph := TFGraph create.
@@ -4746,20 +4740,20 @@ testShapeOfOutputSet
 	var := graph newOperation: 'Placeholder' named: 'var' described: [:description |
 		description
 			at: 'dtype' putType: TFTensor typeInt64;
-			at: 'shape' putShape: #(3 -1 -1)].
+			at: 'shape' putShape: #(3 -1 -1) asTensorShape].
 	
 	output := var output: 0.
 	
 	shape := graph shapeOf: output.
 	self assert: shape equals: #(3 -1 -1).
 
-	graph shapeOf: output set: #(-1 3 -1).
+	graph shapeOf: output set: #(-1 3 -1) asTensorShape.
 
 	shape := graph shapeOf: output.
 	self assert: shape equals: #(3 3 -1).
 ! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/11/2021 19:57:53'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 16:58:57'!
 testShapeOfOutputSetInvalid
 	| graph template const output |
 	graph := TFGraph create.
@@ -4771,11 +4765,11 @@ testShapeOfOutputSetInvalid
 	output := const output: 0.
 	
 	self
-		should: [graph shapeOf: output set: #(1 2 3)] 
+		should: [graph shapeOf: output set: #(1 2 3) asTensorShape] 
 		raiseError: 'INVALID_ARGUMENT: Dimension 0 in both shapes must be equal, but are 2 and 1. Shapes are [2,3,1] and [1,2,3].'.
 ! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 00:34:29'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 16:59:02'!
 testShapeOfOutputSetInvalidRank
 	| graph template const output |
 	graph := TFGraph create.
@@ -4787,7 +4781,7 @@ testShapeOfOutputSetInvalidRank
 	output := const output: 0.
 	
 	self
-		should: [graph shapeOf: output set: #(1 2 3 -1)]
+		should: [graph shapeOf: output set: #(1 2 3 -1) asTensorShape]
 		raiseError: 'INVALID_ARGUMENT: Shapes must be equal rank, but are 3 and 4'.! !
 
 !TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/23/2021 14:22:13'!
@@ -4803,7 +4797,7 @@ testTensorAllStrings
 	result delete.
 ! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 16:36:20'!
 testTensorArrayNumbersAt
 	| graph inputValues inputs mul numbers output results session |
 	graph := self mulGraphTwoInputsInt64.
@@ -4818,8 +4812,7 @@ testTensorArrayNumbersAt
 	output := mul output: 0.
 	session := TFSession on: graph.
 	results := session
-		runOperations: (Array with: mul)
-		inputs: inputs
+		runInputs: inputs
 		values: inputValues
 		outputs: (Array with: output).
 		
@@ -4925,6 +4918,23 @@ inputType: typeInteger
 !TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 12/28/2016 02:11:44'!
 mul: nameString described: aBlock
 	^self newOperation: 'Mul' named: nameString described: aBlock! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JV 5/30/2021 16:15:11'!
+newOperationOf: aString namePrefixed: anOperationPreffix withAll: anInputCollection describedBy: aBlockClosure
+
+	^ self
+		newOperation: aString
+		named: ( self nameFor: anOperationPreffix )
+		described: [ :description | 
+			anInputCollection
+				do: [ :each | 
+					| input |
+
+					input := ( each asOperationOn: self ) firstOutput.
+					description addInput: input
+					].
+			aBlockClosure value: description
+			]! !
 
 !TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/6/2017 17:21:53'!
 placeholder: nameString type: typeInteger
@@ -5164,16 +5174,22 @@ op: aString withAll: aTFOperationArray named: name
 	^ self op: aString withAll: aTFOperationArray named: name described: [:nothing]
 ! !
 
-!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 2/25/2017 11:47:40'!
+!TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JV 5/30/2021 16:05:11'!
 op: aString withAll: aTFOperationArray named: name described: oneArgBlock
-	^ graph newOperation: aString named: name described: [:description |
-		description addInput: self output.
-		aTFOperationArray do: [:each |
-			| input |
-			input := (each asOperationOn: graph) output.
-			description addInput: input].
-		oneArgBlock value: description].
-	! !
+
+	^ graph
+		newOperation: aString
+		named: name
+		described: [ :description | 
+			description addInput: self firstOutput.
+			aTFOperationArray
+				do: [ :each | 
+					| input |
+					input := ( each asOperationOn: graph ) value firstOutput.
+					description addInput: input
+					].
+			oneArgBlock value: description
+			]! !
 
 !TFOperation methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 1/31/2017 01:33:48'!
 rectified
