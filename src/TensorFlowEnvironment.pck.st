@@ -1,21 +1,79 @@
-'From Cuis 5.0 [latest update: #4607] on 30 May 2021 at 12:59:26 pm'!
+'From Cuis 5.0 [latest update: #4619] on 30 May 2021 at 3:03:15 pm'!
 'Description '!
-!provides: 'TensorFlowEnvironment' 1 1!
+!provides: 'TensorFlowEnvironment' 1 2!
 !requires: 'TensorFlowCore' 1 11 nil!
-SystemOrganization addCategory: 'TensorFlowEnvironment-Model'!
-SystemOrganization addCategory: 'TensorFlowEnvironment-ModelTests'!
+SystemOrganization addCategory: #'TensorFlowEnvironment-Model'!
+SystemOrganization addCategory: #'TensorFlowEnvironment-ModelTests'!
 
 
-!classDefinition: #TensorFlowComputationBasedTest category: 'TensorFlowEnvironment-ModelTests'!
+!classDefinition: #TensorFlowComputation category: #'TensorFlowEnvironment-Model'!
+Object subclass: #TensorFlowComputation
+	instanceVariableNames: 'graph session'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TensorFlowEnvironment-Model'!
+!classDefinition: 'TensorFlowComputation class' category: #'TensorFlowEnvironment-Model'!
+TensorFlowComputation class
+	instanceVariableNames: ''!
+
+!classDefinition: #TensorFlowComputationBasedTest category: #'TensorFlowEnvironment-ModelTests'!
 TestCase subclass: #TensorFlowComputationBasedTest
 	instanceVariableNames: 'tf errorTolerance'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TensorFlowEnvironment-ModelTests'!
-!classDefinition: 'TensorFlowComputationBasedTest class' category: 'TensorFlowEnvironment-ModelTests'!
+!classDefinition: 'TensorFlowComputationBasedTest class' category: #'TensorFlowEnvironment-ModelTests'!
 TensorFlowComputationBasedTest class
 	instanceVariableNames: ''!
 
+
+!TensorFlowComputation methodsFor: 'Initialization'!
+initializeOn: aGraph	graph := aGraph! !
+
+!TensorFlowComputation methodsFor: 'Computing'!
+compute: anOperation	^self compute: anOperation feedingInputsWith: Dictionary new! !
+
+!TensorFlowComputation methodsFor: 'Computing'!
+compute: anOperation feedingInputsWith: aPlaceholderValueMapping	^(self computeAll: (Array with: anOperation) feedingInputsWith: aPlaceholderValueMapping)		at: anOperation! !
+
+!TensorFlowComputation methodsFor: 'Computing' stamp: 'JuanVanecek 5/29/2021 09:58'!
+computeAll: operations feedingInputsWith: aPlaceholderValueMapping	| inputPlaceholders inputValues outputs results resultsByName |	inputPlaceholders := OrderedCollection new.	inputValues := OrderedCollection new.	aPlaceholderValueMapping keysAndValuesDo: [:placeholderName :value |		inputPlaceholders add: (graph operationNamed: placeholderName) firstInput.		inputValues add: value].	outputs := operations collect: [:operation | operation outputOn: self].	results :=		self			createSessionAndCompute: outputs asArray			feeding: inputPlaceholders asArray			with: inputValues asArray.	resultsByName := Dictionary new.	operations		withIndexDo: [:operation :index | resultsByName at: operation put: (results at: index)].	^resultsByName! !
+
+!TensorFlowComputation methodsFor: 'Computing'!
+computeAllNamed: anOperationsName feedingInputsWith: aPlaceholderValueMapping	| inputPlaceholders inputValues outputs results resultsByName |	inputPlaceholders := OrderedCollection new.	inputValues := OrderedCollection new.	aPlaceholderValueMapping keysAndValuesDo: [:placeholderName :value |		inputPlaceholders add: (graph operationNamed: placeholderName) firstInput.		inputValues add: value].	outputs :=		anOperationsName			collect: [:operationName | (graph operationNamed: operationName) firstOutput].	results :=		self			createSessionAndCompute: outputs asArray			feeding: inputPlaceholders asArray			with: inputValues asArray.	resultsByName := Dictionary new.	anOperationsName		doWithIndex: [:outputName :index | resultsByName at: outputName put: (results at: index)].	^resultsByName! !
+
+!TensorFlowComputation methodsFor: 'Computing'!
+createSessionAndCompute: anArrayOfOutputs feeding: anArrayOfPlaceholders with: anArrayOfInputs	session ifNil: [		session := TFSession on: graph.		"When initialize graph, we initialize also the variables. So this can't be done before the variables are created, 		 and can't be done every time we call run, because will be overriding them every time with the initial value. 		 This is the best place I cound found to do it." 		graph initializeOn: session].	^session runInputs: anArrayOfPlaceholders values: anArrayOfInputs outputs: anArrayOfOutputs! !
+
+!TensorFlowComputation methodsFor: 'Computing'!
+gradientsOf: aFunctionCollection withRespectTo: aVariableCollection product: aCotangentVectors	| vectorOutputs |	vectorOutputs :=		aCotangentVectors			ifNil: [nil]			ifNotNil: [aCotangentVectors collect: [:var | var outputOn: self]].	^graph		gradientsOf: (aFunctionCollection collect: [:function | function outputOn: graph])		withRespectTo: (aVariableCollection collect: [:var | var outputOn: graph])		product: vectorOutputs! !
+
+!TensorFlowComputation methodsFor: 'Creating - Operations'!
+newOperationOf: anOperationType namePrefixed: anOperationName with: aTFNode	^self		newOperationOf: anOperationType		namePrefixed: anOperationName		withAll: (Array with: aTFNode)		describedBy: [:desc | ]! !
+
+!TensorFlowComputation methodsFor: 'Creating - Operations'!
+newOperationOf: anOperationType namePrefixed: anOperationName with: aTFNode with: anotherTFNode	^self		newOperationOf: anOperationType		namePrefixed: anOperationName		withAll: (Array with: aTFNode with: anotherTFNode)		describedBy: [:desc | ]! !
+
+!TensorFlowComputation methodsFor: 'Creating - Operations'!
+newOperationOf: anOperationType namePrefixed: anOperationName withAll: graphNodes describedBy: aBlock	^graph		newOperation: anOperationType		named: (graph nameFor: anOperationName)		described: [:description |			graphNodes do: [:node | description addInput: (node outputOn: self)].			aBlock value: description]! !
+
+!TensorFlowComputation methodsFor: 'Creating - Operations'!
+newOperationOf: anOperationType namePrefixed: anOperationName withList: aTFNodeCollection	^graph		newOperation: anOperationType		named: (graph nameFor: anOperationName)		described: [:description |			description addInputs: (aTFNodeCollection collect: [:node | node outputOn: graph])]! !
+
+!TensorFlowComputation methodsFor: 'Accessing'!
+inScopeNamed: aScopeName do: aBlock	^graph inScopeNamed: aScopeName do: aBlock! !
+
+!TensorFlowComputation methodsFor: 'Accessing'!
+operationNamed: aName	^self		withOperationNamed: aName		do: [:op | ^op]		ifNone: [self error: (#'Operation named <1p> not found in the graph' expandMacrosWith: aName)]! !
+
+!TensorFlowComputation methodsFor: 'Accessing'!
+withOperationNamed: aName do: aBlock ifNone: aNoneBlock	^graph operationNamed: aName ifFound: aBlock ifNotFound: aNoneBlock! !
+
+!TensorFlowComputation class methodsFor: 'Instance Creation'!
+new	^self on: TFGraph create! !
+
+!TensorFlowComputation class methodsFor: 'Instance Creation'!
+on: aTFGraph	^super new initializeOn: aTFGraph! !
 
 !TensorFlowComputationBasedTest methodsFor: 'Initialization'!
 setUp	tf := TensorFlowComputation new. 		self tolerateErrorsLowerThan: 0.00001! !
