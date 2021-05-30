@@ -1,7 +1,8 @@
-'From Cuis 5.0 [latest update: #4607] on 29 May 2021 at 11:26:39 am'!
+'From Cuis 5.0 [latest update: #4619] on 30 May 2021 at 1:24:33 pm'!
 'Description '!
-!provides: 'TFOperation' 1 1!
+!provides: 'TFOperation' 1 3!
 !requires: 'TFVariableSpecification' 1 0 nil!
+!requires: 'TFTensorModifier' 1 0 nil!
 !requires: 'TensorFlowEnvironment' 1 0 nil!
 SystemOrganization addCategory: 'TFOperation-Model'!
 SystemOrganization addCategory: 'TFOperation-ModelTests'!
@@ -1168,8 +1169,17 @@ testOperationName	| neuron |	neuron := tf variableNamed: 'input' with: 5 asF
 !SigmoidTest methodsFor: 'Test'!
 testPrintString	| neuron |	neuron := tf variableNamed: 'input' with: 5 asFloatTensor.	self assert: (Sigmoid activating: neuron) printString equals: 'sigmoid(input)'! !
 
-!SoftmaxTest methodsFor: 'Test'!
-testActivatingFloatScalarFails	| input softmax |	input := tf variableNamed: 'input' with: 4 asFloatTensor.	softmax := input softmax.	self		assert: [tf compute: softmax]		raisesExceptionWith:			'INVALID_ARGUMENT: logits must have >= 1 dimension, got []	 [[{{node Softmax}}]]'! !
+!SoftmaxTest methodsFor: 'Test' stamp: 'JV 5/30/2021 12:02:36'!
+testActivatingFloatScalarFails
+
+	| input |
+
+	input := tf variableNamed: 'input' with: 4 asFloatTensor.
+
+	self
+		assert: [input softmax]
+		raisesExceptionWith:
+			'INVALID_ARGUMENT: Shape must be at least rank 1 but is rank 0 for ''{{node Softmax}} = Softmax[T=DT_FLOAT](input)'' with input shapes: [].'! !
 
 !SoftmaxTest methodsFor: 'Test'!
 testActivatingFloatVector	| input |	input := tf variableNamed: 'input' with: #(4 5 -1) asFloatTensor.		self assertOutputOf: input softmax isFloatVectorCloseTo: #(4 5 -1) softmax! !
@@ -2026,3 +2036,69 @@ named: anOperationName of: anOperation to: aDataType	^self new initializeNamed
 
 !TypeCast class methodsFor: 'Instance Creation'!
 of: anOperation to: aDataType	^self named: self operationType of: anOperation to: aDataType! !
+
+!String methodsFor: '*TFOperation-Model' stamp: 'JV 5/30/2021 11:28:46'!
+includesSubstring: aString 
+	
+	^ self includesSubString: aString! !
+
+!TFOperation methodsFor: '*TFOperation-Model' stamp: 'JV 5/30/2021 11:19:14'!
+currentComputation
+
+	^TensorFlowComputation on: graph! !
+
+!TFOperation methodsFor: '*TFOperation-Model' stamp: 'JV 5/30/2021 11:20:07'!
+outputShape
+
+	^self firstOutput shape! !
+
+!TFOperationDescription methodsFor: '*TFOperation-Model' stamp: 'JV 5/30/2021 11:29:39'!
+atTransposeAPut: aBoolean
+
+	self at: TFAttributeName transposeA putBoolean: aBoolean! !
+
+!TFOperationDescription methodsFor: '*TFOperation-Model' stamp: 'JV 5/30/2021 11:29:57'!
+atTransposeBPut: aBoolean 
+
+	self at: TFAttributeName transposeB putBoolean: aBoolean! !
+
+!TFOutput methodsFor: '*TFOperation-Model' stamp: 'JV 5/30/2021 11:35:33'!
+currentComputation
+
+	^TensorFlowComputation on: self graph! !
+
+!TFOutput methodsFor: '*TFOperation-Model' stamp: 'JV 5/30/2021 11:34:50'!
+outputOn: aComputation 
+
+	^self! !
+
+!TFOutput methodsFor: '*TFOperation-Model' stamp: 'JV 5/30/2021 11:20:54'!
+rank
+
+	^graph rankOf: self! !
+
+!TFOutput methodsFor: '*TFOperation-Model' stamp: 'JV 5/30/2021 11:20:33'!
+shape
+
+	^self rank negative ifTrue: [TensorShape scalar] ifFalse: [graph shapeOf: self]! !
+
+!TensorFlowComputation methodsFor: '*TFOperation-Model'!
+constantWith: aNumberOrArray	^ConstantNode on: self with: aNumberOrArray asTensor! !
+
+!TensorFlowComputation methodsFor: '*TFOperation-Model'!
+floatConstantWith: aNumberOrArray	^self constantWith: aNumberOrArray asFloatTensor! !
+
+!TensorFlowComputation methodsFor: '*TFOperation-Model'!
+floatConstantWith: aNumberOrMatrix named: aName	^ConstantNode on: self named: aName with: aNumberOrMatrix asFloatTensor! !
+
+!TensorFlowComputation methodsFor: '*TFOperation-Model'!
+floatInputNamed: anInputName	^InputNode on: self named: anInputName of: TFTensor typeFloat! !
+
+!TensorFlowComputation methodsFor: '*TFOperation-Model'!
+integerConstantWith: aNumberOrArray	^self constantWith: aNumberOrArray asInt32Tensor! !
+
+!TensorFlowComputation methodsFor: '*TFOperation-Model'!
+integerInputNamed: anInputName	^InputNode on: self named: anInputName of: TFTensor typeInt32! !
+
+!TensorFlowComputation methodsFor: '*TFOperation-Model' stamp: 'JuanVanecek 5/25/2021 22:19'!
+variableNamed: aVariableName with: aTensor	^TFVariableNode on: self named: aVariableName with: aTensor! !

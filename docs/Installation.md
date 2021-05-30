@@ -11,6 +11,11 @@
 packages := 
   OrderedCollection new
     add: '../src/TensorFlowCore.pck.st'; 
+    add: '../src/TensorFlowDeprecated.pck.st'; 
+    add: '../src/TensorFlowEnvironment.pck.st'; 
+    add: '../src/TFVariableSpecification.pck.st'; 
+    add: '../src/TFTensorModifier.pck.st'; 
+    add: '../src/TFOperation.pck.st'; 
     yourself. 
 
 packages do: [:package |

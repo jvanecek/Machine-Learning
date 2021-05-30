@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4607] on 29 May 2021 at 11:25:35 am'!
+'From Cuis 5.0 [latest update: #4607] on 30 May 2021 at 12:59:24 pm'!
 'Description '!
-!provides: 'TensorFlowDeprecated' 1 8!
+!provides: 'TensorFlowDeprecated' 1 9!
 !requires: 'TensorFlowCore' 1 1 nil!
 !requires: 'WebClient' 1 20 nil!
 SystemOrganization addCategory: 'TensorFlowDeprecated-Core'!
@@ -3721,7 +3721,7 @@ testAttrSetShape
 	self testAttrSetShape: #(1 2 3 4).
 	self testAttrSetShape: (1 to: 16) asArray.! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 00:34:29'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 12:26:13'!
 testAttrSetShape: anIntegerArray
 	| graph op |
 	graph := TFGraph create.
@@ -3729,7 +3729,7 @@ testAttrSetShape: anIntegerArray
 		newOperation: 'Placeholder'
 		named: 'const'
 		described: [:description |
-			description at: 'shape' putShape: anIntegerArray.
+			description at: 'shape' putShape: anIntegerArray asTensorShape.
 			description at: 'dtype' putType: TFTensor typeInt64].
 		
 	self assert: (op shapeAt: 'shape') equals: anIntegerArray.
@@ -3978,10 +3978,10 @@ testGetAttrMetadataInt
 	self assert: metadata isList equals: false.
 ! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 00:34:29'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 12:35:00'!
 testGetAttrMetadataShape
 	| graph op template metadata |
-	template := #(1 2 3 4 5).
+	template := #(1 2 3 4 5) asTensorShape.
 	graph := TFGraph create.
 	op := graph 
 		newOperation: 'Placeholder'
@@ -4079,7 +4079,7 @@ testGraphDeletionDoesntBreakOperations
 	self assert: in2 name equals: 'in2'.
 	self assert: add name equals: 'add'.! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 12:36:16'!
 testGraphDeletionDoesntBreakSessions
 	| graph inputs inputValues add output session results |
 	graph := self addGraphTwoInputsInt64.
@@ -4101,8 +4101,7 @@ testGraphDeletionDoesntBreakSessions
 	graph delete.
 		
 	results := session
-		runOperations: (Array with: add)
-		inputs: inputs
+		runInputs: inputs
 		values: inputValues
 		outputs: (Array with: output).
 	

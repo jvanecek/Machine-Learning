@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4607] on 29 May 2021 at 11:28:45 pm'!
+'From Cuis 5.0 [latest update: #4607] on 30 May 2021 at 12:59:23 pm'!
 'Description '!
-!provides: 'TensorFlowCore' 1 12!
+!provides: 'TensorFlowCore' 1 13!
 !requires: 'FFI' 1 33 nil!
 !requires: 'Statistics' 1 14 nil!
 SystemOrganization addCategory: 'TensorFlowCore'!
@@ -303,14 +303,10 @@ printOn: strm
 	super printOn: strm.
 	strm space; print: handle.! !
 
-!TFGraph methodsFor: 'accessing' stamp: 'gera 7/3/2019 03:33:19'!
+!TFGraph methodsFor: 'accessing' stamp: 'JV 5/30/2021 12:35:50'!
 definition
-	| buffer status |
-	status := TFStatus create.
-	buffer := TFBuffer new.
-	self library graph: self toGraphDef: buffer status: status.
-	status check.
-	^ buffer dataBytes asString! !
+	
+	^ self library graphDefinitionOf: self ! !
 
 !TFOperation methodsFor: 'accessing' stamp: 'gera 12/22/2016 03:56:55'!
 name
@@ -1393,7 +1389,7 @@ testTensorFromStringsShape
 	self assertTensorFromStrings: #('hola como estas?') shape: #().
 ! !
 
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/30/2021 12:29:25'!
 testDecodeCSVGraphRunCSV: csvLines
 	| defaults graph output records session results values |
 	defaults := {
@@ -1409,8 +1405,7 @@ testDecodeCSVGraphRunCSV: csvLines
 	
 	session := TFSession on: graph.
 	results := session
-		runOperations: {output}
-		inputs: {records}
+		runInputs: {records}
 		values: {values}
 		outputs: {
 			(output output: 0).
@@ -1424,10 +1419,10 @@ testDecodeCSVGraphRunCSV: csvLines
 		(results at: i) allInt64s].
 ! !
 
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 7/3/2019 00:34:29'!
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/30/2021 12:35:14'!
 testGetAttrMetadataType
 	| graph op template metadata |
-	template := #(1 2 3 4 5).
+	template := #(1 2 3 4 5) asTensorShape.
 	graph := TFGraph create.
 	op := graph 
 		newOperation: 'Placeholder'
@@ -2541,6 +2536,28 @@ description: aTFOperationDescription set: anAttributeName toShape: aTensorShape
 		size: aTensorShape dimensionSizes size.
 	status check.! !
 
+!TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/30/2021 12:20:42'!
+description: aTFOperationDescription set: anAttributeName toStrings: anArrayOfStrings 
+	
+	| status sizes strings pointers |
+	sizes := anArrayOfStrings collect: [:str | str size].
+	sizes := Int64Array externalFromArray: sizes.
+	sizes useFinalization.
+	strings := anArrayOfStrings collect: [:each | (self externalizeString: each) useFinalization].
+	pointers := ByteArray new: Smalltalk wordSize * strings size.
+	strings withIndexDo: [:each :index |
+		pointers pointerAt: index-1*Smalltalk wordSize+1 put: each].
+	 
+	status := TFStatus create.
+	self
+		description: aTFOperationDescription
+		set: anAttributeName asAsciiZ
+		toStrings: pointers
+		sizes: sizes
+		count: anArrayOfStrings size.
+	status check
+	! !
+
 !TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/29/2021 09:46:16'!
 graph: aTFGraph getRankOf: aTFOutputOrInput
 
@@ -2581,6 +2598,149 @@ graph: aTFGraph setShapeOf: aTFOutputOrInput to: aTensorShape
 		status: status.
 	status check.! !
 
+!TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/30/2021 11:30:52'!
+operation: aTFOperation getBoolAt: anAttributeName 
+
+	| value status |
+	status := TFStatus create.
+	value := ByteArray new: 1.
+	self operation: aTFOperation attr: anAttributeName asAsciiZ getBool: value status: status.
+	status check.
+	^ (value booleanAt: 1) 
+! !
+
+!TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/30/2021 12:04:32'!
+operation: aTFOperation getFloatAt: anAttributeName 
+
+	| value status |
+	status := TFStatus create.
+	value := ByteArray new: 8.
+	self operation: aTFOperation attr: anAttributeName asAsciiZ getFloat: value status: status.
+	status check.
+	^ value floatAt: 1
+! !
+
+!TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/30/2021 12:15:52'!
+operation: aTFOperation getInt64At: anAttributeName 
+	
+	| value status |
+	status := TFStatus create.
+	value := ByteArray new: 8.
+	self operation: aTFOperation attr: anAttributeName asAsciiZ getInt64: value status: status.
+	status check.
+	^ value unsignedLongLongAt: 1
+! !
+
+!TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/30/2021 12:16:43'!
+operation: aTFOperation getMetadataFor: anAttributeName 
+	
+	| status answer |
+	status := TFStatus create.
+	answer := self operation: aTFOperation getMetadataFor: anAttributeName asAsciiZ status: status.
+	status check.
+	^ answer! !
+
+!TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/30/2021 12:27:52'!
+operation: aTFOperation getShapeAt: anAttributeName 
+	
+	| value status size answer |
+	size := (aTFOperation attrMetadata: anAttributeName) totalSize.
+	size = -1 ifTrue: [ ^ TensorShape scalar ].
+	status := TFStatus create.
+	value := Int64Array externalNew: size.
+	
+	self
+		operation: aTFOperation
+		attr: anAttributeName asAsciiZ
+		getShape: value
+		size: size
+		status: status.
+	status check.
+
+	answer := (1 to: size) collect: [:i | value at: i].
+	^ answer! !
+
+!TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/30/2021 12:19:14'!
+operation: aTFOperation getStringAt: anAttributeName 
+	
+	| metadata value status |
+	metadata := aTFOperation attrMetadata: anAttributeName.
+	status := TFStatus create.
+	value := ByteArray new: metadata totalSize .
+	self
+		operation: aTFOperation
+		attr: anAttributeName asAsciiZ
+		getString: value
+		size: metadata totalSize 
+		status: status.
+	status check.
+	^ (value upTo: 0) asString
+! !
+
+!TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/30/2021 12:23:13'!
+operation: aTFOperation getStringsAt: anAttributeName 
+	| status pointers sizes spaceRequired storage metadata valuesCount |
+	metadata := aTFOperation attrMetadata: anAttributeName.
+	spaceRequired := metadata totalSize.
+	valuesCount := metadata listSize.
+	pointers := ByteArray new: Smalltalk wordSize * valuesCount.
+	sizes := (Int64Array externalNew: valuesCount) useFinalization.
+	storage := ExternalAddress gcallocate: spaceRequired.
+	status := TFStatus create.
+	self
+		operation: aTFOperation
+		attr: anAttributeName asAsciiZ 
+		getStrings: pointers
+		sizes: sizes
+		maxCount: valuesCount
+		storage: storage
+		size: spaceRequired
+		status: status.
+	status check.
+	^ (1 to: valuesCount) collect: [:i |
+		| one |
+		one := pointers pointerAt: i-1*Smalltalk wordSize+1.
+		one := one structAt: 1 length: (sizes at: i).
+		one asString]! !
+
+!TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/30/2021 12:24:15'!
+operation: aTFOperation getTensorAt: anAttributeName 
+
+	| value status |
+	status := TFStatus create.
+	value := ByteArray new: ExternalAddress wordSize.
+	self operation: aTFOperation attr: anAttributeName asAsciiZ getTensor: value status: status.
+	status check.
+	^ TFTensor fromHandle: (value pointerAt: 1)
+! !
+
+!TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/30/2021 12:25:10'!
+operation: aTFOperation getTypeAt: anAttributeName 
+	
+	| value status |
+	status := TFStatus create.
+	value := ByteArray new: 8.
+	self operation: aTFOperation attr: anAttributeName asAsciiZ getType: value status: status.
+	status check.
+	^ value unsignedLongLongAt: 1
+! !
+
+!TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/30/2021 12:34:24'!
+runOperations: aTFOperationPtrArray outputs: aTFOutputArray size: anInteger 
+	| status outvalues |
+	status := TFStatus create.
+	outvalues := TFTensorPtrArray new: anInteger.
+	
+	self
+		runSession: self options: nil
+		inputs: nil values: nil count: 0
+		outputs: aTFOutputArray values: outvalues count: anInteger
+		targets: aTFOperationPtrArray count: 1
+		metadata: nil status: status.
+		
+	status check.
+	^ outvalues! !
+
 !TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/29/2021 11:01:35'!
 runSession: aTFSession inputs: inArrayOfTFOutputs values: inArrayOfTFTensor outputs:  outArrayOfTFOutputs
 
@@ -2601,6 +2761,29 @@ runSession: aTFSession inputs: inArrayOfTFOutputs values: inArrayOfTFTensor outp
 	status check.
 	^ outvalues
 ! !
+
+!TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/30/2021 12:48:29'!
+runSession: aTFSession operation: aTFOperation output: aTFOutput 
+	
+	| operations  outputs size status outvalues |
+	operations := TFOperationPtrArray externalNew: 1.
+	outputs := TFOutputArray externalNew: 1.
+	size := 1. 
+	outputs first: aTFOutput.
+	
+	operations first: aTFOperation.	
+	status := TFStatus create.
+	outvalues := TFTensorPtrArray new: size.
+	
+	self
+		runSession: aTFSession options: nil
+		inputs: nil values: nil count: 0
+		outputs: outputs values: outvalues count: size
+		targets: operations count: 1
+		metadata: nil status: status.
+		
+	status check.
+	^ outvalues first! !
 
 !TensorFlowCuisLibrary methodsFor: 'as yet unclassified' stamp: 'JV 5/29/2021 11:00:09'!
 runSession: aTFSession outputs: anArrayOfTFOutputs 
@@ -3073,17 +3256,10 @@ delete
 finalize
 	self delete! !
 
-!TFGraph methodsFor: 'initialize-release' stamp: 'gera 7/3/2019 03:33:19'!
+!TFGraph methodsFor: 'initialize-release' stamp: 'JV 5/30/2021 12:29:55'!
 import: aTFBuffer
-	| options status |
-	
-	status := TFStatus create.
-	options := TFImportGraphDefOptions create.
-	
-	self library importGraphDefInto: self from: aTFBuffer options: options status: status.
-	
-	options delete.
-	status check.! !
+
+	self library importGraphDefFrom: aTFBuffer into: self! !
 
 !TFGraph methodsFor: 'initialize-release' stamp: 'gera 7/3/2019 00:28:37'!
 importFileNamed: aString
@@ -3238,124 +3414,50 @@ asOperationOn: aTFGraph
 		ifTrue: [^ self]
 		ifFalse: [^ self error: 'Can''t move an operation to another Graph']! !
 
-!TFOperation methodsFor: 'attributes' stamp: 'gera 7/3/2019 03:33:19'!
+!TFOperation methodsFor: 'attributes' stamp: 'JV 5/30/2021 12:16:21'!
 attrMetadata: nameString
-	| status answer |
-	status := TFStatus create.
-	answer := self library operation: self getMetadataFor: nameString asAsciiZ status: status.
-	status check.
-	^ answer! !
 
-!TFOperation methodsFor: 'attributes' stamp: 'gera 7/3/2019 03:33:19'!
+	^ self library operation: self getMetadataFor: nameString asAsciiZ! !
+
+!TFOperation methodsFor: 'attributes' stamp: 'JV 5/30/2021 11:30:20'!
 boolAt: nameString
-	| value status |
-	status := TFStatus create.
-	value := ByteArray new: 1.
-	self library operation: self attr: nameString asAsciiZ getBool: value status: status.
-	status check.
-	^ (value booleanAt: 1) 
-! !
 
-!TFOperation methodsFor: 'attributes' stamp: 'gera 7/3/2019 03:33:19'!
+	^self library operation: self getBoolAt: nameString asAsciiZ! !
+
+!TFOperation methodsFor: 'attributes' stamp: 'JV 5/30/2021 12:04:02'!
 floatAt: nameString
-	| value status |
-	status := TFStatus create.
-	value := ByteArray new: 8.
-	self library operation: self attr: nameString asAsciiZ getFloat: value status: status.
-	status check.
-	^ value floatAt: 1
-! !
 
-!TFOperation methodsFor: 'attributes' stamp: 'gera 7/3/2019 03:33:19'!
+	^self library operation: self getFloatAt: nameString asAsciiZ! !
+
+!TFOperation methodsFor: 'attributes' stamp: 'JV 5/30/2021 12:15:17'!
 intAt: nameString
-	| value status |
-	status := TFStatus create.
-	value := ByteArray new: 8.
-	self library operation: self attr: nameString asAsciiZ getInt64: value status: status.
-	status check.
-	^ value unsignedLongLongAt: 1
-! !
 
-!TFOperation methodsFor: 'attributes' stamp: 'JV 5/11/2021 20:33:50'!
+	^self library operation: self getInt64At: nameString asAsciiZ! !
+
+!TFOperation methodsFor: 'attributes' stamp: 'JV 5/30/2021 12:27:06'!
 shapeAt: nameString
-	| value status size answer |
-	size := (self attrMetadata: nameString) totalSize.
-	size = -1 ifTrue: [ ^ #() ].
-	status := TFStatus create.
-	value := Int64Array externalNew: size.
-	
-	self library
-		operation: self
-		attr: nameString asAsciiZ
-		getShape: value
-		size: size
-		status: status.
-	status check.
 
-	answer := (1 to: size) collect: [:i | value at: i].
-	^ answer! !
+	^self library operation: self getShapeAt: nameString asAsciiZ! !
 
-!TFOperation methodsFor: 'attributes' stamp: 'gera 7/3/2019 03:33:19'!
+!TFOperation methodsFor: 'attributes' stamp: 'JV 5/30/2021 12:18:43'!
 stringAt: nameString
-	| metadata value status |
-	metadata := self attrMetadata: nameString.
-	status := TFStatus create.
-	value := ByteArray new: metadata totalSize .
-	self library
-		operation: self
-		attr: nameString asAsciiZ
-		getString: value
-		size: metadata totalSize 
-		status: status.
-	status check.
-	^ (value upTo: 0) asString
-! !
 
-!TFOperation methodsFor: 'attributes' stamp: 'gera 7/3/2019 03:33:19'!
+	^self library operation: self getStringAt: nameString asAsciiZ! !
+
+!TFOperation methodsFor: 'attributes' stamp: 'JV 5/30/2021 12:22:45'!
 stringsAt: nameString
-	| status pointers sizes spaceRequired storage metadata valuesCount |
-	metadata := self attrMetadata: nameString.
-	spaceRequired := metadata totalSize.
-	valuesCount := metadata listSize.
-	pointers := ByteArray new: Smalltalk wordSize * valuesCount.
-	sizes := (Int64Array externalNew: valuesCount) useFinalization.
-	storage := ExternalAddress gcallocate: spaceRequired.
-	status := TFStatus create.
-	self library
-		operation: self
-		attr: nameString asAsciiZ 
-		getStrings: pointers
-		sizes: sizes
-		maxCount: valuesCount
-		storage: storage
-		size: spaceRequired
-		status: status.
-	status check.
-	^ (1 to: valuesCount) collect: [:i |
-		| one |
-		one := pointers pointerAt: i-1*Smalltalk wordSize+1.
-		one := one structAt: 1 length: (sizes at: i).
-		one asString]! !
+	
+	^self library operation: self getStringsAt: nameString asAsciiZ! !
 
-!TFOperation methodsFor: 'attributes' stamp: 'gera 7/3/2019 03:33:19'!
+!TFOperation methodsFor: 'attributes' stamp: 'JV 5/30/2021 12:23:41'!
 tensorAt: nameString
-	| value status |
-	status := TFStatus create.
-	value := ByteArray new: ExternalAddress wordSize.
-	self library operation: self attr: nameString asAsciiZ getTensor: value status: status.
-	status check.
-	^ TFTensor fromHandle: (value pointerAt: 1)
-! !
 
-!TFOperation methodsFor: 'attributes' stamp: 'gera 7/3/2019 03:33:19'!
+	^self library operation: self getTensorAt: nameString asAsciiZ! !
+
+!TFOperation methodsFor: 'attributes' stamp: 'JV 5/30/2021 12:24:48'!
 typeAt: nameString
-	| value status |
-	status := TFStatus create.
-	value := ByteArray new: 8.
-	self library operation: self attr: nameString asAsciiZ getType: value status: status.
-	status check.
-	^ value unsignedLongLongAt: 1
-! !
+
+	^self library operation: self getTypeAt: nameString asAsciiZ! !
 
 !TFOperation methodsFor: 'initialization' stamp: 'gera 2/12/2017 20:10:23'!
 output
@@ -3431,38 +3533,15 @@ at: anAttributeName putShape: aTensorShape
 	TensorFlowCAPI current description: self set: anAttributeName toShape: aTensorShape
 	! !
 
-!TFOperationDescription methodsFor: 'attributes' stamp: 'gera 7/3/2019 03:33:19'!
+!TFOperationDescription methodsFor: 'attributes' stamp: 'JV 5/30/2021 12:28:31'!
 at: attribute putString: aString
-	| status |
-	status := TFStatus create.
-	self library
-		description: self
-		set: attribute asAsciiZ
-		toString: aString
-		size: aString size.
-	status check
-	! !
 
-!TFOperationDescription methodsFor: 'attributes' stamp: 'gera 7/3/2019 03:33:19'!
+	self library description: self set: attribute asAsciiZ toString: aString! !
+
+!TFOperationDescription methodsFor: 'attributes' stamp: 'JV 5/30/2021 12:19:59'!
 at: attribute putStrings: anArrayOfStrings
-	| status sizes strings pointers |
-	sizes := anArrayOfStrings collect: [:str | str size].
-	sizes := Int64Array externalFromArray: sizes.
-	sizes useFinalization.
-	strings := anArrayOfStrings collect: [:each | (self library externalizeString: each) useFinalization].
-	pointers := ByteArray new: Smalltalk wordSize * strings size.
-	strings withIndexDo: [:each :index |
-		pointers pointerAt: index-1*Smalltalk wordSize+1 put: each].
-	 
-	status := TFStatus create.
-	self library
-		description: self
-		set: attribute asAsciiZ
-		toStrings: pointers
-		sizes: sizes
-		count: anArrayOfStrings size.
-	status check
-	! !
+
+	self library description: self set: attribute asAsciiZ toStrings: anArrayOfStrings! !
 
 !TFOperationDescription methodsFor: 'attributes' stamp: 'JV 5/29/2021 10:51:58'!
 at: attribute putTensor: aTFTensor
@@ -3616,17 +3695,10 @@ runOperation: aTFOperation input: inTFOutputOrInput value: inTFTensor output: ou
 	^ tensor
 ! !
 
-!TFSession methodsFor: 'running' stamp: 'gera 7/3/2019 03:30:56'!
+!TFSession methodsFor: 'running' stamp: 'JV 5/30/2021 12:31:10'!
 runOperation: aTFOperation output: aTFOutput
-	| operations  answer outputs |
-	operations := TFOperationPtrArray externalNew: 1.
-	outputs := TFOutputArray externalNew: 1.
-	outputs first: aTFOutput.
-	
-	operations first: aTFOperation.	
-	answer := self runOperations: operations outputs: outputs size: 1.
 
-	^ answer first! !
+	^ self library runSession: self operation: aTFOperation output: aTFOutput! !
 
 !TFSession methodsFor: 'running' stamp: 'gera 7/3/2019 03:33:19'!
 runOperations: anArrayOfTFOperations
@@ -4476,8 +4548,8 @@ operation: aTFOperation getBoolAt: anAttributeName	^ platformLibrary operation
 !TensorFlowCAPI methodsFor: 'operation attribute'!
 operation: aTFOperation getFloatAt: anAttributeName	^ platformLibrary operation: aTFOperation getFloatAt: anAttributeName! !
 
-!TensorFlowCAPI methodsFor: 'operation attribute'!
-operation: aTFOperation getInt64At: anAttributeName	^platformLibrary operation: aTFOperation getInt64At: anAttributeName! !
+!TensorFlowCAPI methodsFor: 'operation attribute' stamp: 'JV 5/30/2021 12:15:26'!
+operation: aTFOperation getInt64At: anAttributeName	^platformLibrary operation: aTFOperation getInt64At: anAttributeName! !
 
 !TensorFlowCAPI methodsFor: 'operation attribute'!
 operation: aTFOperation getMetadataFor: anAttributeName		^  platformLibrary operation: aTFOperation getMetadataFor: anAttributeName! !
@@ -4834,6 +4906,14 @@ withDimensionsSized: aDimensionsSizeArray	self assertHasValidDimensionsSize: a
 ignoreFinalization
 	self finalizationRegistry remove: self ifAbsent: [].
 ! !
+
+!Object methodsFor: '*TensorFlowCore' stamp: 'JV 5/30/2021 10:56:40'!
+isA: aClass
+
+	"Answer a Boolean which is true if aClass, is the class or
+	 a superclass of the receiver, and false otherwise."
+
+	^(self isMemberOf: aClass) or: [self class inheritsFrom: aClass]! !
 
 !Object methodsFor: '*TensorFlowCore' stamp: 'gera 1/7/2017 20:18:16'!
 useFinalization
