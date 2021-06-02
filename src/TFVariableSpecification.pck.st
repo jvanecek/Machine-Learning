@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 30 May 2021 at 4:00:49 pm'!
+'From Cuis 5.0 [latest update: #4619] on 30 May 2021 at 7:01:29 pm'!
 'Description '!
-!provides: 'TFVariableSpecification' 1 3!
+!provides: 'TFVariableSpecification' 1 4!
 !requires: 'TensorFlowEnvironment' 1 0 nil!
 !requires: 'TFOperation' 1 5 nil!
 SystemOrganization addCategory: 'TFVariableSpecification-Model'!
@@ -460,6 +460,16 @@ on: aComputation named: aName with: aTensor
 		of: aTensor type
 		shaped: aTensor shape
 		initializedWith: (ConstantInitializer with: aTensor)! !
+
+!TFVariableNode class methodsFor: '*TFVariableSpecification-Model' stamp: 'JV 5/30/2021 18:50:19'!
+on: aComputation named: aName filledWithZerosLike: anOperation
+
+	^self
+		on: aComputation
+		named: aName
+		of: anOperation value outputType
+		shaped: anOperation value outputShape
+		initializedWith: ConstantInitializer withZeros! !
 
 !TFVariableNode class methodsFor: '*TFVariableSpecification-Model' stamp: 'JV 5/30/2021 15:34:18'!
 on: aComputation named: aName with: aTensor

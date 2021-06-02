@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 30 May 2021 at 3:03:15 pm'!
+'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 10:28:43 pm'!
 'Description '!
-!provides: 'TensorFlowEnvironment' 1 2!
+!provides: 'TensorFlowEnvironment' 1 3!
 !requires: 'TensorFlowCore' 1 11 nil!
 SystemOrganization addCategory: #'TensorFlowEnvironment-Model'!
 SystemOrganization addCategory: #'TensorFlowEnvironment-ModelTests'!
@@ -126,8 +126,8 @@ assert: anOutput isOf: aType with: aShape comparedTo: anExpectedArray complying:
 !TensorFlowComputationBasedTest methodsFor: 'Test Support'!
 assert: aBlock raisesExceptionWith: aDescription	self should: aBlock raise: Error withDescription: (aDescription copyWithout: Character cr)! !
 
-!TensorFlowComputationBasedTest methodsFor: 'Test Support'!
-assertOutputOf: anOperation isAStringEqualTo: aString	| output |	output := tf compute: anOperation.	self assert: output type equals: TFTensor typeString.	self assert: output shape equals: TensorShape scalar.	self assert: output allStrings any equals: aString! !
+!TensorFlowComputationBasedTest methodsFor: 'Test Support' stamp: 'JV 6/1/2021 22:22:57'!
+assertOutputOf: anOperation isAStringEqualTo: aString	| output |	output := tf compute: anOperation.	self assert: output type equals: TFTensor typeString.	self assert: output shape equals: TensorShape scalar.	self assert: output allStrings anyOne equals: aString! !
 
 !TensorFlowComputationBasedTest methodsFor: 'Test Support'!
 assertOutputOf: aTFOperation isFloatScalarCloseTo: aScalar	self assert: (tf compute: aTFOperation) isFloatScalarCloseTo: aScalar! !
@@ -149,6 +149,11 @@ assertOutputOf: anOperation isLargeIntegerVectorEqualsTo: anExpectedArray	self
 
 !TensorFlowComputationBasedTest methodsFor: 'Test Support'!
 assertOutputOf: anOperation isMatrixCloseTo: aFloatMatrix	self assert: (tf compute: anOperation) isMatrixCloseTo: aFloatMatrix! !
+
+!TensorFlowComputationBasedTest methodsFor: 'Test Support' stamp: 'JV 6/1/2021 22:24:43'!
+skip
+	
+	self fail! !
 
 !TensorFlowComputationBasedTest methodsFor: 'Test Support'!
 tolerateErrorsLowerThan: aMaximumAbsoluteError	errorTolerance := aMaximumAbsoluteError! !
