@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 11:07:43 pm'!
+'From Cuis 5.0 [latest update: #4619] on 2 June 2021 at 7:26:41 pm'!
 'Description '!
-!provides: 'TensorFlowCore' 1 20!
+!provides: 'TensorFlowCore' 1 21!
 !requires: 'ImageProcessing' 1 19 nil!
 !requires: 'FFI' 1 33 nil!
 !requires: 'Statistics' 1 14 nil!
@@ -5100,12 +5100,22 @@ asTensor
 
 	^self asInt32Tensor! !
 
+!DateAndTime methodsFor: '*TensorFlowCore' stamp: 'JV 6/2/2021 19:18:45'!
+asMilliseconds
+	
+	^ self secondsSinceSqueakEpoch * 1000! !
+
 !BlockClosure methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 09:47:59'!
 cull: anArg 
 	
 	^numArgs = 0 
 		ifTrue: [self value]
 		ifFalse: [self value: anArg]! !
+
+!Collection methodsFor: '*TensorFlowCore' stamp: 'JV 6/2/2021 19:19:34'!
+conform: aBlockClosure 
+	
+	^ self allSatisfy: aBlockClosure! !
 
 !Collection methodsFor: '*TensorFlowCore' stamp: 'JV 5/29/2021 17:31:21'!
 flatCollect: aBlock as: aCollectionClass
