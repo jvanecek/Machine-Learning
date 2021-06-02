@@ -20,6 +20,10 @@ packages :=
     add: '../src/TFUtility.pck.st';
     add: '../src/TFOperationGradient.pck.st';
     add: '../src/TFDataset.pck.st';
+    add: '../src/MLTraining.pck.st';
+    add: '../src/MLTrainingMetric.pck.st';
+    add: '../src/MLNeuralNetworkLayer.pck.st';
+    add: '../src/TFExperimentalOperation.pck.st';
     yourself. 
 
 packages do: [:package |
