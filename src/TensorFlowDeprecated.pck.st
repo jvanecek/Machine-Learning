@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 30 May 2021 at 5:13:38 pm'!
+'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 11:07:49 pm'!
 'Description '!
-!provides: 'TensorFlowDeprecated' 1 13!
+!provides: 'TensorFlowDeprecated' 1 14!
 !requires: 'TensorFlowCore' 1 1 nil!
 !requires: 'WebClient' 1 20 nil!
 SystemOrganization addCategory: 'TensorFlowDeprecated-Core'!
@@ -3463,7 +3463,7 @@ runFloatAsStringGraph
 	^ result
 ! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 6/1/2021 23:07:20'!
 testAddControlInput
 	| graph in op result |
 	graph := TFGraph create.
@@ -3472,7 +3472,7 @@ testAddControlInput
 		description
 			addInput: (in output: 0);
 			addInput: (in output: 0);
-			addControlInput: (in output: 0)].
+			addControlInput: in].
 	
 	result := (TFSession on: graph) runOutput: (op output: 0).
 	

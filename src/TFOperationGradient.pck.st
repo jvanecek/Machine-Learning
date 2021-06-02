@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 10:40:48 pm'!
+'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 11:07:41 pm'!
 'Description '!
-!provides: 'TFOperationGradient' 1 3!
+!provides: 'TFOperationGradient' 1 4!
 !requires: 'TFOperation' 1 5 nil!
 SystemOrganization addCategory: 'TFOperationGradient-Model'!
 SystemOrganization addCategory: 'TFOperationGradient-ModelTests'!
@@ -167,3 +167,33 @@ gradientsOf: yArrayOfTFOutput withRespectTo: xArrayOfTFOutput product: dxArrayOf
 		withRespectTo: xArrayOfTFOutput
 		product: dxArrayOfOutput
 		in: self! !
+
+!TensorFlowOperationAbstract methodsFor: '*TFOperationGradient-Model' stamp: 'JV 6/1/2021 22:58:10'!
+partialDerivativeWithRespectTo: aVariable
+
+	^Gradient of: self withRespectTo: aVariable! !
+
+!CategoricalCrossEntropy methodsFor: '*TFOperationGradient-Model' stamp: 'JV 6/1/2021 22:58:34'!
+partialDerivativeWithRespectTo: aVariable
+
+	^self partialDerivativeWithRespectTo: aVariable product: self backpropagatedGradient! !
+
+!CategoricalCrossEntropy methodsFor: '*TFOperationGradient-Model' stamp: 'JV 6/1/2021 22:59:35'!
+partialDerivativeWithRespectTo: aVariable product: aCotangent
+
+	^Gradient of: logits withRespectTo: aVariable product: aCotangent! !
+
+!CrossEntropyMean methodsFor: '*TFOperationGradient-Model' stamp: 'JV 6/1/2021 22:58:55'!
+partialDerivativeWithRespectTo: aVariable
+
+	^crossEntropy partialDerivativeWithRespectTo: aVariable product: self backpropagatedGradient! !
+
+!SparseCategoricalCrossEntropy methodsFor: '*TFOperationGradient-Model' stamp: 'JV 6/1/2021 22:59:09'!
+partialDerivativeWithRespectTo: aVariable
+
+	^self partialDerivativeWithRespectTo: aVariable product: self backpropagatedGradient! !
+
+!SparseCategoricalCrossEntropy methodsFor: '*TFOperationGradient-Model' stamp: 'JV 6/1/2021 22:59:54'!
+partialDerivativeWithRespectTo: aVariable product: aCotangent
+
+	^Gradient of: unscaledLogits withRespectTo: aVariable product: aCotangent! !
