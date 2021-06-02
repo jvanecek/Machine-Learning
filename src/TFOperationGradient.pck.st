@@ -1,87 +1,51 @@
-'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 10:28:32 pm'!
+'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 10:40:48 pm'!
 'Description '!
-!provides: 'TFOperationGradient' 1 2!
+!provides: 'TFOperationGradient' 1 3!
 !requires: 'TFOperation' 1 5 nil!
-SystemOrganization addCategory: #'TFOperationGradient-Model'!
-SystemOrganization addCategory: #'TFOperationGradient-ModelTests'!
+SystemOrganization addCategory: 'TFOperationGradient-Model'!
+SystemOrganization addCategory: 'TFOperationGradient-ModelTests'!
 
 
-!classDefinition: #Gradient category: #'TFOperationGradient-Model'!
-TensorFlowOperationAbstract subclass: #Gradient
-	instanceVariableNames: 'operationName functions variables currentComputation'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFOperationGradient-Model'!
-!classDefinition: 'Gradient class' category: #'TFOperationGradient-Model'!
-Gradient class
-	instanceVariableNames: ''!
-
-!classDefinition: #GradientTest category: #'TFOperationGradient-ModelTests'!
+!classDefinition: #GradientTest category: 'TFOperationGradient-ModelTests'!
 TensorFlowComputationBasedTest subclass: #GradientTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFOperationGradient-ModelTests'!
-!classDefinition: 'GradientTest class' category: #'TFOperationGradient-ModelTests'!
+!classDefinition: 'GradientTest class' category: 'TFOperationGradient-ModelTests'!
 GradientTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFOperationGradientModel category: #'TFOperationGradient-Model'!
+!classDefinition: #Gradient category: 'TFOperationGradient-Model'!
+TensorFlowOperationAbstract subclass: #Gradient
+	instanceVariableNames: 'operationName functions variables currentComputation'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFOperationGradient-Model'!
+!classDefinition: 'Gradient class' category: 'TFOperationGradient-Model'!
+Gradient class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFOperationGradientModel category: 'TFOperationGradient-Model'!
 ProtoObject subclass: #TFOperationGradientModel
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFOperationGradient-Model'!
-!classDefinition: 'TFOperationGradientModel class' category: #'TFOperationGradient-Model'!
+!classDefinition: 'TFOperationGradientModel class' category: 'TFOperationGradient-Model'!
 TFOperationGradientModel class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFOperationGradientModelTests category: #'TFOperationGradient-ModelTests'!
+!classDefinition: #TFOperationGradientModelTests category: 'TFOperationGradient-ModelTests'!
 ProtoObject subclass: #TFOperationGradientModelTests
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFOperationGradient-ModelTests'!
-!classDefinition: 'TFOperationGradientModelTests class' category: #'TFOperationGradient-ModelTests'!
+!classDefinition: 'TFOperationGradientModelTests class' category: 'TFOperationGradient-ModelTests'!
 TFOperationGradientModelTests class
 	instanceVariableNames: ''!
 
-
-!Gradient methodsFor: 'Accessing'!
-allPartialDerivatives	| grads |	grads := Array new: variables size.	variables doWithIndex: [:var :index | grads at: index put: (value at: index)].	^grads! !
-
-!Gradient methodsFor: 'Accessing'!
-currentComputation	^currentComputation! !
-
-!Gradient methodsFor: 'Accessing'!
-operationName	^operationName! !
-
-!Gradient methodsFor: 'Accessing' stamp: 'JV 6/1/2021 21:54:06'!
-valueWithRespectTo: aVariable	^ ( value at: ( variables indexOf: aVariable ) )! !
-
-!Gradient methodsFor: 'Initialization'!
-initializeNamed: aString of: aFunctionCollection withRespectTo: aVariableCollection product: aCotangentVectors	currentComputation := aFunctionCollection first currentComputation.	operationName := aString.	functions := aFunctionCollection.	variables := aVariableCollection.	value :=		currentComputation gradientsOf: functions withRespectTo: variables product: aCotangentVectors.	"value is a TFOutputArray so I have to set the graph from outside. Pretty ugly"	self allPartialDerivatives		do: [:gradOutput | gradOutput graph: (currentComputation instVarNamed: 'graph')]! !
-
-!Gradient class methodsFor: 'Instance Creation' stamp: 'JV 6/1/2021 21:46:13'!
-assert: aFunctionCollection hasTheSameSizeAs: aVectorCollection	aFunctionCollection size = aVectorCollection size ifFalse: [AssertionFailure signal: 'Collections sizes do not match']! !
-
-!Gradient class methodsFor: 'Instance Creation'!
-defaultName	^'Grad'! !
-
-!Gradient class methodsFor: 'Instance Creation'!
-named: anOperationName of: aFunctionCollection withRespectTo: aVariableCollection	^self		named: anOperationName		of: aFunctionCollection		withRespectTo: aVariableCollection		product: nil! !
-
-!Gradient class methodsFor: 'Instance Creation'!
-named: anOperationName of: aFunctionCollection withRespectTo: aVariableCollection product: aCotangentVectors	| functions variables cotangents |	functions := self toArray: aFunctionCollection.	variables := self toArray: aVariableCollection.	cotangents := aCotangentVectors ifNil: [nil] ifNotNil: [self toArray: aCotangentVectors].	aCotangentVectors ifNotNil: [self assert: functions hasTheSameSizeAs: cotangents].	^self new		initializeNamed: anOperationName		of: functions		withRespectTo: variables		product: cotangents! !
-
-!Gradient class methodsFor: 'Instance Creation'!
-of: aFunctionCollection withRespectTo: aVariableCollection	^self named: self defaultName of: aFunctionCollection withRespectTo: aVariableCollection! !
-
-!Gradient class methodsFor: 'Instance Creation'!
-of: aFunctionCollection withRespectTo: aVariableCollection product: aCotangentVectors	^self		named: self defaultName		of: aFunctionCollection		withRespectTo: aVariableCollection		product: aCotangentVectors! !
-
-!Gradient class methodsFor: 'Accessing'!
-toArray: aSingleElementOrCollection	^(aSingleElementOrCollection isA: Collection)		ifTrue: [aSingleElementOrCollection]		ifFalse: [Array with: aSingleElementOrCollection]! !
 
 !GradientTest methodsFor: 'Test'!
 testAccessingGradientIndependently	| weights input output grad result |	weights := tf floatInputNamed: 'var'.	input := tf constantWith: Float pi.	output := weights * input.	grad := Gradient of: output withRespectTo: (Array with: weights with: input).	result :=		tf			compute: (grad valueWithRespectTo: input)			feedingInputsWith: (				Dictionary new					at: 'var' put: 1.0 asTensor;					yourself).	self assertOutputOf: result isFloatScalarCloseTo: 1.0! !
@@ -122,6 +86,42 @@ testProductCotangentScalar	" f(x,y) = xy 	 vjp( f, x, v ) = v * df/dx = v * y
 !GradientTest methodsFor: 'Test'!
 testProductCotangentVector	" f(x,y) = xy 	 vjp( f, x, v ) = v * df/dx = v * y	 vjp( f, y, v ) = v * df/dy = v * x"	| x1 x2 output grads result |	x1 := tf floatInputNamed: 'x1'.	x2 := tf floatConstantWith: (Array with: Float pi with: -2).	output := x1 * x2.	grads :=		(Gradient			of: output			withRespectTo: (Array with: x1 with: x2)			product: (Array with: #(5.0 -3) asFloatTensor))				allPartialDerivatives.	result :=		tf			computeAll: grads			feedingInputsWith: (				Dictionary new					at: 'x1' put: (Array with: Float e with: -7) asFloatTensor;					yourself).	self		assert: (result at: grads first)		isFloatVectorCloseTo: (Array with: Float pi * 5.0 with: -2 * -3).	self		assert: (result at: grads second)		isFloatVectorCloseTo: (Array with: Float e * 5.0 with: -7 * -3)! !
 
+!Gradient methodsFor: 'Accessing'!
+allPartialDerivatives	| grads |	grads := Array new: variables size.	variables doWithIndex: [:var :index | grads at: index put: (value at: index)].	^grads! !
+
+!Gradient methodsFor: 'Accessing'!
+currentComputation	^currentComputation! !
+
+!Gradient methodsFor: 'Accessing'!
+operationName	^operationName! !
+
+!Gradient methodsFor: 'Accessing' stamp: 'JV 6/1/2021 21:54:06'!
+valueWithRespectTo: aVariable	^ ( value at: ( variables indexOf: aVariable ) )! !
+
+!Gradient methodsFor: 'Initialization'!
+initializeNamed: aString of: aFunctionCollection withRespectTo: aVariableCollection product: aCotangentVectors	currentComputation := aFunctionCollection first currentComputation.	operationName := aString.	functions := aFunctionCollection.	variables := aVariableCollection.	value :=		currentComputation gradientsOf: functions withRespectTo: variables product: aCotangentVectors.	"value is a TFOutputArray so I have to set the graph from outside. Pretty ugly"	self allPartialDerivatives		do: [:gradOutput | gradOutput graph: (currentComputation instVarNamed: 'graph')]! !
+
+!Gradient class methodsFor: 'Instance Creation' stamp: 'JV 6/1/2021 21:46:13'!
+assert: aFunctionCollection hasTheSameSizeAs: aVectorCollection	aFunctionCollection size = aVectorCollection size ifFalse: [AssertionFailure signal: 'Collections sizes do not match']! !
+
+!Gradient class methodsFor: 'Instance Creation'!
+defaultName	^'Grad'! !
+
+!Gradient class methodsFor: 'Instance Creation'!
+named: anOperationName of: aFunctionCollection withRespectTo: aVariableCollection	^self		named: anOperationName		of: aFunctionCollection		withRespectTo: aVariableCollection		product: nil! !
+
+!Gradient class methodsFor: 'Instance Creation'!
+named: anOperationName of: aFunctionCollection withRespectTo: aVariableCollection product: aCotangentVectors	| functions variables cotangents |	functions := self toArray: aFunctionCollection.	variables := self toArray: aVariableCollection.	cotangents := aCotangentVectors ifNil: [nil] ifNotNil: [self toArray: aCotangentVectors].	aCotangentVectors ifNotNil: [self assert: functions hasTheSameSizeAs: cotangents].	^self new		initializeNamed: anOperationName		of: functions		withRespectTo: variables		product: cotangents! !
+
+!Gradient class methodsFor: 'Instance Creation'!
+of: aFunctionCollection withRespectTo: aVariableCollection	^self named: self defaultName of: aFunctionCollection withRespectTo: aVariableCollection! !
+
+!Gradient class methodsFor: 'Instance Creation'!
+of: aFunctionCollection withRespectTo: aVariableCollection product: aCotangentVectors	^self		named: self defaultName		of: aFunctionCollection		withRespectTo: aVariableCollection		product: aCotangentVectors! !
+
+!Gradient class methodsFor: 'Accessing'!
+toArray: aSingleElementOrCollection	^(aSingleElementOrCollection isA: Collection)		ifTrue: [aSingleElementOrCollection]		ifFalse: [Array with: aSingleElementOrCollection]! !
+
 !TensorFlowCuisLibrary methodsFor: '*TFOperationGradient-Model' stamp: 'JV 6/1/2021 21:53:41'!
 gradientsOf: yArrayOfTFOutput withRespectTo: xArrayOfTFOutput product: dxArrayOfOutput in: aTFGraph
 
@@ -158,3 +158,12 @@ graph: aTFGraph y: yTFOutputArray yCount: yCount x: xTFOutputArray xCount: xCoun
 		TFOutputArray* long
 		TFOutputArray* 		TFStatus* TFOutputArray*)>
 	self externalCallFailed! !
+
+!TFGraph methodsFor: '*TFOperationGradient-Model' stamp: 'JV 6/1/2021 22:38:50'!
+gradientsOf: yArrayOfTFOutput withRespectTo: xArrayOfTFOutput product: dxArrayOfOutput
+
+	^ self library
+		gradientsOf: yArrayOfTFOutput
+		withRespectTo: xArrayOfTFOutput
+		product: dxArrayOfOutput
+		in: self! !

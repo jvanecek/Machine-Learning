@@ -1,272 +1,446 @@
-'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 10:28:28 pm'!
+'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 10:40:46 pm'!
 'Description '!
-!provides: 'TFDataset' 1 2!
+!provides: 'TFDataset' 1 3!
 !requires: 'TFUtility' 1 0 nil!
 !requires: 'TFOperation' 1 5 nil!
-SystemOrganization addCategory: #'TFDataset-Model'!
-SystemOrganization addCategory: #'TFDataset-ModelTests'!
+SystemOrganization addCategory: 'TFDataset-Model'!
+SystemOrganization addCategory: 'TFDataset-ModelTests'!
 
 
-!classDefinition: #CSVColumnDefinition category: #'TFDataset-Model'!
-Object subclass: #CSVColumnDefinition
-	instanceVariableNames: 'definition'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'CSVColumnDefinition class' category: #'TFDataset-Model'!
-CSVColumnDefinition class
-	instanceVariableNames: ''!
-
-!classDefinition: #CSVDatasetConfigurationBuilder category: #'TFDataset-Model'!
-Object subclass: #CSVDatasetConfigurationBuilder
-	instanceVariableNames: 'compressionType header select_cols fieldDelimiter useQuoteDelimiter nanValue bufferSize'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'CSVDatasetConfigurationBuilder class' category: #'TFDataset-Model'!
-CSVDatasetConfigurationBuilder class
-	instanceVariableNames: ''!
-
-!classDefinition: #CSVToTensorParser category: #'TFDataset-Model'!
-Object subclass: #CSVToTensorParser
-	instanceVariableNames: 'tf input parsing columnDefinitions shouldIgnoreHeaders'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'CSVToTensorParser class' category: #'TFDataset-Model'!
-CSVToTensorParser class
-	instanceVariableNames: ''!
-
-!classDefinition: #CSVToTensorParserConfiguration category: #'TFDataset-Model'!
-Object subclass: #CSVToTensorParserConfiguration
-	instanceVariableNames: 'delimiter notANumberValue linesIncludesHeaders'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'CSVToTensorParserConfiguration class' category: #'TFDataset-Model'!
-CSVToTensorParserConfiguration class
-	instanceVariableNames: ''!
-
-!classDefinition: #DatasetComputationAware category: #'TFDataset-Model'!
-Object subclass: #DatasetComputationAware
-	instanceVariableNames: 'value cardinality'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'DatasetComputationAware class' category: #'TFDataset-Model'!
-DatasetComputationAware class
-	instanceVariableNames: ''!
-
-!classDefinition: #BatchDataset category: #'TFDataset-Model'!
-DatasetComputationAware subclass: #BatchDataset
-	instanceVariableNames: 'outputDomains currentComputation'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'BatchDataset class' category: #'TFDataset-Model'!
-BatchDataset class
-	instanceVariableNames: ''!
-
-!classDefinition: #CSVDataset category: #'TFDataset-Model'!
-DatasetComputationAware subclass: #CSVDataset
-	instanceVariableNames: 'currentComputation outputDomains'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'CSVDataset class' category: #'TFDataset-Model'!
-CSVDataset class
-	instanceVariableNames: ''!
-
-!classDefinition: #PrefetchDataset category: #'TFDataset-Model'!
-DatasetComputationAware subclass: #PrefetchDataset
-	instanceVariableNames: 'currentComputation outputDomains'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'PrefetchDataset class' category: #'TFDataset-Model'!
-PrefetchDataset class
-	instanceVariableNames: ''!
-
-!classDefinition: #RandomDataset category: #'TFDataset-Model'!
-DatasetComputationAware subclass: #RandomDataset
-	instanceVariableNames: 'currentComputation outputDomains'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'RandomDataset class' category: #'TFDataset-Model'!
-RandomDataset class
-	instanceVariableNames: ''!
-
-!classDefinition: #ShuffledDataset category: #'TFDataset-Model'!
-DatasetComputationAware subclass: #ShuffledDataset
-	instanceVariableNames: 'currentComputation outputDomains'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'ShuffledDataset class' category: #'TFDataset-Model'!
-ShuffledDataset class
-	instanceVariableNames: ''!
-
-!classDefinition: #TensorDataset category: #'TFDataset-Model'!
-DatasetComputationAware subclass: #TensorDataset
-	instanceVariableNames: 'currentComputation outputDomains'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'TensorDataset class' category: #'TFDataset-Model'!
-TensorDataset class
-	instanceVariableNames: ''!
-
-!classDefinition: #TextDataset category: #'TFDataset-Model'!
-DatasetComputationAware subclass: #TextDataset
-	instanceVariableNames: 'currentComputation'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'TextDataset class' category: #'TFDataset-Model'!
-TextDataset class
-	instanceVariableNames: ''!
-
-!classDefinition: #DatasetIterator category: #'TFDataset-Model'!
-Object subclass: #DatasetIterator
-	instanceVariableNames: 'tf iterator initializer next outputDomains dataset'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'DatasetIterator class' category: #'TFDataset-Model'!
-DatasetIterator class
-	instanceVariableNames: ''!
-
-!classDefinition: #SampleDatasetComputationAware category: #'TFDataset-Model'!
-Object subclass: #SampleDatasetComputationAware
-	instanceVariableNames: 'trainingDataset currentComputation validationDataset featuresTransformation labelsTransformation datasetTransformation'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TFDataset-Model'!
-!classDefinition: 'SampleDatasetComputationAware class' category: #'TFDataset-Model'!
-SampleDatasetComputationAware class
-	instanceVariableNames: ''!
-
-!classDefinition: #CSVToTensorParserTest category: #'TFDataset-ModelTests'!
+!classDefinition: #CSVToTensorParserTest category: 'TFDataset-ModelTests'!
 TensorFlowComputationBasedTest subclass: #CSVToTensorParserTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFDataset-ModelTests'!
-!classDefinition: 'CSVToTensorParserTest class' category: #'TFDataset-ModelTests'!
+!classDefinition: 'CSVToTensorParserTest class' category: 'TFDataset-ModelTests'!
 CSVToTensorParserTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #DatasetTest category: #'TFDataset-ModelTests'!
+!classDefinition: #DatasetTest category: 'TFDataset-ModelTests'!
 TensorFlowComputationBasedTest subclass: #DatasetTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFDataset-ModelTests'!
-!classDefinition: 'DatasetTest class' category: #'TFDataset-ModelTests'!
+!classDefinition: 'DatasetTest class' category: 'TFDataset-ModelTests'!
 DatasetTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #BatchDatasetTest category: #'TFDataset-ModelTests'!
+!classDefinition: #BatchDatasetTest category: 'TFDataset-ModelTests'!
 DatasetTest subclass: #BatchDatasetTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFDataset-ModelTests'!
-!classDefinition: 'BatchDatasetTest class' category: #'TFDataset-ModelTests'!
+!classDefinition: 'BatchDatasetTest class' category: 'TFDataset-ModelTests'!
 BatchDatasetTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #CSVDatasetTest category: #'TFDataset-ModelTests'!
+!classDefinition: #CSVDatasetTest category: 'TFDataset-ModelTests'!
 DatasetTest subclass: #CSVDatasetTest
 	instanceVariableNames: 'fileName dataset'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFDataset-ModelTests'!
-!classDefinition: 'CSVDatasetTest class' category: #'TFDataset-ModelTests'!
+!classDefinition: 'CSVDatasetTest class' category: 'TFDataset-ModelTests'!
 CSVDatasetTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #PrefetchDatasetTest category: #'TFDataset-ModelTests'!
+!classDefinition: #PrefetchDatasetTest category: 'TFDataset-ModelTests'!
 DatasetTest subclass: #PrefetchDatasetTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFDataset-ModelTests'!
-!classDefinition: 'PrefetchDatasetTest class' category: #'TFDataset-ModelTests'!
+!classDefinition: 'PrefetchDatasetTest class' category: 'TFDataset-ModelTests'!
 PrefetchDatasetTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #RandomDatasetTest category: #'TFDataset-ModelTests'!
+!classDefinition: #RandomDatasetTest category: 'TFDataset-ModelTests'!
 DatasetTest subclass: #RandomDatasetTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFDataset-ModelTests'!
-!classDefinition: 'RandomDatasetTest class' category: #'TFDataset-ModelTests'!
+!classDefinition: 'RandomDatasetTest class' category: 'TFDataset-ModelTests'!
 RandomDatasetTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #ShuffledDatasetTest category: #'TFDataset-ModelTests'!
+!classDefinition: #ShuffledDatasetTest category: 'TFDataset-ModelTests'!
 DatasetTest subclass: #ShuffledDatasetTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFDataset-ModelTests'!
-!classDefinition: 'ShuffledDatasetTest class' category: #'TFDataset-ModelTests'!
+!classDefinition: 'ShuffledDatasetTest class' category: 'TFDataset-ModelTests'!
 ShuffledDatasetTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #TensorDatasetTest category: #'TFDataset-ModelTests'!
+!classDefinition: #TensorDatasetTest category: 'TFDataset-ModelTests'!
 DatasetTest subclass: #TensorDatasetTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFDataset-ModelTests'!
-!classDefinition: 'TensorDatasetTest class' category: #'TFDataset-ModelTests'!
+!classDefinition: 'TensorDatasetTest class' category: 'TFDataset-ModelTests'!
 TensorDatasetTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #TextDatasetTest category: #'TFDataset-ModelTests'!
+!classDefinition: #TextDatasetTest category: 'TFDataset-ModelTests'!
 DatasetTest subclass: #TextDatasetTest
 	instanceVariableNames: 'fileName dataset'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFDataset-ModelTests'!
-!classDefinition: 'TextDatasetTest class' category: #'TFDataset-ModelTests'!
+!classDefinition: 'TextDatasetTest class' category: 'TFDataset-ModelTests'!
 TextDatasetTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #SampleDatasetComputationAwareTest category: #'TFDataset-ModelTests'!
+!classDefinition: #SampleDatasetComputationAwareTest category: 'TFDataset-ModelTests'!
 TensorFlowComputationBasedTest subclass: #SampleDatasetComputationAwareTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFDataset-ModelTests'!
-!classDefinition: 'SampleDatasetComputationAwareTest class' category: #'TFDataset-ModelTests'!
+!classDefinition: 'SampleDatasetComputationAwareTest class' category: 'TFDataset-ModelTests'!
 SampleDatasetComputationAwareTest class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFDatasetModel category: #'TFDataset-Model'!
+!classDefinition: #CSVColumnDefinition category: 'TFDataset-Model'!
+Object subclass: #CSVColumnDefinition
+	instanceVariableNames: 'definition'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'CSVColumnDefinition class' category: 'TFDataset-Model'!
+CSVColumnDefinition class
+	instanceVariableNames: ''!
+
+!classDefinition: #CSVDatasetConfigurationBuilder category: 'TFDataset-Model'!
+Object subclass: #CSVDatasetConfigurationBuilder
+	instanceVariableNames: 'compressionType header select_cols fieldDelimiter useQuoteDelimiter nanValue bufferSize'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'CSVDatasetConfigurationBuilder class' category: 'TFDataset-Model'!
+CSVDatasetConfigurationBuilder class
+	instanceVariableNames: ''!
+
+!classDefinition: #CSVToTensorParser category: 'TFDataset-Model'!
+Object subclass: #CSVToTensorParser
+	instanceVariableNames: 'tf input parsing columnDefinitions shouldIgnoreHeaders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'CSVToTensorParser class' category: 'TFDataset-Model'!
+CSVToTensorParser class
+	instanceVariableNames: ''!
+
+!classDefinition: #CSVToTensorParserConfiguration category: 'TFDataset-Model'!
+Object subclass: #CSVToTensorParserConfiguration
+	instanceVariableNames: 'delimiter notANumberValue linesIncludesHeaders'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'CSVToTensorParserConfiguration class' category: 'TFDataset-Model'!
+CSVToTensorParserConfiguration class
+	instanceVariableNames: ''!
+
+!classDefinition: #DatasetComputationAware category: 'TFDataset-Model'!
+Object subclass: #DatasetComputationAware
+	instanceVariableNames: 'value cardinality'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'DatasetComputationAware class' category: 'TFDataset-Model'!
+DatasetComputationAware class
+	instanceVariableNames: ''!
+
+!classDefinition: #BatchDataset category: 'TFDataset-Model'!
+DatasetComputationAware subclass: #BatchDataset
+	instanceVariableNames: 'outputDomains currentComputation'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'BatchDataset class' category: 'TFDataset-Model'!
+BatchDataset class
+	instanceVariableNames: ''!
+
+!classDefinition: #CSVDataset category: 'TFDataset-Model'!
+DatasetComputationAware subclass: #CSVDataset
+	instanceVariableNames: 'currentComputation outputDomains'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'CSVDataset class' category: 'TFDataset-Model'!
+CSVDataset class
+	instanceVariableNames: ''!
+
+!classDefinition: #PrefetchDataset category: 'TFDataset-Model'!
+DatasetComputationAware subclass: #PrefetchDataset
+	instanceVariableNames: 'currentComputation outputDomains'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'PrefetchDataset class' category: 'TFDataset-Model'!
+PrefetchDataset class
+	instanceVariableNames: ''!
+
+!classDefinition: #RandomDataset category: 'TFDataset-Model'!
+DatasetComputationAware subclass: #RandomDataset
+	instanceVariableNames: 'currentComputation outputDomains'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'RandomDataset class' category: 'TFDataset-Model'!
+RandomDataset class
+	instanceVariableNames: ''!
+
+!classDefinition: #ShuffledDataset category: 'TFDataset-Model'!
+DatasetComputationAware subclass: #ShuffledDataset
+	instanceVariableNames: 'currentComputation outputDomains'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'ShuffledDataset class' category: 'TFDataset-Model'!
+ShuffledDataset class
+	instanceVariableNames: ''!
+
+!classDefinition: #TensorDataset category: 'TFDataset-Model'!
+DatasetComputationAware subclass: #TensorDataset
+	instanceVariableNames: 'currentComputation outputDomains'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'TensorDataset class' category: 'TFDataset-Model'!
+TensorDataset class
+	instanceVariableNames: ''!
+
+!classDefinition: #TextDataset category: 'TFDataset-Model'!
+DatasetComputationAware subclass: #TextDataset
+	instanceVariableNames: 'currentComputation'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'TextDataset class' category: 'TFDataset-Model'!
+TextDataset class
+	instanceVariableNames: ''!
+
+!classDefinition: #DatasetIterator category: 'TFDataset-Model'!
+Object subclass: #DatasetIterator
+	instanceVariableNames: 'tf iterator initializer next outputDomains dataset'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'DatasetIterator class' category: 'TFDataset-Model'!
+DatasetIterator class
+	instanceVariableNames: ''!
+
+!classDefinition: #SampleDatasetComputationAware category: 'TFDataset-Model'!
+Object subclass: #SampleDatasetComputationAware
+	instanceVariableNames: 'trainingDataset currentComputation validationDataset featuresTransformation labelsTransformation datasetTransformation'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TFDataset-Model'!
+!classDefinition: 'SampleDatasetComputationAware class' category: 'TFDataset-Model'!
+SampleDatasetComputationAware class
+	instanceVariableNames: ''!
+
+!classDefinition: #TFDatasetModel category: 'TFDataset-Model'!
 ProtoObject subclass: #TFDatasetModel
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFDataset-Model'!
-!classDefinition: 'TFDatasetModel class' category: #'TFDataset-Model'!
+!classDefinition: 'TFDatasetModel class' category: 'TFDataset-Model'!
 TFDatasetModel class
 	instanceVariableNames: ''!
 
-!classDefinition: #TFDatasetModelTests category: #'TFDataset-ModelTests'!
+!classDefinition: #TFDatasetModelTests category: 'TFDataset-ModelTests'!
 ProtoObject subclass: #TFDatasetModelTests
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TFDataset-ModelTests'!
-!classDefinition: 'TFDatasetModelTests class' category: #'TFDataset-ModelTests'!
+!classDefinition: 'TFDatasetModelTests class' category: 'TFDataset-ModelTests'!
 TFDatasetModelTests class
 	instanceVariableNames: ''!
 
+
+!CSVToTensorParserTest methodsFor: 'Tests'!
+testCustomNanValue	| lines tensor columnTypes columns |	lines :=		OrderedCollection new			add: '1;2;3;4';			add: '-;0.5;6.3;1';			yourself.	columnTypes :=		OrderedCollection new			add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);			add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);			add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);			add: (CSVColumnDefinition mandatoryTyped: TFTensor typeInt32);			yourself.	tensor :=		CSVToTensorParser			on: tf			named: 'test-parser'			withColumnsDefinedBy: columnTypes			configuredBy: (CSVToTensorParserConfiguration delimitedBy: ';' consideringNan: '-').	columns := tensor parseColumnsFrom: lines.	self assert: (columns at: 1) isVectorTyped: TFTensor typeInt32 closeTo: #(1 -1).	self assert: (columns at: 2) isVectorTyped: TFTensor typeFloat closeTo: #(2 0.5).	self assert: (columns at: 3) isVectorTyped: TFTensor typeFloat closeTo: #(3 6.3).	self assert: (columns at: 4) isVectorTyped: TFTensor typeInt32 closeTo: #(4 1)! !
+
+!CSVToTensorParserTest methodsFor: 'Tests'!
+testMissingMandatoryField	| lines tensor columnTypes |	lines :=		OrderedCollection new			add: '1,2,3,4';			add: ',0.5,6.3,1';			yourself.	columnTypes :=		OrderedCollection new			add: (CSVColumnDefinition mandatoryTyped: TFTensor typeInt32);			add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);			add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);			add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);			yourself.	tensor := CSVToTensorParser on: tf named: 'test-parser' withColumnsDefinedBy: columnTypes.	self		assert: [tensor parseColumnsFrom: lines]		raisesExceptionWith:			'INVALID_ARGUMENT: Field 0 is required but missing in record 1!!	 [[{{node test-parser}}]]'! !
+
+!CSVToTensorParserTest methodsFor: 'Tests'!
+testParseFile	| fileName tensor columnTypes columns |	fileName := 'testParseFile.csv'.	[		fileName asFileReference writeStreamDo: [:stream |			stream				nextPutAll: '1,2,3,4';				cr;				nextPutAll: ',0.5,6.3,1'].		columnTypes :=			OrderedCollection new				add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);				add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);				add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);				add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);				yourself.		tensor := CSVToTensorParser on: tf named: 'test-parser' withColumnsDefinedBy: columnTypes.		columns := tensor parseColumnsInFileNamed: fileName.		self assert: (columns at: 1) isVectorTyped: TFTensor typeInt32 closeTo: #(1 -1).		self assert: (columns at: 2) isVectorTyped: TFTensor typeFloat closeTo: #(2 0.5).		self assert: (columns at: 3) isVectorTyped: TFTensor typeFloat closeTo: #(3 6.3).		self assert: (columns at: 4) isVectorTyped: TFTensor typeInt32 closeTo: #(4 1)]			ensure: [fileName asFileReference delete]! !
+
+!CSVToTensorParserTest methodsFor: 'Tests'!
+testParseFileIgnoringHeader	| fileName tensor columnTypes columns |	fileName := 'testParseFile.csv'.	[		fileName asFileReference writeStreamDo: [:stream |			stream				nextPutAll: 'a1,a2,a3,a4';				cr;				nextPutAll: '1,2,3,4';				cr;				nextPutAll: ',0.5,6.3,1'].		columnTypes :=			OrderedCollection new				add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);				add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);				add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);				add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);				yourself.		tensor :=			CSVToTensorParser				on: tf				named: 'test-parser'				withColumnsDefinedBy: columnTypes				configuredBy: (CSVToTensorParserConfiguration linesIncludesHeaders: true).		columns := tensor parseColumnsInFileNamed: fileName.		self assert: (columns at: 1) isVectorTyped: TFTensor typeInt32 closeTo: #(1 -1).		self assert: (columns at: 2) isVectorTyped: TFTensor typeFloat closeTo: #(2 0.5).		self assert: (columns at: 3) isVectorTyped: TFTensor typeFloat closeTo: #(3 6.3).		self assert: (columns at: 4) isVectorTyped: TFTensor typeInt32 closeTo: #(4 1)]			ensure: [fileName asFileReference delete]! !
+
+!CSVToTensorParserTest methodsFor: 'Tests'!
+testParseSemicolonSeparatedValues	| lines tensor columnTypes columns |	lines :=		OrderedCollection new			add: '1;2;3;4';			add: ';0.5;6.3;1';			yourself.	columnTypes :=		OrderedCollection new			add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);			add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);			add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);			add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);			yourself.	tensor :=		CSVToTensorParser			on: tf			named: 'test-parser'			withColumnsDefinedBy: columnTypes			configuredBy: (CSVToTensorParserConfiguration delimitedBy: ';').	columns := tensor parseColumnsFrom: lines.	self assert: (columns at: 1) isVectorTyped: TFTensor typeInt32 closeTo: #(1 -1).	self assert: (columns at: 2) isVectorTyped: TFTensor typeFloat closeTo: #(2 0.5).	self assert: (columns at: 3) isVectorTyped: TFTensor typeFloat closeTo: #(3 6.3).	self assert: (columns at: 4) isVectorTyped: TFTensor typeInt32 closeTo: #(4 1)! !
+
+!CSVToTensorParserTest methodsFor: 'Tests'!
+testWithNullableFields	| lines tensor columnTypes columns |	lines :=		OrderedCollection new			add: '1,2,3,4';			add: ',0.5,6.3,1';			yourself.	columnTypes :=		OrderedCollection new			add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);			add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);			add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);			add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);			yourself.	tensor := CSVToTensorParser on: tf named: 'test-parser' withColumnsDefinedBy: columnTypes.	columns := tensor parseColumnsFrom: lines.	self assert: (columns at: 1) isVectorTyped: TFTensor typeInt32 closeTo: #(1 -1).	self assert: (columns at: 2) isVectorTyped: TFTensor typeFloat closeTo: #(2 0.5).	self assert: (columns at: 3) isVectorTyped: TFTensor typeFloat closeTo: #(3 6.3).	self assert: (columns at: 4) isVectorTyped: TFTensor typeInt32 closeTo: #(4 1)! !
+
+!DatasetTest methodsFor: 'Tests'!
+assertDatasetHasExpectedOutput: aDataset	| output |	output := tf compute: aDataset.	self assert: output type equals: TFTensor typeVariant.	self assert: output shape equals: TensorShape scalar.	self assert: output numBytes equals: 64! !
+
+!DatasetTest methodsFor: 'Tests'!
+assertReachedEnd: iterator	self		should: [tf compute: iterator next]		raise: Error		withDescription: 'OUT_OF_RANGE: End of sequence	 [[{{node IteratorGetNext}}]]'! !
+
+!DatasetTest methodsFor: 'Tests'!
+datasetWithOneFloatMatrix	| input |	input := tf floatConstantWith: #((0 1 2 3) (9 8 7 6)).	^TensorDataset on: tf containing: input! !
+
+!DatasetTest methodsFor: 'Tests'!
+datasetWithOneFloatVector	| input |	input := tf floatConstantWith: #(0 1 2 3).	^TensorDataset on: tf containing: input! !
+
+!DatasetTest methodsFor: 'Tests'!
+iterateThrough: aDataset collecting: aCollectBlock thenDo: aDoBlock	| foundElements |	foundElements := OrderedCollection new.	aDataset do: [:each | foundElements add: (aCollectBlock value: each)].	aDoBlock value: foundElements! !
+
+!DatasetTest class methodsFor: 'Accessing'!
+isAbstract	^self name = #DatasetTest! !
+
+!BatchDatasetTest methodsFor: 'Tests'!
+testIterateThroughDatasetWithOneFloatMatrixInBatchesOfOne	| dataset batch iterator |	dataset := self datasetWithOneFloatMatrix.	batch := dataset inBatchesOf: 1.	self assertDatasetHasExpectedOutput: dataset.	iterator := batch newIterator.	self		assert: iterator next		isOf: TFTensor typeFloat		with: (TensorShape withDimensionsSized: #(1 2 4))		comparedTo: #(0 1 2 3 9 8 7 6)		complying: [:actual :expected | self assert: actual equals: expected].	self assertReachedEnd: iterator! !
+
+!BatchDatasetTest methodsFor: 'Tests'!
+testIterateThroughDatasetWithOneFloatVectorInBatchesOfOne	| dataset batch iterator |	dataset := self datasetWithOneFloatVector.	batch := dataset inBatchesOf: 1.	self assertDatasetHasExpectedOutput: dataset.	iterator := batch newIterator.	self assertOutputOf: iterator next isMatrixCloseTo: #((0 1 2 3)).	self assertReachedEnd: iterator! !
+
+!BatchDatasetTest methodsFor: 'Tests'!
+testIterateThroughDatasetWithOneFloatVectorInBatchesOfTwo	| dataset batch iterator |	dataset := self datasetWithOneFloatVector.	batch := dataset inBatchesOf: 2.	self assertDatasetHasExpectedOutput: dataset.	iterator := batch newIterator.	self assertOutputOf: iterator next isMatrixCloseTo: #((0 1 2 3)).	self assertReachedEnd: iterator! !
+
+!CSVDatasetTest methodsFor: 'Tests'!
+datasetFromCSVNamed: aFileName	^CSVDataset		on: tf		named: 'My CSV Dataset'		from: aFileName		withColumnsDefinedBy: (			OrderedCollection new				add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);				add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);				add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);				add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);				yourself)		configuredBy: [:configuration |			configuration				bufferSized: 1024;				fieldsDelimiter: ',';				forNanUse: '-']! !
+
+!CSVDatasetTest methodsFor: 'Tests'!
+setUp	super setUp.	fileName := 'test-dataset.csv'! !
+
+!CSVDatasetTest methodsFor: 'Tests'!
+setUpCSVDatasetOnFile: aFileName	dataset :=		CSVDataset			on: tf			named: 'My-CSV-Dataset'			from: aFileName			withColumnsDefinedBy: (				OrderedCollection new					add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);					add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);					add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);					add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);					yourself)			configuredBy: [:configuration |				configuration					bufferSized: 1024;					fieldsDelimiter: ',';					forNanUse: '-'].	fileName asFileReference writeStreamDo: [:stream |		stream			nextPutAll: '1,2,3,4';			cr;			nextPutAll: ',0.5,6.3,1']! !
+
+!CSVDatasetTest methodsFor: 'Tests'!
+setUpTSVDatasetOnFile: aFileName	dataset :=		CSVDataset			on: tf			named: 'My-TSV-Dataset'			from: aFileName			withColumnsDefinedBy: (				OrderedCollection new					add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);					add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);					add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);					add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);					yourself)			configuredBy: [:configuration |				configuration					bufferSized: 1024;					fieldsDelimiter: '	';					forNanUse: '-'].	fileName asFileReference writeStreamDo: [:stream |		stream			nextPutAll: '1	2	3	4';			cr;			nextPutAll: '	0.5	6.3	1']! !
+
+!CSVDatasetTest methodsFor: 'Tests' stamp: 'JV 6/1/2021 22:21:43'!
+tearDown		super tearDown. 		fileName asFileReference delete! !
+
+!CSVDatasetTest methodsFor: 'Tests'!
+testCSVDataset	| next iterator |	self setUpCSVDatasetOnFile: fileName.	iterator := dataset newIterator.	next := iterator next.	self assert: (next at: 1) isIntegerScalarEqualTo: 1.	self assert: (next at: 2) isFloatScalarCloseTo: 2.	self assert: (next at: 3) isFloatScalarCloseTo: 3.	self assert: (next at: 4) isIntegerScalarEqualTo: 4.	next := iterator next.	self assert: (next at: 1) isIntegerScalarEqualTo: -1.	self assert: (next at: 2) isFloatScalarCloseTo: 0.5.	self assert: (next at: 3) isFloatScalarCloseTo: 6.3.	self assert: (next at: 4) isIntegerScalarEqualTo: 1.	self assertReachedEnd: iterator! !
+
+!CSVDatasetTest methodsFor: 'Tests'!
+testCSVDatasetInBatchesOf1	| next iterator |	self setUpCSVDatasetOnFile: fileName.	dataset := dataset inBatchesOf: 1.	iterator := dataset newIterator.	next := iterator next.	self assert: (next at: 1) isIntegerVectorEqualsTo: #(1).	self assert: (next at: 2) isFloatVectorCloseTo: #(2).	self assert: (next at: 3) isFloatVectorCloseTo: #(3).	self assert: (next at: 4) isIntegerVectorEqualsTo: #(4).	next := iterator next.	self assert: (next at: 1) isIntegerVectorEqualsTo: #(-1).	self assert: (next at: 2) isFloatVectorCloseTo: #(0.5).	self assert: (next at: 3) isFloatVectorCloseTo: #(6.3).	self assert: (next at: 4) isIntegerVectorEqualsTo: #(1).	self assertReachedEnd: iterator! !
+
+!CSVDatasetTest methodsFor: 'Tests'!
+testCSVDatasetInBatchesOf2	| next iterator |	self setUpCSVDatasetOnFile: fileName.	dataset := dataset inBatchesOf: 2.	iterator := dataset newIterator.	next := iterator next.	self assert: (next at: 1) isIntegerVectorEqualsTo: #(1 -1).	self assert: (next at: 2) isFloatVectorCloseTo: #(2 0.5).	self assert: (next at: 3) isFloatVectorCloseTo: #(3 6.3).	self assert: (next at: 4) isIntegerVectorEqualsTo: #(4 1).	self assertReachedEnd: iterator! !
+
+!CSVDatasetTest methodsFor: 'Tests'!
+testCardinality	self setUpCSVDatasetOnFile: fileName.	self assert: dataset isCardinalityUndefined! !
+
+!CSVDatasetTest methodsFor: 'Tests'!
+testIterateUsingDo	self setUpCSVDatasetOnFile: fileName.	self assert: dataset isCardinalityUndefined.	self		iterateThrough: dataset		collecting: [:item | item]		thenDo: [:foundElements | self assert: foundElements isEmpty]! !
+
+!CSVDatasetTest methodsFor: 'Tests'!
+testTSVDataset	| next iterator |	self setUpTSVDatasetOnFile: fileName.	iterator := dataset newIterator.	next := iterator next.	self assert: (next at: 1) isIntegerScalarEqualTo: 1.	self assert: (next at: 2) isFloatScalarCloseTo: 2.	self assert: (next at: 3) isFloatScalarCloseTo: 3.	self assert: (next at: 4) isIntegerScalarEqualTo: 4.	next := iterator next.	self assert: (next at: 1) isIntegerScalarEqualTo: -1.	self assert: (next at: 2) isFloatScalarCloseTo: 0.5.	self assert: (next at: 3) isFloatScalarCloseTo: 6.3.	self assert: (next at: 4) isIntegerScalarEqualTo: 1.	self assertReachedEnd: iterator! !
+
+!PrefetchDatasetTest methodsFor: 'Tests'!
+testCardinality	| input_dataset dataset |	input_dataset := self datasetWithOneFloatVector.	dataset := input_dataset prefetchingInBufferSized: 2.	self		deny: dataset isCardinalityUndefined;		assert: dataset cardinality equals: 1! !
+
+!PrefetchDatasetTest methodsFor: 'Tests'!
+testIterateThroughDatasetWithOneFloatMatrix	| input_dataset dataset iterator |	input_dataset := self datasetWithOneFloatMatrix.	dataset := input_dataset prefetchingInBufferSized: 2.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assertOutputOf: iterator next isMatrixCloseTo: #((0 1 2 3) (9 8 7 6)).	self assertReachedEnd: iterator! !
+
+!PrefetchDatasetTest methodsFor: 'Tests'!
+testIterateThroughDatasetWithOneFloatVector	| input_dataset dataset iterator |	input_dataset := self datasetWithOneFloatVector.	dataset := input_dataset prefetchingInBufferSized: 2.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assertOutputOf: iterator next isFloatVectorCloseTo: #(0 1 2 3).	self assertReachedEnd: iterator! !
+
+!PrefetchDatasetTest methodsFor: 'Tests'!
+testIterateUsingDo	| input_dataset dataset |	input_dataset := self datasetWithOneFloatMatrix.	dataset := input_dataset prefetchingInBufferSized: 2.	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset cardinality equals: 1.	self		iterateThrough: dataset		collecting: [:tensor | tensor allElements]		thenDo: [:foundElements |			self				assert: foundElements				equals: (					OrderedCollection new						add: #(0.0 1.0 2.0 3.0 9.0 8.0 7.0 6.0);						yourself)]! !
+
+!RandomDatasetTest methodsFor: 'Tests'!
+testIterateThroughDatasetWithFloatScalars	| dataset iterator |	dataset := RandomDataset on: tf withSeed: 0 and: 1 withOutputIn: TensorDomain ofFloatScalar.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset isCardinalityUndefined.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2219120097.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 4035800746.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 253345875.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2214098416.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 3397187230.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 3653729773.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2120669524.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 1835372352! !
+
+!RandomDatasetTest methodsFor: 'Tests'!
+testIterateThroughDatasetWithFloatVectors	| dataset iterator |	dataset :=		RandomDataset on: tf withSeed: 0 and: 1 withOutputIn: (TensorDomain ofFloatVectorSized: 3).	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset isCardinalityUndefined.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2219120097.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 4035800746.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 253345875.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2214098416.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 3397187230.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 3653729773.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2120669524.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 1835372352! !
+
+!RandomDatasetTest methodsFor: 'Tests'!
+testIterateThroughDatasetWithIntegerScalars	| dataset iterator |	dataset := RandomDataset on: tf withSeed: 0 and: 1 withOutputIn: TensorDomain ofIntegerScalar.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset isCardinalityUndefined.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2219120097.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 4035800746.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 253345875.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2214098416.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 3397187230.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 3653729773.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2120669524.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 1835372352! !
+
+!RandomDatasetTest methodsFor: 'Tests'!
+testIterateUsingDo	| dataset |	dataset := RandomDataset on: tf withSeed: 0 and: 1 withOutputIn: TensorDomain ofFloatScalar.	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset isCardinalityUndefined.	self		iterateThrough: dataset		collecting: [:item | item]		thenDo: [:foundElements | self assert: foundElements isEmpty]! !
+
+!ShuffledDatasetTest methodsFor: 'Test'!
+testIterateUsingDo	| dataset |	dataset :=		TensorDataset			on: tf			slicing: (tf floatConstantWith: #((0 1 2 3) (9 8 7 6) (-5 -4 -3 -7))).	dataset := dataset shuffledWithSeed: -2.	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset cardinality equals: 3.	self		iterateThrough: dataset		collecting: [:tensor | tensor allElements]		thenDo: [:foundElements |			self				assert: foundElements				equals: (					OrderedCollection new						add: #(9.0 8.0 7.0 6.0);						add: #(0.0 1.0 2.0 3.0);						add: #(-5.0 -4.0 -3.0 -7.0);						yourself)]! !
+
+!ShuffledDatasetTest methodsFor: 'Test'!
+testShuffleTensorDataset	| dataset iterator |	dataset :=		TensorDataset			on: tf			slicing: (tf floatConstantWith: #((0 1 2 3) (9 8 7 6) (-5 -4 -3 -7))).	dataset := dataset shuffledWithSeed: -2.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset cardinality equals: 3.	self assertOutputOf: iterator next isFloatVectorCloseTo: #(9 8 7 6).	self assertOutputOf: iterator next isFloatVectorCloseTo: #(0 1 2 3).	self assertOutputOf: iterator next isFloatVectorCloseTo: #(-5 -4 -3 -7).	self assertReachedEnd: iterator! !
+
+!TensorDatasetTest methodsFor: 'Tests'!
+testIterateThenReset	| dataset iterator next |	dataset :=		TensorDataset			on: tf			slicingAll: (				Array					with: (tf floatConstantWith: #(0 1 2 3))					with: (tf floatConstantWith: #(9 8 7 6))).	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset cardinality equals: 4.	iterator := dataset newIterator.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 0.	self assert: (next at: 2) isFloatScalarCloseTo: 9.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 1.	self assert: (next at: 2) isFloatScalarCloseTo: 8.	iterator reset.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 0.	self assert: (next at: 2) isFloatScalarCloseTo: 9.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 1.	self assert: (next at: 2) isFloatScalarCloseTo: 8.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 2.	self assert: (next at: 2) isFloatScalarCloseTo: 7.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 3.	self assert: (next at: 2) isFloatScalarCloseTo: 6.	self assertReachedEnd: iterator! !
+
+!TensorDatasetTest methodsFor: 'Tests'!
+testIterateThroughDatasetWithOneFloatMatrix	| dataset iterator |	dataset := self datasetWithOneFloatMatrix.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset cardinality equals: 1.	self assertOutputOf: iterator next isMatrixCloseTo: #((0 1 2 3) (9 8 7 6)).	self assertReachedEnd: iterator! !
+
+!TensorDatasetTest methodsFor: 'Tests'!
+testIterateThroughDatasetWithOneFloatVector	| dataset iterator |	dataset := self datasetWithOneFloatVector.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset cardinality equals: 1.	self assertOutputOf: iterator next isFloatVectorCloseTo: #(0 1 2 3).	self assertReachedEnd: iterator! !
+
+!TensorDatasetTest methodsFor: 'Tests'!
+testIterateThroughSlicedDatasetWithOneFloatMatrix	| dataset iterator |	dataset := TensorDataset on: tf slicing: (tf floatConstantWith: #((0 1 2 3) (9 8 7 6))).	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset cardinality equals: 2.	self assertOutputOf: iterator next isFloatVectorCloseTo: #(0 1 2 3).	self assertOutputOf: iterator next isFloatVectorCloseTo: #(9 8 7 6).	self assertReachedEnd: iterator! !
+
+!TensorDatasetTest methodsFor: 'Tests'!
+testIterateThroughSlicedDatasetWithOneFloatVector	| dataset iterator |	dataset := TensorDataset on: tf slicing: (tf floatConstantWith: #(0 1 2 3)).	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset cardinality equals: 4.	self assertOutputOf: iterator next isFloatScalarCloseTo: 0.	self assertOutputOf: iterator next isFloatScalarCloseTo: 1.	self assertOutputOf: iterator next isFloatScalarCloseTo: 2.	self assertOutputOf: iterator next isFloatScalarCloseTo: 3.	self assertReachedEnd: iterator! !
+
+!TensorDatasetTest methodsFor: 'Tests'!
+testIterateThroughSlicedDatasetWithTwoFloatVectors	| dataset iterator next |	dataset :=		TensorDataset			on: tf			slicingAll: (				Array					with: (tf floatConstantWith: #(0 1 2 3))					with: (tf floatConstantWith: #(9 8 7 6))).	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset cardinality equals: 4.	iterator := dataset newIterator.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 0.	self assert: (next at: 2) isFloatScalarCloseTo: 9.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 1.	self assert: (next at: 2) isFloatScalarCloseTo: 8.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 2.	self assert: (next at: 2) isFloatScalarCloseTo: 7.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 3.	self assert: (next at: 2) isFloatScalarCloseTo: 6.	self assertReachedEnd: iterator! !
+
+!TensorDatasetTest methodsFor: 'Tests'!
+testIterateUsingDo	| dataset |	dataset :=		TensorDataset			on: tf			slicingAll: (				Array					with: (tf integerConstantWith: #(0 1 2 3))					with: (tf integerConstantWith: #(9 8 7 6))).	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset cardinality equals: 4.	self		iterateThrough: dataset		collecting: [:tensor | tensor collect: #scalarOutput]		thenDo: [:foundElements |			self				assert: foundElements				equals: (					OrderedCollection new						add: #(0 9);						add: #(1 8);						add: #(2 7);						add: #(3 6);						yourself)]! !
+
+!TextDatasetTest methodsFor: 'Tests'!
+setUp	super setUp. 		fileName := 'test-dataset.csv'.! !
+
+!TextDatasetTest methodsFor: 'Tests'!
+setUpTextDatasetOnFile: aFileName	fileName asFileReference writeStreamDo: [:stream |		stream			nextPutAll: '1,2,3,4';			crlf;			nextPutAll: 'you''ve got the wrong dude'].	dataset := TextDataset on: tf readingFrom: fileName withBufferSized: 8 * 1024 * 1024.! !
+
+!TextDatasetTest methodsFor: 'Tests'!
+tearDown	super tearDown.	fileName asFileReference delete! !
+
+!TextDatasetTest methodsFor: 'Tests'!
+testCardinality	self setUpTextDatasetOnFile: fileName.	self		assert: dataset isCardinalityUndefined;		assert: dataset cardinality equals: -2! !
+
+!TextDatasetTest methodsFor: 'Tests'!
+testIterateThroughDatasetWithOneFloatVector	| iterator |	self setUpTextDatasetOnFile: fileName.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assertOutputOf: iterator next isAStringEqualTo: '1,2,3,4'.	self assertOutputOf: iterator next isAStringEqualTo: 'you''ve got the wrong dude'.	self assertReachedEnd: iterator! !
+
+!TextDatasetTest methodsFor: 'Tests'!
+testIterateUsingDo	self setUpTextDatasetOnFile: fileName.	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset isCardinalityUndefined.	self		iterateThrough: dataset		collecting: [:tensor | tensor]		thenDo: [:foundElements | self assert: foundElements isEmpty]! !
+
+!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
+testAccessingUnbindedTrainingSet	| adapter featuresCollected labelsCollected |	adapter := SampleDatasetComputationAware on: tf.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withTrainingDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected isEmpty.	self assert: labelsCollected isEmpty! !
+
+!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
+testAccessingUnbindedValidationSet	| adapter featuresCollected labelsCollected |	adapter := SampleDatasetComputationAware on: tf.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withValidationDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected isEmpty.	self assert: labelsCollected isEmpty! !
+
+!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
+testApplyingTransformationToWholeDataset	| adapter featuresCollected labelsCollected |	adapter :=		SampleDatasetComputationAware			on: tf			transformingFeaturesWith: [:features | features reshapeFlattened raisedTo: 3.0]			transformingLabelsWith: [:labels | labels * 2]			applying: [:dataset | dataset inBatchesOf: 2].	adapter		bindTrainingFeaturesTo: #(((1 1) (1 1)) ((2 2) (2 2)) ((3 3) (3 3))) asFloatTensor		withLabels: #(1 2 3) asInt32Tensor.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withTrainingDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected size equals: 2.	self assert: labelsCollected size equals: 2.	self assert: (featuresCollected at: 1) isMatrixCloseTo: #((1 1 1 1) (8 8 8 8)).	self assert: (labelsCollected at: 1) isIntegerVectorEqualsTo: #(2 4).	self assert: (featuresCollected at: 2) isMatrixCloseTo: #((27 27 27 27)).	self assert: (labelsCollected at: 2) isIntegerVectorEqualsTo: #(6)! !
+
+!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
+testBindFromSampleDataset	| set adapter featuresCollected labelsCollected |	set :=		SampleDataset new			bindTrainingSetTo: #(((1 1) (1 1)) ((2 2) (2 2)) ((3 3) (3 3))) asFloatTensor				withLabels: #(1 2 3) asInt32Tensor;			bindValidationSetTo: #(((4 4) (4 4)) ((5 5) (5 5)) ((6 6) (6 6))) asFloatTensor				withLabels: #(4 5 6) asInt32Tensor;			yourself.	adapter :=		SampleDatasetComputationAware			on: tf			transformingFeaturesWith: [:features | features reshapeFlattened raisedTo: 3.0]			transformingLabelsWith: [:labels | labels * 2]			applying: [:dataset | dataset inBatchesOf: 2].	adapter bindSetsFrom: set.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withTrainingDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected size equals: 2.	self assert: labelsCollected size equals: 2.	self assert: (featuresCollected at: 1) isMatrixCloseTo: #((1 1 1 1) (8 8 8 8)).	self assert: (labelsCollected at: 1) isIntegerVectorEqualsTo: #(2 4).	self assert: (featuresCollected at: 2) isMatrixCloseTo: #((27 27 27 27)).	self assert: (labelsCollected at: 2) isIntegerVectorEqualsTo: #(6).	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withValidationDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected size equals: 2.	self assert: labelsCollected size equals: 2.	self assert: (featuresCollected at: 1) isMatrixCloseTo: #((64 64 64 64) (125 125 125 125)).	self assert: (labelsCollected at: 1) isIntegerVectorEqualsTo: #(8 10).	self assert: (featuresCollected at: 2) isMatrixCloseTo: #((216 216 216 216)).	self assert: (labelsCollected at: 2) isIntegerVectorEqualsTo: #(12)! !
+
+!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
+testBindTrainingSet	| adapter featuresCollected labelsCollected |	adapter := SampleDatasetComputationAware on: tf.	adapter		bindTrainingFeaturesTo: #((1 1 1 1) (2 2 2 2) (3 3 3 3)) asFloatTensor		withLabels: #(1 2 3) asInt32Tensor.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter		withTrainingDatasetDo: [:features :label |			featuresCollected add: features.			labelsCollected add: label];		withValidationDatasetDo: [:features :label | self fail].	self assert: featuresCollected size equals: 3.	self assert: labelsCollected size equals: 3.	self assert: (featuresCollected at: 1) isFloatVectorCloseTo: #(1 1 1 1).	self assert: (labelsCollected at: 1) isIntegerScalarEqualTo: 1.	self assert: (featuresCollected at: 2) isFloatVectorCloseTo: #(2 2 2 2).	self assert: (labelsCollected at: 2) isIntegerScalarEqualTo: 2.	self assert: (featuresCollected at: 3) isFloatVectorCloseTo: #(3 3 3 3).	self assert: (labelsCollected at: 3) isIntegerScalarEqualTo: 3! !
+
+!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
+testBindValidationSet	| adapter featuresCollected labelsCollected |	adapter := SampleDatasetComputationAware on: tf.	adapter		bindValidationFeaturesTo: #((1 1 1 1) (2 2 2 2) (3 3 3 3)) asFloatTensor		withLabels: #(1 2 3) asInt32Tensor.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter		withTrainingDatasetDo: [:features :label | self fail];		withValidationDatasetDo: [:features :label |			featuresCollected add: features.			labelsCollected add: label].	self assert: featuresCollected size equals: 3.	self assert: labelsCollected size equals: 3.	self assert: (featuresCollected at: 1) isFloatVectorCloseTo: #(1 1 1 1).	self assert: (labelsCollected at: 1) isIntegerScalarEqualTo: 1.	self assert: (featuresCollected at: 2) isFloatVectorCloseTo: #(2 2 2 2).	self assert: (labelsCollected at: 2) isIntegerScalarEqualTo: 2.	self assert: (featuresCollected at: 3) isFloatVectorCloseTo: #(3 3 3 3).	self assert: (labelsCollected at: 3) isIntegerScalarEqualTo: 3! !
+
+!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
+testTransformationsAppliesToValidationSet	| adapter featuresCollected labelsCollected |	adapter :=		SampleDatasetComputationAware			on: tf			transformingFeaturesWith: [:features | features reshapeFlattened raisedTo: 3.0]			transformingLabelsWith: [:labels | labels * 2]			applying: [:dataset | dataset inBatchesOf: 2].	adapter		bindValidationFeaturesTo:			#(((1 1) (1 1)) ((2 2) (2 2)) ((3 3) (3 3))) asFloatTensor		withLabels: #(1 2 3) asInt32Tensor.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withValidationDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected size equals: 2.	self assert: labelsCollected size equals: 2.	self assert: (featuresCollected at: 1) isMatrixCloseTo: #((1 1 1 1) (8 8 8 8)).	self assert: (labelsCollected at: 1) isIntegerVectorEqualsTo: #(2 4).	self assert: (featuresCollected at: 2) isMatrixCloseTo: #((27 27 27 27)).	self assert: (labelsCollected at: 2) isIntegerVectorEqualsTo: #(6)! !
+
+!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
+testTransformingFeatures	| adapter featuresCollected labelsCollected |	adapter :=		SampleDatasetComputationAware			on: tf			transformingFeaturesWith: [:features | features reshapeFlattened].	adapter		bindTrainingFeaturesTo: #(((1 1) (1 1)) ((2 2) (2 2)) ((3 3) (3 3))) asFloatTensor		withLabels: #(1 2 3) asInt32Tensor.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withTrainingDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected size equals: 3.	self assert: labelsCollected size equals: 3.	self assert: (featuresCollected at: 1) isFloatVectorCloseTo: #(1 1 1 1).	self assert: (labelsCollected at: 1) isIntegerScalarEqualTo: 1.	self assert: (featuresCollected at: 2) isFloatVectorCloseTo: #(2 2 2 2).	self assert: (labelsCollected at: 2) isIntegerScalarEqualTo: 2.	self assert: (featuresCollected at: 3) isFloatVectorCloseTo: #(3 3 3 3).	self assert: (labelsCollected at: 3) isIntegerScalarEqualTo: 3! !
+
+!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
+testTransformingFeaturesAndLabels	| adapter featuresCollected labelsCollected |	adapter :=		SampleDatasetComputationAware			on: tf			transformingFeaturesWith: [:features | features reshapeFlattened raisedTo: 3.0]			transformingLabelsWith: [:labels | labels * 2].	adapter		bindTrainingFeaturesTo: #(((1 1) (1 1)) ((2 2) (2 2)) ((3 3) (3 3))) asFloatTensor		withLabels: #(1 2 3) asInt32Tensor.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withTrainingDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected size equals: 3.	self assert: labelsCollected size equals: 3.	self assert: (featuresCollected at: 1) isFloatVectorCloseTo: #(1 1 1 1).	self assert: (labelsCollected at: 1) isIntegerScalarEqualTo: 2.	self assert: (featuresCollected at: 2) isFloatVectorCloseTo: #(8 8 8 8).	self assert: (labelsCollected at: 2) isIntegerScalarEqualTo: 4.	self assert: (featuresCollected at: 3) isFloatVectorCloseTo: #(27 27 27 27).	self assert: (labelsCollected at: 3) isIntegerScalarEqualTo: 6! !
 
 !CSVColumnDefinition methodsFor: 'Accessing'!
 columnDomain	^TensorDomain of: definition type withShape: TensorShape scalar! !
@@ -571,180 +745,6 @@ on: aTensorFlowComputation transformingFeaturesWith: aFeaturesTransformation tra
 !SampleDatasetComputationAware class methodsFor: 'Instance Creation'!
 on: aTensorFlowComputation transformingFeaturesWith: aFeaturesTransformation transformingLabelsWith: aLabelsTransformation applying: aDatasetTransformation	^self new		initializeOn: aTensorFlowComputation		transformingFeaturesWith: aFeaturesTransformation		transformingLabelsWith: aLabelsTransformation		applying: aDatasetTransformation! !
 
-!CSVToTensorParserTest methodsFor: 'Tests'!
-testCustomNanValue	| lines tensor columnTypes columns |	lines :=		OrderedCollection new			add: '1;2;3;4';			add: '-;0.5;6.3;1';			yourself.	columnTypes :=		OrderedCollection new			add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);			add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);			add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);			add: (CSVColumnDefinition mandatoryTyped: TFTensor typeInt32);			yourself.	tensor :=		CSVToTensorParser			on: tf			named: 'test-parser'			withColumnsDefinedBy: columnTypes			configuredBy: (CSVToTensorParserConfiguration delimitedBy: ';' consideringNan: '-').	columns := tensor parseColumnsFrom: lines.	self assert: (columns at: 1) isVectorTyped: TFTensor typeInt32 closeTo: #(1 -1).	self assert: (columns at: 2) isVectorTyped: TFTensor typeFloat closeTo: #(2 0.5).	self assert: (columns at: 3) isVectorTyped: TFTensor typeFloat closeTo: #(3 6.3).	self assert: (columns at: 4) isVectorTyped: TFTensor typeInt32 closeTo: #(4 1)! !
-
-!CSVToTensorParserTest methodsFor: 'Tests'!
-testMissingMandatoryField	| lines tensor columnTypes |	lines :=		OrderedCollection new			add: '1,2,3,4';			add: ',0.5,6.3,1';			yourself.	columnTypes :=		OrderedCollection new			add: (CSVColumnDefinition mandatoryTyped: TFTensor typeInt32);			add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);			add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);			add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);			yourself.	tensor := CSVToTensorParser on: tf named: 'test-parser' withColumnsDefinedBy: columnTypes.	self		assert: [tensor parseColumnsFrom: lines]		raisesExceptionWith:			'INVALID_ARGUMENT: Field 0 is required but missing in record 1!!	 [[{{node test-parser}}]]'! !
-
-!CSVToTensorParserTest methodsFor: 'Tests'!
-testParseFile	| fileName tensor columnTypes columns |	fileName := 'testParseFile.csv'.	[		fileName asFileReference writeStreamDo: [:stream |			stream				nextPutAll: '1,2,3,4';				cr;				nextPutAll: ',0.5,6.3,1'].		columnTypes :=			OrderedCollection new				add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);				add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);				add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);				add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);				yourself.		tensor := CSVToTensorParser on: tf named: 'test-parser' withColumnsDefinedBy: columnTypes.		columns := tensor parseColumnsInFileNamed: fileName.		self assert: (columns at: 1) isVectorTyped: TFTensor typeInt32 closeTo: #(1 -1).		self assert: (columns at: 2) isVectorTyped: TFTensor typeFloat closeTo: #(2 0.5).		self assert: (columns at: 3) isVectorTyped: TFTensor typeFloat closeTo: #(3 6.3).		self assert: (columns at: 4) isVectorTyped: TFTensor typeInt32 closeTo: #(4 1)]			ensure: [fileName asFileReference delete]! !
-
-!CSVToTensorParserTest methodsFor: 'Tests'!
-testParseFileIgnoringHeader	| fileName tensor columnTypes columns |	fileName := 'testParseFile.csv'.	[		fileName asFileReference writeStreamDo: [:stream |			stream				nextPutAll: 'a1,a2,a3,a4';				cr;				nextPutAll: '1,2,3,4';				cr;				nextPutAll: ',0.5,6.3,1'].		columnTypes :=			OrderedCollection new				add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);				add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);				add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);				add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);				yourself.		tensor :=			CSVToTensorParser				on: tf				named: 'test-parser'				withColumnsDefinedBy: columnTypes				configuredBy: (CSVToTensorParserConfiguration linesIncludesHeaders: true).		columns := tensor parseColumnsInFileNamed: fileName.		self assert: (columns at: 1) isVectorTyped: TFTensor typeInt32 closeTo: #(1 -1).		self assert: (columns at: 2) isVectorTyped: TFTensor typeFloat closeTo: #(2 0.5).		self assert: (columns at: 3) isVectorTyped: TFTensor typeFloat closeTo: #(3 6.3).		self assert: (columns at: 4) isVectorTyped: TFTensor typeInt32 closeTo: #(4 1)]			ensure: [fileName asFileReference delete]! !
-
-!CSVToTensorParserTest methodsFor: 'Tests'!
-testParseSemicolonSeparatedValues	| lines tensor columnTypes columns |	lines :=		OrderedCollection new			add: '1;2;3;4';			add: ';0.5;6.3;1';			yourself.	columnTypes :=		OrderedCollection new			add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);			add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);			add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);			add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);			yourself.	tensor :=		CSVToTensorParser			on: tf			named: 'test-parser'			withColumnsDefinedBy: columnTypes			configuredBy: (CSVToTensorParserConfiguration delimitedBy: ';').	columns := tensor parseColumnsFrom: lines.	self assert: (columns at: 1) isVectorTyped: TFTensor typeInt32 closeTo: #(1 -1).	self assert: (columns at: 2) isVectorTyped: TFTensor typeFloat closeTo: #(2 0.5).	self assert: (columns at: 3) isVectorTyped: TFTensor typeFloat closeTo: #(3 6.3).	self assert: (columns at: 4) isVectorTyped: TFTensor typeInt32 closeTo: #(4 1)! !
-
-!CSVToTensorParserTest methodsFor: 'Tests'!
-testWithNullableFields	| lines tensor columnTypes columns |	lines :=		OrderedCollection new			add: '1,2,3,4';			add: ',0.5,6.3,1';			yourself.	columnTypes :=		OrderedCollection new			add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);			add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);			add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);			add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);			yourself.	tensor := CSVToTensorParser on: tf named: 'test-parser' withColumnsDefinedBy: columnTypes.	columns := tensor parseColumnsFrom: lines.	self assert: (columns at: 1) isVectorTyped: TFTensor typeInt32 closeTo: #(1 -1).	self assert: (columns at: 2) isVectorTyped: TFTensor typeFloat closeTo: #(2 0.5).	self assert: (columns at: 3) isVectorTyped: TFTensor typeFloat closeTo: #(3 6.3).	self assert: (columns at: 4) isVectorTyped: TFTensor typeInt32 closeTo: #(4 1)! !
-
-!DatasetTest methodsFor: 'Tests'!
-assertDatasetHasExpectedOutput: aDataset	| output |	output := tf compute: aDataset.	self assert: output type equals: TFTensor typeVariant.	self assert: output shape equals: TensorShape scalar.	self assert: output numBytes equals: 64! !
-
-!DatasetTest methodsFor: 'Tests'!
-assertReachedEnd: iterator	self		should: [tf compute: iterator next]		raise: Error		withDescription: 'OUT_OF_RANGE: End of sequence	 [[{{node IteratorGetNext}}]]'! !
-
-!DatasetTest methodsFor: 'Tests'!
-datasetWithOneFloatMatrix	| input |	input := tf floatConstantWith: #((0 1 2 3) (9 8 7 6)).	^TensorDataset on: tf containing: input! !
-
-!DatasetTest methodsFor: 'Tests'!
-datasetWithOneFloatVector	| input |	input := tf floatConstantWith: #(0 1 2 3).	^TensorDataset on: tf containing: input! !
-
-!DatasetTest methodsFor: 'Tests'!
-iterateThrough: aDataset collecting: aCollectBlock thenDo: aDoBlock	| foundElements |	foundElements := OrderedCollection new.	aDataset do: [:each | foundElements add: (aCollectBlock value: each)].	aDoBlock value: foundElements! !
-
-!DatasetTest class methodsFor: 'Accessing'!
-isAbstract	^self name = #DatasetTest! !
-
-!BatchDatasetTest methodsFor: 'Tests'!
-testIterateThroughDatasetWithOneFloatMatrixInBatchesOfOne	| dataset batch iterator |	dataset := self datasetWithOneFloatMatrix.	batch := dataset inBatchesOf: 1.	self assertDatasetHasExpectedOutput: dataset.	iterator := batch newIterator.	self		assert: iterator next		isOf: TFTensor typeFloat		with: (TensorShape withDimensionsSized: #(1 2 4))		comparedTo: #(0 1 2 3 9 8 7 6)		complying: [:actual :expected | self assert: actual equals: expected].	self assertReachedEnd: iterator! !
-
-!BatchDatasetTest methodsFor: 'Tests'!
-testIterateThroughDatasetWithOneFloatVectorInBatchesOfOne	| dataset batch iterator |	dataset := self datasetWithOneFloatVector.	batch := dataset inBatchesOf: 1.	self assertDatasetHasExpectedOutput: dataset.	iterator := batch newIterator.	self assertOutputOf: iterator next isMatrixCloseTo: #((0 1 2 3)).	self assertReachedEnd: iterator! !
-
-!BatchDatasetTest methodsFor: 'Tests'!
-testIterateThroughDatasetWithOneFloatVectorInBatchesOfTwo	| dataset batch iterator |	dataset := self datasetWithOneFloatVector.	batch := dataset inBatchesOf: 2.	self assertDatasetHasExpectedOutput: dataset.	iterator := batch newIterator.	self assertOutputOf: iterator next isMatrixCloseTo: #((0 1 2 3)).	self assertReachedEnd: iterator! !
-
-!CSVDatasetTest methodsFor: 'Tests'!
-datasetFromCSVNamed: aFileName	^CSVDataset		on: tf		named: 'My CSV Dataset'		from: aFileName		withColumnsDefinedBy: (			OrderedCollection new				add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);				add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);				add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);				add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);				yourself)		configuredBy: [:configuration |			configuration				bufferSized: 1024;				fieldsDelimiter: ',';				forNanUse: '-']! !
-
-!CSVDatasetTest methodsFor: 'Tests'!
-setUp	super setUp.	fileName := 'test-dataset.csv'! !
-
-!CSVDatasetTest methodsFor: 'Tests'!
-setUpCSVDatasetOnFile: aFileName	dataset :=		CSVDataset			on: tf			named: 'My-CSV-Dataset'			from: aFileName			withColumnsDefinedBy: (				OrderedCollection new					add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);					add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);					add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);					add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);					yourself)			configuredBy: [:configuration |				configuration					bufferSized: 1024;					fieldsDelimiter: ',';					forNanUse: '-'].	fileName asFileReference writeStreamDo: [:stream |		stream			nextPutAll: '1,2,3,4';			cr;			nextPutAll: ',0.5,6.3,1']! !
-
-!CSVDatasetTest methodsFor: 'Tests'!
-setUpTSVDatasetOnFile: aFileName	dataset :=		CSVDataset			on: tf			named: 'My-TSV-Dataset'			from: aFileName			withColumnsDefinedBy: (				OrderedCollection new					add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);					add: (CSVColumnDefinition mandatoryTyped: TFTensor typeFloat);					add: (CSVColumnDefinition nullableTyped: TFTensor typeFloat defaultTo: -1);					add: (CSVColumnDefinition nullableTyped: TFTensor typeInt32 defaultTo: -1);					yourself)			configuredBy: [:configuration |				configuration					bufferSized: 1024;					fieldsDelimiter: '	';					forNanUse: '-'].	fileName asFileReference writeStreamDo: [:stream |		stream			nextPutAll: '1	2	3	4';			cr;			nextPutAll: '	0.5	6.3	1']! !
-
-!CSVDatasetTest methodsFor: 'Tests' stamp: 'JV 6/1/2021 22:21:43'!
-tearDown		super tearDown. 		fileName asFileReference delete! !
-
-!CSVDatasetTest methodsFor: 'Tests'!
-testCSVDataset	| next iterator |	self setUpCSVDatasetOnFile: fileName.	iterator := dataset newIterator.	next := iterator next.	self assert: (next at: 1) isIntegerScalarEqualTo: 1.	self assert: (next at: 2) isFloatScalarCloseTo: 2.	self assert: (next at: 3) isFloatScalarCloseTo: 3.	self assert: (next at: 4) isIntegerScalarEqualTo: 4.	next := iterator next.	self assert: (next at: 1) isIntegerScalarEqualTo: -1.	self assert: (next at: 2) isFloatScalarCloseTo: 0.5.	self assert: (next at: 3) isFloatScalarCloseTo: 6.3.	self assert: (next at: 4) isIntegerScalarEqualTo: 1.	self assertReachedEnd: iterator! !
-
-!CSVDatasetTest methodsFor: 'Tests'!
-testCSVDatasetInBatchesOf1	| next iterator |	self setUpCSVDatasetOnFile: fileName.	dataset := dataset inBatchesOf: 1.	iterator := dataset newIterator.	next := iterator next.	self assert: (next at: 1) isIntegerVectorEqualsTo: #(1).	self assert: (next at: 2) isFloatVectorCloseTo: #(2).	self assert: (next at: 3) isFloatVectorCloseTo: #(3).	self assert: (next at: 4) isIntegerVectorEqualsTo: #(4).	next := iterator next.	self assert: (next at: 1) isIntegerVectorEqualsTo: #(-1).	self assert: (next at: 2) isFloatVectorCloseTo: #(0.5).	self assert: (next at: 3) isFloatVectorCloseTo: #(6.3).	self assert: (next at: 4) isIntegerVectorEqualsTo: #(1).	self assertReachedEnd: iterator! !
-
-!CSVDatasetTest methodsFor: 'Tests'!
-testCSVDatasetInBatchesOf2	| next iterator |	self setUpCSVDatasetOnFile: fileName.	dataset := dataset inBatchesOf: 2.	iterator := dataset newIterator.	next := iterator next.	self assert: (next at: 1) isIntegerVectorEqualsTo: #(1 -1).	self assert: (next at: 2) isFloatVectorCloseTo: #(2 0.5).	self assert: (next at: 3) isFloatVectorCloseTo: #(3 6.3).	self assert: (next at: 4) isIntegerVectorEqualsTo: #(4 1).	self assertReachedEnd: iterator! !
-
-!CSVDatasetTest methodsFor: 'Tests'!
-testCardinality	self setUpCSVDatasetOnFile: fileName.	self assert: dataset isCardinalityUndefined! !
-
-!CSVDatasetTest methodsFor: 'Tests'!
-testIterateUsingDo	self setUpCSVDatasetOnFile: fileName.	self assert: dataset isCardinalityUndefined.	self		iterateThrough: dataset		collecting: [:item | item]		thenDo: [:foundElements | self assert: foundElements isEmpty]! !
-
-!CSVDatasetTest methodsFor: 'Tests'!
-testTSVDataset	| next iterator |	self setUpTSVDatasetOnFile: fileName.	iterator := dataset newIterator.	next := iterator next.	self assert: (next at: 1) isIntegerScalarEqualTo: 1.	self assert: (next at: 2) isFloatScalarCloseTo: 2.	self assert: (next at: 3) isFloatScalarCloseTo: 3.	self assert: (next at: 4) isIntegerScalarEqualTo: 4.	next := iterator next.	self assert: (next at: 1) isIntegerScalarEqualTo: -1.	self assert: (next at: 2) isFloatScalarCloseTo: 0.5.	self assert: (next at: 3) isFloatScalarCloseTo: 6.3.	self assert: (next at: 4) isIntegerScalarEqualTo: 1.	self assertReachedEnd: iterator! !
-
-!PrefetchDatasetTest methodsFor: 'Tests'!
-testCardinality	| input_dataset dataset |	input_dataset := self datasetWithOneFloatVector.	dataset := input_dataset prefetchingInBufferSized: 2.	self		deny: dataset isCardinalityUndefined;		assert: dataset cardinality equals: 1! !
-
-!PrefetchDatasetTest methodsFor: 'Tests'!
-testIterateThroughDatasetWithOneFloatMatrix	| input_dataset dataset iterator |	input_dataset := self datasetWithOneFloatMatrix.	dataset := input_dataset prefetchingInBufferSized: 2.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assertOutputOf: iterator next isMatrixCloseTo: #((0 1 2 3) (9 8 7 6)).	self assertReachedEnd: iterator! !
-
-!PrefetchDatasetTest methodsFor: 'Tests'!
-testIterateThroughDatasetWithOneFloatVector	| input_dataset dataset iterator |	input_dataset := self datasetWithOneFloatVector.	dataset := input_dataset prefetchingInBufferSized: 2.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assertOutputOf: iterator next isFloatVectorCloseTo: #(0 1 2 3).	self assertReachedEnd: iterator! !
-
-!PrefetchDatasetTest methodsFor: 'Tests'!
-testIterateUsingDo	| input_dataset dataset |	input_dataset := self datasetWithOneFloatMatrix.	dataset := input_dataset prefetchingInBufferSized: 2.	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset cardinality equals: 1.	self		iterateThrough: dataset		collecting: [:tensor | tensor allElements]		thenDo: [:foundElements |			self				assert: foundElements				equals: (					OrderedCollection new						add: #(0.0 1.0 2.0 3.0 9.0 8.0 7.0 6.0);						yourself)]! !
-
-!RandomDatasetTest methodsFor: 'Tests'!
-testIterateThroughDatasetWithFloatScalars	| dataset iterator |	dataset := RandomDataset on: tf withSeed: 0 and: 1 withOutputIn: TensorDomain ofFloatScalar.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset isCardinalityUndefined.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2219120097.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 4035800746.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 253345875.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2214098416.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 3397187230.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 3653729773.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2120669524.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 1835372352! !
-
-!RandomDatasetTest methodsFor: 'Tests'!
-testIterateThroughDatasetWithFloatVectors	| dataset iterator |	dataset :=		RandomDataset on: tf withSeed: 0 and: 1 withOutputIn: (TensorDomain ofFloatVectorSized: 3).	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset isCardinalityUndefined.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2219120097.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 4035800746.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 253345875.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2214098416.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 3397187230.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 3653729773.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2120669524.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 1835372352! !
-
-!RandomDatasetTest methodsFor: 'Tests'!
-testIterateThroughDatasetWithIntegerScalars	| dataset iterator |	dataset := RandomDataset on: tf withSeed: 0 and: 1 withOutputIn: TensorDomain ofIntegerScalar.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset isCardinalityUndefined.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2219120097.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 4035800746.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 253345875.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2214098416.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 3397187230.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 3653729773.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 2120669524.	self assert: (tf compute: iterator next) isLargeIntegerScalarEqualsTo: 1835372352! !
-
-!RandomDatasetTest methodsFor: 'Tests'!
-testIterateUsingDo	| dataset |	dataset := RandomDataset on: tf withSeed: 0 and: 1 withOutputIn: TensorDomain ofFloatScalar.	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset isCardinalityUndefined.	self		iterateThrough: dataset		collecting: [:item | item]		thenDo: [:foundElements | self assert: foundElements isEmpty]! !
-
-!ShuffledDatasetTest methodsFor: 'Test'!
-testIterateUsingDo	| dataset |	dataset :=		TensorDataset			on: tf			slicing: (tf floatConstantWith: #((0 1 2 3) (9 8 7 6) (-5 -4 -3 -7))).	dataset := dataset shuffledWithSeed: -2.	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset cardinality equals: 3.	self		iterateThrough: dataset		collecting: [:tensor | tensor allElements]		thenDo: [:foundElements |			self				assert: foundElements				equals: (					OrderedCollection new						add: #(9.0 8.0 7.0 6.0);						add: #(0.0 1.0 2.0 3.0);						add: #(-5.0 -4.0 -3.0 -7.0);						yourself)]! !
-
-!ShuffledDatasetTest methodsFor: 'Test'!
-testShuffleTensorDataset	| dataset iterator |	dataset :=		TensorDataset			on: tf			slicing: (tf floatConstantWith: #((0 1 2 3) (9 8 7 6) (-5 -4 -3 -7))).	dataset := dataset shuffledWithSeed: -2.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset cardinality equals: 3.	self assertOutputOf: iterator next isFloatVectorCloseTo: #(9 8 7 6).	self assertOutputOf: iterator next isFloatVectorCloseTo: #(0 1 2 3).	self assertOutputOf: iterator next isFloatVectorCloseTo: #(-5 -4 -3 -7).	self assertReachedEnd: iterator! !
-
-!TensorDatasetTest methodsFor: 'Tests'!
-testIterateThenReset	| dataset iterator next |	dataset :=		TensorDataset			on: tf			slicingAll: (				Array					with: (tf floatConstantWith: #(0 1 2 3))					with: (tf floatConstantWith: #(9 8 7 6))).	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset cardinality equals: 4.	iterator := dataset newIterator.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 0.	self assert: (next at: 2) isFloatScalarCloseTo: 9.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 1.	self assert: (next at: 2) isFloatScalarCloseTo: 8.	iterator reset.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 0.	self assert: (next at: 2) isFloatScalarCloseTo: 9.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 1.	self assert: (next at: 2) isFloatScalarCloseTo: 8.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 2.	self assert: (next at: 2) isFloatScalarCloseTo: 7.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 3.	self assert: (next at: 2) isFloatScalarCloseTo: 6.	self assertReachedEnd: iterator! !
-
-!TensorDatasetTest methodsFor: 'Tests'!
-testIterateThroughDatasetWithOneFloatMatrix	| dataset iterator |	dataset := self datasetWithOneFloatMatrix.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset cardinality equals: 1.	self assertOutputOf: iterator next isMatrixCloseTo: #((0 1 2 3) (9 8 7 6)).	self assertReachedEnd: iterator! !
-
-!TensorDatasetTest methodsFor: 'Tests'!
-testIterateThroughDatasetWithOneFloatVector	| dataset iterator |	dataset := self datasetWithOneFloatVector.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset cardinality equals: 1.	self assertOutputOf: iterator next isFloatVectorCloseTo: #(0 1 2 3).	self assertReachedEnd: iterator! !
-
-!TensorDatasetTest methodsFor: 'Tests'!
-testIterateThroughSlicedDatasetWithOneFloatMatrix	| dataset iterator |	dataset := TensorDataset on: tf slicing: (tf floatConstantWith: #((0 1 2 3) (9 8 7 6))).	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset cardinality equals: 2.	self assertOutputOf: iterator next isFloatVectorCloseTo: #(0 1 2 3).	self assertOutputOf: iterator next isFloatVectorCloseTo: #(9 8 7 6).	self assertReachedEnd: iterator! !
-
-!TensorDatasetTest methodsFor: 'Tests'!
-testIterateThroughSlicedDatasetWithOneFloatVector	| dataset iterator |	dataset := TensorDataset on: tf slicing: (tf floatConstantWith: #(0 1 2 3)).	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assert: dataset cardinality equals: 4.	self assertOutputOf: iterator next isFloatScalarCloseTo: 0.	self assertOutputOf: iterator next isFloatScalarCloseTo: 1.	self assertOutputOf: iterator next isFloatScalarCloseTo: 2.	self assertOutputOf: iterator next isFloatScalarCloseTo: 3.	self assertReachedEnd: iterator! !
-
-!TensorDatasetTest methodsFor: 'Tests'!
-testIterateThroughSlicedDatasetWithTwoFloatVectors	| dataset iterator next |	dataset :=		TensorDataset			on: tf			slicingAll: (				Array					with: (tf floatConstantWith: #(0 1 2 3))					with: (tf floatConstantWith: #(9 8 7 6))).	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset cardinality equals: 4.	iterator := dataset newIterator.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 0.	self assert: (next at: 2) isFloatScalarCloseTo: 9.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 1.	self assert: (next at: 2) isFloatScalarCloseTo: 8.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 2.	self assert: (next at: 2) isFloatScalarCloseTo: 7.	next := iterator next.	self assert: (next at: 1) isFloatScalarCloseTo: 3.	self assert: (next at: 2) isFloatScalarCloseTo: 6.	self assertReachedEnd: iterator! !
-
-!TensorDatasetTest methodsFor: 'Tests'!
-testIterateUsingDo	| dataset |	dataset :=		TensorDataset			on: tf			slicingAll: (				Array					with: (tf integerConstantWith: #(0 1 2 3))					with: (tf integerConstantWith: #(9 8 7 6))).	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset cardinality equals: 4.	self		iterateThrough: dataset		collecting: [:tensor | tensor collect: #scalarOutput]		thenDo: [:foundElements |			self				assert: foundElements				equals: (					OrderedCollection new						add: #(0 9);						add: #(1 8);						add: #(2 7);						add: #(3 6);						yourself)]! !
-
-!TextDatasetTest methodsFor: 'Tests'!
-setUp	super setUp. 		fileName := 'test-dataset.csv'.! !
-
-!TextDatasetTest methodsFor: 'Tests'!
-setUpTextDatasetOnFile: aFileName	fileName asFileReference writeStreamDo: [:stream |		stream			nextPutAll: '1,2,3,4';			crlf;			nextPutAll: 'you''ve got the wrong dude'].	dataset := TextDataset on: tf readingFrom: fileName withBufferSized: 8 * 1024 * 1024.! !
-
-!TextDatasetTest methodsFor: 'Tests'!
-tearDown	super tearDown.	fileName asFileReference delete! !
-
-!TextDatasetTest methodsFor: 'Tests'!
-testCardinality	self setUpTextDatasetOnFile: fileName.	self		assert: dataset isCardinalityUndefined;		assert: dataset cardinality equals: -2! !
-
-!TextDatasetTest methodsFor: 'Tests'!
-testIterateThroughDatasetWithOneFloatVector	| iterator |	self setUpTextDatasetOnFile: fileName.	self assertDatasetHasExpectedOutput: dataset.	iterator := dataset newIterator.	self assertOutputOf: iterator next isAStringEqualTo: '1,2,3,4'.	self assertOutputOf: iterator next isAStringEqualTo: 'you''ve got the wrong dude'.	self assertReachedEnd: iterator! !
-
-!TextDatasetTest methodsFor: 'Tests'!
-testIterateUsingDo	self setUpTextDatasetOnFile: fileName.	self assertDatasetHasExpectedOutput: dataset.	self assert: dataset isCardinalityUndefined.	self		iterateThrough: dataset		collecting: [:tensor | tensor]		thenDo: [:foundElements | self assert: foundElements isEmpty]! !
-
-!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
-testAccessingUnbindedTrainingSet	| adapter featuresCollected labelsCollected |	adapter := SampleDatasetComputationAware on: tf.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withTrainingDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected isEmpty.	self assert: labelsCollected isEmpty! !
-
-!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
-testAccessingUnbindedValidationSet	| adapter featuresCollected labelsCollected |	adapter := SampleDatasetComputationAware on: tf.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withValidationDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected isEmpty.	self assert: labelsCollected isEmpty! !
-
-!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
-testApplyingTransformationToWholeDataset	| adapter featuresCollected labelsCollected |	adapter :=		SampleDatasetComputationAware			on: tf			transformingFeaturesWith: [:features | features reshapeFlattened raisedTo: 3.0]			transformingLabelsWith: [:labels | labels * 2]			applying: [:dataset | dataset inBatchesOf: 2].	adapter		bindTrainingFeaturesTo: #(((1 1) (1 1)) ((2 2) (2 2)) ((3 3) (3 3))) asFloatTensor		withLabels: #(1 2 3) asInt32Tensor.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withTrainingDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected size equals: 2.	self assert: labelsCollected size equals: 2.	self assert: (featuresCollected at: 1) isMatrixCloseTo: #((1 1 1 1) (8 8 8 8)).	self assert: (labelsCollected at: 1) isIntegerVectorEqualsTo: #(2 4).	self assert: (featuresCollected at: 2) isMatrixCloseTo: #((27 27 27 27)).	self assert: (labelsCollected at: 2) isIntegerVectorEqualsTo: #(6)! !
-
-!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
-testBindFromSampleDataset	| set adapter featuresCollected labelsCollected |	set :=		SampleDataset new			bindTrainingSetTo: #(((1 1) (1 1)) ((2 2) (2 2)) ((3 3) (3 3))) asFloatTensor				withLabels: #(1 2 3) asInt32Tensor;			bindValidationSetTo: #(((4 4) (4 4)) ((5 5) (5 5)) ((6 6) (6 6))) asFloatTensor				withLabels: #(4 5 6) asInt32Tensor;			yourself.	adapter :=		SampleDatasetComputationAware			on: tf			transformingFeaturesWith: [:features | features reshapeFlattened raisedTo: 3.0]			transformingLabelsWith: [:labels | labels * 2]			applying: [:dataset | dataset inBatchesOf: 2].	adapter bindSetsFrom: set.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withTrainingDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected size equals: 2.	self assert: labelsCollected size equals: 2.	self assert: (featuresCollected at: 1) isMatrixCloseTo: #((1 1 1 1) (8 8 8 8)).	self assert: (labelsCollected at: 1) isIntegerVectorEqualsTo: #(2 4).	self assert: (featuresCollected at: 2) isMatrixCloseTo: #((27 27 27 27)).	self assert: (labelsCollected at: 2) isIntegerVectorEqualsTo: #(6).	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withValidationDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected size equals: 2.	self assert: labelsCollected size equals: 2.	self assert: (featuresCollected at: 1) isMatrixCloseTo: #((64 64 64 64) (125 125 125 125)).	self assert: (labelsCollected at: 1) isIntegerVectorEqualsTo: #(8 10).	self assert: (featuresCollected at: 2) isMatrixCloseTo: #((216 216 216 216)).	self assert: (labelsCollected at: 2) isIntegerVectorEqualsTo: #(12)! !
-
-!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
-testBindTrainingSet	| adapter featuresCollected labelsCollected |	adapter := SampleDatasetComputationAware on: tf.	adapter		bindTrainingFeaturesTo: #((1 1 1 1) (2 2 2 2) (3 3 3 3)) asFloatTensor		withLabels: #(1 2 3) asInt32Tensor.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter		withTrainingDatasetDo: [:features :label |			featuresCollected add: features.			labelsCollected add: label];		withValidationDatasetDo: [:features :label | self fail].	self assert: featuresCollected size equals: 3.	self assert: labelsCollected size equals: 3.	self assert: (featuresCollected at: 1) isFloatVectorCloseTo: #(1 1 1 1).	self assert: (labelsCollected at: 1) isIntegerScalarEqualTo: 1.	self assert: (featuresCollected at: 2) isFloatVectorCloseTo: #(2 2 2 2).	self assert: (labelsCollected at: 2) isIntegerScalarEqualTo: 2.	self assert: (featuresCollected at: 3) isFloatVectorCloseTo: #(3 3 3 3).	self assert: (labelsCollected at: 3) isIntegerScalarEqualTo: 3! !
-
-!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
-testBindValidationSet	| adapter featuresCollected labelsCollected |	adapter := SampleDatasetComputationAware on: tf.	adapter		bindValidationFeaturesTo: #((1 1 1 1) (2 2 2 2) (3 3 3 3)) asFloatTensor		withLabels: #(1 2 3) asInt32Tensor.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter		withTrainingDatasetDo: [:features :label | self fail];		withValidationDatasetDo: [:features :label |			featuresCollected add: features.			labelsCollected add: label].	self assert: featuresCollected size equals: 3.	self assert: labelsCollected size equals: 3.	self assert: (featuresCollected at: 1) isFloatVectorCloseTo: #(1 1 1 1).	self assert: (labelsCollected at: 1) isIntegerScalarEqualTo: 1.	self assert: (featuresCollected at: 2) isFloatVectorCloseTo: #(2 2 2 2).	self assert: (labelsCollected at: 2) isIntegerScalarEqualTo: 2.	self assert: (featuresCollected at: 3) isFloatVectorCloseTo: #(3 3 3 3).	self assert: (labelsCollected at: 3) isIntegerScalarEqualTo: 3! !
-
-!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
-testTransformationsAppliesToValidationSet	| adapter featuresCollected labelsCollected |	adapter :=		SampleDatasetComputationAware			on: tf			transformingFeaturesWith: [:features | features reshapeFlattened raisedTo: 3.0]			transformingLabelsWith: [:labels | labels * 2]			applying: [:dataset | dataset inBatchesOf: 2].	adapter		bindValidationFeaturesTo:			#(((1 1) (1 1)) ((2 2) (2 2)) ((3 3) (3 3))) asFloatTensor		withLabels: #(1 2 3) asInt32Tensor.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withValidationDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected size equals: 2.	self assert: labelsCollected size equals: 2.	self assert: (featuresCollected at: 1) isMatrixCloseTo: #((1 1 1 1) (8 8 8 8)).	self assert: (labelsCollected at: 1) isIntegerVectorEqualsTo: #(2 4).	self assert: (featuresCollected at: 2) isMatrixCloseTo: #((27 27 27 27)).	self assert: (labelsCollected at: 2) isIntegerVectorEqualsTo: #(6)! !
-
-!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
-testTransformingFeatures	| adapter featuresCollected labelsCollected |	adapter :=		SampleDatasetComputationAware			on: tf			transformingFeaturesWith: [:features | features reshapeFlattened].	adapter		bindTrainingFeaturesTo: #(((1 1) (1 1)) ((2 2) (2 2)) ((3 3) (3 3))) asFloatTensor		withLabels: #(1 2 3) asInt32Tensor.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withTrainingDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected size equals: 3.	self assert: labelsCollected size equals: 3.	self assert: (featuresCollected at: 1) isFloatVectorCloseTo: #(1 1 1 1).	self assert: (labelsCollected at: 1) isIntegerScalarEqualTo: 1.	self assert: (featuresCollected at: 2) isFloatVectorCloseTo: #(2 2 2 2).	self assert: (labelsCollected at: 2) isIntegerScalarEqualTo: 2.	self assert: (featuresCollected at: 3) isFloatVectorCloseTo: #(3 3 3 3).	self assert: (labelsCollected at: 3) isIntegerScalarEqualTo: 3! !
-
-!SampleDatasetComputationAwareTest methodsFor: 'Tests'!
-testTransformingFeaturesAndLabels	| adapter featuresCollected labelsCollected |	adapter :=		SampleDatasetComputationAware			on: tf			transformingFeaturesWith: [:features | features reshapeFlattened raisedTo: 3.0]			transformingLabelsWith: [:labels | labels * 2].	adapter		bindTrainingFeaturesTo: #(((1 1) (1 1)) ((2 2) (2 2)) ((3 3) (3 3))) asFloatTensor		withLabels: #(1 2 3) asInt32Tensor.	featuresCollected := OrderedCollection new.	labelsCollected := OrderedCollection new.	adapter withTrainingDatasetDo: [:features :label |		featuresCollected add: features.		labelsCollected add: label].	self assert: featuresCollected size equals: 3.	self assert: labelsCollected size equals: 3.	self assert: (featuresCollected at: 1) isFloatVectorCloseTo: #(1 1 1 1).	self assert: (labelsCollected at: 1) isIntegerScalarEqualTo: 2.	self assert: (featuresCollected at: 2) isFloatVectorCloseTo: #(8 8 8 8).	self assert: (labelsCollected at: 2) isIntegerScalarEqualTo: 4.	self assert: (featuresCollected at: 3) isFloatVectorCloseTo: #(27 27 27 27).	self assert: (labelsCollected at: 3) isIntegerScalarEqualTo: 6! !
-
 !TensorFlowCuisLibrary methodsFor: '*TFDataset-Model' stamp: 'JV 6/1/2021 21:59:52'!
 arrayWithPointerToEach: elements
 
@@ -785,3 +785,45 @@ at: aString putShapes: aListOfShapes
 at: anAttributeName putTypes: aListOfTypes
 
 	self library description: self set: anAttributeName toTypes: aListOfTypes! !
+
+!TFOperationDescription methodsFor: '*TFDataset-Model' stamp: 'JV 6/1/2021 22:36:47'!
+atContainerPut: aString
+
+	self at: TFAttributeName container putString: aString! !
+
+!TFOperationDescription methodsFor: '*TFDataset-Model' stamp: 'JV 6/1/2021 22:39:27'!
+atFieldDelimiterPut: aListOfTypes
+
+	self at: 'field_delim' putString: aListOfTypes! !
+
+!TFOperationDescription methodsFor: '*TFDataset-Model' stamp: 'JV 6/1/2021 22:39:44'!
+atNotAvailableValuePut: aListOfTypes
+
+	self at: 'na_value' putString: aListOfTypes! !
+
+!TFOperationDescription methodsFor: '*TFDataset-Model' stamp: 'JV 6/1/2021 22:35:52'!
+atOutputShapesPut: aListOfShapes
+
+	self at: TFAttributeName outputShapes putShapes: aListOfShapes! !
+
+!TFOperationDescription methodsFor: '*TFDataset-Model' stamp: 'JV 6/1/2021 22:36:16'!
+atOutputTypesPut: aListOfTypes
+
+	self at: TFAttributeName outputTypes putTypes: aListOfTypes! !
+
+!TFOperationDescription methodsFor: '*TFDataset-Model' stamp: 'JV 6/1/2021 22:36:31'!
+atSharedNamePut: aString
+
+	self at: TFAttributeName sharedName putString: aString! !
+
+!TensorFlowComputation methodsFor: '*TFDataset-Model' stamp: 'JV 6/1/2021 22:37:21'!
+createSessionAndRun: anOperation
+
+	session ifNil: [
+		session := TFSession on: graph.
+		"When initialize graph, we initialize also the variables. So this can't be done before the variables are created, 
+		 and can't be done every time we call run, because will be overriding them every time with the initial value. 
+		 This is the best place I cound found to do it."
+		graph initializeOn: session].
+
+	^session runOperation: anOperation! !
