@@ -16,6 +16,10 @@ packages :=
     add: '../src/TFTensorModifier.pck.st'; 
     add: '../src/TFOperation.pck.st'; 
     add: '../src/TFVariableSpecification.pck.st'; 
+    add: '../src/TFOptimizer.pck.st';
+    add: '../src/TFUtility.pck.st';
+    add: '../src/TFOperationGradient.pck.st';
+    add: '../src/TFDataset.pck.st';
     yourself. 
 
 packages do: [:package |
