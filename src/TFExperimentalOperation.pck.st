@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 10:48:45 pm'!
+'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 11:07:38 pm'!
 'Description '!
-!provides: 'TFExperimentalOperation' 1 0!
+!provides: 'TFExperimentalOperation' 1 1!
 SystemOrganization addCategory: 'TFExperimentalOperation-Model'!
 SystemOrganization addCategory: 'TFExperimentalOperation-ModelTests'!
 
@@ -206,8 +206,8 @@ defaultPaddingTechnique	^'VALID'! !
 !Convolution2DLayer methodsFor: 'Initialization'!
 defaultStride	^#(1 1)! !
 
-!Convolution2DLayer methodsFor: 'Initialization' stamp: 'JuanVanecek 5/30/2021 13:52'!
-initializeFiltering: anInput withKernelLike: aConvolutionKernelSpecification	| filter |	input := anInput.	filter :=		VariableNode			on: self currentComputation			named: 'conv2d-filter'			of: anInput outputType			shaped: (				TensorShape withDimensionsSized: (					(OrderedCollection new)						addAll: aConvolutionKernelSpecification kernelShape;						add: input outputShape dimensionSizes last;						add: aConvolutionKernelSpecification amountOfFilters;						asArray))			initializedWith: aConvolutionKernelSpecification variableInitializer.				value :=		Convolution2D			on: self currentComputation			filtering: anInput			with: filter			shiftedBy: self defaultStride			paddedAccording: self defaultPaddingTechnique! !
+!Convolution2DLayer methodsFor: 'Initialization' stamp: 'JV 6/1/2021 22:51:59'!
+initializeFiltering: anInput withKernelLike: aConvolutionKernelSpecification	| filter |	input := anInput.	filter :=		    TFVariableNode			on: self currentComputation			named: 'conv2d-filter'			of: anInput outputType			shaped: (				TensorShape withDimensionsSized: (					(OrderedCollection new)						addAll: aConvolutionKernelSpecification kernelShape;						add: input outputShape dimensionSizes last;						add: aConvolutionKernelSpecification amountOfFilters;						asArray))			initializedWith: aConvolutionKernelSpecification variableInitializer.				value :=		Convolution2D			on: self currentComputation			filtering: anInput			with: filter			shiftedBy: self defaultStride			paddedAccording: self defaultPaddingTechnique! !
 
 !Convolution2DLayer methodsFor: 'Accessing'!
 currentComputation	^input currentComputation! !

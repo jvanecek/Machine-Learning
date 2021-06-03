@@ -24,6 +24,8 @@ packages :=
     add: '../src/MLTrainingMetric.pck.st';
     add: '../src/MLNeuralNetworkLayer.pck.st';
     add: '../src/TFExperimentalOperation.pck.st';
+    add: '../src/IdxReader.pck.st';
+    add: '../src/DatasetProvider.pck.st';
     yourself. 
 
 packages do: [:package |

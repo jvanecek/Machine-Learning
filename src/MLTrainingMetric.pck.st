@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 10:48:43 pm'!
+'From Cuis 5.0 [latest update: #4619] on 2 June 2021 at 11:06:10 pm'!
 'Description '!
-!provides: 'MLTrainingMetric' 1 0!
+!provides: 'MLTrainingMetric' 1 1!
 SystemOrganization addCategory: 'MLTrainingMetric-Model'!
 SystemOrganization addCategory: 'MLTrainingMetric-ModelTests'!
 
@@ -190,3 +190,8 @@ new	^self on: Transcript! !
 
 !NeuralNetworkFittingLogger class methodsFor: 'Instance Creation'!
 on: aStream	^super new initializeOn: aStream! !
+
+!NeuralNetworkTrainingSummary methodsFor: '*MLTrainingMetric-Model' stamp: 'JV 6/2/2021 23:00:28'!
+validationMetricKnownAs: aMetricKey
+
+	^trainingContext validationMetricKnownAs: aMetricKey! !

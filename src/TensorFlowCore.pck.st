@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 2 June 2021 at 7:26:41 pm'!
+'From Cuis 5.0 [latest update: #4619] on 2 June 2021 at 10:43:35 pm'!
 'Description '!
-!provides: 'TensorFlowCore' 1 21!
+!provides: 'TensorFlowCore' 1 22!
 !requires: 'ImageProcessing' 1 19 nil!
 !requires: 'FFI' 1 33 nil!
 !requires: 'Statistics' 1 14 nil!
@@ -4969,9 +4969,6 @@ hash	^self dimensionSizes hash! !
 initializeDimensionSized: anArray	dimensionSizes := anArray! !
 
 !TensorShape methodsFor: 'Testing'!
-isCompatibleWithNHWShapes		"NHW shape is those with (number of images in the batch, height, width) shape "		^self rank = 3! !
-
-!TensorShape methodsFor: 'Testing'!
 representsMatrix	^self rank = 2! !
 
 !TensorShape methodsFor: 'Testing'!
@@ -5317,6 +5314,11 @@ value: anObject
 crlf
 	
 	self nextPutAll: String crlfString! !
+
+!FileEntry methodsFor: '*TensorFlowCore' stamp: 'JV 6/2/2021 20:06:15'!
+binaryReadStream
+	
+	^ self binaryContents readStream! !
 
 !TestCase methodsFor: '*TensorFlowCore-Tests' stamp: 'JV 5/24/2021 14:12:23'!
 assert: firstString isEqualSkippingSeparatorsTo: secondString

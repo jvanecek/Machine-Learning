@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 10:48:41 pm'!
+'From Cuis 5.0 [latest update: #4619] on 2 June 2021 at 11:06:08 pm'!
 'Description '!
-!provides: 'MLTraining' 1 0!
+!provides: 'MLTraining' 1 2!
 SystemOrganization addCategory: 'MLTraining-Model'!
 SystemOrganization addCategory: 'MLTraining-ModelTests'!
 
@@ -377,6 +377,13 @@ neuralNetworkTrainer	self subclassResponsibility! !
 !TrainingMinimizingLossFunctionTest methodsFor: 'Accessing'!
 targetTensor	self subclassResponsibility! !
 
+!TrainingMinimizingLossFunctionTest methodsFor: 'Accessing' stamp: 'JV 6/2/2021 23:05:16'!
+trainingDataset
+
+	^SampleDataset new
+		bindTrainingSetTo: self inputTensor withLabels: self targetTensor;
+		yourself! !
+
 !TrainingMinimizingLossFunctionTest methodsFor: 'Tests'!
 testLogitsAfterOneEpoch	| model |	model := self modelWithTwoOutputUnits.	self neuralNetworkTrainer		stopTrainingWhen: (CompletedNumberOfTraining after: 1);		train: model toFit: self trainingDataset.	self		assert: (			model logits computeWith: (				Dictionary new					at: 'input' put: self inputTensor;					yourself))		isMatrixCloseTo: self expectedLogitsAfterOneEpoch! !
 
@@ -671,8 +678,8 @@ increment	currentComputation compute: incrementEpoch! !
 !CurrentEpochHolder methodsFor: 'Incrementing'!
 incrementTrainingStep	currentComputation compute: incrementTrainingStep! !
 
-!CurrentEpochHolder methodsFor: 'Initialization' stamp: 'JuanVanecek 5/30/2021 13:52'!
-initializeOn: aTensorFlowComputation	currentComputation := aTensorFlowComputation.	epochVariable := VariableNode on: currentComputation named: 'currentEpoch' with: 1 asInt64Tensor.	incrementEpoch := epochVariable += 1 asInt64Tensor.	trainingStepVariable :=		VariableNode on: currentComputation named: 'trainingStep' with: 1 asInt64Tensor.	incrementTrainingStep := trainingStepVariable += 1 asInt64Tensor! !
+!CurrentEpochHolder methodsFor: 'Initialization' stamp: 'JV 6/1/2021 22:52:22'!
+initializeOn: aTensorFlowComputation	currentComputation := aTensorFlowComputation.	epochVariable := TFVariableNode on: currentComputation named: 'currentEpoch' with: 1 asInt64Tensor.	incrementEpoch := epochVariable += 1 asInt64Tensor.	trainingStepVariable :=		TFVariableNode on: currentComputation named: 'trainingStep' with: 1 asInt64Tensor.	incrementTrainingStep := trainingStepVariable += 1 asInt64Tensor! !
 
 !CurrentEpochHolder methodsFor: 'Accessing'!
 asVariable	^epochVariable! !
@@ -776,6 +783,9 @@ trainingIterations: aTrainingTimes	self stopTrainingWhen: (CompletedNumberOfTr
 !NeuralNetworkTrainer class methodsFor: 'Instance Creation'!
 on: aTensorFlowComputation	^self new initializeOn: aTensorFlowComputation! !
 
+!NeuralNetworkTrainingContext methodsFor: 'Printing'!
+printTrainingDescriptionOn: aStream	aStream		nextPutAll: '== Model To Train ==';		cr;		print: modelToTrain;		cr;		nextPutAll: '=====';		cr.	aStream		print: optimization;		cr! !
+
 !NeuralNetworkTrainingContext methodsFor: 'Initialization'!
 initializeMetricsTrackedBy: aMetricTrackerCollection	metricTrackers := aMetricTrackerCollection.	metricsCollected := Dictionary new.	metricTrackers do: [:each | each prepareMetricsWithin: self]! !
 
@@ -811,9 +821,6 @@ trainingMetricKnownAs: aMetricKey	^self metricKnownAs: aMetricKey during: Trai
 
 !NeuralNetworkTrainingContext methodsFor: 'Accessing'!
 validationMetricKnownAs: aMetricKey	^self metricKnownAs: aMetricKey during: ValidationStage new! !
-
-!NeuralNetworkTrainingContext methodsFor: 'Printing'!
-printTrainingDescriptionOn: aStream	aStream		nextPutAll: '== Model To Train ==';		cr;		print: modelToTrain;		cr;		nextPutAll: '=====';		cr.	aStream		print: optimization;		cr! !
 
 !NeuralNetworkTrainingContext methodsFor: 'Computing'!
 computeEpochFor: aStage using: aSampleDataset	| losses loss |	(aStage shouldBeExecutedFor: aSampleDataset) ifFalse: [^self].	losses := OrderedCollection new.	self		measureEpochMetricsFor: aStage		during: [			aStage				withSuitableSetIn: aSampleDataset				do: [:features :target |					aStage						computeBatchStepUsing:							(self buildInputWithFeatures: features andTarget: target)						aggregatingLossTo: losses						within: self]].	loss := losses mean.	self addMetricValued: loss during: aStage to: self lossMetricKey.	^loss! !
@@ -916,3 +923,6 @@ initializeLowerThan: aLossValue	minimumLoss := aLossValue! !
 
 !LossReachedMinimum class methodsFor: 'Instance Creation'!
 lowerThan: aLossValue	^self new initializeLowerThan: aLossValue! !
+
+!TensorFlowOperationAbstract methodsFor: '*MLTraining-Model'!
++= anOperation	^self currentComputation		newOperationOf: 'AssignAdd'		namePrefixed: 'AssignAdd'		with: self		with: anOperation! !

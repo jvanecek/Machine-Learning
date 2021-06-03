@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 10:48:39 pm'!
+'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 11:07:35 pm'!
 'Description '!
-!provides: 'MLNeuralNetworkLayer' 1 0!
+!provides: 'MLNeuralNetworkLayer' 1 1!
 SystemOrganization addCategory: 'MLNeuralNetworkLayer-Model'!
 SystemOrganization addCategory: 'MLNeuralNetworkLayer-ModelTests'!
 
@@ -257,14 +257,14 @@ testTwoLayersModelCharacteristics	| model |	model :=		(SequentialModelBuild
 !SequentialModelBuilderTest methodsFor: 'Tests'!
 testTwoLayersModelPrediction	| model |	model :=		(SequentialModelBuilder on: tf)			addDenseLayerSized: 2				builtWith: [:layer |					layer						inputSize: 3;						weightInitializedTo: #((1 1.3) (0.1 -1.1) (0.2 1.7));						biasInitializedTo: #(0.7 0.3);						activatedBySigmoid];			addDenseLayerSized: 1				builtWith: [:layer | layer weightInitializedTo: #((-2.5) (-5.2))];			build.	self		assert: (model predictFrom: self inputWithThreeFeatures)		isMatrixCloseTo: #((-6.357518) (-5.524584) (-6.440332) (-6.8832903)).	self		assert: model trainableVariables		hasTheSameOperationsAs: (			Array				with: (tf operationNamed: 'weight')				with: (tf operationNamed: 'bias')				with: (tf operationNamed: 'weight_2')				with: (tf operationNamed: 'bias_2'))! !
 
-!DenseLayer methodsFor: 'Initialization' stamp: 'JuanVanecek 5/30/2021 13:52'!
-calculateValueUsing: aBiasSpec	| output |	output := input dot: weights.	aBiasSpec ifNotNil: [| bias |		bias :=			VariableNode				on: self currentComputation				named: 'bias'				of: aBiasSpec variableType				shaped: (TensorShape vectorSized: outputSize)				initializedWith: aBiasSpec variableInitializer.		trainableVariables add: bias.		output := output biasedBy: bias].	activation ifNotNil: [:activ | output := activ activating: output].	^output! !
+!DenseLayer methodsFor: 'Initialization' stamp: 'JV 6/1/2021 22:51:49'!
+calculateValueUsing: aBiasSpec	| output |	output := input dot: weights.	aBiasSpec ifNotNil: [| bias |		bias :=			TFVariableNode				on: self currentComputation				named: 'bias'				of: aBiasSpec variableType				shaped: (TensorShape vectorSized: outputSize)				initializedWith: aBiasSpec variableInitializer.		trainableVariables add: bias.		output := output biasedBy: bias].	activation ifNotNil: [:activ | output := activ activating: output].	^output! !
 
 !DenseLayer methodsFor: 'Initialization'!
 initializeReceiving: anInput featuresOfInput: anInputSize featuresOfOutput: anOutputSize weightSpecifiedBy: aWeightSpecification biasSpecifiedBy: aBiasSpecification activatedBy: anActivation	trainableVariables := OrderedCollection new: 2.	input := anInput.	inputSize := anInputSize.	outputSize := anOutputSize.	activation := anActivation.	self initializeWeightFrom: aWeightSpecification.	value := self calculateValueUsing: aBiasSpecification! !
 
-!DenseLayer methodsFor: 'Initialization' stamp: 'JuanVanecek 5/30/2021 13:52'!
-initializeWeightFrom: aVariableSpec	weights :=		VariableNode			on: self currentComputation			named: 'weight'			of: aVariableSpec variableType			shaped: (TensorShape matrixSized: inputSize by: outputSize)			initializedWith: aVariableSpec variableInitializer.	trainableVariables add: weights! !
+!DenseLayer methodsFor: 'Initialization' stamp: 'JV 6/1/2021 22:52:29'!
+initializeWeightFrom: aVariableSpec	weights :=		TFVariableNode			on: self currentComputation			named: 'weight'			of: aVariableSpec variableType			shaped: (TensorShape matrixSized: inputSize by: outputSize)			initializedWith: aVariableSpec variableInitializer.	trainableVariables add: weights! !
 
 !DenseLayer methodsFor: 'Accessing'!
 currentComputation	^input currentComputation! !
