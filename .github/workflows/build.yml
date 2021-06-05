@@ -1,0 +1,31 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+   build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    name: Cuis
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Install TensorFlow
+        run: ./scripts/install-tensorflow.sh
+        env:
+          VERSION: 2.3.1
+      - name: Clone VM and Cuis Image
+        run: ./scripts/install-cuis.sh
+      - name: Install updates
+        run: ./scripts/ci/install-updates.sh
+      - name: Load Packages
+        run: ./scripts/install-packages.sh
+      - name: Run Tests
+        run: ./scripts/ci/run-tests.sh
+        timeout-minutes: 20
+      
