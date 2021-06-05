@@ -1,4 +1,4 @@
-'From Cuis 5.0 [latest update: #4627] on 5 June 2021 at 7:04:21 pm'!
+'From Cuis 5.0 [latest update: #4627] on 5 June 2021 at 7:18:53 pm'!
 'Description '!
 !provides: 'TensorFlowDeprecated' 1 15!
 !requires: 'TensorFlowCore' 1 1 nil!
@@ -2640,9 +2640,9 @@ testName
 trainName
 	^ self subclassResponsibility ! !
 
-!MNISTImageFile methodsFor: 'converting' stamp: 'gera 6/30/2019 00:45:26'!
+!MNISTImageFile methodsFor: 'converting' stamp: 'JV 6/5/2021 19:18:03'!
 asTensor
-	^  TFTensor fromFloats:  items shape: {count. rows * columns}.! !
+	^  TFTensor fromFloats: items shape: (TensorShape matrixSized: count by: rows * columns).! !
 
 !MNISTImageFile methodsFor: 'accessing' stamp: 'JB 2/10/2017 00:50:56'!
 at: imageIndex
@@ -4918,6 +4918,15 @@ inputType: typeInteger
 !TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'gera 12/28/2016 02:11:44'!
 mul: nameString described: aBlock
 	^self newOperation: 'Mul' named: nameString described: aBlock! !
+
+!TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JV 6/5/2021 19:08:57'!
+newOperationOf: anOperationType namePrefixed: anOperationName with: aTFNode with: anotherTFNode
+
+	^self
+		newOperationOf: anOperationType
+		namePrefixed: anOperationName
+		withAll: (Array with: aTFNode with: anotherTFNode)
+		describedBy: [:desc | ]! !
 
 !TFGraph methodsFor: '*TensorFlowDeprecated-Core' stamp: 'JV 5/30/2021 16:15:11'!
 newOperationOf: aString namePrefixed: anOperationPreffix withAll: anInputCollection describedBy: aBlockClosure
