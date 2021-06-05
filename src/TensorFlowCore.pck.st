@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 2 June 2021 at 10:43:35 pm'!
+'From Cuis 5.0 [latest update: #4627] on 5 June 2021 at 7:30:16 pm'!
 'Description '!
-!provides: 'TensorFlowCore' 1 22!
+!provides: 'TensorFlowCore' 1 23!
 !requires: 'ImageProcessing' 1 19 nil!
 !requires: 'FFI' 1 33 nil!
 !requires: 'Statistics' 1 14 nil!
@@ -3661,6 +3661,11 @@ at: attribute putInt: value
 		set: attribute asAsciiZ
 		toInt64: value! !
 
+!TFOperationDescription methodsFor: 'attributes' stamp: 'JV 6/1/2021 22:54:00'!
+at: attribute putInts: aListOfIntegers
+
+	^ self library description: self set: attribute asAsciiZ toInts: aListOfIntegers! !
+
 !TFOperationDescription methodsFor: 'attributes' stamp: 'JV 5/25/2021 22:23:09'!
 at: anAttributeName putShape: aTensorShape
 
@@ -3693,11 +3698,6 @@ at: attribute putType: value
 !TFOperationDescription methodsFor: 'attributes' stamp: 'gera 1/22/2017 17:58:17'!
 device: aString
 	^self library description: self setDevice: aString! !
-
-!TFOperationDescription methodsFor: 'as yet unclassified' stamp: 'JV 6/1/2021 22:54:00'!
-at: attribute putInts: aListOfIntegers
-
-	^ self library description: self set: attribute asAsciiZ toInts: aListOfIntegers! !
 
 !TFOutput methodsFor: 'accessing' stamp: 'JV 5/29/2021 09:38:44'!
 graph 

@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 10:40:46 pm'!
+'From Cuis 5.0 [latest update: #4627] on 5 June 2021 at 7:30:19 pm'!
 'Description '!
-!provides: 'TFDataset' 1 3!
+!provides: 'TFDataset' 1 4!
 !requires: 'TFUtility' 1 0 nil!
 !requires: 'TFOperation' 1 5 nil!
 SystemOrganization addCategory: 'TFDataset-Model'!
@@ -811,10 +811,20 @@ atOutputTypesPut: aListOfTypes
 
 	self at: TFAttributeName outputTypes putTypes: aListOfTypes! !
 
+!TFOperationDescription methodsFor: '*TFDataset-Model' stamp: 'CI 6/5/2021 19:28:45'!
+atPaddingPut: aListOfIntegers
+
+	^self at: 'padding' putString: aListOfIntegers! !
+
 !TFOperationDescription methodsFor: '*TFDataset-Model' stamp: 'JV 6/1/2021 22:36:31'!
 atSharedNamePut: aString
 
 	self at: TFAttributeName sharedName putString: aString! !
+
+!TFOperationDescription methodsFor: '*TFDataset-Model' stamp: 'CI 6/5/2021 19:28:23'!
+atStridesPut: aListOfIntegers
+
+	^self at: 'strides' putInts: aListOfIntegers! !
 
 !TensorFlowComputation methodsFor: '*TFDataset-Model' stamp: 'JV 6/1/2021 22:37:21'!
 createSessionAndRun: anOperation
