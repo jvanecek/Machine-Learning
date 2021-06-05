@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 1 June 2021 at 11:07:49 pm'!
+'From Cuis 5.0 [latest update: #4627] on 5 June 2021 at 7:04:21 pm'!
 'Description '!
-!provides: 'TensorFlowDeprecated' 1 14!
+!provides: 'TensorFlowDeprecated' 1 15!
 !requires: 'TensorFlowCore' 1 1 nil!
 !requires: 'WebClient' 1 20 nil!
 SystemOrganization addCategory: 'TensorFlowDeprecated-Core'!
@@ -2406,7 +2406,7 @@ initializeInferenceGraph
 		named: 'layer3'.
 ! !
 
-!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:27'!
+!MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'JV 6/5/2021 19:03:20'!
 initializeLearningGraph
 	|  axis0 backprop learningRate batchSize learnBiases1 learnBiases2 learnBiases3 learnWeights1 learnWeights2 learnWeights3 |
 	
@@ -2441,12 +2441,12 @@ initializeLearningGraph
 	learn := graph newOperation: 'Identity' named: 'learn' described: [:description |
 		description
 			addInput: loss output;
-			addControlInput: learnWeights1 output;
-			addControlInput: learnBiases1 output;
-			addControlInput: learnWeights2 output;
-			addControlInput: learnBiases2 output;
-			addControlInput: learnWeights3 output;
-			addControlInput: learnBiases3 output].
+			addControlInput: learnWeights1;
+			addControlInput: learnBiases1;
+			addControlInput: learnWeights2;
+			addControlInput: learnBiases2;
+			addControlInput: learnWeights3;
+			addControlInput: learnBiases3].
 ! !
 
 !MNIST3LayersNNExamplePlan methodsFor: 'initialization' stamp: 'gera 6/30/2019 00:45:28'!
