@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 6 June 2021 at 10:39:30 am'!
+'From Cuis 5.0 [latest update: #4619] on 6 June 2021 at 2:18:43 pm'!
 'Description '!
-!provides: 'TensorFlowDeprecated' 1 16!
+!provides: 'TensorFlowDeprecated' 1 17!
 !requires: 'TensorFlowCore' 1 1 nil!
 !requires: 'WebClient' 1 20 nil!
 SystemOrganization addCategory: 'TensorFlowDeprecated-Core'!
@@ -2612,11 +2612,10 @@ parse: aStream
 
 	! !
 
-!MNISTFile class methodsFor: 'private' stamp: 'JV 5/23/2021 09:43:32'!
+!MNISTFile class methodsFor: 'private' stamp: 'JV 6/6/2021 14:18:39'!
 download: aName
 		| url response content file |
-		" I changed the original http://yann.lecun.com/exdb/mnist/, because is constantly unavailable "
-		url := 'https://github.com/jvanecek/datasets/blob/main/mnist-handwritten/' , aName, '?raw=true'.
+		url := 'http://yann.lecun.com/exdb/mnist/' , aName.
 		response := WebClient httpGet: url.
 		content := response content asByteArray.
 		file := ('dataset/', name) asFileEntry.
