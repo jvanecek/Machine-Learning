@@ -1,9 +1,7 @@
-'From Cuis 5.0 [latest update: #4627] on 5 June 2021 at 7:30:16 pm'!
+'From Cuis 5.0 [latest update: #4619] on 6 June 2021 at 10:30:38 am'!
 'Description '!
-!provides: 'TensorFlowCore' 1 23!
-!requires: 'ImageProcessing' 1 19 nil!
+!provides: 'TensorFlowCore' 1 25!
 !requires: 'FFI' 1 33 nil!
-!requires: 'Statistics' 1 14 nil!
 SystemOrganization addCategory: 'TensorFlowCore'!
 SystemOrganization addCategory: 'TensorFlowCore-Tests'!
 

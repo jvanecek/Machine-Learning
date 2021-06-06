@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4627] on 5 June 2021 at 7:18:53 pm'!
+'From Cuis 5.0 [latest update: #4619] on 6 June 2021 at 10:39:30 am'!
 'Description '!
-!provides: 'TensorFlowDeprecated' 1 15!
+!provides: 'TensorFlowDeprecated' 1 16!
 !requires: 'TensorFlowCore' 1 1 nil!
 !requires: 'WebClient' 1 20 nil!
 SystemOrganization addCategory: 'TensorFlowDeprecated-Core'!
@@ -319,6 +319,15 @@ testOperationSliceSimple
 	
 	self assert: #(1) equals: result asNumbers.! !
 
+!TensorFlowOperationsTest methodsFor: 'private' stamp: 'JV 6/6/2021 10:37:06'!
+mean: aCollectionOfNumbers
+	
+	aCollectionOfNumbers isEmpty ifTrue: [^0].
+	^((aCollectionOfNumbers
+		inject: 0
+		into: [:subTotal :next | subTotal + next]) / aCollectionOfNumbers size)
+		asFloat! !
+
 !TensorFlowOperationsTest methodsFor: 'private' stamp: 'JB 2/7/2017 11:13:02'!
 percentile: percent from: collection
 	| position sorted |
@@ -326,6 +335,19 @@ percentile: percent from: collection
 	sorted := collection sorted: nil.
 	^ sorted at: position
 	! !
+
+!TensorFlowOperationsTest methodsFor: 'private' stamp: 'JV 6/6/2021 10:37:29'!
+standardDeviation: aCollectionOfNumbers	
+	^(self variance: aCollectionOfNumbers) sqrt! !
+
+!TensorFlowOperationsTest methodsFor: 'private' stamp: 'JV 6/6/2021 10:37:17'!
+variance: aCollectionOfNumbers
+	| moy |
+	aCollectionOfNumbers isEmpty
+		ifTrue: [ ^ 0 ].
+	moy := self mean: aCollectionOfNumbers.
+	^ ((aCollectionOfNumbers inject: 0 into: [ :subTotal :next | subTotal + (next - moy) squared ])
+		/ aCollectionOfNumbers size) asFloat! !
 
 !TensorFlowOperationsTest methodsFor: 'initialization' stamp: 'JV 5/24/2021 22:56:51'!
 setUp
@@ -338,7 +360,7 @@ should: aBlock raiseError: aString
 	aBlock ifError: [:description :receiver | message := description].
 	self assert: 'Error: ',aString equals: message.! !
 
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 6/6/2021 10:37:48'!
 testGraphTruncatedNormal
 	| graph session result random values std theoreticalDecile expected |	
 	graph := TFGraph create.
@@ -350,7 +372,7 @@ testGraphTruncatedNormal
 	
 	values := result allFloats.
 	theoreticalDecile := -1.1840324666939051.
-	std := values standardDeviation.
+	std := self standardDeviation: values.
 	self assert: result shape equals: #(100 100 10).
 	self assert: values size equals: 100*100*10.
 	self assert: values min + 2 < 0.01.
@@ -364,7 +386,7 @@ testGraphTruncatedNormal
 		self assert: (observed - e) abs < 0.2].
 	! !
 
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 6/6/2021 10:37:38'!
 testGraphTruncatedNormalStddev
 	| graph session result random values sigma twoSigma std theoreticalDecile expected |	
 	graph := TFGraph create.
@@ -377,7 +399,7 @@ testGraphTruncatedNormalStddev
 	result := session runOutput: (random output: 0).
 	values := result allFloats.
 	
-	std := values standardDeviation.
+	std := self standardDeviation: values.
 	theoreticalDecile := -1.1840324666939051.
 		
 	self assert: result shape equals: #(100 100 10).
@@ -408,7 +430,7 @@ testGraphUnnamedConst
 	self assert: result shape equals: #(4).
 	self assert: result allFloats equals: #(1 2 3 4).! !
 
-!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'gera 7/3/2019 03:35:50'!
+!TensorFlowOperationsTest methodsFor: 'binary operations' stamp: 'JV 6/6/2021 10:37:57'!
 testGraphVariableFromTruncatedNormalStddev
 	| graph session result1 result2 var random values1 values2 init sigma std twoSigma |	
 	graph := TFGraph create.
@@ -426,7 +448,7 @@ testGraphVariableFromTruncatedNormalStddev
 	self assert: result1 shape equals: #(100 100 10).
 	
 	values1 := result1 allFloats.
-	std := values1 standardDeviation.
+	std := self standardDeviation: values1.
 	self assert: values1 size equals: 100*100*10.	
 	self assert: twoSigma - (values1 min abs)  < 0.1.
 	self assert: twoSigma - values1 max < 0.1.
