@@ -11,4 +11,4 @@ INSTALL_UPDATES_SCRIPT="\
   Smalltalk snapshot: true andQuit: true clearAllClassState: false.\
 "
 
-./cogspur/squeak -vm-display-null "cuis/$IMAGE_FILE" -d "$INSTALL_UPDATES_SCRIPT"
+./vm/squeak -vm-display-null "cuis/$IMAGE_FILE" -d "$INSTALL_UPDATES_SCRIPT"
