@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 6 June 2021 at 10:30:38 am'!
+'From Cuis 5.0 [latest update: #4619] on 6 June 2021 at 8:15:39 pm'!
 'Description '!
-!provides: 'TensorFlowCore' 1 25!
+!provides: 'TensorFlowCore' 1 26!
 !requires: 'FFI' 1 33 nil!
 SystemOrganization addCategory: 'TensorFlowCore'!
 SystemOrganization addCategory: 'TensorFlowCore-Tests'!
@@ -1489,14 +1489,19 @@ testNewOperationPlaceholderNoType
 		should: [(graph newOperationDescription: 'Placeholder' named: 'placeholder') finish]
 		raiseError: noType.! !
 
-!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 5/11/2021 19:57:14'!
+!TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'JV 6/6/2021 20:13:43'!
 testNewVariableNoAttributes
-	| graph error |
+	| graph |
 	graph := TFGraph create.
-	error :=  'INVALID_ARGUMENT: NodeDef missing attrs ''shape'', ''dtype'' from Op<name=Variable; signature= -> ref:Ref(dtype); attr=shape:shape; attr=dtype:type; attr=container:string,default=""; attr=shared_name:string,default=""; is_stateful=true>; NodeDef: {{node var}}'.
-	self
-		should: [graph newOperation: 'Variable' named: 'var']
-		raiseError: error.! !
+
+	self 
+		should: [graph newOperation: 'Variable' named: 'var'] 
+		raise: Error 
+		withSignalDo: [:exception | | errorText | 
+			errorText := exception messageText.
+			self assert: (errorText includesSubstring: 'INVALID_ARGUMENT: NodeDef missing attrs')
+		]. 
+	! !
 
 !TensorFlowCAPITest methodsFor: 'testing operation' stamp: 'gera 6/30/2019 00:45:28'!
 testOperationOutputTypeFloat

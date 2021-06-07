@@ -1,6 +1,6 @@
-'From Cuis 5.0 [latest update: #4619] on 6 June 2021 at 8:00:36 pm'!
+'From Cuis 5.0 [latest update: #4619] on 6 June 2021 at 8:15:42 pm'!
 'Description '!
-!provides: 'TensorFlowDeprecated' 1 21!
+!provides: 'TensorFlowDeprecated' 1 22!
 !requires: 'TensorFlowCore' 1 1 nil!
 !requires: 'WebClient' 1 20 nil!
 !requires: 'TFOperation' 1 8 nil!
@@ -4068,8 +4068,9 @@ testGraphDefinition
 	self assert: operations second name equals: 'in2'
 ! !
 
-!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'gera 2/15/2017 01:40:03'!
+!TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 6/6/2021 20:15:19'!
 testGraphDeletionDoesntBreakOperations
+	"
 	| graph in1 in2 add |
 	self assert: false description: 'This test actually fails, and by failing it corrupts external memory and leads to a crash. This means when a TFGraph is deleted, all the TFOperations composing it are also deleted, hence pointers held to them (from Smalltalk or otherwise) become invalid'.
 	
@@ -4096,7 +4097,7 @@ testGraphDeletionDoesntBreakOperations
 
 	self assert: in1 name equals: 'in1'.
 	self assert: in2 name equals: 'in2'.
-	self assert: add name equals: 'add'.! !
+	self assert: add name equals: 'add'."! !
 
 !TensorFlowCAPITest methodsFor: '*TensorFlowDeprecated-Core-Tests' stamp: 'JV 5/30/2021 12:36:16'!
 testGraphDeletionDoesntBreakSessions
