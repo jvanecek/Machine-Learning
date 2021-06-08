@@ -11,16 +11,23 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-    name: Cuis
+      matrix:
+        vm_release: [ 201901172323 ]
+        vm_family: [ squeak ]
+        tensorflow: [ 2.3.1 ]
+    name: TF ${{ matrix.tensorflow}}+${{ matrix.vm_family }} ${{ matrix.vm_release }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
       - name: Install TensorFlow
         run: ./scripts/install-tensorflow.sh
         env:
-          VERSION: 2.3.1
+          VERSION: ${{ matrix.tensorflow }}
       - name: Clone VM and Cuis Image
         run: ./scripts/install-cuis.sh
+        env:
+          VM_RELEASE: ${{ matrix.vm_release }}
+          VM_FAMILY: ${{ matrix.vm_family }}
       - name: Install updates
         run: ./scripts/ci/install-updates.sh
       - name: Load Packages
@@ -28,4 +35,3 @@ jobs:
       - name: Run Tests
         run: ./scripts/ci/run-tests.sh
         timeout-minutes: 20
-      
