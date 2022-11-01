@@ -6,7 +6,7 @@ git clone https://github.com/Cuis-Smalltalk/Morphic.git cuis/Packages/Morphic
 
 if [ -z "$VM_RELEASE" ]
 then
-	VM_RELEASE=201901172323
+	VM_RELEASE=202206021410
 fi
 if [ -z "$VM_FAMILY" ]
 then
@@ -16,7 +16,7 @@ fi
 VERSION=linux64x64
 
 
-wget -O cogspur.tgz "https://github.com/OpenSmalltalk/opensmalltalk-vm/releases/download/${VM_RELEASE}/${VM_FAMILY}.cog.spur_${VERSION}_${VM_RELEASE}.tar.gz"
+wget -O cogspur.tgz "https://github.com/OpenSmalltalk/opensmalltalk-vm/releases/download/${VM_RELEASE}/${VM_FAMILY}.cog.spur_${VERSION}.tar.gz"
 tar -zxvf cogspur.tgz
 mv ./sqcogspur64linuxht ./vm
 rm cogspur.tgz
